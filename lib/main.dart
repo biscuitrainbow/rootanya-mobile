@@ -1,38 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:medical_app/redux/app/app_state.dart';
+import 'package:medical_app/redux/store.dart';
 import 'package:medical_app/ui/home/home.dart';
 import 'package:map_view/map_view.dart';
+import 'package:redux/redux.dart';
 
-void main() {
+void main() async {
   var apiKey = "AIzaSyAXJ48mFl-jDIRzRRsykbI0_TOJxrXIo8w";
   MapView.setApiKey(apiKey);
 
-  runApp(new MyApp());
+  var store = await createStore();
+
+  runApp(new MyApp(store));
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final Store<AppState> store;
+
+  const MyApp(this.store);
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-        brightness: Brightness.dark,
+    return new StoreProvider<AppState>(
+      store: store,
+      child: new MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: new ThemeData(
+          scaffoldBackgroundColor: Colors.black,
+          brightness: Brightness.dark,
+        ),
+        home: new HomeScreen(),
       ),
-      home: new MyHomePage(),
     );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-
-  @override
-  _MyHomePageState createState() => new _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return new HomeScreen();
   }
 }

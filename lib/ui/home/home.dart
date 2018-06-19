@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:medical_app/ui/barcode_scanner/barcode_scanner.dart';
-import 'package:medical_app/ui/map_view/MapViewScreen.dart';
+import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
+import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_container.dart';
+import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_screen.dart';
+import 'package:medical_app/ui/notification_list/notification_list_container.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -19,7 +22,7 @@ class HomeScreen extends StatelessWidget {
           new MenuItem(
             title: 'ค้นหาข้อมูลยา',
             iconData: FontAwesomeIcons.prescriptionBottle,
-            onPress: () => print("press"),
+            onPress: () => Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new MedicineListContainer())),
           ),
           new MenuItem(
             title: 'สแกนบาร์โค้ด',
@@ -29,12 +32,12 @@ class HomeScreen extends StatelessWidget {
           new MenuItem(
             title: 'เตือนการกินยา',
             iconData: Icons.alarm_add,
-            onPress: () => print("press"),
+            onPress: () => Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new NotificationListContainer())),
           ),
           new MenuItem(
             title: 'ร้านขายยาใกล้เคียง',
             iconData: FontAwesomeIcons.shoppingCart,
-            onPress: () => Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new MapViewScreen())),
+            onPress: () => Navigator.push(context, new MaterialPageRoute(builder: (BuildContext context) => new NearbyPharmaciesContainer())),
           ),
           new MenuItem(
             title: 'ขอความช่วยเหลือ',
@@ -53,7 +56,7 @@ class HomeScreen extends StatelessWidget {
           ),
           new MenuItem(
             title: 'ข้อมูลส่วนตัว',
-            iconData: FontAwesomeIcons.peopleCarry,
+            iconData: Icons.person,
             onPress: () => print("ข้อมูลส่วนตัว"),
           ),
         ],
