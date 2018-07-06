@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
@@ -17,22 +18,22 @@ class _MedicineListContainerState extends State<MedicineListContainer> {
   @override
   Widget build(BuildContext context) {
     return new StoreConnector(
-//      onInit: (Store store) =>
-//          store.dispatch(new MedicineListQueryAction('พารา')),
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel vm) {
-        print(vm.isLoading);
 
         return new MedicineListScreen(
           medicines: vm.medicines,
           isSearching: vm.isSearching,
           isListening: vm.isListening,
           isLoading: vm.isLoading,
+          loadingStatus: vm.loadingStatus,
           onSearchClick: vm.onSearchClick,
           onVoiceClicked: vm.onVoiceClicked,
           onDispose: vm.onDispose,
           queryController: queryController,
           onSearchQueryChanged: vm.onQueryChanged,
+          showListening: vm.showListening,
+          hideListening: vm.hideListening,
         );
       },
     );
@@ -48,6 +49,10 @@ class ViewModel {
   final Function(String) onQueryChanged;
   final Function onVoiceClicked;
   final Function onDispose;
+  final LoadingStatus loadingStatus;
+
+  final VoidCallback showListening;
+  final VoidCallback hideListening;
 
   ViewModel({
     this.medicines,
@@ -58,6 +63,9 @@ class ViewModel {
     this.onVoiceClicked,
     this.onQueryChanged,
     this.onDispose,
+    this.loadingStatus,
+    this.showListening,
+    this.hideListening,
   });
 
   static ViewModel fromStore(Store<AppState> store) {
@@ -66,10 +74,12 @@ class ViewModel {
       isSearching: store.state.medicineListState.isSearching,
       isListening: store.state.medicineListState.isListening,
       isLoading: store.state.medicineListState.isLoading,
+      loadingStatus: store.state.medicineListState.loadingStatus,
+      showListening: () => store.dispatch(new ShowListening()),
+      hideListening: () => store.dispatch(new HideListening()),
       onSearchClick: () => store.dispatch(new ToggleSearching()),
       onVoiceClicked: () => store.dispatch(new ToggleListening()),
-      onQueryChanged: (String query) =>
-          store.dispatch(new MedicineListQueryAction(query)),
+      onQueryChanged: (String query) => store.dispatch(new MedicineListQueryAction(query)),
       onDispose: () => store.dispatch(new ResetStateAction()),
     );
   }

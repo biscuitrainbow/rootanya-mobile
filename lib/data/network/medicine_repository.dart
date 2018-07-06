@@ -13,4 +13,24 @@ class MedicineRepository {
     var medicines = Medicine.fromJsonArray(jsonResponse);
     return medicines;
   }
+
+  Future<Null> addMedicine(Medicine medicine) async {
+    try {
+      final response = await http.post('${Config.url}/medicine/user/1', body: {
+        'barcode': medicine.barcode,
+        'name': medicine.name,
+        'ingredient': medicine.ingredient,
+        'category': medicine.category,
+        'type': medicine.type,
+        'for': medicine.fors,
+        'method': medicine.method,
+        'notice': medicine.notice,
+        'keeping': medicine.keeping,
+        'forget': medicine.forget,
+        'user_id': medicine.userId,
+      });
+    } catch (error) {
+      print(error.toString());
+    }
+  }
 }

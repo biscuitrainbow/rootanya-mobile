@@ -12,23 +12,20 @@ class ReceivedMedicines {
   ReceivedMedicines(this.medicines);
 }
 
-class ToggleSearching {
+class ErrorLoadingAction {
 
 }
 
-class ToggleListening {
+class ToggleSearching {}
 
-}
+class ToggleListening {}
 
-class ResetStateAction{
+class ShowListening {}
 
-}
+class HideListening {}
 
-class ShowLoading {
+class ResetStateAction {}
 
-}
+class ShowLoading {}
 
-class HideLoading {
-
-}
-
+class HideLoading {}

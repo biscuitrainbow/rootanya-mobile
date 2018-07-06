@@ -26,9 +26,6 @@ Middleware<AppState> fetchNearbyPharmacy(
       } catch (error) {
         print(error);
       }
-//      var pharmacies =
-//      await googleMapRepository.getNearByPharmacies(action.lat, action.lng);
-//      store.dispatch(new ReceivedPharmaciesAction(pharmacies));
 
       next(action);
     }

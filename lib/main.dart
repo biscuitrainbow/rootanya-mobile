@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       store: store,
       child: new MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Mee ya',
         theme: new ThemeData(
           scaffoldBackgroundColor: Colors.black,
           brightness: Brightness.dark,

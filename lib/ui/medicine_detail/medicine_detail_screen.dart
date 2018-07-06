@@ -15,16 +15,16 @@ class MedicineDetailScreen extends StatelessWidget {
         title: new Text(medicine.name),
         actions: <Widget>[
           new IconButton(
-              icon: new Icon(
-                Icons.add_alert,
-                color: Colors.white,
-              ),
-              onPressed: () => Navigator.push(
-                context,
-                new MaterialPageRoute(
-                  builder: (BuildContext context) => new MedicineNotificationListContainer(medicineId: medicine.id),
+            icon: new Icon(
+              Icons.add_alert,
+              color: Colors.white,
+            ),
+            onPressed: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (BuildContext context) => new MedicineNotificationListContainer(medicineId: medicine.id),
+                  ),
                 ),
-              ),
           )
         ],
       ),
@@ -78,8 +78,11 @@ class MedicineDetailItem extends StatelessWidget {
   final String title;
   final String detail;
 
-  const MedicineDetailItem({Key key, this.title, this.detail})
-      : super(key: key);
+  const MedicineDetailItem({
+    Key key,
+    this.title,
+    this.detail,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

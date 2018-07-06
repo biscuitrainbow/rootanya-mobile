@@ -21,6 +21,7 @@ dependencies:
   sqflite: "^0.10.0"
   path_provider: "^0.4.1"
   intl: "^0.15.6"
+  simple_permissions: "^0.1.5"
 
 dev_dependencies:
   flutter_test:

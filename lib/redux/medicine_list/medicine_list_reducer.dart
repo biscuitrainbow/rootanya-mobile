@@ -1,3 +1,4 @@
+import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/pharmacy.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_state.dart';
@@ -23,6 +24,15 @@ final medicineListReducer = combineReducers<MedicineListState>([
   ),
   new TypedReducer<MedicineListState, HideLoading>(
     hideLoading,
+  ),
+  new TypedReducer<MedicineListState, ShowListening>(
+    showListening,
+  ),
+  new TypedReducer<MedicineListState, HideListening>(
+    hideListening,
+  ),
+  new TypedReducer<MedicineListState, ErrorLoadingAction>(
+    errorLoading,
   )
 ]);
 
@@ -31,6 +41,7 @@ MedicineListState receivedMedicines(
   ReceivedMedicines action,
 ) {
   return state.copyWith(
+    loadingStatus: LoadingStatus.success,
     medicines: action.medicines,
   );
 }
@@ -53,6 +64,31 @@ MedicineListState toggleListening(
   );
 }
 
+MedicineListState showListening(
+  MedicineListState state,
+  ShowListening action,
+) {
+  return state.copyWith(
+    isListening: true,
+  );
+}
+
+MedicineListState hideListening(
+  MedicineListState state,
+  HideListening action,
+) {
+  return state.copyWith(
+    isListening: false,
+  );
+}
+
+MedicineListState errorLoading(
+  MedicineListState state,
+  ErrorLoadingAction action,
+) {
+  return state.copyWith(loadingStatus: LoadingStatus.error);
+}
+
 MedicineListState resetState(
   MedicineListState state,
   ResetStateAction action,
@@ -64,7 +100,7 @@ MedicineListState showLoading(
   MedicineListState state,
   ShowLoading action,
 ) {
-  return state.copyWith(isLoading: true);
+  return state.copyWith(loadingStatus: LoadingStatus.loading);
 }
 
 MedicineListState hideLoading(

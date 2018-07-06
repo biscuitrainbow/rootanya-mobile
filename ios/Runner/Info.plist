@@ -55,5 +55,9 @@
     <string>Reason why app needs location</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>Reason why app needs location</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This application needs to access your microphone</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>This application needs the speech recognition permission</string>
 </dict>
 </plist>

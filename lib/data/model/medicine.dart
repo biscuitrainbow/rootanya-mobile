@@ -12,6 +12,7 @@ class Medicine {
   final String notice;
   final String keeping;
   final String forget;
+  final String userId;
   final List<Notification> notifications;
 
   Medicine({
@@ -26,6 +27,7 @@ class Medicine {
     this.notice,
     this.keeping,
     this.forget,
+    this.userId,
     this.notifications,
   });
 
@@ -39,16 +41,16 @@ class Medicine {
         .map(
           (m) => new Medicine(
                 id: m['id'].toString(),
-                barcode: m['barcode'],
-                name: m['name'],
-                ingredient: m['ingredient'],
-                category: m['category'],
-                type: m['type'],
-                fors: m['for'],
-                method: m['method'],
-                notice: m['notice'],
-                keeping: m['keeping'],
-                forget: m['forget'],
+                barcode: m['barcode'] ?? '',
+                name: m['name'] ?? '',
+                ingredient: m['ingredient'] ?? '',
+                category: m['category'] ?? '',
+                type: m['type'] ?? '',
+                fors: m['for'] ?? '',
+                method: m['method'] ?? '',
+                notice: m['notice'] ?? '',
+                keeping: m['keeping'] ?? '',
+                forget: m['forget'] ?? '',
               ),
         )
         .toList();
@@ -78,19 +80,7 @@ class Medicine {
   static List<Medicine> fromJsonNotificationArray(List<dynamic> json) {
     var medicines = json
         .map(
-          (m) => new Medicine(
-              id: m['id'].toString(),
-              barcode: m['barcode'],
-              name: m['name'],
-              ingredient: m['ingredient'],
-              category: m['category'],
-              type: m['type'],
-              fors: m['for'],
-              method: m['method'],
-              notice: m['notice'],
-              keeping: m['keeping'],
-              forget: m['forget'],
-              notifications: Notification.fromJsonArray(m['notifications'])),
+          (m) => new Medicine(id: m['id'].toString(), barcode: m['barcode'], name: m['name'], ingredient: m['ingredient'], category: m['category'], type: m['type'], fors: m['for'], method: m['method'], notice: m['notice'], keeping: m['keeping'], forget: m['forget'], notifications: Notification.fromJsonArray(m['notifications'])),
         )
         .toList();
 

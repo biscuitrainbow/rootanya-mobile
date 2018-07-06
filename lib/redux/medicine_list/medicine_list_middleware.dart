@@ -24,12 +24,13 @@ Middleware<AppState> fetchMedicineByQuery(
         store.dispatch(new ShowLoading());
 
         var pharmacies = await medicineRepository.fetchMedicineByQuery(action.query);
-        store.dispatch(new ReceivedMedicines(pharmacies));
 
+        store.dispatch(new ReceivedMedicines(pharmacies));
         store.dispatch(new HideLoading());
       } catch (error) {
-        store.dispatch(new HideLoading());
         print(error);
+        store.dispatch(new HideLoading());
+        store.dispatch(new ErrorLoadingAction());
       }
     }
   };

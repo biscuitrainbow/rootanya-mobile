@@ -4,6 +4,7 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:medical_app/data/network/google_map_repository.dart';
 import 'package:medical_app/data/network/medicine_repository.dart';
 import 'package:medical_app/data/network/user_repository.dart';
+import 'package:medical_app/redux/add_medicine/add_medicine_middleware.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_middleware.dart';
 import 'package:medical_app/redux/medicine_notification/medicine_notification_middleware.dart';
 import 'package:medical_app/redux/notification_list/notification_list_middleware.dart';
@@ -14,16 +15,12 @@ import 'package:medical_app/redux/app/app_state_reducer.dart';
 import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart';
 
 FlutterLocalNotificationsPlugin initLocalNotification() {
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      new FlutterLocalNotificationsPlugin();
-  var initializationSettingsAndroid =
-      new AndroidInitializationSettings('mipmap/ic_launcher');
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+  var initializationSettingsAndroid = new AndroidInitializationSettings('mipmap/ic_launcher');
   var initializationSettingsIOS = new IOSInitializationSettings();
-  var initializationSettings = new InitializationSettings(
-      initializationSettingsAndroid, initializationSettingsIOS);
+  var initializationSettings = new InitializationSettings(initializationSettingsAndroid, initializationSettingsIOS);
   flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
-  flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      selectNotification: null);
+  flutterLocalNotificationsPlugin.initialize(initializationSettings, selectNotification: null);
 
   return flutterLocalNotificationsPlugin;
 }
@@ -46,8 +43,10 @@ Future<Store<AppState>> createStore() async {
         ..addAll(createNearbyPharmaciesMiddleware(googleMapRepository))
         ..addAll(createMedicineListMiddleware(medicineRepository))
         ..addAll(createNotificationListMiddleware(userRepository))
+        ..addAll(createAddMedicineMiddleware(medicineRepository))
         ..addAll(createMedicineNotificationMiddleware(
           userRepository,
           notificationService,
         )));
+
 }

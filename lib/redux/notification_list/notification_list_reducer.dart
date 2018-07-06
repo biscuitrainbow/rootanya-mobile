@@ -1,3 +1,4 @@
+import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/pharmacy.dart';
 import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
 import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
@@ -17,5 +18,6 @@ NotificationListState receivedNotificationList(
 ) {
   return state.copyWith(
     notificaions: action.notifications,
+    loadingStatus: LoadingStatus.success,
   );
 }
