@@ -5,7 +5,7 @@ class LoadingContent extends StatelessWidget {
 
   const LoadingContent({
     Key key,
-    this.text,
+    this.text = 'กำลังโหลด',
   }) : super(key: key);
 
   @override

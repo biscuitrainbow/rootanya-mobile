@@ -4,10 +4,13 @@ import 'package:google_maps_webservice/places.dart';
 import 'package:medical_app/data/network/google_map_repository.dart';
 import 'package:medical_app/data/network/medicine_repository.dart';
 import 'package:medical_app/data/network/user_repository.dart';
+import 'package:medical_app/redux/add_contact/add_contact_middleware.dart';
 import 'package:medical_app/redux/add_medicine/add_medicine_middleware.dart';
+import 'package:medical_app/redux/contract/contact_middleware.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_middleware.dart';
 import 'package:medical_app/redux/medicine_notification/medicine_notification_middleware.dart';
 import 'package:medical_app/redux/notification_list/notification_list_middleware.dart';
+import 'package:medical_app/redux/usages/usage_middleware.dart';
 import 'package:medical_app/service/notification_service.dart';
 import 'package:redux/redux.dart';
 import 'package:medical_app/redux/app/app_state.dart';
@@ -44,9 +47,11 @@ Future<Store<AppState>> createStore() async {
         ..addAll(createMedicineListMiddleware(medicineRepository))
         ..addAll(createNotificationListMiddleware(userRepository))
         ..addAll(createAddMedicineMiddleware(medicineRepository))
+        ..addAll(createContactsMiddleware(userRepository))
+        ..addAll(createAddContactMiddleware(userRepository))
+        ..addAll(createUsageMiddleware(userRepository))
         ..addAll(createMedicineNotificationMiddleware(
           userRepository,
           notificationService,
         )));
-
 }

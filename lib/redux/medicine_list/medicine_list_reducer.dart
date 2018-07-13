@@ -10,6 +10,9 @@ final medicineListReducer = combineReducers<MedicineListState>([
   new TypedReducer<MedicineListState, ReceivedMedicines>(
     receivedMedicines,
   ),
+  new TypedReducer<MedicineListState, ReceivedQueryMedicines>(
+    receivedQueryMedicines,
+  ),
   new TypedReducer<MedicineListState, ToggleSearching>(
     toggleSearching,
   ),
@@ -41,8 +44,18 @@ MedicineListState receivedMedicines(
   ReceivedMedicines action,
 ) {
   return state.copyWith(
-    loadingStatus: LoadingStatus.success,
+    loadingStatus: LoadingStatus.initial,
     medicines: action.medicines,
+  );
+}
+
+MedicineListState receivedQueryMedicines(
+  MedicineListState state,
+  ReceivedQueryMedicines action,
+) {
+  return state.copyWith(
+    loadingStatus: LoadingStatus.success,
+    queriedMedicine: action.medicines,
   );
 }
 

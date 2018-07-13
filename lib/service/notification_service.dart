@@ -15,6 +15,8 @@ class NotificationService {
       'repeatDailyAtTime channel id',
       'repeatDailyAtTime channel name',
       'repeatDailyAtTime description',
+      importance: Importance.Max,
+      priority: Priority.Max,
     );
     var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
     var platformChannelSpecifics = new NotificationDetails(

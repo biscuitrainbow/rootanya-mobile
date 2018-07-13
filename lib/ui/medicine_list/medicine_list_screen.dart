@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
+import 'package:medical_app/ui/add_usage/add_usage_container.dart';
 import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
+import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 import 'package:simple_permissions/simple_permissions.dart';
 
@@ -47,6 +50,8 @@ class MedicineListScreen extends StatefulWidget {
 }
 
 class MedicineListScreenState extends State<MedicineListScreen> {
+  final queryController = new TextEditingController();
+
   SpeechRecognition _speech;
 
   bool _speechRecognitionAvailable = false;
@@ -63,8 +68,10 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 
   @override
   void dispose() {
-    super.dispose();
+    queryController.dispose();
     widget.onDispose();
+
+    super.dispose();
   }
 
   @override
@@ -126,8 +133,13 @@ class MedicineListScreenState extends State<MedicineListScreen> {
                 Icons.mic_off,
               ),
             )
-          : null,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          : new FloatingActionButton(
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddMedicineContainer())),
+              child: Icon(
+                Icons.add,
+              ),
+            ),
+      floatingActionButtonLocation: widget.isListening ? FloatingActionButtonLocation.centerFloat : FloatingActionButtonLocation.endDocked,
       body: content,
     );
   }
@@ -136,8 +148,6 @@ class MedicineListScreenState extends State<MedicineListScreen> {
     if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
       SimplePermissions.requestPermission(Permission.RecordAudio);
     }
-
-  //  print(await SimplePermissions.checkPermission(Permission.RecordAudio));
 
     widget.showListening();
     widget.onSearchClick();
@@ -166,7 +176,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
     _speech.setRecognitionStartedHandler(onRecognitionStarted);
     _speech.setRecognitionResultHandler((String result) {
       widget.onSearchQueryChanged(result);
-      widget.queryController.text = result;
+      queryController.text = result;
       widget.hideListening();
     });
     _speech.setRecognitionCompleteHandler(onRecognitionComplete);
@@ -175,7 +185,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 
   Widget buildSearchField(BuildContext context) {
     return new TextField(
-      controller: widget.queryController,
+      controller: queryController,
       autofocus: true,
       decoration: const InputDecoration(
         hintText: 'ค้นหายา...',
@@ -196,9 +206,13 @@ class MedicineListScreenState extends State<MedicineListScreen> {
     try {
       String barcode = await BarcodeScanner.scan();
       widget.onSearchQueryChanged(barcode);
-      widget.queryController.text = barcode;
+      queryController.text = barcode;
       widget.onSearchClick();
     } catch (error) {}
+  }
+
+  void _showAddUsage(Medicine medicine){
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddUsageContainer(medicine: medicine)));
   }
 
   List<ListTile> buildMedicineItem() {
@@ -212,6 +226,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
                         builder: (BuildContext context) => new MedicineDetailScreen(medicine: m),
                       ),
                     ),
+                trailing: IconButton(icon: Icon(Icons.note_add), onPressed: () => _showAddUsage(m)),
               ),
         )
         .toList();

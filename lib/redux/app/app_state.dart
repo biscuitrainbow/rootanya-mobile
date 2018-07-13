@@ -1,8 +1,12 @@
+import 'package:medical_app/data/model/user.dart';
 import 'package:medical_app/redux/add_medicine/add_medicine_state.dart';
+import 'package:medical_app/redux/contract/contact_state.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_state.dart';
 import 'package:medical_app/redux/medicine_notification/medicine_notification_state.dart';
 import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
 import 'package:medical_app/redux/notification_list/notification_list_state.dart';
+import 'package:medical_app/redux/add_contact/add_contact_state.dart';
+import 'package:medical_app/redux/usages/usage_state.dart';
 
 class AppState {
   final NearbyPharmacyState nearbyPharmacyState;
@@ -10,6 +14,10 @@ class AppState {
   final NotificationListState notificationListState;
   final MedicineNotificationListState medicineNotificationState;
   final AddMedicineState addMedicinState;
+  final ContactsState contactState;
+  final AddContactState addContactState;
+  final UsageState usageState;
+  final User user;
 
   AppState({
     this.nearbyPharmacyState,
@@ -17,6 +25,10 @@ class AppState {
     this.notificationListState,
     this.medicineNotificationState,
     this.addMedicinState,
+    this.contactState,
+    this.addContactState,
+    this.usageState,
+    this.user,
   });
 
   factory AppState.initial() {
@@ -26,6 +38,10 @@ class AppState {
       notificationListState: NotificationListState.initial(),
       medicineNotificationState: MedicineNotificationListState.initial(),
       addMedicinState: AddMedicineState.initial(),
+      contactState: ContactsState.initial(),
+      addContactState: AddContactState.initial(),
+      usageState: UsageState.initial(),
+      user: null,
     );
   }
 
@@ -35,6 +51,10 @@ class AppState {
     NotificationListState notificationListState,
     MedicineNotificationListState medicineNotificationState,
     AddMedicineState addMedicineState,
+    ContactsState contactState,
+    AddContactState addContactState,
+    UsageState usageState,
+    User user,
   }) {
     return new AppState(
       nearbyPharmacyState: nearbyPharmacyState ?? this.nearbyPharmacyState,
@@ -42,6 +62,10 @@ class AppState {
       notificationListState: notificationListState ?? this.notificationListState,
       medicineNotificationState: medicineNotificationState ?? this.medicineNotificationState,
       addMedicinState: addMedicineState ?? this.addMedicinState,
+      contactState: contactState ?? this.contactState,
+      addContactState: addContactState ?? this.addContactState,
+      usageState: usageState ?? this.usageState,
+      user: user ?? this.user,
     );
   }
 }

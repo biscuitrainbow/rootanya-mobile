@@ -3,12 +3,15 @@ import 'package:medical_app/data/loading_status.dart';
 
 class MedicineListState {
   final List<Medicine> medicines;
+  final List<Medicine> queriedMedicines;
+
   final bool isSearching;
   final bool isListening;
   final bool isLoading;
   final LoadingStatus loadingStatus;
 
   MedicineListState({
+    this.queriedMedicines,
     this.medicines,
     this.isSearching,
     this.isListening,
@@ -18,8 +21,9 @@ class MedicineListState {
 
   factory MedicineListState.initial() {
     return new MedicineListState(
+      queriedMedicines: [],
       medicines: [],
-      isSearching: false,
+      isSearching: true,
       isListening: false,
       isLoading: false,
       loadingStatus: LoadingStatus.initial,
@@ -27,6 +31,7 @@ class MedicineListState {
   }
 
   MedicineListState copyWith({
+    List<Medicine> queriedMedicine,
     List<Medicine> medicines,
     bool isSearching,
     bool isListening,
@@ -34,6 +39,7 @@ class MedicineListState {
     LoadingStatus loadingStatus,
   }) {
     return new MedicineListState(
+      queriedMedicines: queriedMedicine ?? this.queriedMedicines,
       medicines: medicines ?? this.medicines,
       isSearching: isSearching ?? this.isSearching,
       isListening: isListening ?? this.isListening,

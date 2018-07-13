@@ -3,10 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
 import 'package:medical_app/ui/add_medicine/add_medicine_screen.dart';
 import 'package:medical_app/ui/barcode_scanner/barcode_scanner.dart';
+import 'package:medical_app/ui/contact/contact_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_container.dart';
 import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_screen.dart';
 import 'package:medical_app/ui/notification_list/notification_list_container.dart';
+import 'package:medical_app/ui/usages/usage_container.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -22,7 +24,7 @@ class HomeScreen extends StatelessWidget {
         childAspectRatio: 1.4,
         children: <Widget>[
           new MenuItem(
-            title: 'ค้นหาข้อมูลยา',
+            title: 'ข้อมูลยา',
             iconData: FontAwesomeIcons.prescriptionBottle,
             onPress: () => Navigator.push(
                   context,
@@ -65,24 +67,34 @@ class HomeScreen extends StatelessWidget {
           new MenuItem(
             title: 'ขอความช่วยเหลือ',
             iconData: Icons.call,
-            onPress: () async => await launch('tel://0920922721'),
+            onPress: () => Navigator.push(
+              context,
+              new MaterialPageRoute(
+                builder: (BuildContext context) => ContactContainer(),
+              ),
+            ),
           ),
           new MenuItem(
             title: 'สรุปผลการใช้ยา',
             iconData: FontAwesomeIcons.book,
             enabled: false,
-            onPress: () => print("press"),
-          ),
-          new MenuItem(
-            title: 'เพิ่มข้อมูลยา',
-            iconData: FontAwesomeIcons.plus,
             onPress: () => Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                    builder: (BuildContext context) => new AddMedicineContainer(),
-                  ),
-                ),
+              context,
+              new MaterialPageRoute(
+                builder: (BuildContext context) => UsageContainer(),
+              ),
+            ),
           ),
+//          new MenuItem(
+//            title: 'เพิ่มข้อมูลยา',
+//            iconData: FontAwesomeIcons.plus,
+//            onPress: () => Navigator.push(
+//                  context,
+//                  new MaterialPageRoute(
+//                    builder: (BuildContext context) => new AddMedicineContainer(),
+//                  ),
+//                ),
+//          ),
           new MenuItem(
             title: 'ข้อมูลส่วนตัว',
             iconData: Icons.person,

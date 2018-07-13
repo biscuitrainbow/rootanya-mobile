@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/ui/add_notification/medicine_notification_list.dart';
 import 'package:medical_app/ui/add_notification/medicine_notification_list_container.dart';
+import 'package:medical_app/ui/add_usage/add_usage_container.dart';
 
 class MedicineDetailScreen extends StatelessWidget {
   final Medicine medicine;
@@ -14,6 +14,18 @@ class MedicineDetailScreen extends StatelessWidget {
       appBar: new AppBar(
         title: new Text(medicine.name),
         actions: <Widget>[
+          new IconButton(
+            icon: new Icon(
+              Icons.note_add,
+              color: Colors.white,
+            ),
+            onPressed: () => Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (BuildContext context) => new AddUsageContainer(medicine: medicine),
+                  ),
+                ),
+          ),
           new IconButton(
             icon: new Icon(
               Icons.add_alert,

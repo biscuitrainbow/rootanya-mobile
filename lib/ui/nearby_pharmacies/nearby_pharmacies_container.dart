@@ -10,7 +10,6 @@ class NearbyPharmaciesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new StoreConnector(
-      distinct: true,
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel vm) {
         return new NearbyPharmaciesScreen(
@@ -37,22 +36,5 @@ class ViewModel {
         onLocationReady: (double lat,double lng) => store.dispatch(new FetchNearbyPharmaciesAction(lat, lng)),
     );
   }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-          other is ViewModel &&
-              runtimeType == other.runtimeType &&
-              pharmacies == other.pharmacies &&
-              onLocationReady == other.onLocationReady;
-
-  @override
-  int get hashCode =>
-      pharmacies.hashCode ^
-      onLocationReady.hashCode;
-
-
-
-
 }
 

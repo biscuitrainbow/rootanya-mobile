@@ -22,6 +22,7 @@ Middleware<AppState> addMedicine(
       try {
         next(new RequestAddMedicineAction());
         await medicineRepository.addMedicine(action.medicine);
+        action.completer.complete(null);
         next(new SuccessAddMedicineAction());
       } catch (error) {
         print(error);
