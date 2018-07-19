@@ -59,5 +59,10 @@
     <string>This application needs to access your microphone</string>
     <key>NSSpeechRecognitionUsageDescription</key>
     <string>This application needs the speech recognition permission</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>googlechromes</string>
+        <string>comgooglemaps</string>
+    </array>
 </dict>
 </plist>

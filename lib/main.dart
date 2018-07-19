@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
     return new StoreProvider<AppState>(
       store: store,
       child: new MaterialApp(
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: true,
         title: 'Mee ya',
         theme: new ThemeData(
           scaffoldBackgroundColor: Colors.black,

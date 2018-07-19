@@ -9,7 +9,7 @@ import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_container.dar
 import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_screen.dart';
 import 'package:medical_app/ui/notification_list/notification_list_container.dart';
 import 'package:medical_app/ui/usages/usage_container.dart';
-//import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

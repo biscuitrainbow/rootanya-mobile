@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:map_view/map_view.dart';
 import 'package:google_maps_webservice/places.dart' as pc;
+import 'package:location/location.dart' as libLocation;
+import 'package:map_view/map_view.dart';
 import 'package:medical_app/data/model/pharmacy.dart';
-//import 'package:geolocator/geolocator.dart';
-//import 'package:geolocator/models/location_accuracy.dart';
-//import 'package:geolocator/models/position.dart';
-//import 'package:url_launcher/url_launcher.dart';
+
+import 'package:url_launcher/url_launcher.dart';
+
+
 
 class NearbyPharmaciesScreen extends StatelessWidget {
   final Function(double lat, double lng) onLocationReady;
   final List<Pharmacy> pharmacies;
 
-  const NearbyPharmaciesScreen({Key key, this.onLocationReady, this.pharmacies}) : super(key: key);
+  const NearbyPharmaciesScreen({Key key, this.onLocationReady, this.pharmacies})
+      : super(key: key);
 
-  void showMap(
-    BuildContext context,
-    double lat,
-    double lng,
-  ) async {
+  void showMap(BuildContext context,
+      double lat,
+      double lng,) async {
     try {
       MapView mapView = new MapView();
 
@@ -47,7 +47,8 @@ class NearbyPharmaciesScreen extends StatelessWidget {
 
       mapView.onMapReady.listen((_) async {
         var mapCenter = await mapView.centerLocation;
-        var placeApi = new pc.GoogleMapsPlaces("AIzaSyAXJ48mFl-jDIRzRRsykbI0_TOJxrXIo8w");
+        var placeApi = new pc.GoogleMapsPlaces(
+            "AIzaSyAXJ48mFl-jDIRzRRsykbI0_TOJxrXIo8w");
 
         var placeResponse = await placeApi.searchNearbyWithRadius(
           new pc.Location(mapCenter.latitude, mapCenter.longitude),
@@ -63,18 +64,20 @@ class NearbyPharmaciesScreen extends StatelessWidget {
         var pharmacies = placeResponse.results;
         var markers = pharmacies
             .map(
-              (r) => new Marker(
-                    r.id,
-                    r.name,
-                    r.geometry.location.lat,
-                    r.geometry.location.lng,
-                  ),
-            )
+              (r) =>
+          new Marker(
+            r.id,
+            r.name,
+            r.geometry.location.lat,
+            r.geometry.location.lng,
+          ),
+        )
             .toList();
 
         var currentMarkers = mapView.markers;
 
-        var markersToAdd = markers.where((m) => !currentMarkers.contains(m)).toList();
+        var markersToAdd = markers.where((m) => !currentMarkers.contains(m))
+            .toList();
         mapView.setMarkers(markersToAdd);
         // markersToAdd.forEach((m) => mapView.addMarker(m));
       });
@@ -86,14 +89,33 @@ class NearbyPharmaciesScreen extends StatelessWidget {
   List<ListTile> buildPharmacyItem(List<Pharmacy> pharmacies) {
     return pharmacies
         .map(
-          (p) => new ListTile(
-                title: new Text(p.name),
-                onTap: () async {
-                  String googleUrl = 'http://maps.google.com/maps?q= ${p.lat},${p.lng}(${p.name})&iwloc=A&hl=es';
+          (p) =>
+      new ListTile(
+        title: new Text(p.name),
+        onTap: () async {
+          String googleUrl =
+              'comgooglemaps://?center=${p.lat},${p.lng}&q=${p.lat},${p.lng}';
+          String appleUrl =
+              'https://maps.apple.com/?ll=${p.lat},${p.lng}';
+          if (await canLaunch("comgooglemaps://")) {
+            print('launching com googleUrl');
+            await launch(googleUrl);
+          } else if (await canLaunch(appleUrl)) {
+            print('launching apple url');
+            await launch(appleUrl);
+          } else {
+            throw 'Could not launch url';
+          }
+
+//          String googleUrl = 'http://maps.google.com/maps?q= ${p.lat},${p
+//              .lng}(${p.name})&iwloc=A&hl=es';
+//
+//          String testUrl = 'https://flutter.io';
+//
 //                  await launch(googleUrl);
-                },
-              ),
-        )
+        },
+      ),
+    )
         .toList();
   }
 
@@ -102,12 +124,14 @@ class NearbyPharmaciesScreen extends StatelessWidget {
     double lat = 18.8077942;
     double lng = 99.005631;
 
-//    new Geolocator().getPosition(LocationAccuracy.best).then(
-//          (Position position) => onLocationReady(
-//                position.latitude,
-//                position.longitude,
-//              ),
-//        );
+    var location = new libLocation.Location();
+
+    location.onLocationChanged.listen((Map<String, double> currentLocation) {
+      onLocationReady(
+          currentLocation["latitude"].toDouble(),
+          currentLocation["longitude"].toDouble()
+      );
+    });
 
     return new Scaffold(
       appBar: new AppBar(
