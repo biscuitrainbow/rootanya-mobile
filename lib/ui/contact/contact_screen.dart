@@ -7,7 +7,7 @@ import 'package:medical_app/ui/add_contact/add_contact_container.dart';
 import 'package:medical_app/ui/add_contact/edit_contact_container.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatefulWidget {
   final ContactsState contactState;
@@ -82,7 +82,7 @@ class ContactScreenState extends State<ContactScreen> {
           style: TextStyle(color: Theme.of(context).accentColor),
         ),
         subtitle: Text(contact.name),
-        trailing: IconButton(icon: Icon(Icons.call), onPressed: () => launch("tel://${contact.tel}")),
+     //   trailing: IconButton(icon: Icon(Icons.call), onPressed: () => launch("tel://${contact.tel}")),
       );
     });
   }

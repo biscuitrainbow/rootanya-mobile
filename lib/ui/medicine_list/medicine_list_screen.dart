@@ -9,8 +9,8 @@ import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
 import 'package:medical_app/ui/add_usage/add_usage_container.dart';
 import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
-import 'package:speech_recognition/speech_recognition.dart';
-import 'package:simple_permissions/simple_permissions.dart';
+//import 'package:speech_recognition/speech_recognition.dart';
+//import 'package:simple_permissions/simple_permissions.dart';
 
 class MedicineListScreen extends StatefulWidget {
   final List<Medicine> medicines;
@@ -52,7 +52,7 @@ class MedicineListScreen extends StatefulWidget {
 class MedicineListScreenState extends State<MedicineListScreen> {
   final queryController = new TextEditingController();
 
-  SpeechRecognition _speech;
+//  SpeechRecognition _speech;
 
   bool _speechRecognitionAvailable = false;
   bool _isListening = false;
@@ -127,7 +127,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
           ? new FloatingActionButton(
               onPressed: () {
                 widget.hideListening();
-                _speech.cancel();
+//                _speech.cancel();
               },
               child: new Icon(
                 Icons.mic_off,
@@ -145,18 +145,18 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   }
 
   void start() async {
-    if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
-      SimplePermissions.requestPermission(Permission.RecordAudio);
-    }
+//    if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
+//      SimplePermissions.requestPermission(Permission.RecordAudio);
+//    }
 
     widget.showListening();
     widget.onSearchClick();
-    _speech.listen(locale: 'th_TH').then((result) {}).catchError((error) => print(error));
+//    _speech.listen(locale: 'th_TH').then((result) {}).catchError((error) => print(error));
   }
 
-  void cancel() => _speech.cancel().then((result) => setState(() => _isListening = result));
-
-  void stop() => _speech.stop().then((result) => setState(() => _isListening = result));
+//  void cancel() => _speech.cancel().then((result) => setState(() => _isListening = result));
+//
+//  void stop() => _speech.stop().then((result) => setState(() => _isListening = result));
 
   void onSpeechAvailability(bool result) => setState(() => _speechRecognitionAvailable = result);
 
@@ -170,17 +170,17 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 
   void activateSpeechRecognizer() {
     print('_MyAppState.activateSpeechRecognizer... ');
-    _speech = new SpeechRecognition();
-    _speech.setAvailabilityHandler(onSpeechAvailability);
-    _speech.setCurrentLocaleHandler(onCurrentLocale);
-    _speech.setRecognitionStartedHandler(onRecognitionStarted);
-    _speech.setRecognitionResultHandler((String result) {
-      widget.onSearchQueryChanged(result);
-      queryController.text = result;
-      widget.hideListening();
-    });
-    _speech.setRecognitionCompleteHandler(onRecognitionComplete);
-    _speech.activate().then((res) => setState(() => _speechRecognitionAvailable = res));
+//    _speech = new SpeechRecognition();
+//    _speech.setAvailabilityHandler(onSpeechAvailability);
+//    _speech.setCurrentLocaleHandler(onCurrentLocale);
+//    _speech.setRecognitionStartedHandler(onRecognitionStarted);
+//    _speech.setRecognitionResultHandler((String result) {
+//      widget.onSearchQueryChanged(result);
+//      queryController.text = result;
+//      widget.hideListening();
+//    });
+//    _speech.setRecognitionCompleteHandler(onRecognitionComplete);
+//    _speech.activate().then((res) => setState(() => _speechRecognitionAvailable = res));
   }
 
   Widget buildSearchField(BuildContext context) {

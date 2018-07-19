@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:map_view/map_view.dart';
 import 'package:google_maps_webservice/places.dart' as pc;
 import 'package:medical_app/data/model/pharmacy.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:geolocator/models/location_accuracy.dart';
-import 'package:geolocator/models/position.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:geolocator/geolocator.dart';
+//import 'package:geolocator/models/location_accuracy.dart';
+//import 'package:geolocator/models/position.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 class NearbyPharmaciesScreen extends StatelessWidget {
   final Function(double lat, double lng) onLocationReady;
@@ -90,7 +90,7 @@ class NearbyPharmaciesScreen extends StatelessWidget {
                 title: new Text(p.name),
                 onTap: () async {
                   String googleUrl = 'http://maps.google.com/maps?q= ${p.lat},${p.lng}(${p.name})&iwloc=A&hl=es';
-                  await launch(googleUrl);
+//                  await launch(googleUrl);
                 },
               ),
         )
@@ -102,12 +102,12 @@ class NearbyPharmaciesScreen extends StatelessWidget {
     double lat = 18.8077942;
     double lng = 99.005631;
 
-    new Geolocator().getPosition(LocationAccuracy.best).then(
-          (Position position) => onLocationReady(
-                position.latitude,
-                position.longitude,
-              ),
-        );
+//    new Geolocator().getPosition(LocationAccuracy.best).then(
+//          (Position position) => onLocationReady(
+//                position.latitude,
+//                position.longitude,
+//              ),
+//        );
 
     return new Scaffold(
       appBar: new AppBar(
