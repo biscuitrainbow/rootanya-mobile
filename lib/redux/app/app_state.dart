@@ -68,4 +68,35 @@ class AppState {
       user: user ?? this.user,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is AppState &&
+              runtimeType == other.runtimeType &&
+              nearbyPharmacyState == other.nearbyPharmacyState &&
+              medicineListState == other.medicineListState &&
+              notificationListState == other.notificationListState &&
+              medicineNotificationState == other.medicineNotificationState &&
+              addMedicinState == other.addMedicinState &&
+              contactState == other.contactState &&
+              addContactState == other.addContactState &&
+              usageState == other.usageState &&
+              user == other.user;
+
+  @override
+  int get hashCode =>
+      nearbyPharmacyState.hashCode ^
+      medicineListState.hashCode ^
+      notificationListState.hashCode ^
+      medicineNotificationState.hashCode ^
+      addMedicinState.hashCode ^
+      contactState.hashCode ^
+      addContactState.hashCode ^
+      usageState.hashCode ^
+      user.hashCode;
+
+
+
+
 }

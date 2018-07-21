@@ -18,4 +18,17 @@ class NearbyPharmacyState {
       pharmacies: pharmacies ?? this.pharmacies,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is NearbyPharmacyState &&
+              runtimeType == other.runtimeType &&
+              pharmacies == other.pharmacies;
+
+  @override
+  int get hashCode => pharmacies.hashCode;
+
+
+
 }

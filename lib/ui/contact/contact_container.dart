@@ -13,6 +13,7 @@ class ContactContainer extends StatelessWidget {
       onInit: (Store store) => store.dispatch(FetchContactsAction('1')),
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel viewModel) {
+        print(viewModel.contactsState.contacts);
 
         return ContactScreen(
           contactState: viewModel.contactsState,

@@ -18,9 +18,13 @@ Middleware<AppState> fetchNearbyPharmacy(
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is FetchNearbyPharmaciesAction) {
-      var pharmacies =
-          await googleMapRepository.getNearByPharmacies(action.lat, action.lng);
-      store.dispatch(new ReceivedPharmaciesAction(pharmacies));
+      try {
+        print('middleware');
+        var pharmacies = await googleMapRepository.getNearByPharmacies(action.lat, action.lng);
+        next(new ReceivedPharmaciesAction(pharmacies));
+      } catch (error) {
+        print(error);
+      }
 
       next(action);
     }
