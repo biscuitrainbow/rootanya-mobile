@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   AnimationController animationController;
 
   void showHomeScreen() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => new HomeScreen()));
+    Navigator.pushReplacementNamed(context,'/home');
   }
 
   @override

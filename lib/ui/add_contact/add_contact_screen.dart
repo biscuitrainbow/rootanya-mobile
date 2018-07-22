@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:medical_app/data/model/contact.dart';
 import 'package:medical_app/redux/add_contact/add_contact_state.dart';
+import 'package:medical_app/ui/common/confirm_dialog.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
 
@@ -167,37 +168,3 @@ class _AddContactScreenState extends State<AddContactScreen> {
   }
 }
 
-class DialogTextButton extends StatelessWidget {
-  final String title;
-  final VoidCallback onPressed;
-
-  const DialogTextButton({
-    @required this.title,
-    @required this.onPressed,
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var confirmationStyle = TextStyle(color: Theme.of(context).accentColor);
-
-    return Material(
-      borderRadius: BorderRadius.circular(2.0),
-      color: Theme.of(context).dialogBackgroundColor,
-      child: InkWell(
-        onTap: onPressed,
-        highlightColor: Theme.of(context).highlightColor,
-        splashColor: Theme.of(context).hintColor,
-        child: Container(
-          constraints: BoxConstraints(minWidth: 55.0),
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 9.0),
-          child: Text(
-            title,
-            style: confirmationStyle,
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
-    );
-  }
-}

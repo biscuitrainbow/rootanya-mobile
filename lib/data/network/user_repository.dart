@@ -89,9 +89,17 @@ class UserRepository {
       'volume': volume.toString(),
     });
 
-    print(response.request);
-
     final jsonResponse = json.decode(response.body);
+  }
+
+  Future<Null> deleteUsage(String usageId) async {
+    final response = await http.delete('${Config.url}/usage/$usageId/');
+  }
+
+  Future<Null> updateUsage(Medicine usage) async {
+    final response = await http.post('${Config.url}/usage/${usage.usageId}/', body: {
+      'volume': usage.volume.toString(),
+    });
   }
 
   Future<List<Medicine>> fetchUsages(String userId) async {

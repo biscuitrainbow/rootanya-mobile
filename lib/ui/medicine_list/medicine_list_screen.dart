@@ -5,10 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:medical_app/ui/add_edit_usage/add_usage_container.dart';
 import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
-import 'package:medical_app/ui/add_usage/add_usage_container.dart';
 import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 
 //import 'package:speech_recognition/speech_recognition.dart';
 //import 'package:simple_permissions/simple_permissions.dart';
@@ -96,7 +95,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 
     return Scaffold(
       appBar: new AppBar(
-        title: widget.isSearching ? buildSearchField(context) : new Text('รายการยา'),
+        title: widget.isSearching ? buildSearchField(context) : new Text('ค้นหาข้อมูลยา'),
         actions: <Widget>[
           !widget.isSearching
               ? Semantics(

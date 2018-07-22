@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
         childAspectRatio: 1.4,
         children: <Widget>[
           new MenuItem(
-            title: 'ข้อมูลยา',
+            title: 'ค้นหาข้อมูลยา',
             iconData: FontAwesomeIcons.prescriptionBottle,
             onPress: () => Navigator.push(
                   context,
@@ -33,17 +33,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
           ),
-//          new MenuItem(
-//            title: 'สแกนบาร์โค้ด',
-//            iconData: FontAwesomeIcons.barcode,
-//            onPress: () => Navigator.push(
-//                  context,
-//                  new MaterialPageRoute(
-//                    builder: (BuildContext context) =>
-//                        new BarcodeScannerScreen(),
-//                  ),
-//                ),
-//          ),
           new MenuItem(
             title: 'เตือนการกินยา',
             iconData: Icons.alarm_add,
@@ -75,9 +64,9 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           new MenuItem(
-            title: 'สรุปผลการใช้ยา',
+            title: 'บันทึกการใช้ยา',
             iconData: FontAwesomeIcons.book,
-            enabled: false,
+            enabled: true,
             onPress: () => Navigator.push(
               context,
               new MaterialPageRoute(
@@ -85,21 +74,11 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
-//          new MenuItem(
-//            title: 'เพิ่มข้อมูลยา',
-//            iconData: FontAwesomeIcons.plus,
-//            onPress: () => Navigator.push(
-//                  context,
-//                  new MaterialPageRoute(
-//                    builder: (BuildContext context) => new AddMedicineContainer(),
-//                  ),
-//                ),
-//          ),
           new MenuItem(
             title: 'ข้อมูลส่วนตัว',
             iconData: Icons.person,
             onPress: () => print("ข้อมูลส่วนตัว"),
-            enabled: false,
+            enabled: true,
           ),
         ],
       ),

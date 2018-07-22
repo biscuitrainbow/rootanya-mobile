@@ -20,11 +20,13 @@ List<Middleware<AppState>> createMedicineListMiddleware(
 Middleware<AppState> fetchAllMedicine(MedicineRepository medicineRepository) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is LoadAllMedicineListAction) {
+      print('fetch all');
+
       try {
         var medicines = await medicineRepository.fetchAllMedicines();
         store.dispatch(new ReceivedMedicines(medicines));
       } catch (error) {
-        print('error');
+        print('fetch all medicine error');
         print(error);
       }
     }
@@ -43,7 +45,7 @@ Middleware<AppState> fetchMedicineByQuery(
         if (action.query.isNotEmpty) {
           store.dispatch(new ReceivedQueryMedicines(pharmacies));
         } else {
-          store.dispatch(new ReceivedQueryMedicines([]));
+          store.dispatch(new ReceivedQueryMedicines(pharmacies));
         }
 
         store.dispatch(new HideLoading());

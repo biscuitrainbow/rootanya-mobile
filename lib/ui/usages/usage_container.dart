@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:medical_app/redux/app/app_state.dart';
@@ -14,10 +16,10 @@ class UsageContainer extends StatelessWidget {
       onInit: (Store store) => store.dispatch(FetchUsagesAction()),
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel viewModel) {
-
         return UsageScreen(
           usageState: viewModel.usageState,
           onRefresh: viewModel.onRefresh,
+          onDelete: viewModel.onDelete,
         );
       },
     );
@@ -27,16 +29,29 @@ class UsageContainer extends StatelessWidget {
 class ViewModel {
   final UsageState usageState;
   final VoidCallback onRefresh;
+  final Function(String usageId, BuildContext) onDelete;
 
   ViewModel({
     this.onRefresh,
     this.usageState,
+    this.onDelete,
   });
 
   static ViewModel fromStore(Store<AppState> store) {
     return new ViewModel(
       usageState: store.state.usageState,
       onRefresh: () => store.dispatch(FetchUsagesAction()),
+      onDelete: (String usageId, BuildContext context) {
+        Completer<Null> completer = Completer();
+        completer.future.then((_) {
+          Scaffold.of(context).showSnackBar(SnackBar(
+                content: Text('ลบสำเร็จ'),
+                duration: Duration(seconds: 5),
+              ));
+        });
+
+        store.dispatch(DeleteUsageAction(usageId, completer));
+      },
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/usages/usage_action.dart';
-import 'package:medical_app/ui/add_usage/add_usage_screen.dart';
+import 'package:medical_app/ui/add_edit_usage/add_edit_usage_screen.dart';
 import 'package:medical_app/ui/usages/usage_container.dart';
 import 'package:redux/redux.dart';
 
@@ -30,18 +30,19 @@ class AddUsageContainer extends StatelessWidget {
 }
 
 class ViewModel {
-  final Function(Medicine, int, BuildContext) onSave;
+  final Function(Medicine, BuildContext) onSave;
 
   ViewModel({this.onSave});
 
   static ViewModel fromStore(Store<AppState> store) {
-    return new ViewModel(onSave: (Medicine medicine, int volume, BuildContext context) {
+    return new ViewModel(onSave: (Medicine medicine, BuildContext context) {
       Completer<Null> completer = Completer();
       completer.future.then((_) {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => UsageContainer()));
+        Navigator.popUntil(context, ModalRoute.withName('/home'));
+        Navigator.pushNamed(context, '/usages');
       });
 
-      store.dispatch(AddUsageAction(medicine, volume, completer));
+      store.dispatch(AddUsageAction(medicine, completer));
     });
   }
 }

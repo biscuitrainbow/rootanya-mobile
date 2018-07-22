@@ -5,6 +5,13 @@ import 'package:medical_app/data/model/usage.dart';
 
 class FetchUsagesAction {}
 
+class DeleteUsageAction {
+  final String usageId;
+  final Completer<Null> completer;
+
+  DeleteUsageAction(this.usageId, this.completer);
+}
+
 class RequestUsagesAction {}
 
 class ReceiveUsagesAction {
@@ -17,12 +24,17 @@ class ErrorUsagesAction {}
 
 class AddUsageAction {
   final Medicine medicine;
-  final int volume;
   final Completer completer;
 
   AddUsageAction(
     this.medicine,
-    this.volume,
     this.completer,
   );
+}
+
+class EditUsageAction {
+  final Medicine medicine;
+  final Completer completer;
+
+  EditUsageAction(this.medicine, this.completer);
 }

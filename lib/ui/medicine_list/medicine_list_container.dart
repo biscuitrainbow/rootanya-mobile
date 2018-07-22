@@ -18,13 +18,11 @@ class _MedicineListContainerState extends State<MedicineListContainer> {
   @override
   Widget build(BuildContext context) {
     return new StoreConnector(
-      onInit: (Store store) => store.dispatch(new LoadAllMedicineListAction()),
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel vm) {
-        print(vm.medicines);
 
         return new MedicineListScreen(
-          medicines: vm.medicines,
+          medicines: vm.queriedMedicines,
           isSearching: vm.isSearching,
           isListening: vm.isListening,
           isLoading: vm.isLoading,
@@ -43,7 +41,9 @@ class _MedicineListContainerState extends State<MedicineListContainer> {
 }
 
 class ViewModel {
+  final List<Medicine> queriedMedicines;
   final List<Medicine> medicines;
+
   final bool isSearching;
   final bool isListening;
   final bool isLoading;
@@ -58,6 +58,7 @@ class ViewModel {
 
   ViewModel({
     this.medicines,
+    this.queriedMedicines,
     this.isSearching,
     this.isListening,
     this.isLoading,
@@ -72,7 +73,8 @@ class ViewModel {
 
   static ViewModel fromStore(Store<AppState> store) {
     return new ViewModel(
-      medicines: store.state.medicineListState.queriedMedicines,
+      medicines: store.state.medicineListState.medicines,
+      queriedMedicines: store.state.medicineListState.queriedMedicines,
       isSearching: store.state.medicineListState.isSearching,
       isListening: store.state.medicineListState.isListening,
       isLoading: store.state.medicineListState.isLoading,

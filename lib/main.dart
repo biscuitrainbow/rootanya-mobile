@@ -7,6 +7,7 @@ import 'package:medical_app/redux/store.dart';
 import 'package:medical_app/ui/home/home.dart';
 import 'package:map_view/map_view.dart';
 import 'package:medical_app/ui/splashscreen/splash_screen.dart';
+import 'package:medical_app/ui/usages/usage_container.dart';
 import 'package:redux/redux.dart';
 
 void main() async {
@@ -36,7 +37,13 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.black,
           brightness: Brightness.dark,
         ),
-        home: new SplashScreen(duration: new Duration(seconds: 3),),
+        home: new SplashScreen(
+          duration: new Duration(seconds: 3),
+        ),
+        routes: {
+          '/home': (context) => HomeScreen(),
+          '/usages': (context) => UsageContainer(),
+        },
       ),
     );
   }

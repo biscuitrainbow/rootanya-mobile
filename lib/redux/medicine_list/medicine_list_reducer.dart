@@ -44,7 +44,7 @@ MedicineListState receivedMedicines(
   ReceivedMedicines action,
 ) {
   return state.copyWith(
-    loadingStatus: LoadingStatus.initial,
+    loadingStatus: LoadingStatus.success,
     medicines: action.medicines,
   );
 }
@@ -106,7 +106,12 @@ MedicineListState resetState(
   MedicineListState state,
   ResetStateAction action,
 ) {
-  return MedicineListState.initial();
+  return state.copyWith(
+    queriedMedicine: [],
+    isLoading: false,
+    isListening: false,
+    isSearching: false,
+  );
 }
 
 MedicineListState showLoading(

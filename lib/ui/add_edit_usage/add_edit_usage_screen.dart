@@ -10,7 +10,7 @@ import 'package:medical_app/ui/common/loading_view.dart';
 
 class AddUsageScreen extends StatefulWidget {
   final AddContactState addUsageState;
-  final Function(Medicine, int, BuildContext) onSave;
+  final Function(Medicine, BuildContext) onSave;
   final Function(Contact, BuildContext) onDelete;
 
   final bool isEditing;
@@ -32,11 +32,10 @@ class _AddContactScreenState extends State<AddUsageScreen> {
 
   @override
   void initState() {
-    var contact = widget.medicine;
+    var usage = widget.medicine;
 
-    if (widget.isEditing && contact != null) {
-      // nameController.text = contact.name;
-      // telController.text = contact.tel;
+    if (widget.isEditing) {
+      volumeController.text = usage.volume.toString();
     }
 
     super.initState();
@@ -91,7 +90,8 @@ class _AddContactScreenState extends State<AddUsageScreen> {
             return;
           }
 
-          widget.onSave(widget.medicine, int.parse(volumeController.text), context);
+          var medicine = widget.medicine.copyWith(volume: int.parse(volumeController.text));
+          widget.onSave(medicine,context);
         },
       ),
     ];
@@ -172,15 +172,23 @@ class DialogTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var confirmationStyle = TextStyle(color: Theme.of(context).accentColor);
+    var confirmationStyle = TextStyle(color: Theme
+        .of(context)
+        .accentColor);
 
     return Material(
       borderRadius: BorderRadius.circular(2.0),
-      color: Theme.of(context).dialogBackgroundColor,
+      color: Theme
+          .of(context)
+          .dialogBackgroundColor,
       child: InkWell(
         onTap: onPressed,
-        highlightColor: Theme.of(context).highlightColor,
-        splashColor: Theme.of(context).hintColor,
+        highlightColor: Theme
+            .of(context)
+            .highlightColor,
+        splashColor: Theme
+            .of(context)
+            .hintColor,
         child: Container(
           constraints: BoxConstraints(minWidth: 55.0),
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 9.0),

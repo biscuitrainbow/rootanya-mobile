@@ -8,6 +8,7 @@ import 'package:medical_app/data/model/medicine.dart';
 class MedicineRepository {
   Future<List<Medicine>> fetchAllMedicines() async {
     final response = await http.get('${Config.url}/medicine');
+    print(response.request);
     final jsonResponse = json.decode(response.body);
 
     var medicines = Medicine.fromJsonArray(jsonResponse);
