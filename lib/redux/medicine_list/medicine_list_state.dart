@@ -23,7 +23,7 @@ class MedicineListState {
     return new MedicineListState(
       queriedMedicines: [],
       medicines: [],
-      isSearching: true,
+      isSearching: false,
       isListening: false,
       isLoading: false,
       loadingStatus: LoadingStatus.initial,

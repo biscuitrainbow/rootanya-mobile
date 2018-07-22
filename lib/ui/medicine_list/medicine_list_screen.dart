@@ -9,6 +9,7 @@ import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
 import 'package:medical_app/ui/add_usage/add_usage_container.dart';
 import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
+
 //import 'package:speech_recognition/speech_recognition.dart';
 //import 'package:simple_permissions/simple_permissions.dart';
 
@@ -63,7 +64,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   @override
   initState() {
     super.initState();
-    activateSpeechRecognizer();
+    //  activateSpeechRecognizer();
   }
 
   @override
@@ -98,9 +99,12 @@ class MedicineListScreenState extends State<MedicineListScreen> {
         title: widget.isSearching ? buildSearchField(context) : new Text('รายการยา'),
         actions: <Widget>[
           !widget.isSearching
-              ? new IconButton(
-                  icon: new Icon(Icons.search),
-                  onPressed: () => widget.onSearchClick(),
+              ? Semantics(
+                  label: 'ต้นหายาด้วยตัวอักษร',
+                  child: new IconButton(
+                    icon: new Icon(Icons.search),
+                    onPressed: () => widget.onSearchClick(),
+                  ),
                 )
               : new Container(),
           !widget.isSearching
@@ -110,9 +114,12 @@ class MedicineListScreenState extends State<MedicineListScreen> {
                 )
               : new Container(),
           !widget.isSearching
-              ? new IconButton(
-                  icon: new Icon(FontAwesomeIcons.barcode),
-                  onPressed: () => scan(),
+              ? Semantics(
+                  label: 'ค้นหายาด้วยบาร์โค้ด',
+                  child: new IconButton(
+                    icon: new Icon(FontAwesomeIcons.barcode),
+                    onPressed: () => scan(),
+                  ),
                 )
               : new Container(),
           widget.isSearching
@@ -135,8 +142,11 @@ class MedicineListScreenState extends State<MedicineListScreen> {
             )
           : new FloatingActionButton(
               onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddMedicineContainer())),
-              child: Icon(
-                Icons.add,
+              child: Semantics(
+                label: 'เพิ่มข้อมูลยา',
+                child: Icon(
+                  Icons.add,
+                ),
               ),
             ),
       floatingActionButtonLocation: widget.isListening ? FloatingActionButtonLocation.centerFloat : FloatingActionButtonLocation.endDocked,
@@ -211,7 +221,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
     } catch (error) {}
   }
 
-  void _showAddUsage(Medicine medicine){
+  void _showAddUsage(Medicine medicine) {
     Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddUsageContainer(medicine: medicine)));
   }
 

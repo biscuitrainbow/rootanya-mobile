@@ -13,6 +13,7 @@ class GoogleMapRepository {
       new Location(latitude, longitude),
       'distance',
       type: "pharmacy",
+      language: 'th',
     );
 
     var pharmaciesPlace = placeResponse.results;

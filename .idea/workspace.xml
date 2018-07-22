@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77c04d7a-7505-43f6-ac30-5debba11dbef" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/lib/data/model/pharmacy.dart" afterPath="$PROJECT_DIR$/lib/data/model/pharmacy.dart" />
       <change beforePath="$PROJECT_DIR$/lib/data/network/google_map_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/google_map_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/app/app_state.dart" afterPath="$PROJECT_DIR$/lib/redux/app/app_state.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_staet.dart" afterPath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_staet.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/contact/contact_container.dart" afterPath="$PROJECT_DIR$/lib/ui/contact/contact_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart" afterPath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_middleware.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_state.dart" afterPath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_state.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/add_medicine/add_medicine_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/add_medicine/add_medicine_screen.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/contact/contact_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/contact/contact_screen.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" />
       <change beforePath="$PROJECT_DIR$/medical_app.iml" afterPath="$PROJECT_DIR$/medical_app.iml" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -35,14 +30,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="nearby_pharmacies_screen.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart">
+      <file leaf-file-name="medicine_list_screen.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="89" column="16" lean-forward="false" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
+            <state relative-caret-position="21">
+              <caret line="145" column="31" lean-forward="false" selection-start-line="145" selection-start-column="31" selection-end-line="145" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="medicine_list_container.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_container.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="182">
+              <caret line="66" column="19" lean-forward="true" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="medicine_list_middleware.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_middleware.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="43" column="62" lean-forward="false" selection-start-line="43" selection-start-column="62" selection-end-line="43" selection-end-column="62" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/widgets/basic.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105546">
+              <caret line="5085" column="38" lean-forward="false" selection-start-line="5085" selection-start-column="38" selection-end-line="5085" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -110,9 +137,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/data/model/user.dart" />
-        <option value="$PROJECT_DIR$/lib/ui/common/loading_content.dart" />
-        <option value="$PROJECT_DIR$/lib/redux/add_contact/add_contact_state.dart" />
         <option value="$PROJECT_DIR$/lib/redux/add_contact/add_contact_reducer.dart" />
         <option value="$PROJECT_DIR$/lib/ui/add_contact/add_contact_container.dart" />
         <option value="$PROJECT_DIR$/lib/redux/add_contact/add_contact_action.dart" />
@@ -138,7 +162,6 @@
         <option value="$PROJECT_DIR$/lib/redux/usages/usage_action.dart" />
         <option value="$PROJECT_DIR$/lib/data/network/user_repository.dart" />
         <option value="$PROJECT_DIR$/lib/redux/usages/usage_middleware.dart" />
-        <option value="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_state.dart" />
         <option value="$PROJECT_DIR$/lib/ui/add_usage/add_usage_container.dart" />
         <option value="$PROJECT_DIR$/lib/ui/usages/usage_screen.dart" />
         <option value="$PROJECT_DIR$/lib/ui/add_usage/add_usage_screen.dart" />
@@ -147,9 +170,7 @@
         <option value="$PROJECT_DIR$/lib/data/local/db_helper.dart" />
         <option value="$PROJECT_DIR$/lib/ui/add_notification/medicine_notification_list.dart" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
-        <option value="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" />
         <option value="$PROJECT_DIR$/lib/ui/home/home.dart" />
-        <option value="$PROJECT_DIR$/lib/ui/contact/contact_screen.dart" />
         <option value="$PROJECT_DIR$/ios/Runner/Info.plist" />
         <option value="$PROJECT_DIR$/../flutter/packages/flutter/lib/src/services/message_codecs.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
@@ -161,10 +182,16 @@
         <option value="$PROJECT_DIR$/lib/data/model/pharmacy.dart" />
         <option value="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" />
         <option value="$PROJECT_DIR$/lib/data/network/google_map_repository.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/contact/contact_screen.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/add_medicine/add_medicine_screen.dart" />
+        <option value="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_state.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_container.dart" />
+        <option value="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_middleware.dart" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="22" />
     <option name="width" value="1680" />
     <option name="height" value="1028" />
@@ -187,8 +214,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -239,7 +268,28 @@
               <item name="medical_app" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="add_medicine" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
               <item name="contact" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="medicine_list" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
@@ -258,8 +308,6 @@
         </subPane>
         <option name="show-excluded-files" value="false" />
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -267,9 +315,9 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="nearb&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart&#10;google&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/google_map_repository.dart&#10;app_s&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;near&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart&#10;pha&#9;FILE&#9;file:///Users/biscuitrainbow/code/mee-ya/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart&#10;home&#9;FILE&#9;file:///Users/biscuitrainbow/code/mee-ya/lib/ui/home/home.dart&#10;medicine&#9;FILE&#9;file:///Users/biscuitrainbow/code/mee-ya/lib/ui/medicine_list/medicine_list_screen.dart&#10;medicnlist&#9;FILE&#9;file:///Users/biscuitrainbow/code/mee-ya/lib/ui/add_notification/medicine_notification_list.dart&#10;addc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_screen.dart&#10;add_usage&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_usage/add_usage_screen.dart&#10;add&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_usage/add_usage_screen.dart&#10;medicineliss&#9;null&#9;null&#10;usagem&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/usages/usage_middleware.dart&#10;user&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/user_repository.dart&#10;medicined&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_detail/medicine_detail_screen.dart&#10;usageco&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/usages/usage_container.dart&#10;usages&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/usages/usage_state.dart&#10;add_conmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_contact/add_contact_middleware.dart&#10;conmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/contract/contact_middleware.dart&#10;add_medi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;add_con&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_screen.dart&#10;contact&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/contact/contact_screen.dart&#10;add_medicine&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_action.dart&#10;add_consc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_screen.dart&#10;apps&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;add_contst&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_contact/add_contact_state.dart&#10;addMe&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;addme&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;app_re&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;appst&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;store&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;notificalist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/notification_list/notification_list_container.dart&#10;contactst&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/contract/contact_state.dart&#10;addmeco&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_container.dart&#10;me&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medilim&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/medicine_list/medicine_list_middleware.dart&#10;notifiser&#9;null&#9;null&#10;medi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/medicine.dart&#10;medicins&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/medicine_list/medicine_list_state.dart&#10;medli&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;med&#9;null&#9;null&#10;medicinere&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/medicine_repository.dart&#10;list&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;core.dart&#9;FILE&#9;file://C:/Users/Biscuitrainbow/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/quiver-0.29.0+1/lib/core.dart" />
+    <property name="SearchEverywhereHistoryKey" value="medicinemid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/medicine_list/medicine_list_middleware.dart&#10;medicon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;medicin&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medicineListsta&#9;null&#9;null&#10;medicine list sc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;conts&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/contact/contact_screen.dart&#10;googl&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/google_map_repository.dart&#10;nearb&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart&#10;google&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/google_map_repository.dart&#10;app_s&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;near&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart&#10;pha&#9;FILE&#9;file:///Users/biscuitrainbow/code/mee-ya/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart&#10;home&#9;FILE&#9;file:///Users/biscuitrainbow/code/mee-ya/lib/ui/home/home.dart&#10;medicine&#9;FILE&#9;file:///Users/biscuitrainbow/code/mee-ya/lib/ui/medicine_list/medicine_list_screen.dart&#10;medicnlist&#9;FILE&#9;file:///Users/biscuitrainbow/code/mee-ya/lib/ui/add_notification/medicine_notification_list.dart&#10;addc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_screen.dart&#10;add_usage&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_usage/add_usage_screen.dart&#10;add&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_usage/add_usage_screen.dart&#10;medicineliss&#9;null&#9;null&#10;usagem&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/usages/usage_middleware.dart&#10;user&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/user_repository.dart&#10;medicined&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_detail/medicine_detail_screen.dart&#10;usageco&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/usages/usage_container.dart&#10;usages&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/usages/usage_state.dart&#10;add_conmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_contact/add_contact_middleware.dart&#10;conmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/contract/contact_middleware.dart&#10;add_medi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;add_con&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_screen.dart&#10;contact&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/contact/contact_screen.dart&#10;add_medicine&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_action.dart&#10;add_consc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_screen.dart&#10;apps&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;add_contst&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_contact/add_contact_state.dart&#10;addMe&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;addme&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;app_re&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;appst&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;store&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;notificalist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/notification_list/notification_list_container.dart&#10;contactst&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/contract/contact_state.dart&#10;addmeco&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_container.dart&#10;me&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medilim&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/medicine_list/medicine_list_middleware.dart&#10;notifiser&#9;null&#9;null&#10;medi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/medicine.dart&#10;medicins&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/medicine_list/medicine_list_state.dart&#10;medli&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;med&#9;null&#9;null&#10;medicinere&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/medicine_repository.dart&#10;list&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1532181165509" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1532245454833" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -595,53 +643,30 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45494506" sideWeight="0.504884" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42316017" sideWeight="0.495116" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.495116" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25053304" sideWeight="0.4942717" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1913646" sideWeight="0.5192308" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24969475" sideWeight="0.5057283" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20522387" sideWeight="0.48076922" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45494506" sideWeight="0.504884" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1913646" sideWeight="0.5192308" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32197803" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21428572" sideWeight="0.495116" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.58441556" sideWeight="0.495116" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.495116" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Flutter Outline" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25152627" sideWeight="0.4942717" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21695095" sideWeight="0.4942717" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1913646" sideWeight="0.5192308" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23827292" sideWeight="0.48076922" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32197803" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -688,21 +713,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/redux/contract/contact_reducer.dart" />
-    <entry file="file://$PROJECT_DIR$/lib/redux/app/app_state_reducer.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="19" column="57" lean-forward="false" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/redux/store.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="46" column="56" lean-forward="false" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/data/model/contact.dart" />
     <entry file="file://$PROJECT_DIR$/lib/data/loading_status.dart">
       <provider selected="true" editor-type-id="text-editor">
@@ -747,18 +757,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_state.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/redux/usages/usage_middleware.dart" />
     <entry file="file://$PROJECT_DIR$/lib/ui/add_usage/add_usage_screen.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
           <caret line="132" column="29" lean-forward="false" selection-start-line="132" selection-start-column="29" selection-end-line="132" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -804,30 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_container.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/home/home.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1145">
-          <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2419">
-          <caret line="11" column="48" lean-forward="false" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#20#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ui/add_notification/medicine_notification_list.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -838,19 +818,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/contact/contact_screen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ios/Runner/Info.plist">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="60" column="77" lean-forward="false" selection-start-line="60" selection-start-column="77" selection-end-line="60" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -859,7 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="10" column="34" lean-forward="false" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -867,7 +837,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="141" column="13" lean-forward="false" selection-start-line="141" selection-start-column="13" selection-end-line="141" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,9 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="15" column="24" lean-forward="false" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="24" />
-          <folding>
-            <marker date="1532176322004" expanded="true" signature="658:666" ph="^1.0.0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -927,7 +893,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="48" column="16" lean-forward="false" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -936,7 +901,7 @@
         <state relative-caret-position="71">
           <caret line="17" column="136" lean-forward="false" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="136" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -945,7 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="66" column="13" lean-forward="false" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -962,24 +926,8 @@
         <state relative-caret-position="462">
           <caret line="22" column="60" lean-forward="true" selection-start-line="22" selection-start-column="60" selection-end-line="22" selection-end-column="60" />
           <folding>
-            <element signature="e#0#69#0" expanded="true" />
+            <element signature="e#0#69#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/data/network/google_map_repository.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="11" column="53" lean-forward="true" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/google_maps_webservice-0.0.5/lib/src/places.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1970">
-          <caret line="349" column="29" lean-forward="false" selection-start-line="349" selection-start-column="29" selection-end-line="349" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -988,7 +936,94 @@
         <state relative-caret-position="210">
           <caret line="89" column="16" lean-forward="false" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
           <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/google_maps_webservice-0.0.5/lib/src/places.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="45" column="11" lean-forward="false" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/data/network/google_map_repository.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/home/home.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="135" column="14" lean-forward="true" selection-start-line="135" selection-start-column="14" selection-end-line="135" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/contact/contact_screen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="90" column="8" lean-forward="false" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#20#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/add_medicine/add_medicine_screen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1448">
+          <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#20#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_state.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="12" column="2" lean-forward="false" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/widgets/basic.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105546">
+          <caret line="5085" column="38" lean-forward="false" selection-start-line="5085" selection-start-column="38" selection-end-line="5085" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="145" column="31" lean-forward="false" selection-start-line="145" selection-start-column="31" selection-end-line="145" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_container.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="66" column="19" lean-forward="true" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
+          <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_middleware.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="43" column="62" lean-forward="false" selection-start-line="43" selection-start-column="62" selection-end-line="43" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>

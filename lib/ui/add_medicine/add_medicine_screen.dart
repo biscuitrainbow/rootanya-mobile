@@ -110,9 +110,12 @@ class AddMedicineScreenState extends State<AddMedicineScreen> {
                     onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(ingredientFocusNode),
                   ),
                 ),
-                IconButton(
-                  icon: Icon(FontAwesomeIcons.camera),
-                  onPressed: () => scanBarcode(),
+                Semantics(
+                  label: 'สแกนจากบาร์โค้ด',
+                  child: IconButton(
+                    icon: Icon(FontAwesomeIcons.camera),
+                    onPressed: () => scanBarcode(),
+                  ),
                 ),
               ],
             ),
@@ -266,10 +269,13 @@ class AddMedicineScreenState extends State<AddMedicineScreen> {
       appBar: new AppBar(
         actions: <Widget>[
           Builder(
-            builder: (BuildContext context) => new IconButton(
-                  icon: new Icon(Icons.done),
-                  onPressed: () => save(context),
-                ),
+            builder: (BuildContext context) => Semantics(
+              label: 'บันทึก',
+              child: new IconButton(
+                    icon: new Icon(Icons.done),
+                    onPressed: () => save(context),
+                  ),
+            ),
           ),
         ],
       ),

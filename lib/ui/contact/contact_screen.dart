@@ -82,7 +82,13 @@ class ContactScreenState extends State<ContactScreen> {
           style: TextStyle(color: Theme.of(context).accentColor),
         ),
         subtitle: Text(contact.name),
-        trailing: IconButton(icon: Icon(Icons.call), onPressed: () => launch("tel://${contact.tel}")),
+        trailing: Semantics(
+          label: 'โทรออก',
+          child: IconButton(
+            icon: Icon(Icons.call),
+            onPressed: () => launch("tel://${contact.tel}"),
+          ),
+        ),
       );
     });
   }
