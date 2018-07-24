@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_maps_webservice/places.dart' as pc;
 import 'package:location/location.dart' as libLocation;
@@ -87,11 +89,15 @@ class NearbyPharmaciesScreen extends StatelessWidget {
         .map(
           (p) => new ListTile(
                 title: new Text(p.name),
-              //  subtitle: Text(p.isOpening.toString()),
+                //  subtitle: Text(p.isOpening.toString()),
                 onTap: () async {
                   String googleUrl = 'http://maps.google.com/maps?q= ${p.lat},${p.lng}(${p.name})&iwloc=A&hl=es';
-                  String appleUrl = 'https://maps.apple.com/?ll=${p.lat},${p.lng}';
 
+                  var sanitizer = const HtmlEscape();
+
+                  String appleUrl = 'maps://maps.apple.com/?ll=${p.lat},${p.lng}&z=5&q=${p.name}';
+                  appleUrl = Uri.encodeFull(appleUrl);
+                  print(appleUrl);
                   if (await canLaunch(googleUrl)) {
                     print('launching com googleUrl');
                     await launch(googleUrl);
@@ -99,7 +105,7 @@ class NearbyPharmaciesScreen extends StatelessWidget {
                     print('launching apple url');
                     await launch(appleUrl);
                   } else {
-                    throw 'Could not launch url';
+                    // throw 'Could not launch url';
                   }
                 },
               ),

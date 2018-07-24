@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
         theme: new ThemeData(
           scaffoldBackgroundColor: Colors.black,
           brightness: Brightness.dark,
+          fontFamily: 'Kanit',
         ),
 //        home: new SplashScreen(
 //          duration: new Duration(seconds: 3),

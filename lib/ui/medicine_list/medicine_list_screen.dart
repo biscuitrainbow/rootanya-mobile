@@ -86,7 +86,9 @@ class MedicineListScreenState extends State<MedicineListScreen> {
         content = buildLoadingContent();
         break;
       case LoadingStatus.success:
-        content = widget.medicines.isNotEmpty ? buildSuccessContent() : buildEmptyContent();
+        content = widget.medicines.isNotEmpty
+            ? buildSuccessContent()
+            : buildEmptyContent();
         break;
       case LoadingStatus.error:
         content = buildErrorContent();
@@ -95,7 +97,9 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 
     return Scaffold(
       appBar: new AppBar(
-        title: widget.isSearching ? buildSearchField(context) : new Text('ค้นหาข้อมูลยา'),
+        title: widget.isSearching
+            ? buildSearchField(context)
+            : new Text('ค้นหาข้อมูลยา'),
         actions: <Widget>[
           !widget.isSearching
               ? Semantics(
@@ -140,7 +144,8 @@ class MedicineListScreenState extends State<MedicineListScreen> {
               ),
             )
           : new FloatingActionButton(
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddMedicineContainer())),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => AddMedicineContainer())),
               child: Semantics(
                 label: 'เพิ่มข้อมูลยา',
                 child: Icon(
@@ -148,7 +153,9 @@ class MedicineListScreenState extends State<MedicineListScreen> {
                 ),
               ),
             ),
-      floatingActionButtonLocation: widget.isListening ? FloatingActionButtonLocation.centerFloat : FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: widget.isListening
+          ? FloatingActionButtonLocation.centerFloat
+          : FloatingActionButtonLocation.endDocked,
       body: content,
     );
   }
@@ -167,7 +174,8 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 //
 //  void stop() => _speech.stop().then((result) => setState(() => _isListening = result));
 
-  void onSpeechAvailability(bool result) => setState(() => _speechRecognitionAvailable = result);
+  void onSpeechAvailability(bool result) =>
+      setState(() => _speechRecognitionAvailable = result);
 
   void onCurrentLocale(String locale) => setState(() => print(locale));
 
@@ -207,6 +215,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
       style: const TextStyle(
         color: Colors.white,
         fontSize: 16.0,
+        fontFamily: 'Kanit',
       ),
     );
   }
@@ -221,7 +230,9 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   }
 
   void _showAddUsage(Medicine medicine) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddUsageContainer(medicine: medicine)));
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (BuildContext context) =>
+            AddUsageContainer(medicine: medicine)));
   }
 
   List<ListTile> buildMedicineItem() {
@@ -232,7 +243,8 @@ class MedicineListScreenState extends State<MedicineListScreen> {
                 onTap: () => Navigator.push(
                       context,
                       new MaterialPageRoute(
-                        builder: (BuildContext context) => new MedicineDetailScreen(medicine: m),
+                        builder: (BuildContext context) =>
+                            new MedicineDetailScreen(medicine: m),
                       ),
                     ),
                 //trailing: IconButton(icon: Icon(Icons.note_add), onPressed: () => _showAddUsage(m)),

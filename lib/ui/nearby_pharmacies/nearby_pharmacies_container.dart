@@ -11,12 +11,14 @@ class NearbyPharmaciesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new StoreConnector(
-      onInit: (Store<AppState> store) {
+      onInit: (Store<AppState> store) async {
         var location = new libLocation.Location();
-
-        location.getLocation.then((Map<String, double> currentLocation) {
+        try {
+          var currentLocation = await location.getLocation;
           store.dispatch(new FetchNearbyPharmaciesAction(currentLocation["latitude"].toDouble(), currentLocation["longitude"].toDouble()));
-        });
+        } catch (error) {
+          print(error);
+        }
       },
       distinct: true,
       converter: ViewModel.fromStore,
