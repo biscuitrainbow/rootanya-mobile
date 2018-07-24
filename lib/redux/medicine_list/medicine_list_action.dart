@@ -1,18 +1,18 @@
 import 'package:medical_app/data/model/medicine.dart';
 
-class MedicineListQueryAction {
+class FetchMedicineByQueryAction {
   final String query;
 
-  MedicineListQueryAction(this.query);
+  FetchMedicineByQueryAction(this.query);
 }
-
-class LoadAllMedicineListAction {}
 
 class ReceivedQueryMedicines {
   final List<Medicine> medicines;
 
   ReceivedQueryMedicines(this.medicines);
 }
+
+class FetchAllMedicineAction {}
 
 class ReceivedMedicines {
   final List<Medicine> medicines;
@@ -30,8 +30,8 @@ class ShowListening {}
 
 class HideListening {}
 
-class ResetStateAction {}
-
 class ShowLoading {}
 
 class HideLoading {}
+
+class ResetStateAction {}

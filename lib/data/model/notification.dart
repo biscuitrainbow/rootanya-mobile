@@ -15,7 +15,7 @@ class Notification {
       var time = new Time(datetime.hour, datetime.minute, datetime.second);
 
       return new Notification(
-        notification['uuid'],
+        notification['uuid'].toString(),
         time,
       );
     }).toList();

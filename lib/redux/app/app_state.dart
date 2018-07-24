@@ -1,6 +1,7 @@
 import 'package:medical_app/data/model/user.dart';
 import 'package:medical_app/redux/add_medicine/add_medicine_state.dart';
 import 'package:medical_app/redux/contract/contact_state.dart';
+import 'package:medical_app/redux/login/login_state.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_state.dart';
 import 'package:medical_app/redux/medicine_notification/medicine_notification_state.dart';
 import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
@@ -17,6 +18,7 @@ class AppState {
   final ContactsState contactState;
   final AddContactState addContactState;
   final UsageState usageState;
+  final LoginState loginState;
   final User user;
 
   AppState({
@@ -28,6 +30,7 @@ class AppState {
     this.contactState,
     this.addContactState,
     this.usageState,
+    this.loginState,
     this.user,
   });
 
@@ -41,6 +44,7 @@ class AppState {
       contactState: ContactsState.initial(),
       addContactState: AddContactState.initial(),
       usageState: UsageState.initial(),
+      loginState: LoginState.initial(),
       user: null,
     );
   }
@@ -54,6 +58,7 @@ class AppState {
     ContactsState contactState,
     AddContactState addContactState,
     UsageState usageState,
+    LoginState loginState,
     User user,
   }) {
     return new AppState(
@@ -65,38 +70,15 @@ class AppState {
       contactState: contactState ?? this.contactState,
       addContactState: addContactState ?? this.addContactState,
       usageState: usageState ?? this.usageState,
+      loginState: loginState ?? this.loginState,
       user: user ?? this.user,
     );
   }
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-          other is AppState &&
-              runtimeType == other.runtimeType &&
-              nearbyPharmacyState == other.nearbyPharmacyState &&
-              medicineListState == other.medicineListState &&
-              notificationListState == other.notificationListState &&
-              medicineNotificationState == other.medicineNotificationState &&
-              addMedicinState == other.addMedicinState &&
-              contactState == other.contactState &&
-              addContactState == other.addContactState &&
-              usageState == other.usageState &&
-              user == other.user;
+      identical(this, other) || other is AppState && runtimeType == other.runtimeType && nearbyPharmacyState == other.nearbyPharmacyState && medicineListState == other.medicineListState && notificationListState == other.notificationListState && medicineNotificationState == other.medicineNotificationState && addMedicinState == other.addMedicinState && contactState == other.contactState && addContactState == other.addContactState && usageState == other.usageState && user == other.user;
 
   @override
-  int get hashCode =>
-      nearbyPharmacyState.hashCode ^
-      medicineListState.hashCode ^
-      notificationListState.hashCode ^
-      medicineNotificationState.hashCode ^
-      addMedicinState.hashCode ^
-      contactState.hashCode ^
-      addContactState.hashCode ^
-      usageState.hashCode ^
-      user.hashCode;
-
-
-
-
+  int get hashCode => nearbyPharmacyState.hashCode ^ medicineListState.hashCode ^ notificationListState.hashCode ^ medicineNotificationState.hashCode ^ addMedicinState.hashCode ^ contactState.hashCode ^ addContactState.hashCode ^ usageState.hashCode ^ user.hashCode;
 }

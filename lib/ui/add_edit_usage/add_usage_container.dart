@@ -38,7 +38,9 @@ class ViewModel {
     return new ViewModel(onSave: (Medicine medicine, BuildContext context) {
       Completer<Null> completer = Completer();
       completer.future.then((_) {
-        Navigator.popUntil(context, ModalRoute.withName('/home'));
+        Navigator.of(context).pop();
+        Navigator.of(context).pop();
+
         Navigator.pushNamed(context, '/usages');
       });
 

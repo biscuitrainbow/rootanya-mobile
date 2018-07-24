@@ -82,7 +82,7 @@ class AddMedicineScreenState extends State<AddMedicineScreen> {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
-        autovalidate: true ,
+        autovalidate: true,
         onWillPop: () {
           return Future(() => true);
         },
@@ -270,14 +270,18 @@ class AddMedicineScreenState extends State<AddMedicineScreen> {
         actions: <Widget>[
           Builder(
             builder: (BuildContext context) => Semantics(
-              label: 'บันทึก',
-              child: new IconButton(
+                  label: 'บันทึก',
+                  child: new IconButton(
                     icon: new Icon(Icons.done),
                     onPressed: () => save(context),
                   ),
-            ),
+                ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.done),
+        onPressed: () => save(context),
       ),
       body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),

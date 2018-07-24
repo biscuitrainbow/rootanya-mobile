@@ -22,7 +22,7 @@ class AddContactScreen extends StatefulWidget {
 }
 
 class _AddContactScreenState extends State<AddContactScreen> {
-  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  static GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController nameController = new TextEditingController(text: '');
   final TextEditingController telController = new TextEditingController(text: '');
@@ -59,6 +59,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
           initialContent: _buildInitialContent(),
         ),
       ),
+      floatingActionButton: FloatingActionButton(child: Icon(Icons.done), onPressed: () => _save()),
     );
   }
 
@@ -85,15 +86,8 @@ class _AddContactScreenState extends State<AddContactScreen> {
   List<dynamic> _buildActions() {
     var actions = [
       IconButton(
-        icon: Icon(Icons.save),
-        onPressed: () {
-          if (!_formKey.currentState.validate()) {
-            return;
-          }
-
-          var contact = Contact(id: widget.isEditing ? widget.contact.id : null, name: nameController.text, tel: telController.text);
-          widget.onSave(contact, context);
-        },
+        icon: Icon(Icons.done),
+        onPressed: _save,
       ),
     ];
 
@@ -109,6 +103,15 @@ class _AddContactScreenState extends State<AddContactScreen> {
     }
 
     return actions;
+  }
+
+  void _save() {
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+
+    var contact = Contact(id: widget.isEditing ? widget.contact.id : null, name: nameController.text, tel: telController.text);
+    widget.onSave(contact, context);
   }
 
   Widget _buildContent() {
@@ -167,4 +170,3 @@ class _AddContactScreenState extends State<AddContactScreen> {
     );
   }
 }
-

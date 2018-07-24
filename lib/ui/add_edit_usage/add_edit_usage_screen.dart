@@ -48,6 +48,10 @@ class _AddContactScreenState extends State<AddUsageScreen> {
         title: Text(widget.isEditing ? 'แก้ไขการใช้ยา' : 'เพิ่มการใช้ยา'),
         actions: _buildActions(),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _save(),
+        child: Icon(Icons.done),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
         child: LoadingView(
@@ -86,26 +90,10 @@ class _AddContactScreenState extends State<AddUsageScreen> {
       IconButton(
         icon: Icon(Icons.save),
         onPressed: () {
-          if (!_formKey.currentState.validate()) {
-            return;
-          }
-
-          var medicine = widget.medicine.copyWith(volume: int.parse(volumeController.text));
-          widget.onSave(medicine,context);
+          _save();
         },
       ),
     ];
-
-    if (widget.isEditing) {
-      actions.add(
-        IconButton(
-          icon: Icon(Icons.delete),
-          onPressed: () {
-            showDialog(context: context, builder: (BuildContext context) => _buildDeleteConfirmDialog());
-          },
-        ),
-      );
-    }
 
     return actions;
   }
@@ -158,6 +146,15 @@ class _AddContactScreenState extends State<AddUsageScreen> {
       text: 'กำลังบันทึก',
     );
   }
+
+  _save() {
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+
+    var medicine = widget.medicine.copyWith(volume: int.parse(volumeController.text));
+    widget.onSave(medicine, context);
+  }
 }
 
 class DialogTextButton extends StatelessWidget {
@@ -172,23 +169,15 @@ class DialogTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var confirmationStyle = TextStyle(color: Theme
-        .of(context)
-        .accentColor);
+    var confirmationStyle = TextStyle(color: Theme.of(context).accentColor);
 
     return Material(
       borderRadius: BorderRadius.circular(2.0),
-      color: Theme
-          .of(context)
-          .dialogBackgroundColor,
+      color: Theme.of(context).dialogBackgroundColor,
       child: InkWell(
         onTap: onPressed,
-        highlightColor: Theme
-            .of(context)
-            .highlightColor,
-        splashColor: Theme
-            .of(context)
-            .hintColor,
+        highlightColor: Theme.of(context).highlightColor,
+        splashColor: Theme.of(context).hintColor,
         child: Container(
           constraints: BoxConstraints(minWidth: 55.0),
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 9.0),

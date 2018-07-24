@@ -18,9 +18,9 @@ class _MedicineListContainerState extends State<MedicineListContainer> {
   @override
   Widget build(BuildContext context) {
     return new StoreConnector(
+      onDispose: (Store store) => store.dispatch(ResetStateAction()),
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel vm) {
-
         return new MedicineListScreen(
           medicines: vm.queriedMedicines,
           isSearching: vm.isSearching,
@@ -83,7 +83,7 @@ class ViewModel {
       hideListening: () => store.dispatch(new HideListening()),
       onSearchClick: () => store.dispatch(new ToggleSearching()),
       onVoiceClicked: () => store.dispatch(new ToggleListening()),
-      onQueryChanged: (String query) => store.dispatch(new MedicineListQueryAction(query)),
+      onQueryChanged: (String query) => store.dispatch(new FetchMedicineByQueryAction(query)),
       onDispose: () => store.dispatch(new ResetStateAction()),
     );
   }

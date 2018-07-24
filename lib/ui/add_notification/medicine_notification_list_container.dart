@@ -10,8 +10,13 @@ import 'package:redux/redux.dart';
 
 class MedicineNotificationListContainer extends StatelessWidget {
   final String medicineId;
+  final bool isAddingNotification;
 
-  const MedicineNotificationListContainer({Key key, this.medicineId}) : super(key: key);
+  const MedicineNotificationListContainer({
+    Key key,
+    this.medicineId,
+    this.isAddingNotification,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +25,8 @@ class MedicineNotificationListContainer extends StatelessWidget {
       distinct: true,
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel vm) {
-
         return new MedicineNotificationListScreen(
+          isAddingNotification: isAddingNotification,
           loadingStatus: vm.loadingStatus,
           medicine: vm.medicine,
           onAddNotification: vm.onAddNotification,

@@ -9,12 +9,14 @@ class MedicineNotificationListScreen extends StatelessWidget {
   final Medicine medicine;
   final Function(Time, Medicine) onAddNotification;
   final LoadingStatus loadingStatus;
+  final bool isAddingNotification;
 
   const MedicineNotificationListScreen({
     Key key,
     this.medicine,
     this.onAddNotification,
     this.loadingStatus,
+    this.isAddingNotification,
   }) : super(key: key);
 
   Widget buildSuccessContent(BuildContext context) {
@@ -36,6 +38,18 @@ class MedicineNotificationListScreen extends StatelessWidget {
     return new Center(
       child: CircularProgressIndicator(),
     );
+  }
+
+  void _showTimePicker(BuildContext context) async {
+    var pickedTime = await showTimePicker(
+      context: context,
+      initialTime: new TimeOfDay.now(),
+    );
+
+    if (pickedTime != null) {
+      var time = new Time(pickedTime.hour, pickedTime.minute, 0);
+      onAddNotification(time, medicine);
+    }
   }
 
   Widget buildEmptyContent() {
@@ -74,6 +88,10 @@ class MedicineNotificationListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var content;
 
+    if (isAddingNotification) {
+      _showTimePicker(context);
+    }
+
     switch (loadingStatus) {
       case LoadingStatus.initial:
       case LoadingStatus.loading:
@@ -95,15 +113,7 @@ class MedicineNotificationListScreen extends StatelessWidget {
       ),
       floatingActionButton: new FloatingActionButton(
         onPressed: () async {
-          var pickedTime = await showTimePicker(
-            context: context,
-            initialTime: new TimeOfDay.now(),
-          );
-
-          if (pickedTime != null) {
-            var time = new Time(pickedTime.hour, pickedTime.minute, 0);
-            onAddNotification(time, medicine);
-          }
+          _showTimePicker(context);
         },
         child: new Icon(Icons.add),
       ),

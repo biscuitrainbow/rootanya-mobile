@@ -106,12 +106,12 @@ class MedicineListScreenState extends State<MedicineListScreen> {
                   ),
                 )
               : new Container(),
-          !widget.isSearching
-              ? new IconButton(
-                  icon: new Icon(Icons.keyboard_voice),
-                  onPressed: () => start(),
-                )
-              : new Container(),
+//          !widget.isSearching
+//              ? new IconButton(
+//                  icon: new Icon(Icons.keyboard_voice),
+//                  onPressed: () => start(),
+//                )
+//              : new Container(),
           !widget.isSearching
               ? Semantics(
                   label: 'ค้นหายาด้วยบาร์โค้ด',
@@ -235,7 +235,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
                         builder: (BuildContext context) => new MedicineDetailScreen(medicine: m),
                       ),
                     ),
-                trailing: IconButton(icon: Icon(Icons.note_add), onPressed: () => _showAddUsage(m)),
+                //trailing: IconButton(icon: Icon(Icons.note_add), onPressed: () => _showAddUsage(m)),
               ),
         )
         .toList();
@@ -279,7 +279,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
             size: 46.0,
           ),
           SizedBox(height: 16.0),
-          new Text("ไม่พบยา")
+          new Text("ไม่พบยาที่คุณค้นหา")
         ],
       ),
     );
@@ -295,7 +295,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
             size: 46.0,
           ),
           SizedBox(height: 16.0),
-          new Text("มีความผิดพลาดเกิดขึ้น ลองอีกครั้ง")
+          new Text("ไม่พบยาที่คุณค้นหา")
         ],
       ),
     );

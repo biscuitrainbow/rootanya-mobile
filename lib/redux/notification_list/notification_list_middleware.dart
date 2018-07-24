@@ -10,19 +10,40 @@ List<Middleware<AppState>> createNotificationListMiddleware(
 ) {
   return [
     new TypedMiddleware<AppState, FetchNotificationListAction>(
-      fetchNearbyPharmacy(userRepository),
+      _fetchNotifications(userRepository),
+    ),
+    new TypedMiddleware<AppState, DeleteNotification>(
+      _deleteNotification(userRepository),
     ),
   ];
 }
 
-Middleware<AppState> fetchNearbyPharmacy(
+Middleware<AppState> _fetchNotifications(
+  UserRepository userRepository,
+) {
+  return (Store<AppState> store, action, NextDispatcher next) async {
+    if (action is FetchNotificationListAction) {
+      try {
+        var user = store.state.user;
+        var notifications = await userRepository.fetchNotifications(user.id);
+        store.dispatch(new ReceivedNotificationListAction(notifications));
+      } catch (error) {
+        print(error);
+      }
+
+      next(action);
+    }
+  };
+}
+
+Middleware<AppState> _deleteNotification(
   UserRepository userRepository,
 ) {
   return (Store store, action, NextDispatcher next) async {
-    if (action is FetchNotificationListAction) {
+    if (action is DeleteNotification) {
       try {
-        var notifications = await userRepository.fetchNotifications('1');
-        store.dispatch(new ReceivedNotificationListAction(notifications));
+        await userRepository.deleteNotification(action.notificationId);
+        store.dispatch(FetchNotificationListAction());
       } catch (error) {
         print(error);
       }

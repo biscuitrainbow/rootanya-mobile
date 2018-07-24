@@ -34,7 +34,10 @@ class MedicineDetailScreen extends StatelessWidget {
             onPressed: () => Navigator.push(
                   context,
                   new MaterialPageRoute(
-                    builder: (BuildContext context) => new MedicineNotificationListContainer(medicineId: medicine.id),
+                    builder: (BuildContext context) => new MedicineNotificationListContainer(
+                          medicineId: medicine.id,
+                          isAddingNotification: false,
+                        ),
                   ),
                 ),
           )
@@ -113,7 +116,7 @@ class MedicineDetailItem extends StatelessWidget {
           ),
         ),
         new Text(
-          detail,
+          detail.isNotEmpty ? detail : 'ไม่มีข้อมูล',
           style: new TextStyle(
             fontSize: 16.5,
           ),

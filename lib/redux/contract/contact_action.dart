@@ -1,9 +1,6 @@
 import 'package:medical_app/data/model/contact.dart';
 
 class FetchContactsAction {
-  final String uid;
-
-  FetchContactsAction(this.uid);
 }
 
 class RequestContactsAction {}

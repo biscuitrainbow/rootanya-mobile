@@ -17,18 +17,21 @@ List<Middleware<AppState>> createAddContactMiddleware(
 Middleware<AppState> addContact(
   UserRepository userRepository,
 ) {
-  return (Store store, action, NextDispatcher next) async {
+  return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddContactAction) {
       try {
+        var user = store.state.user;
+
         next(RequestAddContactAction());
 
-        await userRepository.addContact(action.contact, '1');
+        await userRepository.addContact(action.contact, user.id);
         action.completer.complete(null);
 
         next(SuccessAddContactAction());
-        store.dispatch(FetchContactsAction('1'));
+        store.dispatch(FetchContactsAction());
       } catch (error) {
         next(ErrorAddContactAction());
+        print(error);
       }
 
       next(action);
@@ -48,7 +51,7 @@ Middleware<AppState> editContact(
         action.completer.complete(null);
 
         next(SuccessEditContactAction());
-        store.dispatch(FetchContactsAction('1'));
+        store.dispatch(FetchContactsAction());
       } catch (error) {
         next(ErrorEditContactAction());
       }
@@ -69,7 +72,8 @@ Middleware<AppState> deleteContact(
         await userRepository.deleteContact(action.contact.id);
         action.completer.complete(null);
 
-        store.dispatch(FetchContactsAction('1'));
+        store.dispatch(FetchContactsAction());
+      } catch (error) {
       } catch (error) {
         print(error);
       }

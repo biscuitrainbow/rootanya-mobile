@@ -7,6 +7,8 @@ import 'package:medical_app/redux/add_medicine/add_medicine_reducer.dart';
 import 'package:medical_app/redux/contract/contact_reducer.dart';
 import 'package:medical_app/redux/add_contact/add_contact_reducer.dart';
 import 'package:medical_app/redux/usages/usage_reducer.dart';
+import 'package:medical_app/redux/login/login_reducer.dart';
+import 'package:medical_app/redux/auth/auth_reducer.dart';
 
 AppState appReducer(AppState state, action) {
   var appState = new AppState(
@@ -18,6 +20,8 @@ AppState appReducer(AppState state, action) {
     contactState: contractsReducers(state.contactState, action),
     addContactState: addContractsReducers(state.addContactState, action),
     usageState: usagesReducers(state.usageState, action),
+    loginState: loginReducers(state.loginState, action),
+    user: authReducers(state.user, action),
   );
 
   return appState;

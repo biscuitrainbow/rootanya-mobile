@@ -18,6 +18,7 @@ class NotificationListContainer extends StatelessWidget {
         return new NotificationListScreen(
           notifications: vm.notifications,
           loadingStatus: vm.loadingStatus,
+          onDelete: vm.onDelete,
         );
       },
     );
@@ -27,16 +28,20 @@ class NotificationListContainer extends StatelessWidget {
 class ViewModel {
   final List<Medicine> notifications;
   final LoadingStatus loadingStatus;
+  final Function(String) onDelete;
 
   ViewModel({
     this.notifications,
     this.loadingStatus,
+    this.onDelete,
   });
 
   static ViewModel fromStore(Store<AppState> store) {
     return new ViewModel(
-      notifications: store.state.notificationListState.notifications,
-      loadingStatus: store.state.notificationListState.loadingStatus,
-    );
+        notifications: store.state.notificationListState.notifications,
+        loadingStatus: store.state.notificationListState.loadingStatus,
+        onDelete: (String notificationId) {
+          store.dispatch(DeleteNotification(notificationId));
+        });
   }
 }

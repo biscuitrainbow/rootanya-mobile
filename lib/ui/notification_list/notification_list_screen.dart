@@ -8,11 +8,13 @@ import 'package:medical_app/ui/medicine_list/medicine_list_screen.dart';
 class NotificationListScreen extends StatelessWidget {
   final List<Medicine> notifications;
   final LoadingStatus loadingStatus;
+  final Function(String) onDelete;
 
   const NotificationListScreen({
     Key key,
     this.notifications,
     this.loadingStatus,
+    this.onDelete,
   }) : super(key: key);
 
   Widget buildLoadingContent() {
@@ -98,6 +100,12 @@ class NotificationListScreen extends StatelessWidget {
                                         color: Theme.of(context).accentColor,
                                       ),
                                     ),
+                                    IconButton(
+                                      icon: Icon(Icons.delete),
+                                      onPressed: () {
+                                        onDelete(n.uuid);
+                                      },
+                                    )
                                   ],
                                 ),
                               ),

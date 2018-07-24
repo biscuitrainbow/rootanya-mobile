@@ -10,7 +10,7 @@ class ContactContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector(
-      onInit: (Store store) => store.dispatch(FetchContactsAction('1')),
+      onInit: (Store store) => store.dispatch(FetchContactsAction()),
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel viewModel) {
         print(viewModel.contactsState.contacts);
@@ -36,7 +36,7 @@ class ViewModel {
   static ViewModel fromStore(Store<AppState> store) {
     return new ViewModel(
       contactsState: store.state.contactState,
-      onRefresh: () => store.dispatch(FetchContactsAction('1')),
+      onRefresh: () => store.dispatch(FetchContactsAction()),
     );
   }
 }

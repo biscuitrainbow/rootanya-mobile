@@ -108,6 +108,7 @@ MedicineListState resetState(
 ) {
   return state.copyWith(
     queriedMedicine: [],
+    loadingStatus: LoadingStatus.initial,
     isLoading: false,
     isListening: false,
     isSearching: false,

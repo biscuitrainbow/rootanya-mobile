@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
           new MenuItem(
             title: 'ข้อมูลส่วนตัว',
             iconData: Icons.person,
-            onPress: () => print("ข้อมูลส่วนตัว"),
+            onPress: () => Navigator.of(context).pushNamed('/profile'),
             enabled: true,
           ),
         ],

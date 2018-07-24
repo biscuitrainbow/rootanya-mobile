@@ -17,15 +17,15 @@ List<Middleware<AppState>> createContactsMiddleware(
 Middleware<AppState> fetchContacts(
   UserRepository userRepository,
 ) {
-  return (Store store, action, NextDispatcher next) async {
+  return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is FetchContactsAction) {
-     try{
-       next(RequestContactsAction());
-       var contacts = await userRepository.fetchContact(action.uid);
-       next(ReceiveContactsAction(contacts));
-     }catch(error){
+      try {
+        next(RequestContactsAction());
 
-     }
+        var user = store.state.user;
+        var contacts = await userRepository.fetchContact(user.id);
+        next(ReceiveContactsAction(contacts));
+      } catch (error) {}
       next(action);
     }
   };

@@ -25,11 +25,12 @@ List<Middleware<AppState>> createMedicineNotificationMiddleware(
 Middleware<AppState> fetchMedicineNotification(
   UserRepository userRepository,
 ) {
-  return (Store store, action, NextDispatcher next) async {
+  return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is FetchMedicineNotificationAction) {
       try {
+        var user = store.state.user;
         var medicine = await userRepository.fetchMedicineNotification(
-          '1',
+          user.id,
           action.medicineId,
         );
 
@@ -46,7 +47,7 @@ Middleware<AppState> addMedicineNotification(
   NotificationService notificationService,
   UserRepository userRepository,
 ) {
-  return (Store store, action, NextDispatcher next) async {
+  return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddMedicineNotificationAction) {
       try {
         int id = await notificationService.addNotification(
@@ -54,8 +55,9 @@ Middleware<AppState> addMedicineNotification(
           action.medicine,
         );
 
+        var user = store.state.user;
         await userRepository.addNotification(
-          '1',
+          user.id,
           action.medicine.id,
           '${action.time.hour}:${action.time.minute}',
           id,
