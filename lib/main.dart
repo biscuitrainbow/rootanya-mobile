@@ -10,6 +10,7 @@ import 'package:map_view/map_view.dart';
 import 'package:medical_app/ui/login/login_container.dart';
 import 'package:medical_app/ui/login/login_screen.dart';
 import 'package:medical_app/ui/profile/profile_container.dart';
+import 'package:medical_app/ui/register/register_container.dart';
 import 'package:medical_app/ui/splashscreen/splash_container.dart';
 import 'package:medical_app/ui/splashscreen/splash_screen.dart';
 import 'package:medical_app/ui/usages/usage_container.dart';
@@ -48,9 +49,11 @@ class MyApp extends StatelessWidget {
 //        ),
         home: SplashScreenContainer(),
         routes: {
+          '/login': (context) => LoginContainer(),
           '/home': (context) => HomeScreen(),
           '/usages': (context) => UsageContainer(),
           '/profile': (context) => ProfileContainer(),
+          '/register': (context) => RegisterContainer(),
         },
       ),
     );

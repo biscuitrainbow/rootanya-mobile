@@ -4,6 +4,7 @@ import 'package:redux/redux.dart';
 
 final authReducers = combineReducers<User>([
   new TypedReducer<User, SuccessLoginAction>(_successLogin),
+  new TypedReducer<User, SuccessLogoutAction>(_successLogout),
 ]);
 
 User _successLogin(
@@ -11,4 +12,11 @@ User _successLogin(
   SuccessLoginAction action,
 ) {
   return action.user;
+}
+
+User _successLogout(
+  User state,
+  SuccessLogoutAction action,
+) {
+  return null;
 }

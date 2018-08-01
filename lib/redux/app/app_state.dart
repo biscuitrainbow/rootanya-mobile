@@ -7,6 +7,7 @@ import 'package:medical_app/redux/medicine_notification/medicine_notification_st
 import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
 import 'package:medical_app/redux/notification_list/notification_list_state.dart';
 import 'package:medical_app/redux/add_contact/add_contact_state.dart';
+import 'package:medical_app/redux/register/register_screen_state.dart';
 import 'package:medical_app/redux/usages/usage_state.dart';
 
 class AppState {
@@ -17,6 +18,7 @@ class AppState {
   final AddMedicineState addMedicinState;
   final ContactsState contactState;
   final AddContactState addContactState;
+  final RegisterScreenState registerScreenState;
   final UsageState usageState;
   final LoginState loginState;
   final User user;
@@ -29,6 +31,7 @@ class AppState {
     this.addMedicinState,
     this.contactState,
     this.addContactState,
+    this.registerScreenState,
     this.usageState,
     this.loginState,
     this.user,
@@ -45,6 +48,7 @@ class AppState {
       addContactState: AddContactState.initial(),
       usageState: UsageState.initial(),
       loginState: LoginState.initial(),
+      registerScreenState: RegisterScreenState.initial(),
       user: null,
     );
   }
@@ -59,6 +63,7 @@ class AppState {
     AddContactState addContactState,
     UsageState usageState,
     LoginState loginState,
+    RegisterScreenState registerScreenState,
     User user,
   }) {
     return new AppState(
@@ -71,6 +76,7 @@ class AppState {
       addContactState: addContactState ?? this.addContactState,
       usageState: usageState ?? this.usageState,
       loginState: loginState ?? this.loginState,
+      registerScreenState: registerScreenState ?? this.registerScreenState,
       user: user ?? this.user,
     );
   }

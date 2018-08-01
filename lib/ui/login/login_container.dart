@@ -38,7 +38,7 @@ class ViewModel {
       onLogin: (String email, String password, BuildContext context) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
-          print('complete');
+          Navigator.of(context).pushReplacementNamed('/home');
         });
 
         store.dispatch(LoginAction(email, password, completer));

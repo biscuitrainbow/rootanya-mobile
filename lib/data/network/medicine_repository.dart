@@ -15,8 +15,8 @@ class MedicineRepository {
     return medicines;
   }
 
-  Future<List<Medicine>> fetchMedicineByQuery(String query) async {
-    final response = await http.get('${Config.url}/medicine/search/query?q=$query');
+  Future<List<Medicine>> fetchMedicineByQuery(String query,String userId) async {
+    final response = await http.get('${Config.url}/medicine/search/$userId/query?q=$query');
     print(response.body);
     final jsonResponse = json.decode(response.body);
 

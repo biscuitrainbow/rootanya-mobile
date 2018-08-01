@@ -1,3 +1,4 @@
+import 'package:medical_app/data/network/notification_repository.dart';
 import 'package:medical_app/data/network/user_repository.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/medicine_notification/medicine_notification_action.dart';
@@ -6,30 +7,30 @@ import 'package:redux/redux.dart';
 import 'package:uuid/uuid.dart';
 
 List<Middleware<AppState>> createMedicineNotificationMiddleware(
-  UserRepository userRepository,
+  NotificationRepository notificationRepository,
   NotificationService notificationService,
 ) {
   return [
     new TypedMiddleware<AppState, FetchMedicineNotificationAction>(
-      fetchMedicineNotification(userRepository),
+      fetchMedicineNotification(notificationRepository),
     ),
     new TypedMiddleware<AppState, AddMedicineNotificationAction>(
       addMedicineNotification(
         notificationService,
-        userRepository,
+        notificationRepository,
       ),
     ),
   ];
 }
 
 Middleware<AppState> fetchMedicineNotification(
-  UserRepository userRepository,
+  NotificationRepository notificationRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is FetchMedicineNotificationAction) {
       try {
         var user = store.state.user;
-        var medicine = await userRepository.fetchMedicineNotification(
+        var medicine = await notificationRepository.fetchMedicineNotification(
           user.id,
           action.medicineId,
         );
@@ -45,7 +46,7 @@ Middleware<AppState> fetchMedicineNotification(
 
 Middleware<AppState> addMedicineNotification(
   NotificationService notificationService,
-  UserRepository userRepository,
+  NotificationRepository notificationRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddMedicineNotificationAction) {
@@ -56,7 +57,7 @@ Middleware<AppState> addMedicineNotification(
         );
 
         var user = store.state.user;
-        await userRepository.addNotification(
+        await notificationRepository.addNotification(
           user.id,
           action.medicine.id,
           '${action.time.hour}:${action.time.minute}',

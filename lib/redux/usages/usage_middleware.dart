@@ -1,30 +1,29 @@
+import 'package:medical_app/data/network/history_repository.dart';
 import 'package:medical_app/data/network/user_repository.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/usages/usage_action.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createUsageMiddleware(
-  UserRepository userRepository,
+  HistoryRepository historyRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, FetchUsagesAction>(fetchUsages(userRepository)),
-    new TypedMiddleware<AppState, AddUsageAction>(addUsage(userRepository)),
-    new TypedMiddleware<AppState, DeleteUsageAction>(deleteUsage(userRepository)),
-    new TypedMiddleware<AppState, EditUsageAction>(editUsage(userRepository)),
+    new TypedMiddleware<AppState, FetchUsagesAction>(fetchUsages(historyRepository)),
+    new TypedMiddleware<AppState, AddUsageAction>(addUsage(historyRepository)),
+    new TypedMiddleware<AppState, DeleteUsageAction>(deleteUsage(historyRepository)),
+    new TypedMiddleware<AppState, EditUsageAction>(editUsage(historyRepository)),
   ];
 }
 
 Middleware<AppState> addUsage(
-  UserRepository userRepository,
+  HistoryRepository userRepository,
 ) {
-  return (Store store, action, NextDispatcher next) async {
+  return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddUsageAction) {
       try {
-        await userRepository.addUsage(
-          '1',
-          action.medicine.id,
-          action.medicine.volume,
-        );
+        var user = store.state.user;
+
+        await userRepository.addUsage(user.id, action.medicine.id, action.medicine.volume);
         action.completer.complete(null);
       } catch (error) {
         print(error);
@@ -35,13 +34,14 @@ Middleware<AppState> addUsage(
 }
 
 Middleware<AppState> fetchUsages(
-  UserRepository userRepository,
+  HistoryRepository userRepository,
 ) {
-  return (Store store, action, NextDispatcher next) async {
+  return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is FetchUsagesAction) {
       try {
         next(RequestUsagesAction());
-        var usages = await userRepository.fetchUsages('1');
+        var user = store.state.user;
+        var usages = await userRepository.fetchUsages(user.id);
         next(ReceiveUsagesAction(usages));
       } catch (error) {
         print(error);
@@ -52,7 +52,7 @@ Middleware<AppState> fetchUsages(
 }
 
 Middleware<AppState> editUsage(
-  UserRepository userRepository,
+  HistoryRepository userRepository,
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is EditUsageAction) {
@@ -69,7 +69,7 @@ Middleware<AppState> editUsage(
 }
 
 Middleware<AppState> deleteUsage(
-  UserRepository userRepository,
+  HistoryRepository userRepository,
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is DeleteUsageAction) {

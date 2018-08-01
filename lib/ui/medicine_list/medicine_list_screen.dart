@@ -9,8 +9,8 @@ import 'package:medical_app/ui/add_edit_usage/add_usage_container.dart';
 import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
 import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
 
-//import 'package:speech_recognition/speech_recognition.dart';
-//import 'package:simple_permissions/simple_permissions.dart';
+import 'package:speech_recognition/speech_recognition.dart';
+import 'package:simple_permissions/simple_permissions.dart';
 
 class MedicineListScreen extends StatefulWidget {
   final List<Medicine> medicines;
@@ -51,8 +51,9 @@ class MedicineListScreen extends StatefulWidget {
 
 class MedicineListScreenState extends State<MedicineListScreen> {
   final queryController = new TextEditingController();
+  final searchNode = FocusNode();
 
-//  SpeechRecognition _speech;
+  final _speech = new SpeechRecognition();
 
   bool _speechRecognitionAvailable = false;
   bool _isListening = false;
@@ -63,7 +64,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   @override
   initState() {
     super.initState();
-    //  activateSpeechRecognizer();
+    activateSpeechRecognizer();
   }
 
   @override
@@ -86,9 +87,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
         content = buildLoadingContent();
         break;
       case LoadingStatus.success:
-        content = widget.medicines.isNotEmpty
-            ? buildSuccessContent()
-            : buildEmptyContent();
+        content = widget.medicines.isNotEmpty ? buildSuccessContent() : buildEmptyContent();
         break;
       case LoadingStatus.error:
         content = buildErrorContent();
@@ -97,25 +96,26 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 
     return Scaffold(
       appBar: new AppBar(
-        title: widget.isSearching
-            ? buildSearchField(context)
-            : new Text('ค้นหาข้อมูลยา'),
+        title: widget.isSearching ? buildSearchField(context) : new Text('ค้นหาข้อมูลยา'),
         actions: <Widget>[
           !widget.isSearching
               ? Semantics(
                   label: 'ต้นหายาด้วยตัวอักษร',
                   child: new IconButton(
                     icon: new Icon(Icons.search),
-                    onPressed: () => widget.onSearchClick(),
+                    onPressed: () {
+                    //  FocusScope.of(context).requestFocus(searchNode);
+                      widget.onSearchClick();
+                    },
                   ),
                 )
               : new Container(),
-//          !widget.isSearching
-//              ? new IconButton(
-//                  icon: new Icon(Icons.keyboard_voice),
-//                  onPressed: () => start(),
-//                )
-//              : new Container(),
+          !widget.isSearching
+              ? new IconButton(
+                  icon: new Icon(Icons.keyboard_voice),
+                  onPressed: () => start(),
+                )
+              : new Container(),
           !widget.isSearching
               ? Semantics(
                   label: 'ค้นหายาด้วยบาร์โค้ด',
@@ -137,15 +137,15 @@ class MedicineListScreenState extends State<MedicineListScreen> {
           ? new FloatingActionButton(
               onPressed: () {
                 widget.hideListening();
-//                _speech.cancel();
+                widget.onSearchClick();
+                _speech.cancel();
               },
               child: new Icon(
                 Icons.mic_off,
               ),
             )
           : new FloatingActionButton(
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => AddMedicineContainer())),
+              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddMedicineContainer())),
               child: Semantics(
                 label: 'เพิ่มข้อมูลยา',
                 child: Icon(
@@ -153,29 +153,26 @@ class MedicineListScreenState extends State<MedicineListScreen> {
                 ),
               ),
             ),
-      floatingActionButtonLocation: widget.isListening
-          ? FloatingActionButtonLocation.centerFloat
-          : FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: widget.isListening ? FloatingActionButtonLocation.centerFloat : FloatingActionButtonLocation.endDocked,
       body: content,
     );
   }
 
   void start() async {
-//    if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
-//      SimplePermissions.requestPermission(Permission.RecordAudio);
-//    }
+    if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
+      SimplePermissions.requestPermission(Permission.RecordAudio);
+    }
 
     widget.showListening();
     widget.onSearchClick();
-//    _speech.listen(locale: 'th_TH').then((result) {}).catchError((error) => print(error));
+    _speech.listen(locale: 'th_TH').then((result) {}).catchError((error) => print(error));
   }
 
-//  void cancel() => _speech.cancel().then((result) => setState(() => _isListening = result));
-//
-//  void stop() => _speech.stop().then((result) => setState(() => _isListening = result));
+  void cancel() => _speech.cancel().then((result) => setState(() => _isListening = result));
 
-  void onSpeechAvailability(bool result) =>
-      setState(() => _speechRecognitionAvailable = result);
+  void stop() => _speech.stop().then((result) => setState(() => _isListening = result));
+
+  void onSpeechAvailability(bool result) => setState(() => _speechRecognitionAvailable = result);
 
   void onCurrentLocale(String locale) => setState(() => print(locale));
 
@@ -187,21 +184,22 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 
   void activateSpeechRecognizer() {
     print('_MyAppState.activateSpeechRecognizer... ');
-//    _speech = new SpeechRecognition();
-//    _speech.setAvailabilityHandler(onSpeechAvailability);
-//    _speech.setCurrentLocaleHandler(onCurrentLocale);
-//    _speech.setRecognitionStartedHandler(onRecognitionStarted);
-//    _speech.setRecognitionResultHandler((String result) {
-//      widget.onSearchQueryChanged(result);
-//      queryController.text = result;
-//      widget.hideListening();
-//    });
-//    _speech.setRecognitionCompleteHandler(onRecognitionComplete);
-//    _speech.activate().then((res) => setState(() => _speechRecognitionAvailable = res));
+    // _speech = new SpeechRecognition();
+    _speech.setAvailabilityHandler(onSpeechAvailability);
+    _speech.setCurrentLocaleHandler(onCurrentLocale);
+    _speech.setRecognitionStartedHandler(onRecognitionStarted);
+    _speech.setRecognitionResultHandler((String result) {
+      widget.onSearchQueryChanged(result);
+      queryController.text = result;
+      widget.hideListening();
+    });
+    _speech.setRecognitionCompleteHandler(onRecognitionComplete);
+    _speech.activate().then((res) => setState(() => _speechRecognitionAvailable = res));
   }
 
   Widget buildSearchField(BuildContext context) {
     return new TextField(
+      focusNode: searchNode,
       controller: queryController,
       autofocus: true,
       decoration: const InputDecoration(
@@ -230,9 +228,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   }
 
   void _showAddUsage(Medicine medicine) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (BuildContext context) =>
-            AddUsageContainer(medicine: medicine)));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddUsageContainer(medicine: medicine)));
   }
 
   List<ListTile> buildMedicineItem() {
@@ -243,8 +239,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
                 onTap: () => Navigator.push(
                       context,
                       new MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            new MedicineDetailScreen(medicine: m),
+                        builder: (BuildContext context) => new MedicineDetailScreen(medicine: m),
                       ),
                     ),
                 //trailing: IconButton(icon: Icon(Icons.note_add), onPressed: () => _showAddUsage(m)),
@@ -255,16 +250,19 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 
   Widget buildInitialContent() {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          new Icon(
-            Icons.search,
-            size: 46.0,
-          ),
-          SizedBox(height: 16.0),
-          new Text("ค้นหายาที่ต้องการ")
-        ],
+      child: GestureDetector(
+        onTap: () => widget.onSearchClick(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Icon(
+              Icons.search,
+              size: 46.0,
+            ),
+            SizedBox(height: 16.0),
+            new Text("ค้นหายาที่ต้องการ")
+          ],
+        ),
       ),
     );
   }

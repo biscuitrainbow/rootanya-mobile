@@ -30,3 +30,16 @@ class UpdateUserAction {
 
   UpdateUserAction(this.user, this.completer);
 }
+
+class RegisterAction {
+  final User user;
+  final Completer<Null> completer;
+
+  RegisterAction(this.user, this.completer);
+}
+
+class LogoutAction {}
+
+class SuccessLogoutAction {
+
+}

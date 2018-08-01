@@ -3,29 +3,29 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/user.dart';
+import 'package:medical_app/redux/register/register_screen_state.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
 import 'package:medical_app/ui/common/ripple_button.dart';
 
-class ProfileScreen extends StatefulWidget {
-  final User user;
-  final Function(User, BuildContext) onUpdate;
-  final Function(BuildContext context) onLogout;
+class RegisterScreen extends StatefulWidget {
+  final Function(User, BuildContext) onRegister;
+  final RegisterScreenState registerScreenState;
 
-  ProfileScreen({
-    this.user,
-    this.onUpdate,
-    this.onLogout,
+  RegisterScreen({
+    this.onRegister,
+    this.registerScreenState,
   });
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController barcodeController = new TextEditingController(text: '');
+  final TextEditingController emailController = new TextEditingController(text: '');
+  final TextEditingController passwordController = new TextEditingController(text: '');
   final TextEditingController nameController = new TextEditingController(text: '');
   final TextEditingController ageController = new TextEditingController(text: '');
   final TextEditingController weightController = new TextEditingController(text: '');
@@ -33,6 +33,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController telController = new TextEditingController(text: '');
   final TextEditingController intoleranceController = new TextEditingController(text: '');
 
+  final FocusNode emailFocusNode = new FocusNode();
+  final FocusNode passwordFocusNode = new FocusNode();
   final FocusNode barcodeFocusNode = new FocusNode();
   final FocusNode nameFocusNode = new FocusNode();
   final FocusNode ageFocusNode = new FocusNode();
@@ -51,6 +53,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            new TextFormField(
+              controller: emailController,
+              validator: (val) => val.isEmpty ? 'กรุณากรอกอีเมลล์' : null,
+              decoration: const InputDecoration(
+                hintText: 'อีเมลล์',
+                labelText: 'อีเมลล์',
+              ),
+              onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(passwordFocusNode),
+            ),
+            new TextFormField(
+              controller: passwordController,
+              validator: (val) => val.isEmpty ? 'กรุณากรอกรหัสผ่าน' : null,
+              decoration: const InputDecoration(
+                hintText: 'รหัสผ่าน',
+                labelText: 'รหัสผ่าน',
+              ),
+              obscureText: true,
+              onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(nameFocusNode),
+            ),
             new TextFormField(
               controller: nameController,
               validator: (val) => val.isEmpty ? 'กรุณากรอกชื่อยา' : null,
@@ -74,8 +95,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
             new TextFormField(
+              keyboardType: TextInputType.number,
               controller: ageController,
               focusNode: ageFocusNode,
+              validator: (val) => val.isEmpty ? 'กรุณากรอกอายุ' : null,
               decoration: const InputDecoration(
                 hintText: 'อายุ',
                 labelText: 'อายุ',
@@ -83,8 +106,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(weightFocusNode),
             ),
             new TextFormField(
+              keyboardType: TextInputType.number,
               controller: weightController,
               focusNode: weightFocusNode,
+              validator: (val) => val.isEmpty ? 'กรุณากรอกน้ำหนัก' : null,
               decoration: const InputDecoration(
                 hintText: 'น้ำหนัก',
                 labelText: 'น้ำหนัก',
@@ -92,8 +117,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(heightFocusNode),
             ),
             new TextFormField(
+              keyboardType: TextInputType.number,
               controller: hieghtController,
               focusNode: heightFocusNode,
+              validator: (val) => val.isEmpty ? 'กรุณากรอกส่วนสูง' : null,
               decoration: const InputDecoration(
                 hintText: 'ส่วนสูง',
                 labelText: 'ส่วนสูง',
@@ -101,8 +128,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(telFocusNode),
             ),
             new TextFormField(
+              keyboardType: TextInputType.number,
               controller: telController,
               focusNode: telFocusNode,
+              //validator: (val) => val.isEmpty ? 'กรุณากรอกอายุ' : null,
               decoration: const InputDecoration(
                 hintText: 'เบอร์โทร',
                 labelText: 'เบอร์โทร',
@@ -122,18 +151,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       labelText: 'ยาที่แพ้',
                     ),
                     maxLines: 3,
-                    onFieldSubmitted: (_) => _save(scaffoldContext),
                   );
                 },
               ),
             ),
             Center(
               child: new RippleButton(
-                text: "ออกจากระบบ",
-                backgroundColor: Theme.of(context).primaryColorDark,
-                textColor: Theme.of(context).accentColor,
-                highlightColor: Colors.grey.shade800,
-                onPress: _logout,
+                text: "ลงทะเบียน",
+                backgroundColor: Theme.of(context).accentColor,
+                textColor: Colors.black,
+                highlightColor: Colors.grey.shade200,
+                onPress: _register,
               ),
             ),
             SizedBox(height: 24.0)
@@ -149,7 +177,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildLoadingContent() {
     return LoadingContent(
-      text: 'กำลังบันทึก',
+      text: 'กำลังลงทะเบียน',
     );
   }
 
@@ -163,34 +191,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-  void _save(BuildContext scaffoldContext) {
-    var user = User(
-      id: widget.user.id,
-      name: nameController.text,
-      gender: this.gender,
-      age: int.parse(ageController.text),
-      weight: int.parse(weightController.text),
-      height: int.parse(hieghtController.text),
-      tel: telController.text,
-      intolerance: intoleranceController.text,
-    );
-
-    widget.onUpdate(user, scaffoldContext);
-  }
-
   @override
   void initState() {
-    var user = widget.user;
-
-    nameController.text = user.name;
-    gender = user.gender;
-    ageController.text = user.age.toString();
-    weightController.text = user.weight.toString();
-    hieghtController.text = user.height.toString();
-
-    telController.text = user.tel.toString();
-    intoleranceController.text = user.intolerance;
-
     super.initState();
   }
 
@@ -199,20 +201,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
-        title: Text('ข้อมูลส่วนตัว'),
-      ),
-      floatingActionButton: Builder(
-        builder: (BuildContext scaffoldContext) {
-          return FloatingActionButton(
-            onPressed: () => _save(scaffoldContext),
-            child: Icon(Icons.done),
-          );
-        },
+        title: Text('สมัครสมาชิก'),
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
         child: LoadingView(
-          loadingStatus: LoadingStatus.initial,
+          loadingStatus: widget.registerScreenState.loadingStatus,
           loadingContent: _buildLoadingContent(),
           initialContent: _buildInitialContent(),
           successContent: _buildSuccessContent(),
@@ -222,7 +216,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  _logout() {
-    this.widget.onLogout(context);
+  _register() {
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+    var user = User(
+      email: emailController.text,
+      password: passwordController.text,
+      name: nameController.text,
+      gender: this.gender,
+      age: int.tryParse(ageController.text) ?? null,
+      weight: int.tryParse(weightController.text) ?? null,
+      height: int.tryParse(hieghtController.text) ?? null,
+      tel: telController.text,
+      intolerance: intoleranceController.text,
+    );
+
+    this.widget.onRegister(user, context);
   }
 }

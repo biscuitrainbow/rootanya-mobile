@@ -1,4 +1,6 @@
 class User {
+  final String email;
+  final String password;
   final String id;
   final String name;
   final String gender;
@@ -8,7 +10,7 @@ class User {
   final String tel;
   final String intolerance;
 
-  User({this.id, this.name, this.gender, this.age, this.weight, this.height, this.tel, this.intolerance});
+  User({this.email, this.password, this.id, this.name, this.gender, this.age, this.weight, this.height, this.tel, this.intolerance});
 
   static fromJson(dynamic json) {
     return User(
@@ -25,6 +27,6 @@ class User {
 
   @override
   String toString() {
-    return 'User{id: $id, name: $name, gender: $gender, age: $age, weight: $weight, height: $height, tel: $tel, interolence: $intolerance}';
+    return 'User{email: $email, password: $password, id: $id, name: $name, gender: $gender, age: $age, weight: $weight, height: $height, tel: $tel, intolerance: $intolerance}';
   }
 }

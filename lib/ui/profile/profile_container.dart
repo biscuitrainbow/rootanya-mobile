@@ -14,10 +14,7 @@ class ProfileContainer extends StatelessWidget {
     return StoreConnector(
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel vm) {
-        return ProfileScreen(
-          user: vm.user,
-          onUpdate: vm.onUpdate,
-        );
+        return ProfileScreen(user: vm.user, onUpdate: vm.onUpdate, onLogout: vm.onLogout);
       },
     );
   }
@@ -26,20 +23,28 @@ class ProfileContainer extends StatelessWidget {
 class ViewModel {
   final User user;
   final Function(User, BuildContext) onUpdate;
+  final Function(BuildContext context) onLogout;
 
-  ViewModel({this.user, this.onUpdate});
+  ViewModel({
+    this.user,
+    this.onUpdate,
+    this.onLogout,
+  });
 
   static ViewModel fromStore(Store<AppState> store) {
     return ViewModel(
-      user: store.state.user,
-      onUpdate: (User user, BuildContext context) {
-        Completer<Null> completer = Completer();
-        completer.future.then((_) {
-          Scaffold.of(context).showSnackBar(SnackBar(content: Text('อัพเดตสำเร็จ')));
-        });
+        user: store.state.user,
+        onUpdate: (User user, BuildContext context) {
+          Completer<Null> completer = Completer();
+          completer.future.then((_) {
+            Scaffold.of(context).showSnackBar(SnackBar(content: Text('อัพเดตสำเร็จ')));
+          });
 
-        store.dispatch(UpdateUserAction(user, completer));
-      },
-    );
+          store.dispatch(UpdateUserAction(user, completer));
+        },
+        onLogout: (BuildContext context) {
+          store.dispatch(LogoutAction());
+          Navigator.of(context).pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
+        });
   }
 }

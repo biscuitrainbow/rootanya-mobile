@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:medical_app/data/loading_status.dart';
@@ -15,11 +17,7 @@ class SplashScreenContainer extends StatelessWidget {
     return StoreConnector(
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel vm) {
-        if (vm.loginState.slientLoadingStatus == LoadingStatus.loading) return SplashScreen();
-
-        if (vm.user == null) return LoginContainer();
-
-        return HomeScreen();
+        return SplashScreen(user: vm.user);
       },
     );
   }

@@ -39,7 +39,8 @@ Middleware<AppState> _fetchMedicineByQuery(
     if (action is FetchMedicineByQueryAction) {
       try {
         next(ShowLoading());
-        var medicines = await medicineRepository.fetchMedicineByQuery(action.query);
+        var user = store.state.user;
+        var medicines = await medicineRepository.fetchMedicineByQuery(action.query, user.id);
         next(ReceivedQueryMedicines(medicines));
         next(HideLoading());
       } catch (error) {

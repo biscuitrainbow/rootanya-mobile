@@ -32,17 +32,20 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _showRegister() {
-    print('show register');
+    Navigator.of(context).pushNamed('/register');
   }
 
   Widget _buildInitialContent() {
     return Column(
       children: <Widget>[
+        SizedBox(height: 32.0),
+        Image.asset('assets/icons/med_icon_circle.png',width: 150.0,),
         Container(
-          padding: EdgeInsets.all(64.0),
+          padding: EdgeInsets.symmetric(vertical: 24.0),
           child: Center(
             child: Text(
-              'For Blind Find Med',
+              'รู้ทันยา',
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 28.0,
               ),
