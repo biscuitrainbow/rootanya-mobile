@@ -1,47 +1,38 @@
 import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/data/model/pharmacy.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_state.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
 import 'package:redux/redux.dart';
 
 final medicineListReducer = combineReducers<MedicineListState>([
-  new TypedReducer<MedicineListState, ReceivedMedicines>(
-    receivedMedicines,
+  new TypedReducer<MedicineListState, FetchMedicineRequested>(
+    _fetchMedicinesRequested,
   ),
-  new TypedReducer<MedicineListState, ReceivedQueryMedicines>(
-    receivedQueryMedicines,
+  new TypedReducer<MedicineListState, FetchMedicineSuccess>(
+    _fetchMedicinesSuccess,
+  ),
+  new TypedReducer<MedicineListState, FetchMedicinesError>(
+    _fetchMedicinesError,
   ),
   new TypedReducer<MedicineListState, ToggleSearching>(
-    toggleSearching,
+    _toggleSearching,
   ),
   new TypedReducer<MedicineListState, ToggleListening>(
-    toggleListening,
+    _toggleListening,
   ),
   new TypedReducer<MedicineListState, ResetStateAction>(
-    resetState,
-  ),
-  new TypedReducer<MedicineListState, ShowLoading>(
-    showLoading,
-  ),
-  new TypedReducer<MedicineListState, HideLoading>(
-    hideLoading,
+    _resetState,
   ),
   new TypedReducer<MedicineListState, ShowListening>(
-    showListening,
+    _showListening,
   ),
   new TypedReducer<MedicineListState, HideListening>(
     hideListening,
   ),
-  new TypedReducer<MedicineListState, ErrorLoadingAction>(
-    errorLoading,
-  )
 ]);
 
-MedicineListState receivedMedicines(
+MedicineListState _fetchMedicinesSuccess(
   MedicineListState state,
-  ReceivedMedicines action,
+  FetchMedicineSuccess action,
 ) {
   return state.copyWith(
     loadingStatus: LoadingStatus.success,
@@ -49,17 +40,7 @@ MedicineListState receivedMedicines(
   );
 }
 
-MedicineListState receivedQueryMedicines(
-  MedicineListState state,
-  ReceivedQueryMedicines action,
-) {
-  return state.copyWith(
-    loadingStatus: LoadingStatus.success,
-    queriedMedicine: action.medicines,
-  );
-}
-
-MedicineListState toggleSearching(
+MedicineListState _toggleSearching(
   MedicineListState state,
   ToggleSearching action,
 ) {
@@ -68,7 +49,7 @@ MedicineListState toggleSearching(
   );
 }
 
-MedicineListState toggleListening(
+MedicineListState _toggleListening(
   MedicineListState state,
   ToggleListening action,
 ) {
@@ -77,7 +58,7 @@ MedicineListState toggleListening(
   );
 }
 
-MedicineListState showListening(
+MedicineListState _showListening(
   MedicineListState state,
   ShowListening action,
 ) {
@@ -95,14 +76,14 @@ MedicineListState hideListening(
   );
 }
 
-MedicineListState errorLoading(
+MedicineListState _fetchMedicinesError(
   MedicineListState state,
-  ErrorLoadingAction action,
+  FetchMedicinesError action,
 ) {
   return state.copyWith(loadingStatus: LoadingStatus.error);
 }
 
-MedicineListState resetState(
+MedicineListState _resetState(
   MedicineListState state,
   ResetStateAction action,
 ) {
@@ -115,16 +96,9 @@ MedicineListState resetState(
   );
 }
 
-MedicineListState showLoading(
+MedicineListState _fetchMedicinesRequested(
   MedicineListState state,
-  ShowLoading action,
+  FetchMedicineRequested action,
 ) {
   return state.copyWith(loadingStatus: LoadingStatus.loading);
-}
-
-MedicineListState hideLoading(
-  MedicineListState state,
-  HideLoading action,
-) {
-  return state.copyWith(isLoading: false);
 }

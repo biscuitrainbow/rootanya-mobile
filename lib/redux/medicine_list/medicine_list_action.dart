@@ -1,26 +1,20 @@
 import 'package:medical_app/data/model/medicine.dart';
 
-class FetchMedicineByQueryAction {
+class FetchMedicineByQuery {
   final String query;
 
-  FetchMedicineByQueryAction(this.query);
+  FetchMedicineByQuery(this.query);
 }
 
-class ReceivedQueryMedicines {
+class FetchMedicineRequested {}
+
+class FetchMedicineSuccess {
   final List<Medicine> medicines;
 
-  ReceivedQueryMedicines(this.medicines);
+  FetchMedicineSuccess(this.medicines);
 }
 
-class FetchAllMedicineAction {}
-
-class ReceivedMedicines {
-  final List<Medicine> medicines;
-
-  ReceivedMedicines(this.medicines);
-}
-
-class ErrorLoadingAction {}
+class FetchMedicinesError {}
 
 class ToggleSearching {}
 

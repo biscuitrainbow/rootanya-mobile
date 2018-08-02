@@ -10,28 +10,27 @@ List<Middleware<AppState>> createAddMedicineMiddleware(
 ) {
   return [
     new TypedMiddleware<AppState, AddMedicineAction>(
-      addMedicine(medicineRepository),
+      _addMedicine(medicineRepository),
     ),
   ];
 }
 
-Middleware<AppState> addMedicine(
+Middleware<AppState> _addMedicine(
   MedicineRepository medicineRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddMedicineAction) {
-      try {
-        var user = store.state.user;
+      var user = store.state.user;
 
+      try {
         next(RequestAddMedicineAction());
         await medicineRepository.addMedicine(action.medicine, user.id);
         action.completer.complete(null);
         next(SuccessAddMedicineAction());
-        store.dispatch(FetchAllMedicineAction());
       } catch (error) {
         print(error);
-        next(SuccessAddMedicineAction());
       }
+
       next(action);
     }
   };

@@ -8,45 +8,25 @@ List<Middleware<AppState>> createMedicineMiddleware(
   MedicineRepository medicineRepository,
 ) {
   return [
-    TypedMiddleware<AppState, FetchMedicineByQueryAction>(
+    TypedMiddleware<AppState, FetchMedicineByQuery>(
       _fetchMedicineByQuery(medicineRepository),
     ),
-    TypedMiddleware<AppState, FetchAllMedicineAction>(
-      _fetchAllMedicine(medicineRepository),
-    ),
   ];
-}
-
-Middleware<AppState> _fetchAllMedicine(MedicineRepository medicineRepository) {
-  return (Store<AppState> store, action, NextDispatcher next) async {
-    if (action is FetchAllMedicineAction) {
-      try {
-        var user = store.state.user;
-        var medicines = await medicineRepository.fetchAllMedicines(user.id);
-
-        next(ReceivedMedicines(medicines));
-      } catch (error) {
-        print(error.toString());
-      }
-    }
-  };
 }
 
 Middleware<AppState> _fetchMedicineByQuery(
   MedicineRepository medicineRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
-    if (action is FetchMedicineByQueryAction) {
+    if (action is FetchMedicineByQuery) {
       try {
         next(ShowLoading());
         var user = store.state.user;
         var medicines = await medicineRepository.fetchMedicineByQuery(action.query, user.id);
-        next(ReceivedQueryMedicines(medicines));
-        next(HideLoading());
+        next(FetchMedicineSuccess(medicines));
       } catch (error) {
         print(error);
-        next(HideLoading());
-        next(ErrorLoadingAction());
+        next(FetchMedicinesError());
       }
     }
   };

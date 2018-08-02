@@ -1,8 +1,6 @@
 import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/redux/add_contact/add_contact_action.dart';
 import 'package:medical_app/redux/add_contact/add_contact_state.dart';
-import 'package:medical_app/redux/contract/contact_action.dart';
-import 'package:medical_app/redux/contract/contact_state.dart';
+import 'package:medical_app/redux/add_contact/contact_action.dart';
 import 'package:redux/redux.dart';
 
 final addContractsReducers = combineReducers<AddContactState>([

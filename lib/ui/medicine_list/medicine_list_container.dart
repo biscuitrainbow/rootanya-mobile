@@ -83,7 +83,7 @@ class ViewModel {
       hideListening: () => store.dispatch(new HideListening()),
       onSearchClick: () => store.dispatch(new ToggleSearching()),
       onVoiceClicked: () => store.dispatch(new ToggleListening()),
-      onQueryChanged: (String query) => store.dispatch(new FetchMedicineByQueryAction(query)),
+      onQueryChanged: (String query) => store.dispatch(new FetchMedicineByQuery(query)),
       onDispose: () => store.dispatch(new ResetStateAction()),
     );
   }
