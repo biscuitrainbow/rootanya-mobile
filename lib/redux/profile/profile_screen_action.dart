@@ -1,0 +1,3 @@
+class ShowRegisterLoading {}
+
+class HideRegisterLoading {}
