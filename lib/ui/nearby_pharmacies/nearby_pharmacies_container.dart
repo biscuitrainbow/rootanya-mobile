@@ -15,7 +15,7 @@ class NearbyPharmaciesContainer extends StatelessWidget {
         var location = new libLocation.Location();
         try {
           var currentLocation = await location.getLocation;
-          store.dispatch(new FetchNearbyPharmaciesAction(currentLocation["latitude"].toDouble(), currentLocation["longitude"].toDouble()));
+          store.dispatch(new FetchNearbyPharmacies(currentLocation["latitude"].toDouble(), currentLocation["longitude"].toDouble()));
         } catch (error) {
           print(error);
         }

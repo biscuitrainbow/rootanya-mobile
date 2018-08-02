@@ -29,7 +29,7 @@ Middleware<AppState> addContact(
         action.completer.complete(null);
 
         next(SuccessAddContactAction());
-        store.dispatch(FetchContactsAction());
+        store.dispatch(FetchContacts());
       } catch (error) {
         next(ErrorAddContactAction());
         print(error);
@@ -52,7 +52,7 @@ Middleware<AppState> editContact(
         action.completer.complete(null);
 
         next(SuccessEditContactAction());
-        store.dispatch(FetchContactsAction());
+        store.dispatch(FetchContacts());
       } catch (error) {
         next(ErrorEditContactAction());
       }
@@ -73,7 +73,7 @@ Middleware<AppState> deleteContact(
         await contractRepository.deleteContact(action.contact.id);
         action.completer.complete(null);
 
-        store.dispatch(FetchContactsAction());
+        store.dispatch(FetchContacts());
       } catch (error) {}
       next(action);
     }

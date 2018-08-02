@@ -1,22 +1,17 @@
 import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/data/model/pharmacy.dart';
 import 'package:medical_app/redux/medicine_notification/medicine_notification_action.dart';
 import 'package:medical_app/redux/medicine_notification/medicine_notification_state.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
-import 'package:medical_app/redux/notification_list/notification_list_action.dart';
-import 'package:medical_app/redux/notification_list/notification_list_state.dart';
 import 'package:redux/redux.dart';
 
 final medicineNotificationReducer = combineReducers<MedicineNotificationListState>([
-  new TypedReducer<MedicineNotificationListState, ReceivedMedicineNotificationAction>(
-    receivedMedicineNotification,
+  new TypedReducer<MedicineNotificationListState, FetchMedicineNotificationSuccess>(
+    _fetchMedicineNotificationSuccess,
   )
 ]);
 
-MedicineNotificationListState receivedMedicineNotification(
+MedicineNotificationListState _fetchMedicineNotificationSuccess(
   MedicineNotificationListState state,
-  ReceivedMedicineNotificationAction action,
+  FetchMedicineNotificationSuccess action,
 ) {
   return state.copyWith(
     medicine: action.medicine,

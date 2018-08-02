@@ -3,8 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
 import 'package:medical_app/ui/add_medicine/add_medicine_screen.dart';
 import 'package:medical_app/ui/barcode_scanner/barcode_scanner.dart';
-import 'package:medical_app/ui/contact/contact_container.dart';
+import 'package:medical_app/ui/contact/contact_list_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
+import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
 import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_container.dart';
 import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_screen.dart';
 import 'package:medical_app/ui/notification_list/notification_list_container.dart';
@@ -25,17 +26,17 @@ class HomeScreen extends StatelessWidget {
         children: <Widget>[
           new MenuItem(
             title: 'ค้นหาข้อมูลยา',
-            iconData: FontAwesomeIcons.prescriptionBottle,
+            iconData: FontAwesomeIcons.pills,
             onPress: () => Navigator.push(
                   context,
                   new MaterialPageRoute(
-                    builder: (BuildContext context) => new MedicineListContainer(),
+                    builder: (BuildContext context) => new MedicineListContainer(mode: MedicineListMode.browsing),
                   ),
                 ),
           ),
           new MenuItem(
             title: 'เตือนการกินยา',
-            iconData: Icons.alarm_add,
+            iconData: Icons.notifications,
             onPress: () => Navigator.push(
                   context,
                   new MaterialPageRoute(
@@ -45,7 +46,7 @@ class HomeScreen extends StatelessWidget {
           ),
           new MenuItem(
             title: 'ร้านขายยาใกล้เคียง',
-            iconData: FontAwesomeIcons.shoppingCart,
+            iconData: FontAwesomeIcons.mapMarkerAlt,
             onPress: () => Navigator.push(
                   context,
                   new MaterialPageRoute(
@@ -57,22 +58,22 @@ class HomeScreen extends StatelessWidget {
             title: 'ขอความช่วยเหลือ',
             iconData: Icons.call,
             onPress: () => Navigator.push(
-              context,
-              new MaterialPageRoute(
-                builder: (BuildContext context) => ContactContainer(),
-              ),
-            ),
+                  context,
+                  new MaterialPageRoute(
+                    builder: (BuildContext context) => ContactContainer(),
+                  ),
+                ),
           ),
           new MenuItem(
             title: 'บันทึกการใช้ยา',
             iconData: FontAwesomeIcons.book,
             enabled: true,
             onPress: () => Navigator.push(
-              context,
-              new MaterialPageRoute(
-                builder: (BuildContext context) => UsageContainer(),
-              ),
-            ),
+                  context,
+                  new MaterialPageRoute(
+                    builder: (BuildContext context) => UsageContainer(),
+                  ),
+                ),
           ),
           new MenuItem(
             title: 'ข้อมูลส่วนตัว',
@@ -111,7 +112,7 @@ class MenuItem extends StatelessWidget {
             new Icon(
               iconData,
               size: 32.0,
-              color: enabled? Colors.white : Colors.grey,
+              color: enabled ? Colors.white : Colors.grey,
             ),
             new Padding(
               padding: const EdgeInsets.all(16.0),

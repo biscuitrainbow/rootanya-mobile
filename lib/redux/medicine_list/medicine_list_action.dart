@@ -18,14 +18,8 @@ class FetchMedicinesError {}
 
 class ToggleSearching {}
 
-class ToggleListening {}
+class ActivateSpeechRecognizer {}
 
-class ShowListening {}
-
-class HideListening {}
-
-class ShowLoading {}
-
-class HideLoading {}
+class DeactivateSpeechRecognizer {}
 
 class ResetStateAction {}

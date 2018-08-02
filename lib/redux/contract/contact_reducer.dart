@@ -4,23 +4,23 @@ import 'package:medical_app/redux/contract/contact_state.dart';
 import 'package:redux/redux.dart';
 
 final contractsReducers = combineReducers<ContactsState>([
-  new TypedReducer<ContactsState, RequestContactsAction>(requestContact),
-  new TypedReducer<ContactsState, ReceiveContactsAction>(receivedContacts),
-  new TypedReducer<ContactsState, ErrorContractsAction>(errorContacts),
+  new TypedReducer<ContactsState, FetchContactsRequested>(_fetchContactRequested),
+  new TypedReducer<ContactsState, FetchContactSuccess>(_fetchContactSuccess),
+  new TypedReducer<ContactsState, FetchContactError>(_fetchContactError),
 ]);
 
-ContactsState requestContact(
+ContactsState _fetchContactRequested(
   ContactsState state,
-  RequestContactsAction action,
+  FetchContactsRequested action,
 ) {
   return state.copyWith(
     loadingStatus: LoadingStatus.loading,
   );
 }
 
-ContactsState receivedContacts(
+ContactsState _fetchContactSuccess(
   ContactsState state,
-  ReceiveContactsAction action,
+  FetchContactSuccess action,
 ) {
   return state.copyWith(
     loadingStatus: LoadingStatus.success,
@@ -28,9 +28,9 @@ ContactsState receivedContacts(
   );
 }
 
-ContactsState errorContacts(
+ContactsState _fetchContactError(
   ContactsState state,
-  ErrorContractsAction action,
+  FetchContactError action,
 ) {
   return state.copyWith(
     loadingStatus: LoadingStatus.error,

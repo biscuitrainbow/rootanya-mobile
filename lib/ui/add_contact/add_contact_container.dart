@@ -14,7 +14,7 @@ class AddContactContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector(
-      onInit: (Store store) => store.dispatch(FetchContactsAction()),
+      onInit: (Store store) => store.dispatch(FetchContacts()),
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel viewModel) {
         return AddContactScreen(

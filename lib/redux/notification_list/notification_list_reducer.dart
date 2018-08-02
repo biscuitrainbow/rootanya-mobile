@@ -7,17 +7,17 @@ import 'package:medical_app/redux/notification_list/notification_list_state.dart
 import 'package:redux/redux.dart';
 
 final notificationListReducer = combineReducers<NotificationListState>([
-  new TypedReducer<NotificationListState, ReceivedNotificationListAction>(
-    receivedNotificationList,
+  new TypedReducer<NotificationListState, FetchNotificationsSuccess>(
+    _fetchNotificationsSuccess,
   )
 ]);
 
-NotificationListState receivedNotificationList(
+NotificationListState _fetchNotificationsSuccess(
   NotificationListState state,
-  ReceivedNotificationListAction action,
+  FetchNotificationsSuccess action,
 ) {
   return state.copyWith(
-    notificaions: action.notifications,
+    notifications: action.notifications,
     loadingStatus: LoadingStatus.success,
   );
 }

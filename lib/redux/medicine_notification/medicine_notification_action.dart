@@ -1,22 +1,21 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/data/model/notification.dart';
 
-class FetchMedicineNotificationAction {
+class FetchMedicineNotification {
   final String medicineId;
 
-  FetchMedicineNotificationAction(this.medicineId);
+  FetchMedicineNotification(this.medicineId);
 }
 
-class ReceivedMedicineNotificationAction {
+class FetchMedicineNotificationSuccess {
   final Medicine medicine;
 
-  ReceivedMedicineNotificationAction(this.medicine);
+  FetchMedicineNotificationSuccess(this.medicine);
 }
 
-class AddMedicineNotificationAction {
+class AddMedicineNotification {
   final Time time;
   final Medicine medicine;
 
-  AddMedicineNotificationAction(this.time, this.medicine);
+  AddMedicineNotification(this.time, this.medicine);
 }

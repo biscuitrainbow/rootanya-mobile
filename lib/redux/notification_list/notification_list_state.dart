@@ -18,11 +18,11 @@ class NotificationListState {
   }
 
   NotificationListState copyWith({
-    List<Medicine> notificaions,
+    List<Medicine> notifications,
     LoadingStatus loadingStatus,
   }) {
     return new NotificationListState(
-      notifications: notificaions ?? this.notifications,
+      notifications: notifications ?? this.notifications,
       loadingStatus: loadingStatus ?? this.loadingStatus,
     );
   }

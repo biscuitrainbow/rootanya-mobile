@@ -7,21 +7,20 @@ List<Middleware<AppState>> createNearbyPharmaciesMiddleware(
   GoogleMapRepository googleMapRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, FetchNearbyPharmaciesAction>(
-      fetchNearbyPharmacy(googleMapRepository),
+    new TypedMiddleware<AppState, FetchNearbyPharmacies>(
+      _fetchNearbyPharmacies(googleMapRepository),
     ),
   ];
 }
 
-Middleware<AppState> fetchNearbyPharmacy(
+Middleware<AppState> _fetchNearbyPharmacies(
   GoogleMapRepository googleMapRepository,
 ) {
   return (Store store, action, NextDispatcher next) async {
-    if (action is FetchNearbyPharmaciesAction) {
+    if (action is FetchNearbyPharmacies) {
       try {
-        var pharmacies = await googleMapRepository.getNearByPharmacies(
-            action.lat, action.lng);
-        next(new ReceivedPharmaciesAction(pharmacies));
+        var pharmacies = await googleMapRepository.getNearByPharmacies(action.lat, action.lng);
+        next(new FetchNearbyPharmaciesSuccess(pharmacies));
       } catch (error) {
         print(error);
       }

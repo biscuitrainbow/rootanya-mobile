@@ -2,46 +2,26 @@ import 'dart:async';
 
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:medical_app/ui/add_edit_usage/add_usage_container.dart';
 import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
+import 'package:medical_app/ui/common/loading_content.dart';
+import 'package:medical_app/ui/common/loading_view.dart';
 import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
+import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
+import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
 
 import 'package:speech_recognition/speech_recognition.dart';
 import 'package:simple_permissions/simple_permissions.dart';
 
 class MedicineListScreen extends StatefulWidget {
-  final List<Medicine> medicines;
-  final bool isSearching;
-  final bool isListening;
-  final bool isLoading;
-  final LoadingStatus loadingStatus;
-  final Function onSearchClick;
-  final Function onVoiceClicked;
-  final Function onDispose;
-  final Function(String) onSearchQueryChanged;
-  final TextEditingController queryController;
+  const MedicineListScreen({this.viewModel, this.mode});
 
-  final VoidCallback showListening;
-  final VoidCallback hideListening;
-
-  const MedicineListScreen({
-    Key key,
-    this.medicines,
-    this.isSearching,
-    this.isListening,
-    this.isLoading,
-    this.loadingStatus,
-    this.onSearchClick,
-    this.onVoiceClicked,
-    this.onDispose,
-    this.onSearchQueryChanged,
-    this.queryController,
-    this.showListening,
-    this.hideListening,
-  }) : super(key: key);
+  final MedicineListScreenViewModel viewModel;
+  final MedicineListMode mode;
 
   @override
   MedicineListScreenState createState() {
@@ -50,157 +30,137 @@ class MedicineListScreen extends StatefulWidget {
 }
 
 class MedicineListScreenState extends State<MedicineListScreen> {
-  final queryController = new TextEditingController();
-  final searchNode = FocusNode();
-
+  final _queryController = new TextEditingController();
+  final _queryFocusNode = FocusNode();
   final _speech = new SpeechRecognition();
-
-  bool _speechRecognitionAvailable = false;
-  bool _isListening = false;
-
-  String transcription = '';
-  String _currentLocale = 'th_TH';
 
   @override
   initState() {
+    print(widget.mode);
     super.initState();
-    activateSpeechRecognizer();
+    _activateSpeechRecognizer();
   }
 
   @override
   void dispose() {
-    queryController.dispose();
-    widget.onDispose();
-
+    _queryController.dispose();
     super.dispose();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    var content;
-
-    switch (widget.loadingStatus) {
-      case LoadingStatus.initial:
-        content = buildInitialContent();
-        break;
-      case LoadingStatus.loading:
-        content = buildLoadingContent();
-        break;
-      case LoadingStatus.success:
-        content = widget.medicines.isNotEmpty ? buildSuccessContent() : buildEmptyContent();
-        break;
-      case LoadingStatus.error:
-        content = buildErrorContent();
-        break;
-    }
-
-    return Scaffold(
-      appBar: new AppBar(
-        title: widget.isSearching ? buildSearchField(context) : new Text('ค้นหาข้อมูลยา'),
-        actions: <Widget>[
-          !widget.isSearching
-              ? Semantics(
-                  label: 'ต้นหายาด้วยตัวอักษร',
-                  child: new IconButton(
-                    icon: new Icon(Icons.search),
-                    onPressed: () {
-                    //  FocusScope.of(context).requestFocus(searchNode);
-                      widget.onSearchClick();
-                    },
-                  ),
-                )
-              : new Container(),
-          !widget.isSearching
-              ? new IconButton(
-                  icon: new Icon(Icons.keyboard_voice),
-                  onPressed: () => start(),
-                )
-              : new Container(),
-          !widget.isSearching
-              ? Semantics(
-                  label: 'ค้นหายาด้วยบาร์โค้ด',
-                  child: new IconButton(
-                    icon: new Icon(FontAwesomeIcons.barcode),
-                    onPressed: () => scan(),
-                  ),
-                )
-              : new Container(),
-          widget.isSearching
-              ? new IconButton(
-                  icon: new Icon(Icons.close),
-                  onPressed: () => widget.onSearchClick(),
-                )
-              : new Container(),
-        ],
-      ),
-      floatingActionButton: widget.isListening
-          ? new FloatingActionButton(
-              onPressed: () {
-                widget.hideListening();
-                widget.onSearchClick();
-                _speech.cancel();
-              },
-              child: new Icon(
-                Icons.mic_off,
-              ),
-            )
-          : new FloatingActionButton(
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddMedicineContainer())),
-              child: Semantics(
-                label: 'เพิ่มข้อมูลยา',
-                child: Icon(
-                  Icons.add,
-                ),
-              ),
-            ),
-      floatingActionButtonLocation: widget.isListening ? FloatingActionButtonLocation.centerFloat : FloatingActionButtonLocation.endDocked,
-      body: content,
-    );
-  }
-
-  void start() async {
+  void _startSpeechRecognizer() async {
     if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
       SimplePermissions.requestPermission(Permission.RecordAudio);
     }
 
-    widget.showListening();
-    widget.onSearchClick();
+    widget.viewModel.showListening();
+    widget.viewModel.onSearchClick();
     _speech.listen(locale: 'th_TH').then((result) {}).catchError((error) => print(error));
   }
 
-  void cancel() => _speech.cancel().then((result) => setState(() => _isListening = result));
-
-  void stop() => _speech.stop().then((result) => setState(() => _isListening = result));
-
-  void onSpeechAvailability(bool result) => setState(() => _speechRecognitionAvailable = result);
-
-  void onCurrentLocale(String locale) => setState(() => print(locale));
-
-  void onRecognitionStarted() => print('started');
-
-  void onRecognitionResult(String text) => setState(() => transcription = text);
-
-  void onRecognitionComplete() => print("completed");
-
-  void activateSpeechRecognizer() {
-    print('_MyAppState.activateSpeechRecognizer... ');
-    // _speech = new SpeechRecognition();
-    _speech.setAvailabilityHandler(onSpeechAvailability);
-    _speech.setCurrentLocaleHandler(onCurrentLocale);
-    _speech.setRecognitionStartedHandler(onRecognitionStarted);
+  void _activateSpeechRecognizer() {
     _speech.setRecognitionResultHandler((String result) {
-      widget.onSearchQueryChanged(result);
-      queryController.text = result;
-      widget.hideListening();
+      widget.viewModel.onQueryChanged(result);
+      _queryController.text = result;
+      widget.viewModel.hideListening();
     });
-    _speech.setRecognitionCompleteHandler(onRecognitionComplete);
-    _speech.activate().then((res) => setState(() => _speechRecognitionAvailable = res));
   }
 
-  Widget buildSearchField(BuildContext context) {
+  Future _scanBarcode() async {
+    try {
+      String barcode = await BarcodeScanner.scan();
+      _queryController.text = barcode;
+
+      widget.viewModel.onQueryChanged(barcode);
+      widget.viewModel.onSearchClick();
+    } catch (error) {
+      print(error);
+    }
+  }
+
+  void _showAddHistory(BuildContext context, Medicine medicine) {
+    Navigator.push(
+      context,
+      new MaterialPageRoute(builder: (BuildContext context) => new AddUsageContainer(medicine: medicine)),
+    );
+  }
+
+  void _showTimePicker(BuildContext context, Medicine medicine) async {
+    var pickedTime = await showTimePicker(
+      context: context,
+      initialTime: new TimeOfDay.now(),
+    );
+
+    if (pickedTime != null) {
+      var time = new Time(pickedTime.hour, pickedTime.minute, 0);
+      widget.viewModel.onAddNotification(time, medicine);
+    }
+  }
+
+  List<Widget> _buildActions() {
+    return [
+      !widget.viewModel.isSearching
+          ? Semantics(
+              label: 'ต้นหายาด้วยตัวอักษร',
+              child: new IconButton(
+                icon: new Icon(Icons.search),
+                onPressed: () {
+                  //  FocusScope.of(context).requestFocus(searchNode);
+                  widget.viewModel.onSearchClick();
+                },
+              ),
+            )
+          : new Container(),
+      !widget.viewModel.isSearching
+          ? new IconButton(
+              icon: new Icon(Icons.keyboard_voice),
+              onPressed: () => _startSpeechRecognizer(),
+            )
+          : new Container(),
+      !widget.viewModel.isSearching
+          ? Semantics(
+              label: 'ค้นหายาด้วยบาร์โค้ด',
+              child: new IconButton(
+                icon: new Icon(FontAwesomeIcons.barcode),
+                onPressed: () => _scanBarcode(),
+              ),
+            )
+          : new Container(),
+      widget.viewModel.isSearching
+          ? new IconButton(
+              icon: new Icon(Icons.close),
+              onPressed: () => widget.viewModel.onSearchClick(),
+            )
+          : new Container(),
+    ];
+  }
+
+  Widget _buildFloatingActionsButton() {
+    return widget.viewModel.isListening
+        ? new FloatingActionButton(
+            onPressed: () {
+              widget.viewModel.hideListening();
+              widget.viewModel.onSearchClick();
+              _speech.cancel();
+            },
+            child: new Icon(
+              Icons.mic_off,
+            ),
+          )
+        : new FloatingActionButton(
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddMedicineContainer())),
+            child: Semantics(
+              label: 'เพิ่มข้อมูลยา',
+              child: Icon(
+                Icons.add,
+              ),
+            ),
+          );
+  }
+
+  Widget _buildSearchBox(BuildContext context) {
     return new TextField(
-      focusNode: searchNode,
-      controller: queryController,
+      focusNode: _queryFocusNode,
+      controller: _queryController,
       autofocus: true,
       decoration: const InputDecoration(
         hintText: 'ค้นหายา...',
@@ -208,7 +168,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
         hintStyle: const TextStyle(color: Colors.white30),
       ),
       onChanged: (String text) {
-        widget.onSearchQueryChanged(text);
+        widget.viewModel.onQueryChanged(text);
       },
       style: const TextStyle(
         color: Colors.white,
@@ -218,40 +178,53 @@ class MedicineListScreenState extends State<MedicineListScreen> {
     );
   }
 
-  Future scan() async {
-    try {
-      String barcode = await BarcodeScanner.scan();
-      widget.onSearchQueryChanged(barcode);
-      queryController.text = barcode;
-      widget.onSearchClick();
-    } catch (error) {}
+  IconButton _buildTrailingByMode(Medicine medicine) {
+    switch (widget.mode) {
+      case MedicineListMode.browsing:
+        return null;
+        break;
+      case MedicineListMode.addNotification:
+        return IconButton(
+          onPressed: () => _showTimePicker(context, medicine),
+          icon: Icon(Icons.add_alert),
+        );
+        break;
+      case MedicineListMode.addUsage:
+        return IconButton(
+          onPressed: () => _showAddHistory(context, medicine),
+          icon: Icon(Icons.note_add),
+        );
+        break;
+      default:
+        return null;
+    }
   }
 
-  void _showAddUsage(Medicine medicine) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddUsageContainer(medicine: medicine)));
-  }
-
-  List<ListTile> buildMedicineItem() {
-    return widget.medicines
+  List<ListTile> _buildMedicineItem() {
+    return widget.viewModel.medicines
         .map(
-          (m) => new ListTile(
-                title: new Text(m.name),
-                onTap: () => Navigator.push(
-                      context,
-                      new MaterialPageRoute(
-                        builder: (BuildContext context) => new MedicineDetailScreen(medicine: m),
-                      ),
-                    ),
-                //trailing: IconButton(icon: Icon(Icons.note_add), onPressed: () => _showAddUsage(m)),
+          (medicine) => new ListTile(
+                title: new Text(medicine.name),
+                trailing: _buildTrailingByMode(medicine),
+                onTap: () => _showMedicineDetail(medicine),
               ),
         )
         .toList();
   }
 
-  Widget buildInitialContent() {
+  Future _showMedicineDetail(Medicine medicine) {
+    return Navigator.push(
+      context,
+      new MaterialPageRoute(
+        builder: (BuildContext context) => new MedicineDetailScreen(medicine: medicine),
+      ),
+    );
+  }
+
+  Widget _buildInitialContent() {
     return Center(
       child: GestureDetector(
-        onTap: () => widget.onSearchClick(),
+        onTap: () => widget.viewModel.onSearchClick(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -267,19 +240,15 @@ class MedicineListScreenState extends State<MedicineListScreen> {
     );
   }
 
-  Widget buildLoadingContent() {
-    return new Center(
-      child: CircularProgressIndicator(),
-    );
+  Widget _buildLoadingContent() {
+    return LoadingContent(text: 'กำลังค้นหา');
   }
 
-  Widget buildSuccessContent() {
-    return new ListView(
-      children: buildMedicineItem(),
-    );
+  Widget _buildSuccessContent() {
+    return widget.viewModel.medicines.isNotEmpty ? ListView(children: _buildMedicineItem()) : _buildEmptyContent();
   }
 
-  Widget buildEmptyContent() {
+  Widget _buildEmptyContent() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -295,18 +264,25 @@ class MedicineListScreenState extends State<MedicineListScreen> {
     );
   }
 
-  Widget buildErrorContent() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          new Icon(
-            FontAwesomeIcons.frown,
-            size: 46.0,
-          ),
-          SizedBox(height: 16.0),
-          new Text("ไม่พบยาที่คุณค้นหา")
-        ],
+  Widget _buildErrorContent() {
+    return _buildEmptyContent();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: new AppBar(
+        title: widget.viewModel.isSearching ? _buildSearchBox(context) : new Text('ค้นหาข้อมูลยา'),
+        actions: _buildActions(),
+      ),
+      floatingActionButton: _buildFloatingActionsButton(),
+      floatingActionButtonLocation: widget.viewModel.isListening ? FloatingActionButtonLocation.centerFloat : FloatingActionButtonLocation.endDocked,
+      body: LoadingView(
+        loadingStatus: widget.viewModel.loadingStatus,
+        initialContent: _buildInitialContent(),
+        loadingContent: _buildLoadingContent(),
+        successContent: _buildSuccessContent(),
+        errorContent: _buildErrorContent(),
       ),
     );
   }

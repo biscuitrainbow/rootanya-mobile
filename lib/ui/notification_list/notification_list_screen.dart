@@ -1,36 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/medicine.dart';
+import 'package:medical_app/ui/common/loading_content.dart';
+import 'package:medical_app/ui/common/loading_view.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_screen.dart';
+import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
+import 'package:medical_app/ui/notification_list/notification_list_container.dart';
 
 class NotificationListScreen extends StatelessWidget {
-  final List<Medicine> notifications;
-  final LoadingStatus loadingStatus;
-  final Function(String) onDelete;
+  final NotificationListScreenViewModel viewModel;
 
-  const NotificationListScreen({
-    Key key,
-    this.notifications,
-    this.loadingStatus,
-    this.onDelete,
-  }) : super(key: key);
+  const NotificationListScreen({this.viewModel});
 
-  Widget buildLoadingContent() {
-    return new Center(
-      child: CircularProgressIndicator(),
-    );
+  Widget _buildLoadingContent() {
+    return LoadingContent(text: 'กำลังโหลด');
   }
 
-  Widget buildSuccessContent(BuildContext context) {
-    return new ListView(
-      padding: new EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-      children: buildNotificationGroupItem(context),
-    );
+  Widget _buildSuccessContent(BuildContext context) {
+    return viewModel.notifications.isNotEmpty
+        ? new ListView(
+            padding: new EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+            children: _buildNotificationGroupItem(context),
+          )
+        : _buildEmptyContent();
   }
 
-  Widget buildEmptyContent() {
+  Widget _buildEmptyContent() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +40,7 @@ class NotificationListScreen extends StatelessWidget {
     );
   }
 
-  Widget buildErrorContent() {
+  Widget _buildErrorContent() {
     return Center(
       child: Column(
         children: <Widget>[
@@ -59,10 +53,10 @@ class NotificationListScreen extends StatelessWidget {
     );
   }
 
-  void openMedicineListPage(BuildContext context) {
+  void _showMedicineListPage(BuildContext context) {
     Navigator.of(context).push(
           new MaterialPageRoute(
-            builder: (_) => MedicineListContainer(),
+            builder: (_) => MedicineListContainer(mode: MedicineListMode.addNotification),
           ),
         );
   }
@@ -71,77 +65,74 @@ class NotificationListScreen extends StatelessWidget {
     return value.toString().padLeft(2, '0');
   }
 
-  List<Container> buildNotificationGroupItem(BuildContext context) => notifications
-      ?.map(
-        (m) => Container(
-              margin: EdgeInsets.only(bottom: 12.0),
-              child: new Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  new Text(
-                    m.name,
-                    style: new TextStyle(
-                      fontSize: 17.0,
+  List<Container> _buildNotificationGroupItem(BuildContext context) {
+    return viewModel.notifications
+        ?.map(
+          (Medicine medicine) => Container(
+                margin: EdgeInsets.only(bottom: 12.0),
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    new Text(
+                      medicine.name,
+                      style: new TextStyle(
+                        fontSize: 17.0,
+                      ),
                     ),
-                  ),
-                  new Column(
-                    children: m.notifications
-                        .map(
-                          (n) => Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 12.0),
-                                child: new Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    new Text(
-                                      '${_toTwoDigitString(n.time.hour)}:${_toTwoDigitString(n.time.minute)}',
-                                      style: new TextStyle(
-                                        fontSize: 32.0,
-                                        fontWeight: FontWeight.w300,
-                                        color: Theme.of(context).accentColor,
-                                      ),
-                                    ),
-                                    IconButton(
-                                      icon: Icon(Icons.delete),
-                                      onPressed: () {
-                                        onDelete(n.uuid);
-                                      },
-                                    )
-                                  ],
-                                ),
-                              ),
-                        )
-                        .toList(),
-                  )
-                ],
+                    new Column(
+                      children: medicine.notifications
+                          .map(
+                            (n) => _buildNotificationItem(n, context),
+                          )
+                          .toList(),
+                    )
+                  ],
+                ),
               ),
+        )
+        ?.toList();
+  }
+
+  Padding _buildNotificationItem(dynamic notification, BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          new Text(
+            '${_toTwoDigitString(notification.time.hour)}:${_toTwoDigitString(notification.time.minute)}',
+            style: new TextStyle(
+              fontSize: 32.0,
+              fontWeight: FontWeight.w300,
+              color: Theme.of(context).accentColor,
             ),
-      )
-      ?.toList();
+          ),
+          IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () {
+              viewModel.onDelete(notification.uuid);
+            },
+          )
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    var content;
-
-    switch (loadingStatus) {
-      case LoadingStatus.initial:
-      case LoadingStatus.loading:
-        content = buildLoadingContent();
-        break;
-      case LoadingStatus.success:
-        content = notifications.isNotEmpty ? buildSuccessContent(context) : buildEmptyContent();
-        break;
-      case LoadingStatus.error:
-        content = buildErrorContent();
-        break;
-    }
-
     return Scaffold(
       appBar: new AppBar(
         title: new Text('การแจ้งเตือน'),
       ),
-      body: content,
+      body: LoadingView(
+        loadingStatus: viewModel.loadingStatus,
+        initialContent: _buildSuccessContent(context),
+        loadingContent: _buildLoadingContent(),
+        successContent: _buildSuccessContent(context),
+        errorContent: _buildErrorContent(),
+      ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: () => openMedicineListPage(context),
+        onPressed: () => _showMedicineListPage(context),
         child: new Icon(Icons.alarm_add),
       ),
     );

@@ -12,36 +12,35 @@ class NotificationListContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector(
-      onInit: (Store store) => store.dispatch(new FetchNotificationListAction()),
-      converter: ViewModel.fromStore,
-      builder: (BuildContext context, ViewModel vm) {
+      onInit: (Store store) => store.dispatch(new FetchNotifications()),
+      converter: NotificationListScreenViewModel.fromStore,
+      builder: (BuildContext context, NotificationListScreenViewModel vm) {
         return new NotificationListScreen(
-          notifications: vm.notifications,
-          loadingStatus: vm.loadingStatus,
-          onDelete: vm.onDelete,
+          viewModel: vm,
         );
       },
     );
   }
 }
 
-class ViewModel {
+class NotificationListScreenViewModel {
   final List<Medicine> notifications;
   final LoadingStatus loadingStatus;
   final Function(String) onDelete;
 
-  ViewModel({
+  NotificationListScreenViewModel({
     this.notifications,
     this.loadingStatus,
     this.onDelete,
   });
 
-  static ViewModel fromStore(Store<AppState> store) {
-    return new ViewModel(
-        notifications: store.state.notificationListState.notifications,
-        loadingStatus: store.state.notificationListState.loadingStatus,
-        onDelete: (String notificationId) {
-          store.dispatch(DeleteNotification(notificationId));
-        });
+  static NotificationListScreenViewModel fromStore(Store<AppState> store) {
+    return new NotificationListScreenViewModel(
+      notifications: store.state.notificationListState.notifications,
+      loadingStatus: store.state.notificationListState.loadingStatus,
+      onDelete: (String notificationId) {
+        store.dispatch(DeleteNotification(notificationId));
+      },
+    );
   }
 }

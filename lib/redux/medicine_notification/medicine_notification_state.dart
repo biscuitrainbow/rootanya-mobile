@@ -1,6 +1,5 @@
 import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/data/model/notification.dart';
 
 class MedicineNotificationListState {
   final Medicine medicine;

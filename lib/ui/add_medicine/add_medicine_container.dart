@@ -6,7 +6,6 @@ import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/redux/add_medicine/add_medicine_action.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/ui/add_medicine/add_medicine_screen.dart';
-import 'package:medical_app/ui/medicine_detail/medicine_detail_container.dart';
 import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:redux/redux.dart';

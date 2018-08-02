@@ -4,13 +4,14 @@ import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart
 import 'package:redux/redux.dart';
 
 final nearbyPharmaciesReducer = combineReducers<NearbyPharmacyState>([
-  new TypedReducer<NearbyPharmacyState, ReceivedPharmaciesAction>(
-      receivedNearbyPharmacies)
+  new TypedReducer<NearbyPharmacyState, FetchNearbyPharmaciesSuccess>(
+    _fetchNearbyPharmaciesSuccess,
+  )
 ]);
 
-NearbyPharmacyState receivedNearbyPharmacies(
+NearbyPharmacyState _fetchNearbyPharmaciesSuccess(
   NearbyPharmacyState state,
-  ReceivedPharmaciesAction action,
+  FetchNearbyPharmaciesSuccess action,
 ) {
   return state.copyWith(
     pharmacies: action.pharmacies,

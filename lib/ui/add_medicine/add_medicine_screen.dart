@@ -67,7 +67,6 @@ class AddMedicineScreenState extends State<AddMedicineScreen> {
       notice: warningController.text,
       keeping: keepingController.text,
       forget: forController.text,
-      userId: '1',
     );
 
     widget.onAddMedicine(context, medicine);

@@ -1,8 +1,5 @@
-import 'package:medical_app/data/network/google_map_repository.dart';
 import 'package:medical_app/data/network/notification_repository.dart';
-import 'package:medical_app/data/network/user_repository.dart';
 import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
 import 'package:medical_app/redux/notification_list/notification_list_action.dart';
 import 'package:redux/redux.dart';
 
@@ -10,7 +7,7 @@ List<Middleware<AppState>> createNotificationListMiddleware(
   NotificationRepository notificationRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, FetchNotificationListAction>(
+    new TypedMiddleware<AppState, FetchNotifications>(
       _fetchNotifications(notificationRepository),
     ),
     new TypedMiddleware<AppState, DeleteNotification>(
@@ -23,11 +20,13 @@ Middleware<AppState> _fetchNotifications(
   NotificationRepository notificationRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
-    if (action is FetchNotificationListAction) {
+    if (action is FetchNotifications) {
+      var user = store.state.user;
+
       try {
-        var user = store.state.user;
+        print('fetch notifications');
         var notifications = await notificationRepository.fetchNotifications(user.id);
-        store.dispatch(new ReceivedNotificationListAction(notifications));
+        store.dispatch(new FetchNotificationsSuccess(notifications));
       } catch (error) {
         print(error);
       }
@@ -44,7 +43,7 @@ Middleware<AppState> _deleteNotification(
     if (action is DeleteNotification) {
       try {
         await notificationRepository.deleteNotification(action.notificationId);
-        store.dispatch(FetchNotificationListAction());
+        store.dispatch(FetchNotifications());
       } catch (error) {
         print(error);
       }

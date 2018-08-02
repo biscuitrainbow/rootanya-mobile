@@ -88,7 +88,7 @@ class _AddContactScreenState extends State<AddUsageScreen> {
   List<dynamic> _buildActions() {
     var actions = [
       IconButton(
-        icon: Icon(Icons.save),
+        icon: Icon(Icons.done),
         onPressed: () {
           _save();
         },

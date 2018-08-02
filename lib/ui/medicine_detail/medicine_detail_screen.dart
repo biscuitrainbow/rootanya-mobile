@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/ui/add_edit_usage/add_usage_container.dart';
@@ -8,39 +9,47 @@ class MedicineDetailScreen extends StatelessWidget {
 
   const MedicineDetailScreen({Key key, this.medicine}) : super(key: key);
 
+  Future _showAddHistory(BuildContext context) {
+    return Navigator.push(
+      context,
+      new MaterialPageRoute(
+        builder: (BuildContext context) => new AddUsageContainer(medicine: medicine),
+      ),
+    );
+  }
+
+  Future _showMedicineNotifications(BuildContext context) {
+    return Navigator.push(
+      context,
+      new MaterialPageRoute(
+        builder: (BuildContext context) => new MedicineNotificationListContainer(
+              medicineId: medicine.id,
+              isAddingNotification: false,
+            ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(medicine.name),
         actions: <Widget>[
-          new IconButton(
-            icon: new Icon(
-              Icons.note_add,
-              color: Colors.white,
-            ),
-            onPressed: () => Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                    builder: (BuildContext context) => new AddUsageContainer(medicine: medicine),
-                  ),
-                ),
-          ),
-          new IconButton(
-            icon: new Icon(
-              Icons.add_alert,
-              color: Colors.white,
-            ),
-            onPressed: () => Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                    builder: (BuildContext context) => new MedicineNotificationListContainer(
-                          medicineId: medicine.id,
-                          isAddingNotification: false,
-                        ),
-                  ),
-                ),
-          )
+//          new IconButton(
+//            icon: new Icon(
+//              Icons.note_add,
+//              color: Colors.white,
+//            ),
+//            onPressed: () => _showAddHistory(context),
+//          ),
+//          new IconButton(
+//            icon: new Icon(
+//              Icons.add_alert,
+//              color: Colors.white,
+//            ),
+//            onPressed: () => _showMedicineNotifications(context),
+//          )
         ],
       ),
       body: SingleChildScrollView(

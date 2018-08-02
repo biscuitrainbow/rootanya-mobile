@@ -41,7 +41,7 @@ class ViewModel {
         Navigator.of(context).pop();
         Navigator.of(context).pop();
 
-        Navigator.pushNamed(context, '/usages');
+        //  Navigator.pushNamed(context, '/usages');
       });
 
       store.dispatch(AddUsageAction(medicine, completer));

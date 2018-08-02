@@ -16,19 +16,23 @@ final medicineListReducer = combineReducers<MedicineListState>([
   new TypedReducer<MedicineListState, ToggleSearching>(
     _toggleSearching,
   ),
-  new TypedReducer<MedicineListState, ToggleListening>(
-    _toggleListening,
+  new TypedReducer<MedicineListState, ActivateSpeechRecognizer>(
+    _activateSpeechRecognizer,
+  ),
+  new TypedReducer<MedicineListState, DeactivateSpeechRecognizer>(
+    _deactivateSpeechRecognizer,
   ),
   new TypedReducer<MedicineListState, ResetStateAction>(
     _resetState,
   ),
-  new TypedReducer<MedicineListState, ShowListening>(
-    _showListening,
-  ),
-  new TypedReducer<MedicineListState, HideListening>(
-    hideListening,
-  ),
 ]);
+
+MedicineListState _fetchMedicinesRequested(
+  MedicineListState state,
+  FetchMedicineRequested action,
+) {
+  return state.copyWith(loadingStatus: LoadingStatus.loading);
+}
 
 MedicineListState _fetchMedicinesSuccess(
   MedicineListState state,
@@ -40,42 +44,6 @@ MedicineListState _fetchMedicinesSuccess(
   );
 }
 
-MedicineListState _toggleSearching(
-  MedicineListState state,
-  ToggleSearching action,
-) {
-  return state.copyWith(
-    isSearching: !state.isSearching,
-  );
-}
-
-MedicineListState _toggleListening(
-  MedicineListState state,
-  ToggleListening action,
-) {
-  return state.copyWith(
-    isListening: !state.isListening,
-  );
-}
-
-MedicineListState _showListening(
-  MedicineListState state,
-  ShowListening action,
-) {
-  return state.copyWith(
-    isListening: true,
-  );
-}
-
-MedicineListState hideListening(
-  MedicineListState state,
-  HideListening action,
-) {
-  return state.copyWith(
-    isListening: false,
-  );
-}
-
 MedicineListState _fetchMedicinesError(
   MedicineListState state,
   FetchMedicinesError action,
@@ -83,22 +51,35 @@ MedicineListState _fetchMedicinesError(
   return state.copyWith(loadingStatus: LoadingStatus.error);
 }
 
+MedicineListState _toggleSearching(
+  MedicineListState state,
+  ToggleSearching action,
+) {
+  return state.copyWith(isSearching: !state.isSearching);
+}
+
+MedicineListState _activateSpeechRecognizer(
+  MedicineListState state,
+  ActivateSpeechRecognizer action,
+) {
+  return state.copyWith(isListening: true);
+}
+
+MedicineListState _deactivateSpeechRecognizer(
+  MedicineListState state,
+  DeactivateSpeechRecognizer action,
+) {
+  return state.copyWith(isListening: false);
+}
+
 MedicineListState _resetState(
   MedicineListState state,
   ResetStateAction action,
 ) {
   return state.copyWith(
-    queriedMedicine: [],
     loadingStatus: LoadingStatus.initial,
     isLoading: false,
     isListening: false,
     isSearching: false,
   );
-}
-
-MedicineListState _fetchMedicinesRequested(
-  MedicineListState state,
-  FetchMedicineRequested action,
-) {
-  return state.copyWith(loadingStatus: LoadingStatus.loading);
 }

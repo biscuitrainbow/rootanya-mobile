@@ -1,8 +1,6 @@
 import 'package:medical_app/data/model/pharmacy.dart';
 
 class NearbyPharmacyState {
-  final List<Pharmacy> pharmacies;
-
   NearbyPharmacyState({this.pharmacies});
 
   factory NearbyPharmacyState.initial() {
@@ -10,6 +8,8 @@ class NearbyPharmacyState {
       pharmacies: [],
     );
   }
+
+  final List<Pharmacy> pharmacies;
 
   NearbyPharmacyState copyWith({
     List<Pharmacy> pharmacies,
@@ -20,15 +20,8 @@ class NearbyPharmacyState {
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-          other is NearbyPharmacyState &&
-              runtimeType == other.runtimeType &&
-              pharmacies == other.pharmacies;
+  bool operator ==(Object other) => identical(this, other) || other is NearbyPharmacyState && runtimeType == other.runtimeType && pharmacies == other.pharmacies;
 
   @override
   int get hashCode => pharmacies.hashCode;
-
-
-
 }

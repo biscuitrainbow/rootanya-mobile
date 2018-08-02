@@ -20,7 +20,7 @@ Middleware<AppState> _fetchMedicineByQuery(
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is FetchMedicineByQuery) {
       try {
-        next(ShowLoading());
+        next(FetchMedicineRequested());
         var user = store.state.user;
         var medicines = await medicineRepository.fetchMedicineByQuery(action.query, user.id);
         next(FetchMedicineSuccess(medicines));

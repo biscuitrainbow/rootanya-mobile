@@ -1,14 +1,14 @@
 import 'package:medical_app/data/model/contact.dart';
 
-class FetchContactsAction {
+class FetchContacts {
 }
 
-class RequestContactsAction {}
+class FetchContactsRequested {}
 
-class ReceiveContactsAction {
+class FetchContactSuccess {
   final List<Contact> contracts;
 
-  ReceiveContactsAction(this.contracts);
+  FetchContactSuccess(this.contracts);
 }
 
-class ErrorContractsAction {}
+class FetchContactError {}

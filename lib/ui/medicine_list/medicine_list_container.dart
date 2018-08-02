@@ -1,90 +1,79 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
+import 'package:medical_app/redux/medicine_notification/medicine_notification_action.dart';
+import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_screen.dart';
 import 'package:redux/redux.dart';
 
 class MedicineListContainer extends StatefulWidget {
+  final MedicineListMode mode;
+
+  const MedicineListContainer({this.mode});
+
   @override
   _MedicineListContainerState createState() => _MedicineListContainerState();
 }
 
 class _MedicineListContainerState extends State<MedicineListContainer> {
-  final queryController = new TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return new StoreConnector(
       onDispose: (Store store) => store.dispatch(ResetStateAction()),
-      converter: ViewModel.fromStore,
-      builder: (BuildContext context, ViewModel vm) {
+      converter: MedicineListScreenViewModel.fromStore,
+      builder: (BuildContext context, MedicineListScreenViewModel vm) {
         return new MedicineListScreen(
-          medicines: vm.queriedMedicines,
-          isSearching: vm.isSearching,
-          isListening: vm.isListening,
-          isLoading: vm.isLoading,
-          loadingStatus: vm.loadingStatus,
-          onSearchClick: vm.onSearchClick,
-          onVoiceClicked: vm.onVoiceClicked,
-          onDispose: vm.onDispose,
-          queryController: queryController,
-          onSearchQueryChanged: vm.onQueryChanged,
-          showListening: vm.showListening,
-          hideListening: vm.hideListening,
+          mode: widget.mode,
+          viewModel: vm,
         );
       },
     );
   }
 }
 
-class ViewModel {
+class MedicineListScreenViewModel {
   final List<Medicine> queriedMedicines;
   final List<Medicine> medicines;
 
   final bool isSearching;
   final bool isListening;
-  final bool isLoading;
   final Function onSearchClick;
   final Function(String) onQueryChanged;
   final Function onVoiceClicked;
-  final Function onDispose;
   final LoadingStatus loadingStatus;
-
   final VoidCallback showListening;
   final VoidCallback hideListening;
+  final Function(Time, Medicine) onAddNotification;
 
-  ViewModel({
+  MedicineListScreenViewModel({
     this.medicines,
     this.queriedMedicines,
     this.isSearching,
     this.isListening,
-    this.isLoading,
     this.onSearchClick,
     this.onVoiceClicked,
     this.onQueryChanged,
-    this.onDispose,
     this.loadingStatus,
     this.showListening,
     this.hideListening,
+    this.onAddNotification,
   });
 
-  static ViewModel fromStore(Store<AppState> store) {
-    return new ViewModel(
+  static MedicineListScreenViewModel fromStore(Store<AppState> store) {
+    return new MedicineListScreenViewModel(
       medicines: store.state.medicineListState.medicines,
-      queriedMedicines: store.state.medicineListState.queriedMedicines,
       isSearching: store.state.medicineListState.isSearching,
       isListening: store.state.medicineListState.isListening,
-      isLoading: store.state.medicineListState.isLoading,
       loadingStatus: store.state.medicineListState.loadingStatus,
-      showListening: () => store.dispatch(new ShowListening()),
-      hideListening: () => store.dispatch(new HideListening()),
+      showListening: () => store.dispatch(new ActivateSpeechRecognizer()),
+      hideListening: () => store.dispatch(new DeactivateSpeechRecognizer()),
       onSearchClick: () => store.dispatch(new ToggleSearching()),
-      onVoiceClicked: () => store.dispatch(new ToggleListening()),
       onQueryChanged: (String query) => store.dispatch(new FetchMedicineByQuery(query)),
-      onDispose: () => store.dispatch(new ResetStateAction()),
+      onAddNotification: (Time time, Medicine medicine) => store.dispatch(new AddMedicineNotification(time, medicine)),
     );
   }
 }

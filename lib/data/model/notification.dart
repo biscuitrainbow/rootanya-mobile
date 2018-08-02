@@ -1,6 +1,5 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_app/data/model/medicine.dart';
 
 class Notification {
   final String uuid;

@@ -13,6 +13,7 @@ import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
 import 'package:medical_app/ui/common/no_content.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
+import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
 import 'package:side_header_list_view/side_header_list_view.dart';
 
 class UsageScreen extends StatefulWidget {
@@ -81,9 +82,7 @@ class UsageScreenState extends State<UsageScreen> {
     Navigator.of(context).pop();
 
     Navigator.of(context).push(MaterialPageRoute(
-          builder: (BuildContext context) => EditUsageContainer(
-                usage: usage,
-              ),
+          builder: (BuildContext context) => EditUsageContainer(usage: usage),
         ));
   }
 
@@ -131,7 +130,7 @@ class UsageScreenState extends State<UsageScreen> {
   }
 
   void _showAddUsage(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => MedicineListContainer()));
+    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => MedicineListContainer(mode: MedicineListMode.addUsage)));
   }
 
   _buildInitialContent() {
