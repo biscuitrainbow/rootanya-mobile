@@ -25,6 +25,7 @@ Middleware<AppState> addUsage(
 
         await userRepository.addUsage(user.id, action.medicine.id, action.medicine.volume);
         action.completer.complete(null);
+        store.dispatch(FetchUsagesAction());
       } catch (error) {
         print(error);
       }

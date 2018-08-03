@@ -57,7 +57,7 @@ class UserRepository {
   }
 
   Future<User> register(User user) async {
-    final response = await http.post('${Config.url}/user/register/', body: {
+    final response = await http.post('${Config.url}/user/register', body: {
       'email': user.email,
       'password': user.password,
       'name': user.name,
