@@ -29,9 +29,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController nameController = new TextEditingController(text: '');
   final TextEditingController ageController = new TextEditingController(text: '');
   final TextEditingController weightController = new TextEditingController(text: '');
-  final TextEditingController hieghtController = new TextEditingController(text: '');
+  final TextEditingController heightController = new TextEditingController(text: '');
   final TextEditingController telController = new TextEditingController(text: '');
   final TextEditingController intoleranceController = new TextEditingController(text: '');
+  final TextEditingController diseaseController = new TextEditingController(text: '');
+  final TextEditingController medicineController = new TextEditingController(text: '');
 
   final FocusNode barcodeFocusNode = new FocusNode();
   final FocusNode nameFocusNode = new FocusNode();
@@ -40,6 +42,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final FocusNode heightFocusNode = new FocusNode();
   final FocusNode telFocusNode = new FocusNode();
   final FocusNode intoleranceFocusNode = new FocusNode();
+  final FocusNode diseaseFocusNode = new FocusNode();
+  final FocusNode medicineFocusNode = new FocusNode();
 
   String gender = 'ชาย';
 
@@ -76,6 +80,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             new TextFormField(
               controller: ageController,
               focusNode: ageFocusNode,
+              validator: (val) {
+                if (val.isEmpty) return 'กรุณากรอกชื่อยา';
+                if (num.parse(val) > 100) return 'กรุณากรอกอายุให้ถูกต้อง';
+              },
               decoration: const InputDecoration(
                 hintText: 'อายุ',
                 labelText: 'อายุ',
@@ -92,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(heightFocusNode),
             ),
             new TextFormField(
-              controller: hieghtController,
+              controller: heightController,
               focusNode: heightFocusNode,
               decoration: const InputDecoration(
                 hintText: 'ส่วนสูง',
@@ -126,6 +134,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   );
                 },
               ),
+            ),
+            SizedBox(height: 24.0),
+            new TextFormField(
+              controller: diseaseController,
+              focusNode: diseaseFocusNode,
+              decoration: const InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: 'โรคประจำตัว',
+                labelText: 'โรคประจำตัว',
+              ),
+              onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(medicineFocusNode),
+            ),
+            SizedBox(height: 24.0),
+            new TextFormField(
+              controller: medicineController,
+              focusNode: medicineFocusNode,
+              decoration: const InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: 'ยาที่ใช้ประจำ',
+                labelText: 'ยาที่ใช้ประจำ',
+              ),
+              onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(intoleranceFocusNode),
             ),
             Center(
               child: new RippleButton(
@@ -170,9 +200,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       gender: this.gender,
       age: int.parse(ageController.text),
       weight: int.parse(weightController.text),
-      height: int.parse(hieghtController.text),
+      height: int.parse(heightController.text),
       tel: telController.text,
       intolerance: intoleranceController.text,
+      medicine: medicineController.text,
+      disease: diseaseController.text,
     );
 
     widget.onUpdate(user, scaffoldContext);
@@ -186,7 +218,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     gender = user.gender;
     ageController.text = user.age.toString();
     weightController.text = user.weight.toString();
-    hieghtController.text = user.height.toString();
+    heightController.text = user.height.toString();
+    medicineController.text = user.medicine;
+    diseaseController.text = user.disease;
 
     telController.text = user.tel.toString();
     intoleranceController.text = user.intolerance;
@@ -197,7 +231,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         title: Text('ข้อมูลส่วนตัว'),
       ),

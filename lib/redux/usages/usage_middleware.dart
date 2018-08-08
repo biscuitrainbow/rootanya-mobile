@@ -8,14 +8,14 @@ List<Middleware<AppState>> createUsageMiddleware(
   HistoryRepository historyRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, FetchUsagesAction>(fetchUsages(historyRepository)),
-    new TypedMiddleware<AppState, AddUsageAction>(addUsage(historyRepository)),
-    new TypedMiddleware<AppState, DeleteUsageAction>(deleteUsage(historyRepository)),
-    new TypedMiddleware<AppState, EditUsageAction>(editUsage(historyRepository)),
+    new TypedMiddleware<AppState, AddUsageAction>(_addUsage(historyRepository)),
+    new TypedMiddleware<AppState, FetchUsagesAction>(_fetchUsages(historyRepository)),
+    new TypedMiddleware<AppState, EditUsageAction>(_updateUsage(historyRepository)),
+    new TypedMiddleware<AppState, DeleteUsageAction>(_deleteUsage(historyRepository)),
   ];
 }
 
-Middleware<AppState> addUsage(
+Middleware<AppState> _addUsage(
   HistoryRepository userRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
@@ -34,7 +34,7 @@ Middleware<AppState> addUsage(
   };
 }
 
-Middleware<AppState> fetchUsages(
+Middleware<AppState> _fetchUsages(
   HistoryRepository userRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
@@ -52,7 +52,7 @@ Middleware<AppState> fetchUsages(
   };
 }
 
-Middleware<AppState> editUsage(
+Middleware<AppState> _updateUsage(
   HistoryRepository userRepository,
 ) {
   return (Store store, action, NextDispatcher next) async {
@@ -69,7 +69,7 @@ Middleware<AppState> editUsage(
   };
 }
 
-Middleware<AppState> deleteUsage(
+Middleware<AppState> _deleteUsage(
   HistoryRepository userRepository,
 ) {
   return (Store store, action, NextDispatcher next) async {

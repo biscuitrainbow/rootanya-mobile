@@ -48,6 +48,8 @@ class UserRepository {
       'weight': user.weight.toString(),
       'tel': user.tel,
       'intolerance': user.intolerance,
+      'medicine': user.medicine,
+      'disease': user.disease,
     });
 
     final jsonResponse = json.decode(response.body);
@@ -67,6 +69,8 @@ class UserRepository {
       'weight': user.weight.toString() ?? null,
       'tel': user.tel ?? null,
       'intolerance': user.intolerance ?? null,
+      'medicine': user.medicine ?? null,
+      'disease': user.disease ?? null,
     });
 
     print(response.body);

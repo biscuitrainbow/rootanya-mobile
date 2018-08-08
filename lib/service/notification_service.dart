@@ -29,8 +29,8 @@ class NotificationService {
 
     await localNotificationsPlugin.showDailyAtTime(
       id,
-      'แจ้งเตือนรับประทานยา',
-      '${'รับประทานยา'} ${medicine.name}',
+      'แจ้งเตือนการใช้ยา',
+      '${'ใช้ยา'} ${medicine.name}',
       time,
       platformChannelSpecifics,
     );

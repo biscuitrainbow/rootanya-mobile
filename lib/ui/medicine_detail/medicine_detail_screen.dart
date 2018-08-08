@@ -68,6 +68,14 @@ class MedicineDetailScreen extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: new MedicineDetailItem(title: 'ตัวยาสำคัญ', detail: medicine.ingredient),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: new MedicineDetailItem(title: 'กลุ่มยา', detail: medicine.category),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: new MedicineDetailItem(title: 'รูปแบบยา', detail: medicine.type),
               ),
               Padding(
@@ -81,14 +89,6 @@ class MedicineDetailScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: new MedicineDetailItem(title: 'การเก็บรักษา', detail: medicine.keeping),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: new MedicineDetailItem(title: 'ตัวยาสำคัญ', detail: medicine.ingredient),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: new MedicineDetailItem(title: 'กลุ่มยา', detail: medicine.category),
               ),
             ],
           ),

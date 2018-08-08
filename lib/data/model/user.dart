@@ -9,8 +9,23 @@ class User {
   final int height;
   final String tel;
   final String intolerance;
+  final String disease;
+  final String medicine;
 
-  User({this.email, this.password, this.id, this.name, this.gender, this.age, this.weight, this.height, this.tel, this.intolerance});
+  User({
+    this.email,
+    this.password,
+    this.id,
+    this.name,
+    this.gender,
+    this.age,
+    this.weight,
+    this.height,
+    this.tel,
+    this.intolerance,
+    this.disease,
+    this.medicine,
+  });
 
   static fromJson(dynamic json) {
     return User(
@@ -22,11 +37,15 @@ class User {
       height: json['height'] ?? null,
       tel: json['tel'] ?? '',
       intolerance: json['intolerance'] ?? '',
+      medicine: json['medicine'],
+      disease: json['disease'],
     );
   }
 
   @override
   String toString() {
-    return 'User{email: $email, password: $password, id: $id, name: $name, gender: $gender, age: $age, weight: $weight, height: $height, tel: $tel, intolerance: $intolerance}';
+    return 'User{email: $email, password: $password, id: $id, name: $name, gender: $gender, age: $age, weight: $weight, height: $height, tel: $tel, intolerance: $intolerance, disease: $disease, medicine: $medicine}';
   }
+
+
 }

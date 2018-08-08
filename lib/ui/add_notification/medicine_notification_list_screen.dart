@@ -19,27 +19,6 @@ class MedicineNotificationListScreen extends StatelessWidget {
     this.isAddingNotification,
   }) : super(key: key);
 
-  Widget buildSuccessContent(BuildContext context) {
-    return Container(
-      padding: new EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
-      margin: EdgeInsets.only(bottom: 12.0),
-      child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          new Column(
-            children: medicine.notifications.map((n) => buildNotificationItem(n, context)).toList(),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget buildLoadingContent() {
-    return new Center(
-      child: CircularProgressIndicator(),
-    );
-  }
-
   void _showTimePicker(BuildContext context) async {
     var pickedTime = await showTimePicker(
       context: context,
@@ -52,7 +31,54 @@ class MedicineNotificationListScreen extends StatelessWidget {
     }
   }
 
-  Widget buildEmptyContent() {
+  Widget _buildSuccessContent(BuildContext context) {
+    return Container(
+      padding: new EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+      margin: EdgeInsets.only(bottom: 12.0),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new Column(
+            children: medicine.notifications.map((n) => _buildNotificationItem(n, context)).toList(),
+          )
+        ],
+      ),
+    );
+  }
+
+  Padding _buildNotificationItem(
+    AppNotification.Notification n,
+    BuildContext context,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12.0),
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          new Text(
+            '${_toTwoDigitString(n.time.hour)}:${_toTwoDigitString(n.time.minute)}',
+            style: new TextStyle(
+              fontSize: 32.0,
+              fontWeight: FontWeight.w300,
+              color: Theme.of(context).accentColor,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _toTwoDigitString(int value) {
+    return value.toString().padLeft(2, '0');
+  }
+
+  Widget _buildLoadingContent() {
+    return new Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  Widget _buildEmptyContent() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +94,7 @@ class MedicineNotificationListScreen extends StatelessWidget {
     );
   }
 
-  Widget buildErrorContent() {
+  Widget _buildErrorContent() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -95,13 +121,13 @@ class MedicineNotificationListScreen extends StatelessWidget {
     switch (loadingStatus) {
       case LoadingStatus.initial:
       case LoadingStatus.loading:
-        content = buildLoadingContent();
+        content = _buildLoadingContent();
         break;
       case LoadingStatus.success:
-        content = medicine.notifications.isNotEmpty ? buildSuccessContent(context) : buildEmptyContent();
+        content = medicine.notifications.isNotEmpty ? _buildSuccessContent(context) : _buildEmptyContent();
         break;
       case LoadingStatus.error:
-        content = buildErrorContent();
+        content = _buildErrorContent();
         break;
     }
 
@@ -119,31 +145,5 @@ class MedicineNotificationListScreen extends StatelessWidget {
       ),
       body: content,
     );
-  }
-
-  Padding buildNotificationItem(
-    AppNotification.Notification n,
-    BuildContext context,
-  ) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12.0),
-      child: new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          new Text(
-            '${_toTwoDigitString(n.time.hour)}:${_toTwoDigitString(n.time.minute)}',
-            style: new TextStyle(
-              fontSize: 32.0,
-              fontWeight: FontWeight.w300,
-              color: Theme.of(context).accentColor,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  String _toTwoDigitString(int value) {
-    return value.toString().padLeft(2, '0');
   }
 }

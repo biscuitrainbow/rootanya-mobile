@@ -32,6 +32,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController hieghtController = new TextEditingController(text: '');
   final TextEditingController telController = new TextEditingController(text: '');
   final TextEditingController intoleranceController = new TextEditingController(text: '');
+  final TextEditingController diseaseController = new TextEditingController(text: '');
+  final TextEditingController medicineController = new TextEditingController(text: '');
 
   final FocusNode emailFocusNode = new FocusNode();
   final FocusNode passwordFocusNode = new FocusNode();
@@ -42,7 +44,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final FocusNode heightFocusNode = new FocusNode();
   final FocusNode telFocusNode = new FocusNode();
   final FocusNode intoleranceFocusNode = new FocusNode();
-
+  final FocusNode diseaseFocusNode = new FocusNode();
+  final FocusNode medicineFocusNode = new FocusNode();
   String gender = 'ชาย';
 
   Widget _buildInitialContent() {
@@ -155,6 +158,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 },
               ),
             ),
+            SizedBox(height: 24.0),
+            new TextFormField(
+              controller: diseaseController,
+              focusNode: diseaseFocusNode,
+              decoration: const InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: 'โรคประจำตัว',
+                labelText: 'โรคประจำตัว',
+              ),
+              onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(medicineFocusNode),
+            ),
+            SizedBox(height: 24.0),
+            new TextFormField(
+              controller: medicineController,
+              focusNode: medicineFocusNode,
+              decoration: const InputDecoration(
+                border: const OutlineInputBorder(),
+                hintText: 'ยาที่ใช้ประจำ',
+                labelText: 'ยาที่ใช้ประจำ',
+              ),
+              onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(intoleranceFocusNode),
+            ),
             Center(
               child: new RippleButton(
                 text: "ลงทะเบียน",
@@ -230,6 +255,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       height: int.tryParse(hieghtController.text) ?? null,
       tel: telController.text,
       intolerance: intoleranceController.text,
+      medicine: medicineController.text ?? null,
+      disease: diseaseController.text ?? null,
     );
 
     this.widget.onRegister(user, context);
