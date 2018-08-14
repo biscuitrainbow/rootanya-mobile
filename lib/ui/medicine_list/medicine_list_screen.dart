@@ -13,9 +13,9 @@ import 'package:medical_app/ui/common/loading_view.dart';
 import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
-
+//import 'package:speech_reg/speech_reg.dart';
 import 'package:speech_recognition/speech_recognition.dart';
-import 'package:simple_permissions/simple_permissions.dart';
+//import 'package:simple_permissions/simple_permissions.dart';
 
 class MedicineListScreen extends StatefulWidget {
   const MedicineListScreen({this.viewModel, this.mode});
@@ -48,9 +48,12 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   }
 
   void _startSpeechRecognizer() async {
-    if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
-      SimplePermissions.requestPermission(Permission.RecordAudio);
-    }
+//    if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
+//      SimplePermissions.requestPermission(Permission.RecordAudio);
+//    }
+
+//    var text = await SpeechReg.platformVersion;
+//    print(text);
 
     widget.viewModel.showListening();
     widget.viewModel.onSearchClick();
@@ -140,7 +143,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
             onPressed: () {
               widget.viewModel.hideListening();
               widget.viewModel.onSearchClick();
-              _speech.cancel();
+//              _speech.cancel();
             },
             child: new Icon(
               Icons.mic_off,

@@ -6,7 +6,7 @@ import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
 import 'package:medical_app/redux/store.dart';
 import 'package:medical_app/ui/home/home.dart';
-import 'package:map_view/map_view.dart';
+//import 'package:map_view/map_view.dart';
 import 'package:medical_app/ui/login/login_container.dart';
 import 'package:medical_app/ui/login/login_screen.dart';
 import 'package:medical_app/ui/profile/profile_container.dart';
@@ -18,7 +18,7 @@ import 'package:redux/redux.dart';
 
 void main() async {
   var apiKey = "AIzaSyAXJ48mFl-jDIRzRRsykbI0_TOJxrXIo8w";
-  MapView.setApiKey(apiKey);
+//  MapView.setApiKey(apiKey);
 
   var store = await createStore();
 
