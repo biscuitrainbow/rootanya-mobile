@@ -427,8 +427,6 @@
       <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/url_launcher/example/packages" />
       <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/url_launcher/packages" />
       <excludeFolder url="file://$MODULE_DIR$/ios/Pods/.symlinks/plugins/url_launcher/test/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/test/packages" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />

@@ -8,176 +8,163 @@ import 'package:medical_app/data/model/pharmacy.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:map_view/map_view.dart';
 
-
-class NearbyPharmaciesScreen extends StatelessWidget {
+class NearbyPharmaciesScreen extends StatefulWidget {
   final Function(double lat, double lng) onLocationReady;
   final List<Pharmacy> pharmacies;
 
-  const NearbyPharmaciesScreen({Key key, this.onLocationReady, this.pharmacies})
-      : super(key: key);
+  const NearbyPharmaciesScreen({Key key, this.onLocationReady, this.pharmacies}) : super(key: key);
 
-//  void showMap(
-//    BuildContext context,
-//    double lat,
-//    double lng,
-//  ) async {
-//    try {
-//      MapView mapView = new MapView();
+  @override
+  NearbyPharmaciesScreenState createState() {
+    return new NearbyPharmaciesScreenState();
+  }
+}
+
+class NearbyPharmaciesScreenState extends State<NearbyPharmaciesScreen> {
+  List<ListTile> buildPharmacyItem(List<Pharmacy> pharmacies) {
+    return pharmacies
+        .map(
+          (p) => new ListTile(
+                title: new Text(p.name),
+                //  subtitle: Text(p.isOpening.toString()),
+                onTap: () async {
+                  String googleUrl = 'http://maps.google.com/maps?q= ${p.lat},${p.lng}(${p.name})&iwloc=A&hl=es';
+
+                  var sanitizer = const HtmlEscape();
+
+                  String appleUrl = 'maps://maps.apple.com/?ll=${p.lat},${p.lng}&z=5&q=${p.name}';
+                  appleUrl = Uri.encodeFull(appleUrl);
+                  print(appleUrl);
+                  if (await canLaunch(googleUrl)) {
+                    print('launching com googleUrl');
+                    await launch(googleUrl);
+                  } else if (await canLaunch(appleUrl)) {
+                    print('launching apple url');
+                    await launch(appleUrl);
+                  } else {
+                    // throw 'Could not launch url';
+                  }
+                },
+              ),
+        )
+        .toList();
+  }
+
+  List<MarkerOptions> markers = [];
+
+  libLocation.Location location = libLocation.Location();
+  GoogleMapsPlaces placeApi = new GoogleMapsPlaces("AIzaSyAXJ48mFl-jDIRzRRsykbI0_TOJxrXIo8w");
+
+  double lat = 18.8077942;
+  double lng = 99.005631;
+
+  @override
+  void initState() {
+//    controller = GoogleMapOverlayController.fromSize(
+//      width: 1080.0,
+//      height: 1080.0,
+//    );
 //
-//      mapView.show(
-//        new MapOptions(
-//          title: "แผนที่ร้านขายยา",
-//          mapViewType: MapViewType.normal,
-//          showUserLocation: true,
-//          initialCameraPosition: new CameraPosition(
-//            new Location(
-//              lat,
-//              lng,
-//            ),
-//            14.0,
-//          ),
-//        ),
-//        toolbarActions: [
-//          new ToolbarAction("Close", 1),
-//        ],
-//      );
-//
-//      mapView.onToolbarAction.listen((id) {
-//        if (id == 1) {
-//          mapView.dismiss();
-//        }
-//      });
-//
-//      mapView.onMapReady.listen((_) async {
-//        var mapCenter = await mapView.centerLocation;
-//        var placeApi = new pc.GoogleMapsPlaces("AIzaSyAXJ48mFl-jDIRzRRsykbI0_TOJxrXIo8w");
-//
-//        var placeResponse = await placeApi.searchNearbyWithRadius(
-//          new pc.Location(mapCenter.latitude, mapCenter.longitude),
-//          5000,
-//          type: "pharmacy",
-//        );
-//
+
+//    location.getLocation.then((Map<String, double> currentLocation) {
+//      placeApi.searchNearbyWithRadius(Location(currentLocation["latitude"].toDouble(), currentLocation["longitude"].toDouble()), 5000, type: "pharmacy").then((placeResponse) {
 //        if (placeResponse.hasNoResults) {
 //          print("No results");
 //          return;
 //        }
 //
 //        var pharmacies = placeResponse.results;
-//        var markers = pharmacies
+//        markers = pharmacies
 //            .map(
-//              (r) => new Marker(
-//                    r.id,
-//                    r.name,
-//                    r.geometry.location.lat,
-//                    r.geometry.location.lng,
+//              (pharmacy) => MarkerOptions(
+//                    position: LatLng(
+//                      pharmacy.geometry.location.lat,
+//                      pharmacy.geometry.location.lng,
+//                    ),
 //                  ),
 //            )
 //            .toList();
 //
-//        var currentMarkers = mapView.markers;
-//
-//        var markersToAdd = markers.where((m) => !currentMarkers.contains(m)).toList();
-//        mapView.setMarkers(markersToAdd);
-//        // markersToAdd.forEach((m) => mapView.addMarker(m));
+//        print(markers);
 //      });
-//    } catch (error) {
-//      print(error);
-//    }
-//  }
 
-  List<ListTile> buildPharmacyItem(List<Pharmacy> pharmacies) {
-    return pharmacies
-        .map(
-          (p) =>
-      new ListTile(
-        title: new Text(p.name),
-        //  subtitle: Text(p.isOpening.toString()),
-        onTap: () async {
-          String googleUrl = 'http://maps.google.com/maps?q= ${p.lat},${p
-              .lng}(${p.name})&iwloc=A&hl=es';
+//      lat = currentLocation["latitude"].toDouble();
+//      lng = currentLocation["longitude"].toDouble();
+//    });
 
-          var sanitizer = const HtmlEscape();
-
-          String appleUrl = 'maps://maps.apple.com/?ll=${p.lat},${p
-              .lng}&z=5&q=${p.name}';
-          appleUrl = Uri.encodeFull(appleUrl);
-          print(appleUrl);
-          if (await canLaunch(googleUrl)) {
-            print('launching com googleUrl');
-            await launch(googleUrl);
-          } else if (await canLaunch(appleUrl)) {
-            print('launching apple url');
-            await launch(appleUrl);
-          } else {
-            // throw 'Could not launch url';
-          }
-        },
-      ),
-    )
-        .toList();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final GoogleMapOverlayController controller = GoogleMapOverlayController
-        .fromSize(width: MediaQuery.of(context).size.width,height: MediaQuery.of(context).size.height);
-    final Widget mapWidget = GoogleMapOverlay(controller: controller);
-
-    double lat = 18.8077942;
-    double lng = 99.005631;
-
-    var location = new libLocation.Location();
-    location.getLocation.then((Map<String, double> currentLocation) {
-      lat = currentLocation["latitude"].toDouble();
-      lng = currentLocation["longitude"].toDouble();
-    });
-
+    final GoogleMapOverlayController controller = GoogleMapOverlayController.fromSize(width: MediaQuery.of(context).size.width, height: MediaQuery.of(context).size.height);
     controller.mapController.animateCamera(CameraUpdate.newCameraPosition(
-      const CameraPosition(
-        target: LatLng(18.8077942, 99.005631),
+      CameraPosition(
+        target: LatLng(lat, lng),
         tilt: 30.0,
         zoom: 12.0,
       ),
     ));
-            var placeApi = new GoogleMapsPlaces("AIzaSyAXJ48mFl-jDIRzRRsykbI0_TOJxrXIo8w");
 
-        var placeResponse =  placeApi.searchNearbyWithRadius(
-          new Location(18.8077942, 99.005631),
-          5000,
-          type: "pharmacy",
-        ).then((placeResponse) {
-          if (placeResponse.hasNoResults) {
-            print("No results");
-            return;
-          }
+    final Widget mapWidget = GoogleMapOverlay(controller: controller);
 
-          var pharmacies = placeResponse.results;
-        });
+    location.getLocation.then((Map<String, double> currentLocation) {
+      placeApi.searchNearbyWithRadius(Location(currentLocation["latitude"].toDouble(), currentLocation["longitude"].toDouble()), 5000, type: "pharmacy").then((placeResponse) {
+        if (placeResponse.hasNoResults) {
+          print("No results");
+          return;
+        }
 
+        var pharmacies = placeResponse.results;
+        pharmacies.forEach(
+          (pharmacy) => controller.mapController.addMarker(
+                MarkerOptions(
+                  position: LatLng(
+                    pharmacy.geometry.location.lat,
+                    pharmacy.geometry.location.lng,
+                  ),
+                ),
+              ),
+        );
+      });
+//
+//        markers = pharmacies
+//            .map(
+//              (pharmacy) =>
+//              MarkerOptions(
+//                position: LatLng(
+//                  pharmacy.geometry.location.lat,
+//                  pharmacy.geometry.location.lng,
+//                ),
+//              ),
+//        )
+//            .toList();
 
+      print(currentLocation);
+    });
 
-
-
-
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("ร้านขายยา"),
-      ),
-      floatingActionButton: new FloatingActionButton(
-        //  onPressed: () => showMap(context, lat, lng),
-        onPressed: () => print('show map'),
-        child: new Icon(
-          Icons.map,
-          color: Colors.white,
+    return DefaultTabController(
+      length: 2,
+      child: new Scaffold(
+        appBar: new AppBar(
+          title: new Text("ร้านขายยา"),
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(icon: Icon(Icons.list)),
+              Tab(icon: Icon(Icons.map)),
+            ],
+          ),
         ),
+        body: TabBarView(children: [
+          ListView(
+            children: buildPharmacyItem(widget.pharmacies),
+          ),
+          Center(
+            child: mapWidget,
+          ),
+        ]),
+//      body:
       ),
-      body: Center(
-        child: mapWidget,
-      ),
-//      body: new ListView(
-//        children: buildPharmacyItem(pharmacies),
-//      ),
     );
   }
 }
