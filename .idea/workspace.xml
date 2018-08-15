@@ -5,78 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77c04d7a-7505-43f6-ac30-5debba11dbef" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/exception/http_exception.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/redux/token/token_action.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/redux/token/token_reducers.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/ui/main_screen/main_container.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/ui/main_screen/main_screen.dart" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/util/string_utils.dart" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/lib/config.dart" afterPath="$PROJECT_DIR$/lib/config.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/model/medicine.dart" afterPath="$PROJECT_DIR$/lib/data/model/medicine.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/model/user.dart" afterPath="$PROJECT_DIR$/lib/data/model/user.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/contact_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/contact_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/history_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/history_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/medicine_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/medicine_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/notification_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/notification_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/user_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/user_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/prefs/prefs_repository.dart" afterPath="$PROJECT_DIR$/lib/data/prefs/prefs_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" afterPath="$PROJECT_DIR$/lib/main.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/add_contact/add_contact_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/add_contact/add_contact_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/add_contact/add_contact_reducer.dart" afterPath="$PROJECT_DIR$/lib/redux/add_contact/add_contact_reducer.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/add_contact/add_contact_state.dart" afterPath="$PROJECT_DIR$/lib/redux/add_contact/add_contact_state.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/add_medicine/add_medicine_action.dart" afterPath="$PROJECT_DIR$/lib/redux/add_medicine/add_medicine_action.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/add_medicine/add_medicine_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/add_medicine/add_medicine_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/add_medicine/add_medicine_reducer.dart" afterPath="$PROJECT_DIR$/lib/redux/add_medicine/add_medicine_reducer.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/add_medicine/add_medicine_state.dart" afterPath="$PROJECT_DIR$/lib/redux/add_medicine/add_medicine_state.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/app/app_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/app/app_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/app/app_state.dart" afterPath="$PROJECT_DIR$/lib/redux/app/app_state.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/app/app_state_reducer.dart" afterPath="$PROJECT_DIR$/lib/redux/app/app_state_reducer.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/auth/auth_action.dart" afterPath="$PROJECT_DIR$/lib/redux/auth/auth_action.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/auth/auth_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/auth/auth_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/contract/contact_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/contract/contact_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/contract/contact_reducer.dart" afterPath="$PROJECT_DIR$/lib/redux/contract/contact_reducer.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/contract/contact_state.dart" afterPath="$PROJECT_DIR$/lib/redux/contract/contact_state.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_reducer.dart" afterPath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_reducer.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_state.dart" afterPath="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_state.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/medicine_notification/medicine_notification_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/medicine_notification/medicine_notification_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_action.dart" afterPath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_action.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_reducer.dart" afterPath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_reducer.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_staet.dart" afterPath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_staet.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_action.dart" afterPath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_action.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_reducer.dart" afterPath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_reducer.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_state.dart" afterPath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_state.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/profile/profile_screen_action.dart" afterPath="$PROJECT_DIR$/lib/redux/profile/profile_screen_action.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/profile/profile_screen_reducer.dart" afterPath="$PROJECT_DIR$/lib/redux/profile/profile_screen_reducer.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/profile/profile_screen_state.dart" afterPath="$PROJECT_DIR$/lib/redux/profile/profile_screen_state.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/store.dart" afterPath="$PROJECT_DIR$/lib/redux/store.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/usages/usage_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/usages/usage_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_contact/add_contact_container.dart" afterPath="$PROJECT_DIR$/lib/ui/add_contact/add_contact_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_contact/add_contact_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/add_contact/add_contact_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_contact/edit_contact_container.dart" afterPath="$PROJECT_DIR$/lib/ui/add_contact/edit_contact_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_edit_usage/add_edit_usage_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/add_edit_usage/add_edit_usage_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_medicine/add_medicine_container.dart" afterPath="$PROJECT_DIR$/lib/ui/add_medicine/add_medicine_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/contact/contact__list_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/contact/contact_list_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/contact/contact_list_container.dart" afterPath="$PROJECT_DIR$/lib/ui/contact/contact_list_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/home/home.dart" afterPath="$PROJECT_DIR$/lib/ui/home/home.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/login/login_container.dart" afterPath="$PROJECT_DIR$/lib/ui/login/login_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/login/login_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/login/login_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart" afterPath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/profile/profile_container.dart" afterPath="$PROJECT_DIR$/lib/ui/profile/profile_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/profile/profile_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/profile/profile_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/register/register_container.dart" afterPath="$PROJECT_DIR$/lib/ui/register/register_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/register/register_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/register/register_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/splashscreen/splash_container.dart" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/splashscreen/splash_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/splashscreen/splash_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/usages/usage_container.dart" afterPath="$PROJECT_DIR$/lib/ui/usages/usage_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/usages/usage_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/usages/usage_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -114,14 +44,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contact_repository.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="contact_repository.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/data/network/contact_repository.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
+            <state relative-caret-position="588">
               <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contact_reducer.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/redux/contract/contact_reducer.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/config.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -223,7 +175,6 @@
         <option value="$PROJECT_DIR$/lib/data/network/user_repository.dart" />
         <option value="$PROJECT_DIR$/lib/ui/register/register_container.dart" />
         <option value="$PROJECT_DIR$/lib/redux/auth/auth_middleware.dart" />
-        <option value="$PROJECT_DIR$/lib/config.dart" />
         <option value="$PROJECT_DIR$/lib/redux/medicine_list/medicine_list_middleware.dart" />
         <option value="$PROJECT_DIR$/lib/data/model/medicine.dart" />
         <option value="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" />
@@ -241,6 +192,7 @@
         <option value="$PROJECT_DIR$/lib/redux/contract/contact_middleware.dart" />
         <option value="$PROJECT_DIR$/lib/redux/store.dart" />
         <option value="$PROJECT_DIR$/lib/data/network/contact_repository.dart" />
+        <option value="$PROJECT_DIR$/lib/config.dart" />
       </list>
     </option>
   </component>
@@ -358,7 +310,7 @@
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="SearchEverywhereHistoryKey" value="store&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;usagere&#9;null&#9;null&#10;contra&#9;null&#9;null&#10;usagemid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/usages/usage_middleware.dart&#10;userre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/user_repository.dart&#10;notre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/notification_repository.dart&#10;histor&#9;null&#9;null&#10;auth&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;notif&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/notification_list/notification_list_middleware.dart&#10;notiflistcon&#9;null&#9;null&#10;notis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/notification_list/notification_list_screen.dart&#10;notifscre&#9;null&#9;null&#10;medisc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medire&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/medicine_repository.dart&#10;notifirep&#9;null&#9;null&#10;add_mediscre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;addmemid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_middleware.dart&#10;addmecon&#9;null&#9;null&#10;addmesc&#9;null&#9;null&#10;add_medicin_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_state.dart&#10;mediscre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/medicine_list/medicine_list_middleware.dart&#10;usere&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/user.dart&#10;registercon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/register/register_container.dart&#10;registcon&#9;null&#9;null&#10;authmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;profi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;registerscre&#9;null&#9;null&#10;regist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/register/register_screen_reducer.dart&#10;profsc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;main&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_screen.dart&#10;store.da&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;aut&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;appmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;token&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;app_re&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;autmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;redu&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;profico&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;profioc&#9;null&#9;null&#10;tokenr&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;splash&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/splashscreen/splash_screen.dart&#10;main_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_container.dart&#10;proficon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;profis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;appmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;app_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;app_s&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;home&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/home/home.dart&#10;homes&#9;null&#9;null" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534366805188" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534367184293" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
   </component>
@@ -731,9 +683,9 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31926408" sideWeight="0.49307036" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31926408" sideWeight="0.49307036" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31709957" sideWeight="0.495116" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31709957" sideWeight="0.495116" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18656716" sideWeight="0.4942717" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -793,14 +745,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/ui/login/login_container.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/rendering/flex.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -991,14 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1462">
           <caret line="151" column="13" lean-forward="true" selection-start-line="151" selection-start-column="13" selection-end-line="151" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/config.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1213,11 +1149,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/data/network/contact_repository.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
+        <state relative-caret-position="588">
           <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/contract/contact_reducer.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/config.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
