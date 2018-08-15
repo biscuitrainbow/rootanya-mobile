@@ -29,7 +29,7 @@ class NotificationRepository {
     int id,
   ) async {
     final response = await http.post(
-      '${Config.url}/notification/user/',
+      '${Config.url}/notification/user',
       body: {
         'uuid': id.toString(),
         'at': at,
@@ -40,7 +40,9 @@ class NotificationRepository {
         HttpHeaders.authorizationHeader: createBearer(token),
       },
     );
-    }
+
+    print(response.body);
+  }
 
   Future<Null> deleteNotification(String notificationId, String token) async {
     final response = await http.delete(
