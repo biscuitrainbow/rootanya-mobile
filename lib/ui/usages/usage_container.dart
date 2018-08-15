@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/contract/contact_action.dart';
 import 'package:medical_app/redux/usages/usage_action.dart';
 import 'package:medical_app/redux/usages/usage_state.dart';
 import 'package:medical_app/ui/usages/usage_screen.dart';

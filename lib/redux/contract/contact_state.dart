@@ -1,27 +1,27 @@
 import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/contact.dart';
 
-class ContactsState {
+class ContactScreenState {
   final List<Contact> contacts;
   final LoadingStatus loadingStatus;
 
-  ContactsState({
+  ContactScreenState({
     this.contacts,
     this.loadingStatus,
   });
 
-  factory ContactsState.initial() {
-    return ContactsState(
+  factory ContactScreenState.initial() {
+    return ContactScreenState(
       contacts: [],
       loadingStatus: LoadingStatus.loading,
     );
   }
 
-  ContactsState copyWith({
+  ContactScreenState copyWith({
     List<Contact> contracts,
     LoadingStatus loadingStatus,
   }) {
-    return ContactsState(
+    return ContactScreenState(
       contacts: contracts ?? this.contacts,
       loadingStatus: loadingStatus ?? this.loadingStatus,
     );

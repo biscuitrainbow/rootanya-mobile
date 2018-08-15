@@ -34,7 +34,7 @@ class EditContactContainer extends StatelessWidget {
 }
 
 class ViewModel {
-  final AddContactState addContactState;
+  final AddContactScreenState addContactState;
   final Function(Contact, BuildContext) onSave;
   final Function(Contact, BuildContext) onDelete;
 

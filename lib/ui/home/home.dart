@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
-import 'package:medical_app/ui/add_medicine/add_medicine_screen.dart';
-import 'package:medical_app/ui/barcode_scanner/barcode_scanner.dart';
 import 'package:medical_app/ui/contact/contact_list_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
 import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_container.dart';
-import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_screen.dart';
 import 'package:medical_app/ui/notification_list/notification_list_container.dart';
 import 'package:medical_app/ui/usages/usage_container.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatelessWidget {
+  static final String route = '/home';
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

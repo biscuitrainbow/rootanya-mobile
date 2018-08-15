@@ -1,65 +1,88 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:medical_app/config.dart';
-import 'package:medical_app/data/model/contact.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/data/model/usage.dart';
 import 'package:medical_app/data/model/user.dart';
+import 'package:medical_app/exception/http_exception.dart';
+import 'package:medical_app/util/string_utils.dart';
 
 class UserRepository {
   Future<User> login(String email, String password) async {
-    final response = await http.post('${Config.url}/user/login', body: {
-      'email': email,
-      'password': password,
-    });
+    final response = await http.post(
+      '${Config.url}/user/login',
+      headers: {
+        HttpHeaders.acceptHeader: acceptApplicationJson,
+      },
+      body: {
+        'email': email,
+        'password': password,
+      },
+    );
+
+    if (response.statusCode != 200) {
+      throw UnauthorizedException('อีเมลล์หรือรหัสผ่านไม่ถูกต้อง');
+    }
 
     final jsonResponse = json.decode(response.body);
+    final user = User.fromJson(jsonResponse);
 
-    var user = User.fromJson(jsonResponse['data']);
     return user;
   }
 
   Future<Null> logout() async {
     final response = await http.post('${Config.url}/user/logout');
-    final jsonResponse = json.decode(response.body);
-
-    print('logout');
   }
 
-  Future<User> loginById(String id) async {
-    final response = await http.post('${Config.url}/user/login/$id', body: {
-      'id': id,
-    });
+  Future<User> fetchUser(String token) async {
+    final response = await http.get(
+      '${Config.url}/user',
+      headers: {
+        HttpHeaders.acceptHeader: acceptApplicationJson,
+        HttpHeaders.authorizationHeader: createBearer(token),
+      },
+    );
 
     final jsonResponse = json.decode(response.body);
+    final user = User.fromJson(jsonResponse);
 
-    var user = User.fromJson(jsonResponse['data']);
     return user;
   }
 
-  Future<User> update(User user) async {
-    final response = await http.post('${Config.url}/user/update/${user.id}', body: {
-      'name': user.name,
-      'gender': user.gender,
-      'age': user.age.toString(),
-      'height': user.height.toString(),
-      'weight': user.weight.toString(),
-      'tel': user.tel,
-      'intolerance': user.intolerance,
-      'medicine': user.medicine,
-      'disease': user.disease,
-    });
+  Future<Null> update(User user, String token) async {
+    final dio = new Dio();
 
-    final jsonResponse = json.decode(response.body);
-    var updatedUser = User.fromJson(jsonResponse);
+    final response = await dio.put(
+      '${Config.url}/user',
+      options: new Options(
+        contentType: ContentType.parse("application/x-www-form-urlencoded"),
+        headers: {
+          HttpHeaders.acceptHeader: acceptApplicationJson,
+          HttpHeaders.authorizationHeader: createBearer(token),
+        },
+      ),
+      data: {
+        'name': user.name,
+        'gender': user.gender,
+        'age': user.age.toString(),
+        'height': user.height.toString(),
+        'weight': user.weight.toString(),
+        'tel': user.tel,
+        'intolerance': user.intolerance,
+        'medicine': user.medicine,
+        'disease': user.disease,
+      },
+    );
 
-    return updatedUser;
+    print(response.request.data);
   }
 
   Future<User> register(User user) async {
-    final response = await http.post('${Config.url}/user/register', body: {
+    final response = await http.post('${Config.url}/user/register', headers: {
+      HttpHeaders.acceptHeader: acceptApplicationJson,
+    }, body: {
       'email': user.email,
       'password': user.password,
       'name': user.name,
@@ -73,7 +96,9 @@ class UserRepository {
       'disease': user.disease ?? null,
     });
 
-    print(response.body);
+    if (response.statusCode == 422) {
+      throw UnProcessableEntity('คุณกรอกข้อมูลไม่ถูกต้อง');
+    }
 
     final jsonResponse = json.decode(response.body);
     var registeredUser = User.fromJson(jsonResponse);

@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/user.dart';
 import 'package:medical_app/redux/register/register_screen_state.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
@@ -24,12 +21,23 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController emailController = new TextEditingController(text: '');
-  final TextEditingController passwordController = new TextEditingController(text: '');
-  final TextEditingController nameController = new TextEditingController(text: '');
-  final TextEditingController ageController = new TextEditingController(text: '');
-  final TextEditingController weightController = new TextEditingController(text: '');
-  final TextEditingController hieghtController = new TextEditingController(text: '');
+//  final TextEditingController emailController = new TextEditingController(text: '');
+//  final TextEditingController passwordController = new TextEditingController(text: '');
+//  final TextEditingController nameController = new TextEditingController(text: '');
+//  final TextEditingController ageController = new TextEditingController(text: '');
+//  final TextEditingController weightController = new TextEditingController(text: '');
+//  final TextEditingController hieghtController = new TextEditingController(text: '');
+//  final TextEditingController telController = new TextEditingController(text: '');
+//  final TextEditingController intoleranceController = new TextEditingController(text: '');
+//  final TextEditingController diseaseController = new TextEditingController(text: '');
+//  final TextEditingController medicineController = new TextEditingController(text: '');
+
+  final TextEditingController emailController = new TextEditingController(text: 'natthapon@mail.com');
+  final TextEditingController passwordController = new TextEditingController(text: '123456');
+  final TextEditingController nameController = new TextEditingController(text: 'Natthapon');
+  final TextEditingController ageController = new TextEditingController(text: '25');
+  final TextEditingController weightController = new TextEditingController(text: '55');
+  final TextEditingController hieghtController = new TextEditingController(text: '175');
   final TextEditingController telController = new TextEditingController(text: '');
   final TextEditingController intoleranceController = new TextEditingController(text: '');
   final TextEditingController diseaseController = new TextEditingController(text: '');
@@ -48,7 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final FocusNode medicineFocusNode = new FocusNode();
   String gender = 'ชาย';
 
-  Widget _buildInitialContent() {
+  Widget _buildInitialContent(BuildContext scaffoldContext) {
     return SingleChildScrollView(
       child: Form(
         key: _formKey,
@@ -186,7 +194,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 backgroundColor: Theme.of(context).accentColor,
                 textColor: Colors.black,
                 highlightColor: Colors.grey.shade200,
-                onPress: _register,
+                onPress: () => _register(scaffoldContext),
               ),
             ),
             SizedBox(height: 24.0)
@@ -196,18 +204,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  Widget _buildSuccessContent() {
-    return _buildInitialContent();
-  }
-
   Widget _buildLoadingContent() {
     return LoadingContent(
       text: 'กำลังลงทะเบียน',
     );
-  }
-
-  Widget _buildErrorContent() {
-    return _buildInitialContent();
   }
 
   void _onGenderChanged(String gender) {
@@ -230,18 +230,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       body: Container(
         padding: EdgeInsets.all(16.0),
-        child: LoadingView(
-          loadingStatus: widget.registerScreenState.loadingStatus,
-          loadingContent: _buildLoadingContent(),
-          initialContent: _buildInitialContent(),
-          successContent: _buildSuccessContent(),
-          errorContent: _buildErrorContent(),
-        ),
+        child: Builder(builder: (BuildContext scaffoldContext) {
+          return LoadingView(
+            loadingStatus: widget.registerScreenState.loadingStatus,
+            loadingContent: _buildLoadingContent(),
+            initialContent: _buildInitialContent(scaffoldContext),
+            successContent: _buildInitialContent(scaffoldContext),
+            errorContent: _buildInitialContent(scaffoldContext),
+          );
+        }),
       ),
     );
   }
 
-  _register() {
+  _register(BuildContext scaffoldContext) {
     if (!_formKey.currentState.validate()) {
       return;
     }
@@ -259,6 +261,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       disease: diseaseController.text ?? null,
     );
 
-    this.widget.onRegister(user, context);
+    this.widget.onRegister(user, scaffoldContext);
   }
 }

@@ -12,3 +12,11 @@ class FetchNearbyPharmaciesSuccess{
 
   FetchNearbyPharmaciesSuccess(this.pharmacies);
 }
+
+class ShowNearbyPharmaciesLoading {
+
+}
+
+class HideNearbyPharmaciesLoading {
+
+}

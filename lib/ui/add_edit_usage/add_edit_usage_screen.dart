@@ -9,7 +9,7 @@ import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
 
 class AddUsageScreen extends StatefulWidget {
-  final AddContactState addUsageState;
+  final AddContactScreenState addUsageState;
   final Function(Medicine, BuildContext) onSave;
   final Function(Contact, BuildContext) onDelete;
 

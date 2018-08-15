@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:medical_app/config.dart';
 import 'package:medical_app/data/model/medicine.dart';
+import 'package:medical_app/util/string_utils.dart';
 
 class MedicineRepository {
   Future<List<Medicine>> fetchAllMedicines(String userId) async {
@@ -15,18 +17,29 @@ class MedicineRepository {
     return medicines;
   }
 
-  Future<List<Medicine>> fetchMedicineByQuery(String query,String userId) async {
-    final response = await http.get('${Config.url}/medicine/search/$userId/query?q=$query');
-    print(response.body);
-    final jsonResponse = json.decode(response.body);
+  Future<List<Medicine>> fetchMedicineByQuery(String query, String token) async {
+    final response = await http.get(
+      '${Config.url}/medicine/user?q=$query',
+      headers: {
+        HttpHeaders.acceptHeader: acceptApplicationJson,
+        HttpHeaders.authorizationHeader: createBearer(token),
+      },
+    );
 
-    var medicines = Medicine.fromJsonArray(jsonResponse);
+    final jsonResponse = json.decode(response.body);
+    final medicines = Medicine.fromJsonArray(jsonResponse);
+
     return medicines;
   }
 
-  Future<Null> addMedicine(Medicine medicine, String userId) async {
-    try {
-      final response = await http.post('${Config.url}/medicine/user/$userId', body: {
+  Future<Null> addMedicine(Medicine medicine, String token) async {
+    final response = await http.post(
+      '${Config.url}/medicine/user',
+      headers: {
+        HttpHeaders.acceptHeader: acceptApplicationJson,
+        HttpHeaders.authorizationHeader: createBearer(token),
+      },
+      body: {
         'barcode': medicine.barcode,
         'name': medicine.name,
         'ingredient': medicine.ingredient,
@@ -37,12 +50,9 @@ class MedicineRepository {
         'notice': medicine.notice,
         'keeping': medicine.keeping,
         'forget': medicine.forget,
-        'user_id': userId,
-      });
+      },
+    );
 
-      print(response.request);
-    } catch (error) {
-      print(error.toString());
-    }
+    print(response.body);
   }
 }

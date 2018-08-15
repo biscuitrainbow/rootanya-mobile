@@ -3,25 +3,25 @@ import 'package:medical_app/redux/add_medicine/add_medicine_action.dart';
 import 'package:medical_app/redux/add_medicine/add_medicine_state.dart';
 import 'package:redux/redux.dart';
 
-final addMedicineReducer = combineReducers<AddMedicineState>([
-  new TypedReducer<AddMedicineState, RequestAddMedicineAction>(
+final addMedicineReducer = combineReducers<AddMedicineScreenState>([
+  new TypedReducer<AddMedicineScreenState, ShowAddMedicineLoadingAction>(
     showLoading,
   ),
-  new TypedReducer<AddMedicineState, SuccessAddMedicineAction>(
+  new TypedReducer<AddMedicineScreenState, HideAddMedicineLoadingAction>(
     successLoading,
   )
 ]);
 
-AddMedicineState showLoading(
-  AddMedicineState state,
-  RequestAddMedicineAction action,
+AddMedicineScreenState showLoading(
+  AddMedicineScreenState state,
+  ShowAddMedicineLoadingAction action,
 ) {
   return state.copyWith(loadingStatus: LoadingStatus.loading);
 }
 
-AddMedicineState successLoading(
-  AddMedicineState state,
-  SuccessAddMedicineAction action,
+AddMedicineScreenState successLoading(
+  AddMedicineScreenState state,
+  HideAddMedicineLoadingAction action,
 ) {
   return state.copyWith(loadingStatus: LoadingStatus.success);
 }

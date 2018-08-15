@@ -2,11 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_app/data/model/contact.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/redux/usages/usage_state.dart';
-import 'package:medical_app/ui/add_contact/add_contact_container.dart';
-import 'package:medical_app/ui/add_contact/edit_contact_container.dart';
 import 'package:medical_app/ui/add_edit_usage/edit_usage_container.dart';
 import 'package:medical_app/ui/common/confirm_dialog.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
@@ -82,8 +79,8 @@ class UsageScreenState extends State<UsageScreen> {
     Navigator.of(context).pop();
 
     Navigator.of(context).push(MaterialPageRoute(
-          builder: (BuildContext context) => EditUsageContainer(usage: usage),
-        ));
+      builder: (BuildContext context) => EditUsageContainer(usage: usage),
+    ));
   }
 
   Widget _buildConfirmDialog(Medicine usage, BuildContext scaffoldContext) {

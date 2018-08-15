@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:medical_app/exception/http_exception.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/auth/auth_action.dart';
 import 'package:medical_app/redux/login/login_state.dart';
@@ -39,6 +40,10 @@ class ViewModel {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
           Navigator.of(context).pushReplacementNamed('/home');
+        }).catchError((error) {
+          if (error is UnauthorizedException) {
+            Scaffold.of(context).showSnackBar(SnackBar(content: Text(error.message)));
+          }
         });
 
         store.dispatch(LoginAction(email, password, completer));

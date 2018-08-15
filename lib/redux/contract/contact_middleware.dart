@@ -18,11 +18,11 @@ Middleware<AppState> _fetchContacts(
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is FetchContacts) {
-      var user = store.state.user;
+      next(FetchContactsRequested());
 
       try {
-        next(FetchContactsRequested());
-        var contacts = await contractRepository.fetchContact(user.id);
+        final token = store.state.token;
+        final contacts = await contractRepository.fetchContact(token);
         next(FetchContactSuccess(contacts));
       } catch (error) {
         print(error);

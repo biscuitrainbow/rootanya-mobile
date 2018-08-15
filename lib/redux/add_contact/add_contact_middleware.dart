@@ -1,5 +1,4 @@
 import 'package:medical_app/data/network/contact_repository.dart';
-import 'package:medical_app/data/network/user_repository.dart';
 import 'package:medical_app/redux/add_contact/contact_action.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/contract/contact_action.dart';
@@ -20,16 +19,15 @@ Middleware<AppState> addContact(
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddContactAction) {
+      next(RequestAddContactAction());
+
       try {
-        var user = store.state.user;
-
-        next(RequestAddContactAction());
-
-        await contractRepository.addContact(action.contact, user.id);
+        final token = store.state.token;
+        await contractRepository.addContact(action.contact, token);
         action.completer.complete(null);
 
         next(SuccessAddContactAction());
-        store.dispatch(FetchContacts());
+        next(FetchContacts());
       } catch (error) {
         next(ErrorAddContactAction());
         print(error);
@@ -45,16 +43,18 @@ Middleware<AppState> editContact(
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is EditContactAction) {
-      try {
-        next(RequestEditContactAction());
+      next(RequestEditContactAction());
 
-        await contractRepository.updateContact(action.contact);
-        action.completer.complete(null);
+      try {
+        final token = store.state.token;
+        await contractRepository.updateContact(token, action.contact);
 
         next(SuccessEditContactAction());
-        store.dispatch(FetchContacts());
+        next(FetchContacts());
+
+        action.completer.complete(null);
       } catch (error) {
-        next(ErrorEditContactAction());
+        action.completer.completeError(error);
       }
 
       next(action);
@@ -67,14 +67,15 @@ Middleware<AppState> deleteContact(
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is DeleteContactAction) {
-      print('delete');
-
       try {
-        await contractRepository.deleteContact(action.contact.id);
-        action.completer.complete(null);
+        final token = store.state.token;
+        await contractRepository.deleteContact(token, action.contact.id);
 
         store.dispatch(FetchContacts());
-      } catch (error) {}
+        action.completer.complete(null);
+      } catch (error) {
+        action.completer.completeError(error);
+      }
       next(action);
     }
   };

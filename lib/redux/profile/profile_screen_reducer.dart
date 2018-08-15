@@ -1,27 +1,27 @@
 import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/redux/register/register_screen_action.dart';
-import 'package:medical_app/redux/register/register_screen_state.dart';
+import 'package:medical_app/redux/profile/profile_screen_action.dart';
+import 'package:medical_app/redux/profile/profile_screen_state.dart';
 import 'package:redux/redux.dart';
 
-final registerReducers = combineReducers<RegisterScreenState>([
-  new TypedReducer<RegisterScreenState, ShowRegisterLoading>(
+final profileReducers = combineReducers<ProfileScreenState>([
+  new TypedReducer<ProfileScreenState, ShowProfileLoading>(
     _showRegisterLoading,
   ),
-  new TypedReducer<RegisterScreenState, HideRegisterLoading>(
+  new TypedReducer<ProfileScreenState, HideProfileLoading>(
     _hideLoadingStatus,
   )
 ]);
 
-RegisterScreenState _showRegisterLoading(
-  RegisterScreenState state,
-  ShowRegisterLoading action,
+ProfileScreenState _showRegisterLoading(
+  ProfileScreenState state,
+  ShowProfileLoading action,
 ) {
   return state.copyWith(loadingStatus: LoadingStatus.loading);
 }
 
-RegisterScreenState _hideLoadingStatus(
-  RegisterScreenState state,
-  HideRegisterLoading action,
+ProfileScreenState _hideLoadingStatus(
+  ProfileScreenState state,
+  HideProfileLoading action,
 ) {
   return state.copyWith(loadingStatus: LoadingStatus.initial);
 }

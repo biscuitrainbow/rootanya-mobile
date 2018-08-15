@@ -1,19 +1,19 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/user.dart';
+import 'package:medical_app/redux/profile/profile_screen_state.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
 import 'package:medical_app/ui/common/ripple_button.dart';
 
 class ProfileScreen extends StatefulWidget {
   final User user;
+  final ProfileScreenState state;
   final Function(User, BuildContext) onUpdate;
   final Function(BuildContext context) onLogout;
 
   ProfileScreen({
     this.user,
+    this.state,
     this.onUpdate,
     this.onLogout,
   });
@@ -93,6 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             new TextFormField(
               controller: weightController,
               focusNode: weightFocusNode,
+              validator: (val) => val.isEmpty ? 'กรุณากรอกน้ำหนัก' : null,
               decoration: const InputDecoration(
                 hintText: 'น้ำหนัก',
                 labelText: 'น้ำหนัก',
@@ -102,6 +103,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             new TextFormField(
               controller: heightController,
               focusNode: heightFocusNode,
+              validator: (val) => val.isEmpty ? 'กรุณากรอกส่วนสูง' : null,
               decoration: const InputDecoration(
                 hintText: 'ส่วนสูง',
                 labelText: 'ส่วนสูง',
@@ -245,7 +247,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: Container(
         padding: EdgeInsets.all(16.0),
         child: LoadingView(
-          loadingStatus: LoadingStatus.initial,
+          loadingStatus: widget.state.loadingStatus,
           loadingContent: _buildLoadingContent(),
           initialContent: _buildInitialContent(),
           successContent: _buildSuccessContent(),

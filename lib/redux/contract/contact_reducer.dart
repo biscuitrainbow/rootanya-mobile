@@ -3,14 +3,14 @@ import 'package:medical_app/redux/contract/contact_action.dart';
 import 'package:medical_app/redux/contract/contact_state.dart';
 import 'package:redux/redux.dart';
 
-final contractsReducers = combineReducers<ContactsState>([
-  new TypedReducer<ContactsState, FetchContactsRequested>(_fetchContactRequested),
-  new TypedReducer<ContactsState, FetchContactSuccess>(_fetchContactSuccess),
-  new TypedReducer<ContactsState, FetchContactError>(_fetchContactError),
+final contractsReducers = combineReducers<ContactScreenState>([
+  new TypedReducer<ContactScreenState, FetchContactsRequested>(_fetchContactRequested),
+  new TypedReducer<ContactScreenState, FetchContactSuccess>(_fetchContactSuccess),
+  new TypedReducer<ContactScreenState, FetchContactError>(_fetchContactError),
 ]);
 
-ContactsState _fetchContactRequested(
-  ContactsState state,
+ContactScreenState _fetchContactRequested(
+  ContactScreenState state,
   FetchContactsRequested action,
 ) {
   return state.copyWith(
@@ -18,8 +18,8 @@ ContactsState _fetchContactRequested(
   );
 }
 
-ContactsState _fetchContactSuccess(
-  ContactsState state,
+ContactScreenState _fetchContactSuccess(
+  ContactScreenState state,
   FetchContactSuccess action,
 ) {
   return state.copyWith(
@@ -28,8 +28,8 @@ ContactsState _fetchContactSuccess(
   );
 }
 
-ContactsState _fetchContactError(
-  ContactsState state,
+ContactScreenState _fetchContactError(
+  ContactScreenState state,
   FetchContactError action,
 ) {
   return state.copyWith(

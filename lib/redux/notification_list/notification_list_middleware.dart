@@ -21,12 +21,12 @@ Middleware<AppState> _fetchNotifications(
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is FetchNotifications) {
-      var user = store.state.user;
+      next(ShowNotificationLoadingAction());
+      final token = store.state.token;
 
       try {
-        print('fetch notifications');
-        var notifications = await notificationRepository.fetchNotifications(user.id);
-        store.dispatch(new FetchNotificationsSuccess(notifications));
+        final medicinesWithNotifications = await notificationRepository.fetchMedicineWithNotifications(token);
+        store.dispatch(new FetchNotificationsSuccess(medicinesWithNotifications));
       } catch (error) {
         print(error);
       }
@@ -41,8 +41,10 @@ Middleware<AppState> _deleteNotification(
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is DeleteNotification) {
+      final token = store.state.token;
+
       try {
-        await notificationRepository.deleteNotification(action.notificationId);
+        await notificationRepository.deleteNotification(action.notificationId, token);
         store.dispatch(FetchNotifications());
       } catch (error) {
         print(error);

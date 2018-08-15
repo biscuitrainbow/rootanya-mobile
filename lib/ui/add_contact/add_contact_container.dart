@@ -28,7 +28,7 @@ class AddContactContainer extends StatelessWidget {
 }
 
 class ViewModel {
-  final AddContactState addContactState;
+  final AddContactScreenState addContactState;
   final Function(Contact, BuildContext) onSave;
 
   ViewModel({

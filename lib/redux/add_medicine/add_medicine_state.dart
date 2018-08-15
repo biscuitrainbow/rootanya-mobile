@@ -1,20 +1,20 @@
 import 'package:medical_app/data/loading_status.dart';
 
-class AddMedicineState {
+class AddMedicineScreenState {
   final LoadingStatus loadingState;
 
-  AddMedicineState({this.loadingState});
+  AddMedicineScreenState({this.loadingState});
 
-  factory AddMedicineState.initial() {
-    return new AddMedicineState(
+  factory AddMedicineScreenState.initial() {
+    return new AddMedicineScreenState(
       loadingState: LoadingStatus.initial,
     );
   }
 
-  AddMedicineState copyWith({
+  AddMedicineScreenState copyWith({
     LoadingStatus loadingStatus,
   }) {
-    return new AddMedicineState(
+    return new AddMedicineScreenState(
       loadingState: loadingStatus ?? this.loadingState,
     );
   }

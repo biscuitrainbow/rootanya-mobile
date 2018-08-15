@@ -8,7 +8,7 @@ import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
 
 class AddContactScreen extends StatefulWidget {
-  final AddContactState addContactState;
+  final AddContactScreenState addContactState;
   final Function(Contact, BuildContext) onSave;
   final Function(Contact, BuildContext) onDelete;
 

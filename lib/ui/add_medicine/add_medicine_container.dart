@@ -67,7 +67,7 @@ class ViewModel {
           ));
         });
       },
-      loadingStatus: store.state.addMedicinState.loadingState,
+      loadingStatus: store.state.addMedicineState.loadingState,
     );
   }
 }

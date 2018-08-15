@@ -1,27 +1,27 @@
 import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/medicine.dart';
 
-class NotificationListState {
+class NotificationListScreenState {
   final List<Medicine> notifications;
   final LoadingStatus loadingStatus;
 
-  NotificationListState({
+  NotificationListScreenState({
     this.notifications,
     this.loadingStatus,
   });
 
-  factory NotificationListState.initial() {
-    return new NotificationListState(
+  factory NotificationListScreenState.initial() {
+    return new NotificationListScreenState(
       notifications: [],
       loadingStatus: LoadingStatus.loading,
     );
   }
 
-  NotificationListState copyWith({
+  NotificationListScreenState copyWith({
     List<Medicine> notifications,
     LoadingStatus loadingStatus,
   }) {
-    return new NotificationListState(
+    return new NotificationListScreenState(
       notifications: notifications ?? this.notifications,
       loadingStatus: loadingStatus ?? this.loadingStatus,
     );

@@ -10,6 +10,6 @@ class AddMedicineAction {
   });
 }
 
-class RequestAddMedicineAction {}
+class ShowAddMedicineLoadingAction {}
 
-class SuccessAddMedicineAction {}
+class HideAddMedicineLoadingAction {}

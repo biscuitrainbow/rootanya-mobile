@@ -1,11 +1,10 @@
 import 'package:medical_app/data/network/history_repository.dart';
-import 'package:medical_app/data/network/user_repository.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/usages/usage_action.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createUsageMiddleware(
-  HistoryRepository historyRepository,
+  UsageRepository historyRepository,
 ) {
   return [
     new TypedMiddleware<AppState, AddUsageAction>(_addUsage(historyRepository)),
@@ -16,14 +15,13 @@ List<Middleware<AppState>> createUsageMiddleware(
 }
 
 Middleware<AppState> _addUsage(
-  HistoryRepository userRepository,
+  UsageRepository userRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddUsageAction) {
       try {
-        var user = store.state.user;
-
-        await userRepository.addUsage(user.id, action.medicine.id, action.medicine.volume);
+        final token = store.state.token;
+        await userRepository.addUsage(token, action.medicine.id, action.medicine.volume);
         action.completer.complete(null);
         store.dispatch(FetchUsagesAction());
       } catch (error) {
@@ -35,32 +33,37 @@ Middleware<AppState> _addUsage(
 }
 
 Middleware<AppState> _fetchUsages(
-  HistoryRepository userRepository,
+  UsageRepository userRepository,
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is FetchUsagesAction) {
+      next(RequestUsagesAction());
+
       try {
-        next(RequestUsagesAction());
-        var user = store.state.user;
-        var usages = await userRepository.fetchUsages(user.id);
+        final token = store.state.token;
+        var usages = await userRepository.fetchUsages(token);
+
         next(ReceiveUsagesAction(usages));
       } catch (error) {
         print(error);
       }
+
       next(action);
     }
   };
 }
 
 Middleware<AppState> _updateUsage(
-  HistoryRepository userRepository,
+  UsageRepository usageRepository,
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is EditUsageAction) {
       try {
-        await userRepository.updateUsage(action.medicine);
-        action.completer.complete(null);
+        final token = store.state.token;
+        await usageRepository.updateUsage(token, action.medicine);
+
         store.dispatch(FetchUsagesAction());
+        action.completer.complete(null);
       } catch (error) {
         print(error);
       }
@@ -70,14 +73,16 @@ Middleware<AppState> _updateUsage(
 }
 
 Middleware<AppState> _deleteUsage(
-  HistoryRepository userRepository,
+  UsageRepository userRepository,
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is DeleteUsageAction) {
       try {
-        await userRepository.deleteUsage(action.usageId);
-        action.completer.complete(null);
+        final token = store.state.token;
+        await userRepository.deleteUsage(token, action.usageId);
+
         store.dispatch(FetchUsagesAction());
+        action.completer.complete(null);
       } catch (error) {
         print(error);
       }

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:medical_app/data/model/user.dart';
+import 'package:medical_app/exception/http_exception.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/auth/auth_action.dart';
 import 'package:medical_app/redux/register/register_screen_state.dart';
@@ -39,7 +40,12 @@ class ViewModel {
       onRegister: (User user, BuildContext context) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
+          print('complete');
           Navigator.of(context).pop();
+        }).catchError((error) {
+          if (error is UnProcessableEntity) {
+            Scaffold.of(context).showSnackBar(SnackBar(content: Text(error.message)));
+          }
         });
 
         store.dispatch(RegisterAction(user, completer));

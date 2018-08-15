@@ -3,39 +3,39 @@ import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_state.dart';
 import 'package:redux/redux.dart';
 
-final medicineListReducer = combineReducers<MedicineListState>([
-  new TypedReducer<MedicineListState, FetchMedicineRequested>(
+final medicineListReducer = combineReducers<MedicineListScreenState>([
+  new TypedReducer<MedicineListScreenState, FetchMedicineRequested>(
     _fetchMedicinesRequested,
   ),
-  new TypedReducer<MedicineListState, FetchMedicineSuccess>(
+  new TypedReducer<MedicineListScreenState, FetchMedicineSuccess>(
     _fetchMedicinesSuccess,
   ),
-  new TypedReducer<MedicineListState, FetchMedicinesError>(
+  new TypedReducer<MedicineListScreenState, FetchMedicinesError>(
     _fetchMedicinesError,
   ),
-  new TypedReducer<MedicineListState, ToggleSearching>(
+  new TypedReducer<MedicineListScreenState, ToggleSearching>(
     _toggleSearching,
   ),
-  new TypedReducer<MedicineListState, ActivateSpeechRecognizer>(
+  new TypedReducer<MedicineListScreenState, ActivateSpeechRecognizer>(
     _activateSpeechRecognizer,
   ),
-  new TypedReducer<MedicineListState, DeactivateSpeechRecognizer>(
+  new TypedReducer<MedicineListScreenState, DeactivateSpeechRecognizer>(
     _deactivateSpeechRecognizer,
   ),
-  new TypedReducer<MedicineListState, ResetStateAction>(
+  new TypedReducer<MedicineListScreenState, ResetStateAction>(
     _resetState,
   ),
 ]);
 
-MedicineListState _fetchMedicinesRequested(
-  MedicineListState state,
+MedicineListScreenState _fetchMedicinesRequested(
+  MedicineListScreenState state,
   FetchMedicineRequested action,
 ) {
   return state.copyWith(loadingStatus: LoadingStatus.loading);
 }
 
-MedicineListState _fetchMedicinesSuccess(
-  MedicineListState state,
+MedicineListScreenState _fetchMedicinesSuccess(
+  MedicineListScreenState state,
   FetchMedicineSuccess action,
 ) {
   return state.copyWith(
@@ -44,36 +44,36 @@ MedicineListState _fetchMedicinesSuccess(
   );
 }
 
-MedicineListState _fetchMedicinesError(
-  MedicineListState state,
+MedicineListScreenState _fetchMedicinesError(
+  MedicineListScreenState state,
   FetchMedicinesError action,
 ) {
   return state.copyWith(loadingStatus: LoadingStatus.error);
 }
 
-MedicineListState _toggleSearching(
-  MedicineListState state,
+MedicineListScreenState _toggleSearching(
+  MedicineListScreenState state,
   ToggleSearching action,
 ) {
   return state.copyWith(isSearching: !state.isSearching);
 }
 
-MedicineListState _activateSpeechRecognizer(
-  MedicineListState state,
+MedicineListScreenState _activateSpeechRecognizer(
+  MedicineListScreenState state,
   ActivateSpeechRecognizer action,
 ) {
   return state.copyWith(isListening: true);
 }
 
-MedicineListState _deactivateSpeechRecognizer(
-  MedicineListState state,
+MedicineListScreenState _deactivateSpeechRecognizer(
+  MedicineListScreenState state,
   DeactivateSpeechRecognizer action,
 ) {
   return state.copyWith(isListening: false);
 }
 
-MedicineListState _resetState(
-  MedicineListState state,
+MedicineListScreenState _resetState(
+  MedicineListScreenState state,
   ResetStateAction action,
 ) {
   return state.copyWith(

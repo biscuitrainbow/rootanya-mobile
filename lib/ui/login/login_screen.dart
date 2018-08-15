@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/redux/login/login_state.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
 import 'package:medical_app/ui/common/ripple_button.dart';
 
 class LoginScreen extends StatefulWidget {
+  static final String route = '/login';
+
   final Function(String, String, BuildContext) onLogin;
   final LoginState loginState;
 
@@ -23,23 +24,26 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final FocusNode _passwordNode = new FocusNode();
 
-  void _login() {
+  void _login(BuildContext scaffoldContext) {
     if (!_formKey.currentState.validate()) {
       return;
     }
 
-    widget.onLogin(_emailController.text, _passwordController.text, context);
+    widget.onLogin(_emailController.text, _passwordController.text, scaffoldContext);
   }
 
   void _showRegister() {
     Navigator.of(context).pushNamed('/register');
   }
 
-  Widget _buildInitialContent() {
+  Widget _buildInitialContent(BuildContext scaffoldContext) {
     return Column(
       children: <Widget>[
         SizedBox(height: 32.0),
-        Image.asset('assets/icons/med_icon_circle.png',width: 150.0,),
+        Image.asset(
+          'assets/icons/med_icon_circle.png',
+          width: 150.0,
+        ),
         Container(
           padding: EdgeInsets.symmetric(vertical: 24.0),
           child: Center(
@@ -74,16 +78,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   keyboardType: TextInputType.emailAddress,
                   focusNode: _passwordNode,
                   obscureText: true,
-                  onFieldSubmitted: (_) => _login(),
+                  onFieldSubmitted: (_) => _login(scaffoldContext),
                 ),
-                new RippleButton(
+                RippleButton(
                   text: "เข้าสู่ระบบ",
                   backgroundColor: Theme.of(context).accentColor,
                   textColor: Colors.black,
                   highlightColor: Colors.grey.shade200,
-                  onPress: _login,
+                  onPress: () => _login(scaffoldContext),
                 ),
-                new RippleButton(
+                RippleButton(
                   text: "สมัครสมาชิก",
                   backgroundColor: Theme.of(context).primaryColorDark,
                   textColor: Theme.of(context).accentColor,
@@ -115,13 +119,15 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LoadingView(
-        loadingStatus: widget.loginState.loadingStatus,
-        initialContent: _buildInitialContent(),
-        loadingContent: _buildLoadingContent(),
-        successContent: _buildInitialContent(),
-        errorContent: _buildInitialContent(),
-      ),
+      body: Builder(builder: (BuildContext scaffoldContext) {
+        return LoadingView(
+          loadingStatus: widget.loginState.loadingStatus,
+          initialContent: _buildInitialContent(scaffoldContext),
+          loadingContent: _buildLoadingContent(),
+          successContent: _buildInitialContent(scaffoldContext),
+          errorContent: _buildInitialContent(scaffoldContext),
+        );
+      }),
     );
   }
 }

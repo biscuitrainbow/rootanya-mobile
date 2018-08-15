@@ -1,3 +1,3 @@
-class ShowRegisterLoading {}
+class ShowProfileLoading {}
 
-class HideRegisterLoading {}
+class HideProfileLoading {}

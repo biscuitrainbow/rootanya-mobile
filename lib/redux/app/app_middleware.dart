@@ -4,7 +4,7 @@ import 'package:medical_app/redux/app/app_action.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/auth/auth_action.dart';
 import 'package:medical_app/redux/login/login_action.dart';
-import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
+import 'package:medical_app/redux/token/token_action.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createAppMiddleware(
@@ -25,18 +25,20 @@ Middleware<AppState> _initApp(
   return (Store store, action, NextDispatcher next) async {
     if (action is InitAppAction) {
       try {
-        var userId = await sharedPrefRepository.getUser();
+        var token = await sharedPrefRepository.getToken();
 
-        if (userId != null) {
-          next(ShowSilentLoadingAction());
-          var user = await userRepository.loginById(userId);
-          next(HideSilentLoadingAction());
+
+        if (token != null) {
+          next(SaveToken(token));
+
+          var user = await userRepository.fetchUser(token);
           next(SuccessLoginAction(user));
         }
       } catch (error) {
         print(error);
-        next(HideSilentLoadingAction());
       }
+
+      next(HideSilentLoadingAction());
       next(action);
     }
   };

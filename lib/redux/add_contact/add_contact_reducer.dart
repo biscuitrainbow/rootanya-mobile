@@ -3,14 +3,14 @@ import 'package:medical_app/redux/add_contact/add_contact_state.dart';
 import 'package:medical_app/redux/add_contact/contact_action.dart';
 import 'package:redux/redux.dart';
 
-final addContractsReducers = combineReducers<AddContactState>([
-  new TypedReducer<AddContactState, SuccessAddContactAction>(successAddContacts),
-  new TypedReducer<AddContactState, ErrorAddContactAction>(errorAddContacts),
-  new TypedReducer<AddContactState, RequestAddContactAction>(requestAddContacts),
+final addContractsReducers = combineReducers<AddContactScreenState>([
+  new TypedReducer<AddContactScreenState, SuccessAddContactAction>(successAddContacts),
+  new TypedReducer<AddContactScreenState, ErrorAddContactAction>(errorAddContacts),
+  new TypedReducer<AddContactScreenState, RequestAddContactAction>(requestAddContacts),
 ]);
 
-AddContactState requestAddContacts(
-  AddContactState state,
+AddContactScreenState requestAddContacts(
+  AddContactScreenState state,
   RequestAddContactAction action,
 ) {
   return state.copyWith(
@@ -18,8 +18,8 @@ AddContactState requestAddContacts(
   );
 }
 
-AddContactState successAddContacts(
-  AddContactState state,
+AddContactScreenState successAddContacts(
+  AddContactScreenState state,
   SuccessAddContactAction action,
 ) {
   return state.copyWith(
@@ -27,8 +27,8 @@ AddContactState successAddContacts(
   );
 }
 
-AddContactState errorAddContacts(
-  AddContactState state,
+AddContactScreenState errorAddContacts(
+  AddContactScreenState state,
   ErrorAddContactAction action,
 ) {
   return state.copyWith(

@@ -5,19 +5,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SharedPreferencesRepository {
   SharedPreferencesRepository();
 
-  storeUser(String uid) async {
+  saveToken(String token) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.setString('uid', uid);
+    await sharedPreferences.setString('token', token);
   }
 
 
-  deleteUser() async {
+  deleteToken() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    await sharedPreferences.remove('uid');
+    await sharedPreferences.remove('token');
   }
 
-  Future<String> getUser() async {
+  Future<String> getToken() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getString('uid');
+    return sharedPreferences.getString('token');
   }
 }

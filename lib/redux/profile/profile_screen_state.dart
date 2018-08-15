@@ -1,20 +1,20 @@
 import 'package:medical_app/data/loading_status.dart';
 
-class RegisterScreenState {
+class ProfileScreenState {
   final LoadingStatus loadingStatus;
 
-  RegisterScreenState({this.loadingStatus});
+  ProfileScreenState({this.loadingStatus});
 
-  factory RegisterScreenState.initial() {
-    return RegisterScreenState(
+  factory ProfileScreenState.initial() {
+    return ProfileScreenState(
       loadingStatus: LoadingStatus.initial,
     );
   }
 
-  RegisterScreenState copyWith({
+  ProfileScreenState copyWith({
     LoadingStatus loadingStatus,
   }) {
-    return RegisterScreenState(
+    return ProfileScreenState(
       loadingStatus: loadingStatus ?? this.loadingStatus,
     );
   }

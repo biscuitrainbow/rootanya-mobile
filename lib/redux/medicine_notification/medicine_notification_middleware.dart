@@ -26,7 +26,7 @@ Middleware<AppState> _fetchMedicineNotification(
     if (action is FetchMedicineNotification) {
       try {
         var user = store.state.user;
-        var medicine = await notificationRepository.fetchMedicineNotification(
+        var medicine = await notificationRepository.fetchNotificationByMedicine(
           user.id,
           action.medicineId,
         );
@@ -47,7 +47,7 @@ Middleware<AppState> _addMedicineNotification(
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is AddMedicineNotification) {
       try {
-        var user = store.state.user;
+        final token = store.state.token;
 
         int id = await notificationService.addNotification(
           action.time,
@@ -55,7 +55,7 @@ Middleware<AppState> _addMedicineNotification(
         );
 
         await notificationRepository.addNotification(
-          user.id,
+          token,
           action.medicine.id,
           '${action.time.hour}:${action.time.minute}',
           id,

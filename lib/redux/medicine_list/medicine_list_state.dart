@@ -1,21 +1,21 @@
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/data/loading_status.dart';
 
-class MedicineListState {
+class MedicineListScreenState {
   final List<Medicine> medicines;
   final bool isSearching;
   final bool isListening;
   final LoadingStatus loadingStatus;
 
-  MedicineListState({
+  MedicineListScreenState({
     this.medicines,
     this.isSearching,
     this.isListening,
     this.loadingStatus,
   });
 
-  factory MedicineListState.initial() {
-    return new MedicineListState(
+  factory MedicineListScreenState.initial() {
+    return new MedicineListScreenState(
       medicines: [],
       loadingStatus: LoadingStatus.initial,
       isSearching: false,
@@ -23,14 +23,14 @@ class MedicineListState {
     );
   }
 
-  MedicineListState copyWith({
+  MedicineListScreenState copyWith({
     List<Medicine> medicines,
     bool isSearching,
     bool isListening,
     bool isLoading,
     LoadingStatus loadingStatus,
   }) {
-    return new MedicineListState(
+    return new MedicineListScreenState(
       medicines: medicines ?? this.medicines,
       isSearching: isSearching ?? this.isSearching,
       isListening: isListening ?? this.isListening,

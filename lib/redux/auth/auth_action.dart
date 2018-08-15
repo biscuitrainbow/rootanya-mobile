@@ -31,6 +31,8 @@ class UpdateUserAction {
   UpdateUserAction(this.user, this.completer);
 }
 
+class FetchUserAction {}
+
 class RegisterAction {
   final User user;
   final Completer<Null> completer;
@@ -40,6 +42,4 @@ class RegisterAction {
 
 class LogoutAction {}
 
-class SuccessLogoutAction {
-
-}
+class SuccessLogoutAction {}

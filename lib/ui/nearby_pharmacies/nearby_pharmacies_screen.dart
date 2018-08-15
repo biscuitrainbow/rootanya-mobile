@@ -5,14 +5,23 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_webservice/places.dart';
 import 'package:location/location.dart' as libLocation;
 import 'package:medical_app/data/model/pharmacy.dart';
+import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
+import 'package:medical_app/ui/common/loading_content.dart';
+import 'package:medical_app/ui/common/loading_view.dart';
 import 'package:url_launcher/url_launcher.dart';
 //import 'package:map_view/map_view.dart';
 
 class NearbyPharmaciesScreen extends StatefulWidget {
   final Function(double lat, double lng) onLocationReady;
   final List<Pharmacy> pharmacies;
+  final NearbyPharmacyScreenState state;
 
-  const NearbyPharmaciesScreen({Key key, this.onLocationReady, this.pharmacies}) : super(key: key);
+  NearbyPharmaciesScreen({
+    Key key,
+    this.onLocationReady,
+    this.pharmacies,
+    this.state,
+  }) : super(key: key);
 
   @override
   NearbyPharmaciesScreenState createState() {
@@ -60,43 +69,13 @@ class NearbyPharmaciesScreenState extends State<NearbyPharmaciesScreen> {
 
   @override
   void initState() {
-//    controller = GoogleMapOverlayController.fromSize(
-//      width: 1080.0,
-//      height: 1080.0,
-//    );
-//
-
-//    location.getLocation.then((Map<String, double> currentLocation) {
-//      placeApi.searchNearbyWithRadius(Location(currentLocation["latitude"].toDouble(), currentLocation["longitude"].toDouble()), 5000, type: "pharmacy").then((placeResponse) {
-//        if (placeResponse.hasNoResults) {
-//          print("No results");
-//          return;
-//        }
-//
-//        var pharmacies = placeResponse.results;
-//        markers = pharmacies
-//            .map(
-//              (pharmacy) => MarkerOptions(
-//                    position: LatLng(
-//                      pharmacy.geometry.location.lat,
-//                      pharmacy.geometry.location.lng,
-//                    ),
-//                  ),
-//            )
-//            .toList();
-//
-//        print(markers);
-//      });
-
-//      lat = currentLocation["latitude"].toDouble();
-//      lng = currentLocation["longitude"].toDouble();
-//    });
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    print(widget.state.loadingStatus);
+
     final GoogleMapOverlayController controller = GoogleMapOverlayController.fromSize(width: MediaQuery.of(context).size.width, height: MediaQuery.of(context).size.height);
     controller.mapController.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
@@ -116,6 +95,7 @@ class NearbyPharmaciesScreenState extends State<NearbyPharmaciesScreen> {
         }
 
         var pharmacies = placeResponse.results;
+
         pharmacies.forEach(
           (pharmacy) => controller.mapController.addMarker(
                 MarkerOptions(
@@ -127,44 +107,43 @@ class NearbyPharmaciesScreenState extends State<NearbyPharmaciesScreen> {
               ),
         );
       });
-//
-//        markers = pharmacies
-//            .map(
-//              (pharmacy) =>
-//              MarkerOptions(
-//                position: LatLng(
-//                  pharmacy.geometry.location.lat,
-//                  pharmacy.geometry.location.lng,
-//                ),
-//              ),
-//        )
-//            .toList();
-
-      print(currentLocation);
     });
 
-    return DefaultTabController(
-      length: 2,
-      child: new Scaffold(
-        appBar: new AppBar(
-          title: new Text("ร้านขายยา"),
-          bottom: TabBar(
-            tabs: <Widget>[
-              Tab(icon: Icon(Icons.list)),
-              Tab(icon: Icon(Icons.map)),
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: new Text("ร้านขายยา"),
+      ),
+      body: LoadingView(
+        loadingStatus: widget.state.loadingStatus,
+        loadingContent: LoadingContent(text: 'กำลังโหลด'),
+        initialContent: ListView(
+          children: buildPharmacyItem(widget.pharmacies),
         ),
-        body: TabBarView(children: [
-          ListView(
-            children: buildPharmacyItem(widget.pharmacies),
-          ),
-          Center(
-            child: mapWidget,
-          ),
-        ]),
-//      body:
       ),
     );
+
+//    return DefaultTabController(
+//      length: 2,
+//      child: new Scaffold(
+//        appBar: new AppBar(
+//          title: new Text("ร้านขายยา"),
+//          bottom: TabBar(
+//            tabs: <Widget>[
+//              Tab(icon: Icon(Icons.list)),
+//              Tab(icon: Icon(Icons.map)),
+//            ],
+//          ),
+//        ),
+//        body: TabBarView(children: [
+//          ListView(
+//            children: buildPharmacyItem(widget.pharmacies),
+//          ),
+//          Center(
+//            child: mapWidget,
+//          ),
+//        ]),
+////      body:
+//      ),
+//    );
   }
 }

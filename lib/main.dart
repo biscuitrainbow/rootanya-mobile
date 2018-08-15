@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:medical_app/redux/app/app_action.dart';
 import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
 import 'package:medical_app/redux/store.dart';
 import 'package:medical_app/ui/home/home.dart';
-//import 'package:map_view/map_view.dart';
 import 'package:medical_app/ui/login/login_container.dart';
 import 'package:medical_app/ui/login/login_screen.dart';
+import 'package:medical_app/ui/main_screen/main_container.dart';
+import 'package:medical_app/ui/main_screen/main_screen.dart';
 import 'package:medical_app/ui/profile/profile_container.dart';
 import 'package:medical_app/ui/register/register_container.dart';
-import 'package:medical_app/ui/splashscreen/splash_container.dart';
 import 'package:medical_app/ui/splashscreen/splash_screen.dart';
 import 'package:medical_app/ui/usages/usage_container.dart';
 import 'package:redux/redux.dart';
+//import 'package:map_view/map_view.dart';
 
 void main() async {
   var apiKey = "AIzaSyAXJ48mFl-jDIRzRRsykbI0_TOJxrXIo8w";
@@ -44,13 +43,11 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           fontFamily: 'Kanit',
         ),
-//        home: new SplashScreen(
-//          duration: new Duration(seconds: 3),
-//        ),
-        home: SplashScreenContainer(),
         routes: {
-          '/login': (context) => LoginContainer(),
-          '/home': (context) => HomeScreen(),
+          SplashScreen.route: (context) => SplashScreen(),
+          MainScreen.route: (context) => MainContainer(),
+          LoginScreen.route: (context) => LoginContainer(),
+          HomeScreen.route: (context) => HomeScreen(),
           '/usages': (context) => UsageContainer(),
           '/profile': (context) => ProfileContainer(),
           '/register': (context) => RegisterContainer(),

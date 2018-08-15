@@ -7,7 +7,7 @@ import 'package:medical_app/redux/add_contact/contact_action.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/contract/contact_action.dart';
 import 'package:medical_app/redux/contract/contact_state.dart';
-import 'package:medical_app/ui/contact/contact__list_screen.dart';
+import 'package:medical_app/ui/contact/contact_list_screen.dart';
 import 'package:redux/redux.dart';
 
 class ContactContainer extends StatelessWidget {
@@ -26,7 +26,7 @@ class ContactContainer extends StatelessWidget {
 }
 
 class ContactListViewModel {
-  final ContactsState contactsState;
+  final ContactScreenState contactsState;
   final VoidCallback onRefresh;
   final Function(Contact, BuildContext) onDelete;
 

@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/data/model/medicine.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/ui/add_edit_usage/add_usage_container.dart';
 import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
@@ -13,8 +12,9 @@ import 'package:medical_app/ui/common/loading_view.dart';
 import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
-//import 'package:speech_reg/speech_reg.dart';
 import 'package:speech_recognition/speech_recognition.dart';
+//import 'package:speech_reg/speech_reg.dart';
+
 //import 'package:simple_permissions/simple_permissions.dart';
 
 class MedicineListScreen extends StatefulWidget {
@@ -36,7 +36,6 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 
   @override
   initState() {
-    print(widget.mode);
     super.initState();
     _activateSpeechRecognizer();
   }
@@ -51,9 +50,6 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 //    if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
 //      SimplePermissions.requestPermission(Permission.RecordAudio);
 //    }
-
-//    var text = await SpeechReg.platformVersion;
-//    print(text);
 
     widget.viewModel.showListening();
     widget.viewModel.onSearchClick();
@@ -203,13 +199,29 @@ class MedicineListScreenState extends State<MedicineListScreen> {
     }
   }
 
+  void _buildOnTapMedicineByMode(Medicine medicine) {
+    switch (widget.mode) {
+      case MedicineListMode.browsing:
+        _showMedicineDetail(medicine);
+        break;
+      case MedicineListMode.addNotification:
+        _showTimePicker(context, medicine);
+        break;
+      case MedicineListMode.addUsage:
+        _showAddHistory(context, medicine);
+        break;
+      default:
+        return null;
+    }
+  }
+
   List<ListTile> _buildMedicineItem() {
     return widget.viewModel.medicines
         .map(
           (medicine) => new ListTile(
                 title: new Text(medicine.name),
                 trailing: _buildTrailingByMode(medicine),
-                onTap: () => _showMedicineDetail(medicine),
+                onTap: () => _buildOnTapMedicineByMode(medicine),
               ),
         )
         .toList();

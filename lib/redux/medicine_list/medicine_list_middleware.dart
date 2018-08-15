@@ -1,4 +1,3 @@
-import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/data/network/medicine_repository.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
@@ -19,10 +18,13 @@ Middleware<AppState> _fetchMedicineByQuery(
 ) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     if (action is FetchMedicineByQuery) {
+      next(FetchMedicineRequested());
+
       try {
-        next(FetchMedicineRequested());
         var user = store.state.user;
-        var medicines = await medicineRepository.fetchMedicineByQuery(action.query, user.id);
+        var token = store.state.token;
+
+        var medicines = await medicineRepository.fetchMedicineByQuery(action.query, token);
         next(FetchMedicineSuccess(medicines));
       } catch (error) {
         print(error);
