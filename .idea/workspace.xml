@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77c04d7a-7505-43f6-ac30-5debba11dbef" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/constants.dart" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/lib/config.dart" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/lib/data/network/contact_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/contact_repository.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/data/network/history_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/history_repository.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/data/network/medicine_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/medicine_repository.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/data/network/notification_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/notification_repository.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/data/network/user_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/user_repository.dart" />
       <change beforePath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
+      <change beforePath="$PROJECT_DIR$/lib/util/string_utils.dart" afterPath="$PROJECT_DIR$/lib/util/string_utils.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -30,7 +35,7 @@
       <file leaf-file-name="pubspec.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
+            <state relative-caret-position="21">
               <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
               <folding />
             </state>
@@ -40,13 +45,31 @@
       <file leaf-file-name="nearby_pharmacies_screen.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="129" column="42" lean-forward="false" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
+            <state relative-caret-position="1190">
+              <caret line="83" column="4" lean-forward="false" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
               <folding>
-                <element signature="e#0#22#0" expanded="true" />
-                <marker date="1535282133082" expanded="true" signature="5266:5283" ph="(...)" />
-                <marker date="1535282133082" expanded="true" signature="5266:5284" ph="(...)" />
+                <element signature="e#0#39#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="string_utils.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/util/string_utils.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="constants.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/constants.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="12" column="137" lean-forward="false" selection-start-line="12" selection-start-column="137" selection-end-line="12" selection-end-column="137" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,7 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_reducer.dart" />
         <option value="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart" />
         <option value="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart" />
         <option value="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_staet.dart" />
@@ -124,7 +146,6 @@
         <option value="$PROJECT_DIR$/lib/ui/usages/usage_container.dart" />
         <option value="$PROJECT_DIR$/lib/ui/usages/usage_screen.dart" />
         <option value="$PROJECT_DIR$/lib/redux/app/app_state.dart" />
-        <option value="$PROJECT_DIR$/lib/util/string_utils.dart" />
         <option value="$PROJECT_DIR$/lib/data/prefs/prefs_repository.dart" />
         <option value="$PROJECT_DIR$/lib/ui/login/login_container.dart" />
         <option value="$PROJECT_DIR$/lib/redux/token/token_action.dart" />
@@ -162,9 +183,11 @@
         <option value="$PROJECT_DIR$/lib/redux/contract/contact_middleware.dart" />
         <option value="$PROJECT_DIR$/lib/redux/store.dart" />
         <option value="$PROJECT_DIR$/lib/data/network/contact_repository.dart" />
-        <option value="$PROJECT_DIR$/lib/config.dart" />
         <option value="$PROJECT_DIR$/lib/data/network/notification_repository.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/lib/config.dart" />
+        <option value="$PROJECT_DIR$/lib/constants.dart" />
+        <option value="$PROJECT_DIR$/lib/util/string_utils.dart" />
         <option value="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" />
       </list>
     </option>
@@ -193,9 +216,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -218,63 +238,17 @@
               <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="medical_app" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="add_notification" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="barcode_scanner" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="main_screen" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="splashscreen" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-              <item name="usages" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
         <option name="show-excluded-files" value="false" />
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -284,7 +258,7 @@
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="SearchEverywhereHistoryKey" value="nearby&#9;null&#9;null&#10;notif&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/notification_repository.dart&#10;store&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;usagere&#9;null&#9;null&#10;contra&#9;null&#9;null&#10;usagemid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/usages/usage_middleware.dart&#10;userre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/user_repository.dart&#10;notre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/notification_repository.dart&#10;histor&#9;null&#9;null&#10;auth&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;notiflistcon&#9;null&#9;null&#10;notis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/notification_list/notification_list_screen.dart&#10;notifscre&#9;null&#9;null&#10;medisc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medire&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/medicine_repository.dart&#10;notifirep&#9;null&#9;null&#10;add_mediscre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;addmemid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_middleware.dart&#10;addmecon&#9;null&#9;null&#10;addmesc&#9;null&#9;null&#10;add_medicin_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_state.dart&#10;mediscre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/medicine_list/medicine_list_middleware.dart&#10;usere&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/user.dart&#10;registercon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/register/register_container.dart&#10;registcon&#9;null&#9;null&#10;authmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;profi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;registerscre&#9;null&#9;null&#10;regist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/register/register_screen_reducer.dart&#10;profsc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;main&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_screen.dart&#10;store.da&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;aut&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;appmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;token&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;app_re&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;autmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;redu&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;profico&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;profioc&#9;null&#9;null&#10;tokenr&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;splash&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/splashscreen/splash_screen.dart&#10;main_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_container.dart&#10;proficon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;profis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;appmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;app_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;app_s&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;home&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/home/home.dart" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535282120219" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535326582135" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
   </component>
@@ -658,6 +632,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18656716" sideWeight="0.4942717" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1913646" sideWeight="0.5192308" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -671,7 +646,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31926408" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -719,20 +693,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/redux/token/token_reducers.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/redux/app/app_middleware.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="33" column="51" lean-forward="false" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/redux/auth/auth_action.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
@@ -786,14 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
           <caret line="252" column="32" lean-forward="true" selection-start-line="252" selection-start-column="32" selection-end-line="252" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/exception/http_exception.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,14 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/config.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/redux/add_contact/add_contact_middleware.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-132">
@@ -1084,22 +1028,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/exception/http_exception.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../flutter/bin/cache/pkg/sky_engine/lib/_http/http_impl.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="353" column="21" lean-forward="false" selection-start-line="353" selection-start-column="21" selection-end-line="353" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
+        <state relative-caret-position="21">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/constants.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="137" lean-forward="false" selection-start-line="12" selection-start-column="137" selection-end-line="12" selection-end-column="137" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/util/string_utils.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="129" column="42" lean-forward="false" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
+        <state relative-caret-position="1190">
+          <caret line="83" column="4" lean-forward="false" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
           <folding>
-            <element signature="e#0#22#0" expanded="true" />
-            <marker date="1535282133082" expanded="true" signature="5266:5283" ph="(...)" />
-            <marker date="1535282133082" expanded="true" signature="5266:5284" ph="(...)" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-import 'package:medical_app/config.dart';
+import 'package:medical_app/constants.dart';
 import 'package:medical_app/data/model/user.dart';
 import 'package:medical_app/exception/http_exception.dart';
 import 'package:medical_app/util/string_utils.dart';
@@ -12,7 +12,7 @@ import 'package:medical_app/util/string_utils.dart';
 class UserRepository {
   Future<User> login(String email, String password) async {
     final response = await http.post(
-      '${Config.url}/user/login',
+      '${Http.api}/user/login',
       headers: {
         HttpHeaders.acceptHeader: acceptApplicationJson,
       },
@@ -33,12 +33,12 @@ class UserRepository {
   }
 
   Future<Null> logout() async {
-    final response = await http.post('${Config.url}/user/logout');
+    final response = await http.post('${Http.api}/user/logout');
   }
 
   Future<User> fetchUser(String token) async {
     final response = await http.get(
-      '${Config.url}/user',
+      '${Http.api}/user',
       headers: {
         HttpHeaders.acceptHeader: acceptApplicationJson,
         HttpHeaders.authorizationHeader: createBearer(token),
@@ -55,7 +55,7 @@ class UserRepository {
     final dio = new Dio();
 
     final response = await dio.put(
-      '${Config.url}/user',
+      '${Http.api}/user',
       options: new Options(
         contentType: ContentType.parse("application/x-www-form-urlencoded"),
         headers: {
@@ -80,7 +80,7 @@ class UserRepository {
   }
 
   Future<User> register(User user) async {
-    final response = await http.post('${Config.url}/user/register', headers: {
+    final response = await http.post('${Http.api}/user/register', headers: {
       HttpHeaders.acceptHeader: acceptApplicationJson,
     }, body: {
       'email': user.email,
