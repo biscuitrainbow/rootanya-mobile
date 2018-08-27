@@ -8,12 +8,15 @@ import 'package:medical_app/redux/add_contact/contact_action.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/contract/contact_action.dart';
 import 'package:medical_app/ui/add_contact/add_contact_screen.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class EditContactContainer extends StatelessWidget {
   final Contact contact;
 
-  const EditContactContainer({Key key, this.contact}) : super(key: key);
+  EditContactContainer({
+    this.contact,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,23 +49,24 @@ class ViewModel {
 
   static ViewModel fromStore(Store<AppState> store) {
     return new ViewModel(
-      addContactState: store.state.addContactState,
-      onSave: (Contact contact, BuildContext context) {
-        Completer<Null> completer = Completer();
-        completer.future.then((_) {
-          Navigator.of(context).pop();
-        });
+        addContactState: store.state.addContactState,
+        onSave: (Contact contact, BuildContext context) {
+          Completer<Null> completer = Completer();
+          completer.future.then((_) {
+            Navigator.of(context).pop();
+            showToast('บันทึกผู้ติดต่อแล้ว');
+          });
 
-        store.dispatch(EditContactAction(contact, completer));
-      },
-      onDelete: (Contact contact,BuildContext context) {
-        Completer<Null> completer = Completer();
-        completer.future.then((_) {
-          Navigator.of(context).pop();
-        });
+          store.dispatch(EditContactAction(contact, completer));
+        },
+        onDelete: (Contact contact, BuildContext context) {
+          Completer<Null> completer = Completer();
+          completer.future.then((_) {
+            Navigator.of(context).pop();
+            showToast('ลบผู้ติดต่อแล้ว');
+          });
 
-        store.dispatch(DeleteContactAction(contact, completer));
-      }
-    );
+          store.dispatch(DeleteContactAction(contact, completer));
+        });
   }
 }

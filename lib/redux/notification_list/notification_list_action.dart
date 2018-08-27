@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:medical_app/data/model/medicine.dart';
 
 class FetchNotifications {}
@@ -16,6 +18,7 @@ class SetNotifications {}
 
 class DeleteNotification {
   final int notificationId;
+  final Completer<Null> completer;
 
-  DeleteNotification(this.notificationId);
+  DeleteNotification(this.notificationId, this.completer);
 }

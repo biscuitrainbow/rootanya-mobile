@@ -24,11 +24,11 @@ class AddContactScreen extends StatefulWidget {
 class _AddContactScreenState extends State<AddContactScreen> {
   static GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController nameController = new TextEditingController(text: '');
-  final TextEditingController telController = new TextEditingController(text: '');
+  final TextEditingController nameController = TextEditingController(text: '');
+  final TextEditingController telController = TextEditingController(text: '');
 
-  final FocusNode nameFocusNode = new FocusNode();
-  final FocusNode telFocusNode = new FocusNode();
+  final FocusNode nameFocusNode = FocusNode();
+  final FocusNode telFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -68,11 +68,11 @@ class _AddContactScreenState extends State<AddContactScreen> {
       title: Text('ต้องการลบ?'),
       content: Text('เบอร์โทรนี้จะถูกลบและไม่สามารถกู้คืนได้'),
       actions: <Widget>[
-        new DialogTextButton(
+        DialogTextButton(
           title: 'ยกเลิก',
           onPressed: () => Navigator.of(context).pop(),
         ),
-        new DialogTextButton(
+        DialogTextButton(
           title: 'ลบ',
           onPressed: () {
             Navigator.of(context).pop();
@@ -122,9 +122,9 @@ class _AddContactScreenState extends State<AddContactScreen> {
         onWillPop: () {
           return Future(() => true);
         },
-        child: new Column(
+        child: Column(
           children: <Widget>[
-            new TextFormField(
+            TextFormField(
               controller: nameController,
               validator: (val) => val.isEmpty ? 'กรุณากรอกชื่อยา' : null,
               decoration: const InputDecoration(
@@ -137,7 +137,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
             Row(
               children: <Widget>[
                 Expanded(
-                  child: new TextFormField(
+                  child: TextFormField(
                     validator: (val) => val.isEmpty ? 'กรุณากรอกเบอร์โทร' : null,
                     keyboardType: TextInputType.phone,
                     controller: telController,

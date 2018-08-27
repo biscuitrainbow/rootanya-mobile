@@ -16,7 +16,13 @@ class AddUsageScreen extends StatefulWidget {
   final bool isEditing;
   final Medicine medicine;
 
-  const AddUsageScreen({Key key, this.addUsageState, this.onSave, this.isEditing, this.medicine, this.onDelete}) : super(key: key);
+  AddUsageScreen({
+    this.addUsageState,
+    this.onSave,
+    this.isEditing,
+    this.medicine,
+    this.onDelete,
+  });
 
   @override
   _AddContactScreenState createState() => _AddContactScreenState();

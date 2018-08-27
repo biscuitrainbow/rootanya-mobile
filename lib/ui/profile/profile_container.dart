@@ -7,6 +7,7 @@ import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/auth/auth_action.dart';
 import 'package:medical_app/redux/profile/profile_screen_state.dart';
 import 'package:medical_app/ui/profile/profile_screen.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class ProfileContainer extends StatelessWidget {
@@ -51,7 +52,7 @@ class ProfileScreenViewModel {
         onUpdate: (User user, BuildContext context) {
           Completer<Null> completer = Completer();
           completer.future.then((_) {
-            Scaffold.of(context).showSnackBar(SnackBar(content: Text('อัพเดตสำเร็จ')));
+            showToast('บันทึกแล้ว');
           });
 
           store.dispatch(UpdateUserAction(user, completer));

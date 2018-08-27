@@ -13,6 +13,7 @@ import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
 import 'package:speech_recognition/speech_recognition.dart';
+
 //import 'package:speech_reg/speech_reg.dart';
 
 //import 'package:simple_permissions/simple_permissions.dart';
@@ -25,14 +26,14 @@ class MedicineListScreen extends StatefulWidget {
 
   @override
   MedicineListScreenState createState() {
-    return new MedicineListScreenState();
+    return MedicineListScreenState();
   }
 }
 
 class MedicineListScreenState extends State<MedicineListScreen> {
-  final _queryController = new TextEditingController();
+  final _queryController = TextEditingController();
   final _queryFocusNode = FocusNode();
-  final _speech = new SpeechRecognition();
+  final _speech = SpeechRecognition();
 
   @override
   initState() {
@@ -79,18 +80,18 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   void _showAddHistory(BuildContext context, Medicine medicine) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (BuildContext context) => new AddUsageContainer(medicine: medicine)),
+      MaterialPageRoute(builder: (BuildContext context) => AddUsageContainer(medicine: medicine)),
     );
   }
 
   void _showTimePicker(BuildContext context, Medicine medicine) async {
     var pickedTime = await showTimePicker(
       context: context,
-      initialTime: new TimeOfDay.now(),
+      initialTime: TimeOfDay.now(),
     );
 
     if (pickedTime != null) {
-      var time = new Time(pickedTime.hour, pickedTime.minute, 0);
+      var time = Time(pickedTime.hour, pickedTime.minute, 0);
       widget.viewModel.onAddNotification(time, medicine);
     }
   }
@@ -100,36 +101,36 @@ class MedicineListScreenState extends State<MedicineListScreen> {
       !widget.viewModel.isSearching
           ? Semantics(
               label: 'ต้นหายาด้วยตัวอักษร',
-              child: new IconButton(
-                icon: new Icon(Icons.search),
+              child: IconButton(
+                icon: Icon(Icons.search),
                 onPressed: () {
                   //  FocusScope.of(context).requestFocus(searchNode);
                   widget.viewModel.onSearchClick();
                 },
               ),
             )
-          : new Container(),
+          : Container(),
       !widget.viewModel.isSearching
-          ? new IconButton(
-              icon: new Icon(Icons.keyboard_voice),
+          ? IconButton(
+              icon: Icon(Icons.keyboard_voice),
               onPressed: () => _startSpeechRecognizer(),
             )
-          : new Container(),
+          : Container(),
       !widget.viewModel.isSearching
           ? Semantics(
               label: 'ค้นหายาด้วยบาร์โค้ด',
-              child: new IconButton(
-                icon: new Icon(FontAwesomeIcons.barcode),
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.barcode),
                 onPressed: () => _scanBarcode(),
               ),
             )
-          : new Container(),
+          : Container(),
       widget.viewModel.isSearching
-          ? new IconButton(
-              icon: new Icon(Icons.close),
+          ? IconButton(
+              icon: Icon(Icons.close),
               onPressed: () => widget.viewModel.onSearchClick(),
             )
-          : new Container(),
+          : Container(),
     ];
   }
 
@@ -228,8 +229,8 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   List<ListTile> _buildMedicineItem() {
     return widget.viewModel.medicines
         .map(
-          (medicine) => new ListTile(
-                title: new Text(medicine.name),
+          (medicine) => ListTile(
+                title: Text(medicine.name),
                 trailing: _buildTrailingByMode(medicine),
                 onTap: () => _buildOnTapMedicineByMode(medicine),
               ),
@@ -240,8 +241,8 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   Future _showMedicineDetail(Medicine medicine) {
     return Navigator.push(
       context,
-      new MaterialPageRoute(
-        builder: (BuildContext context) => new MedicineDetailScreen(medicine: medicine),
+      MaterialPageRoute(
+        builder: (BuildContext context) => MedicineDetailScreen(medicine: medicine),
       ),
     );
   }
@@ -253,12 +254,12 @@ class MedicineListScreenState extends State<MedicineListScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Icon(
+            Icon(
               Icons.search,
               size: 46.0,
             ),
             SizedBox(height: 16.0),
-            new Text("ค้นหายาที่ต้องการ")
+            Text("ค้นหายาที่ต้องการ")
           ],
         ),
       ),
@@ -278,12 +279,12 @@ class MedicineListScreenState extends State<MedicineListScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Icon(
+          Icon(
             FontAwesomeIcons.frown,
             size: 46.0,
           ),
           SizedBox(height: 16.0),
-          new Text("ไม่พบยาที่คุณค้นหา")
+          Text("ไม่พบยาที่คุณค้นหา")
         ],
       ),
     );
@@ -296,8 +297,8 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: widget.viewModel.isSearching ? _buildSearchBox(context) : new Text('ค้นหาข้อมูลยา'),
+      appBar: AppBar(
+        title: widget.viewModel.isSearching ? _buildSearchBox(context) : Text('ค้นหาข้อมูลยา'),
         actions: _buildActions(),
       ),
       floatingActionButton: _buildFloatingActionsButton(),

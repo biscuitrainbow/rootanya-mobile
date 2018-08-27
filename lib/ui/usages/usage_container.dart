@@ -6,6 +6,7 @@ import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/usages/usage_action.dart';
 import 'package:medical_app/redux/usages/usage_state.dart';
 import 'package:medical_app/ui/usages/usage_screen.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class UsageContainer extends StatelessWidget {
@@ -43,10 +44,7 @@ class ViewModel {
       onDelete: (String usageId, BuildContext context) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
-          Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text('ลบสำเร็จ'),
-                duration: Duration(seconds: 5),
-              ));
+          showToast('ลบบันทึกแล้ว');
         });
 
         store.dispatch(DeleteUsageAction(usageId, completer));

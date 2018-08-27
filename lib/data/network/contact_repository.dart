@@ -43,7 +43,7 @@ class ContractRepository {
 
     final response = await dio.put(
       '${Http.api}/contact/user/${contact.id}',
-      options: new Options(
+      options: Options(
         contentType: ContentType.parse("application/x-www-form-urlencoded"),
         headers: {
           HttpHeaders.acceptHeader: acceptApplicationJson,
@@ -55,6 +55,8 @@ class ContractRepository {
         'tel': contact.tel,
       },
     );
+
+    print(response.data);
   }
 
   Future<Null> deleteContact(String token, String contactId) async {

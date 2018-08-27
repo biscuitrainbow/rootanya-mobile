@@ -49,7 +49,7 @@ class ViewModel {
   static ViewModel fromStore(Store<AppState> store) {
     return ViewModel(
       medicine: store.state.medicineNotificationState.medicine,
-      onAddNotification: (Time time, Medicine medicine) => store.dispatch(AddMedicineNotification(time, medicine)),
+     // onAddNotification: (Time time, Medicine medicine) => store.dispatch(AddMedicineNotification(time, medicine)),
       loadingStatus: store.state.medicineNotificationState.loadingStatus,
     );
   }

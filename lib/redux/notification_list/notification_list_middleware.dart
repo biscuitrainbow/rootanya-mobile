@@ -77,6 +77,7 @@ Middleware<AppState> _deleteNotification(
         await notificationService.cancelNotification(action.notificationId);
 
         store.dispatch(FetchNotifications());
+        action.completer.complete(null);
       } catch (error) {
         print(error);
       }

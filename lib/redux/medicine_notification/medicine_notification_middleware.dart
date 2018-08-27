@@ -48,7 +48,6 @@ Middleware<AppState> _addMedicineNotification(
     if (action is AddMedicineNotification) {
       try {
         final token = store.state.token;
-
         int id = await notificationService.createNotification(
           action.time,
           action.medicine,
@@ -60,6 +59,8 @@ Middleware<AppState> _addMedicineNotification(
           '${action.time.hour}:${action.time.minute}',
           id,
         );
+
+        action.completer.complete(null);
 
         store.dispatch(FetchMedicineNotification(action.medicine.id));
         store.dispatch(FetchNotifications());

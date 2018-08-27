@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:medical_app/data/loading_status.dart';
@@ -5,6 +7,7 @@ import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/notification_list/notification_list_action.dart';
 import 'package:medical_app/ui/notification_list/notification_list_screen.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class NotificationListContainer extends StatelessWidget {
@@ -38,7 +41,12 @@ class NotificationListScreenViewModel {
       notifications: store.state.notificationListState.notifications,
       loadingStatus: store.state.notificationListState.loadingStatus,
       onDelete: (int notificationId) {
-        store.dispatch(DeleteNotification(notificationId));
+        Completer<Null> completer = Completer();
+        completer.future.then((_) {
+          showToast("ลบแจ้งเตือนแล้ว");
+        });
+
+        store.dispatch(DeleteNotification(notificationId, completer));
       },
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:medical_app/data/model/medicine.dart';
 
@@ -16,6 +18,7 @@ class FetchMedicineNotificationSuccess {
 class AddMedicineNotification {
   final Time time;
   final Medicine medicine;
+  final Completer<Null> completer;
 
-  AddMedicineNotification(this.time, this.medicine);
+  AddMedicineNotification(this.time, this.medicine, this.completer);
 }

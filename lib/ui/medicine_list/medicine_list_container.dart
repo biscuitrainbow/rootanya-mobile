@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -8,6 +10,7 @@ import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
 import 'package:medical_app/redux/medicine_notification/medicine_notification_action.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_screen.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class MedicineListContainer extends StatefulWidget {
@@ -22,7 +25,7 @@ class MedicineListContainer extends StatefulWidget {
 class _MedicineListContainerState extends State<MedicineListContainer> {
   @override
   Widget build(BuildContext context) {
-    return new StoreConnector(
+    return StoreConnector(
       onDispose: (Store store) => store.dispatch(ResetStateAction()),
       converter: MedicineListScreenViewModel.fromStore,
       builder: (BuildContext context, MedicineListScreenViewModel vm) {
@@ -64,16 +67,23 @@ class MedicineListScreenViewModel {
   });
 
   static MedicineListScreenViewModel fromStore(Store<AppState> store) {
-    return new MedicineListScreenViewModel(
+    return MedicineListScreenViewModel(
       medicines: store.state.medicineListState.medicines,
       isSearching: store.state.medicineListState.isSearching,
       isListening: store.state.medicineListState.isListening,
       loadingStatus: store.state.medicineListState.loadingStatus,
-      showListening: () => store.dispatch(new ActivateSpeechRecognizer()),
-      hideListening: () => store.dispatch(new DeactivateSpeechRecognizer()),
-      onSearchClick: () => store.dispatch(new ToggleSearching()),
+      showListening: () => store.dispatch(ActivateSpeechRecognizer()),
+      hideListening: () => store.dispatch(DeactivateSpeechRecognizer()),
+      onSearchClick: () => store.dispatch(ToggleSearching()),
       onQueryChanged: (String query) => store.dispatch(FetchMedicineByQuery(query)),
-      onAddNotification: (Time time, Medicine medicine) => store.dispatch(AddMedicineNotification(time, medicine)),
+      onAddNotification: (Time time, Medicine medicine) {
+        Completer<Null> completer = Completer();
+        completer.future.then((_) {
+          showToast("ตั้งแจ้งเตือนแล้ว");
+        });
+
+        store.dispatch(AddMedicineNotification(time, medicine, completer));
+      },
     );
   }
 }

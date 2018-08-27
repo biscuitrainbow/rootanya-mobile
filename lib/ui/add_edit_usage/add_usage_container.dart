@@ -6,7 +6,7 @@ import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/usages/usage_action.dart';
 import 'package:medical_app/ui/add_edit_usage/add_edit_usage_screen.dart';
-import 'package:medical_app/ui/usages/usage_container.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class AddUsageContainer extends StatelessWidget {
@@ -41,6 +41,7 @@ class ViewModel {
         Navigator.of(context).pop();
         Navigator.of(context).pop();
 
+        showToast('เพิ่มบันทึกแล้ว');
         //  Navigator.pushNamed(context, '/usages');
       });
 

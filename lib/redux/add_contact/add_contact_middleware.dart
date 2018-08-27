@@ -8,9 +8,9 @@ List<Middleware<AppState>> createAddContactMiddleware(
   ContractRepository contractRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, AddContactAction>(addContact(contractRepository)),
-    new TypedMiddleware<AppState, EditContactAction>(editContact(contractRepository)),
-    new TypedMiddleware<AppState, DeleteContactAction>(deleteContact(contractRepository)),
+    TypedMiddleware<AppState, AddContactAction>(addContact(contractRepository)),
+    TypedMiddleware<AppState, EditContactAction>(editContact(contractRepository)),
+    TypedMiddleware<AppState, DeleteContactAction>(deleteContact(contractRepository)),
   ];
 }
 
@@ -54,6 +54,7 @@ Middleware<AppState> editContact(
 
         action.completer.complete(null);
       } catch (error) {
+        print(error);
         action.completer.completeError(error);
       }
 

@@ -8,6 +8,7 @@ import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/contract/contact_action.dart';
 import 'package:medical_app/redux/contract/contact_state.dart';
 import 'package:medical_app/ui/contact/contact_list_screen.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class ContactContainer extends StatelessWidget {
@@ -18,7 +19,7 @@ class ContactContainer extends StatelessWidget {
       converter: ContactListViewModel.fromStore,
       builder: (BuildContext context, ContactListViewModel viewModel) {
         return ContactListScreen(
-          viewModel : viewModel,
+          viewModel: viewModel,
         );
       },
     );
@@ -43,6 +44,7 @@ class ContactListViewModel {
         onDelete: (Contact contact, BuildContext context) {
           Completer<Null> completer = Completer();
           completer.future.then((_) {
+            showToast('ลบผู้ติดต่อแล้ว');
             //Navigator.of(context).pop();
           });
 

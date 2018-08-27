@@ -8,6 +8,7 @@ import 'package:medical_app/redux/add_contact/contact_action.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/contract/contact_action.dart';
 import 'package:medical_app/ui/add_contact/add_contact_screen.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class AddContactContainer extends StatelessWidget {
@@ -42,6 +43,7 @@ class ViewModel {
       onSave: (Contact contact, BuildContext context) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
+          showToast('เพิ่มผู้ติดต่อแล้ว');
           Navigator.of(context).pop();
         });
 
