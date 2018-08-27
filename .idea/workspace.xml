@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77c04d7a-7505-43f6-ac30-5debba11dbef" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/constants.dart" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/lib/service/localtion_service.dart" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/lib/config.dart" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/contact_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/contact_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/history_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/history_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/medicine_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/medicine_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/notification_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/notification_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/user_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/user_repository.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_action.dart" afterPath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_action.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/redux/store.dart" afterPath="$PROJECT_DIR$/lib/redux/store.dart" />
+      <change beforePath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart" afterPath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart" />
       <change beforePath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/util/string_utils.dart" afterPath="$PROJECT_DIR$/lib/util/string_utils.dart" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -32,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pubspec.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <file leaf-file-name="nearby_pharmacies_container.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -45,30 +42,28 @@
       <file leaf-file-name="nearby_pharmacies_screen.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="83" column="4" lean-forward="false" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="string_utils.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/util/string_utils.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="35" lean-forward="false" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            <state relative-caret-position="-1501">
+              <caret line="44" column="40" lean-forward="true" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constants.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/constants.dart">
+      <file leaf-file-name="list_tile.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/material/list_tile.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="137" lean-forward="false" selection-start-line="12" selection-start-column="137" selection-end-line="12" selection-end-column="137" />
+            <state relative-caret-position="305">
+              <caret line="274" column="19" lean-forward="false" selection-start-line="274" selection-start-column="19" selection-end-line="274" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edge_insets.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/painting/edge_insets.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3202">
+              <caret line="24" column="15" lean-forward="false" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -138,10 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart" />
-        <option value="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart" />
-        <option value="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_staet.dart" />
-        <option value="$PROJECT_DIR$/lib/redux/contract/contact_state.dart" />
         <option value="$PROJECT_DIR$/lib/ui/contact/contact_list_container.dart" />
         <option value="$PROJECT_DIR$/lib/ui/usages/usage_container.dart" />
         <option value="$PROJECT_DIR$/lib/ui/usages/usage_screen.dart" />
@@ -181,13 +172,17 @@
         <option value="$PROJECT_DIR$/lib/data/network/history_repository.dart" />
         <option value="$PROJECT_DIR$/lib/redux/add_contact/add_contact_middleware.dart" />
         <option value="$PROJECT_DIR$/lib/redux/contract/contact_middleware.dart" />
-        <option value="$PROJECT_DIR$/lib/redux/store.dart" />
         <option value="$PROJECT_DIR$/lib/data/network/contact_repository.dart" />
         <option value="$PROJECT_DIR$/lib/data/network/notification_repository.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/config.dart" />
         <option value="$PROJECT_DIR$/lib/constants.dart" />
         <option value="$PROJECT_DIR$/lib/util/string_utils.dart" />
+        <option value="$PROJECT_DIR$/lib/redux/store.dart" />
+        <option value="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_action.dart" />
+        <option value="$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart" />
+        <option value="$PROJECT_DIR$/lib/service/localtion_service.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart" />
         <option value="$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart" />
       </list>
     </option>
@@ -238,7 +233,14 @@
               <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="medical_app" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="medical_app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="medical_app" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="nearby_pharmacies" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -256,9 +258,9 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="nearby&#9;null&#9;null&#10;notif&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/notification_repository.dart&#10;store&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;usagere&#9;null&#9;null&#10;contra&#9;null&#9;null&#10;usagemid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/usages/usage_middleware.dart&#10;userre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/user_repository.dart&#10;notre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/notification_repository.dart&#10;histor&#9;null&#9;null&#10;auth&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;notiflistcon&#9;null&#9;null&#10;notis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/notification_list/notification_list_screen.dart&#10;notifscre&#9;null&#9;null&#10;medisc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medire&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/medicine_repository.dart&#10;notifirep&#9;null&#9;null&#10;add_mediscre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;addmemid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_middleware.dart&#10;addmecon&#9;null&#9;null&#10;addmesc&#9;null&#9;null&#10;add_medicin_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_state.dart&#10;mediscre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/medicine_list/medicine_list_middleware.dart&#10;usere&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/user.dart&#10;registercon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/register/register_container.dart&#10;registcon&#9;null&#9;null&#10;authmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;profi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;registerscre&#9;null&#9;null&#10;regist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/register/register_screen_reducer.dart&#10;profsc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;main&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_screen.dart&#10;store.da&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;aut&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;appmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;token&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;app_re&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;autmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;redu&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;profico&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;profioc&#9;null&#9;null&#10;tokenr&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;splash&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/splashscreen/splash_screen.dart&#10;main_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_container.dart&#10;proficon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;profis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;appmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;app_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;app_s&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;home&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/home/home.dart" />
+    <property name="SearchEverywhereHistoryKey" value="store.da&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;app_mid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;nearby&#9;null&#9;null&#10;notif&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/notification_repository.dart&#10;store&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;usagere&#9;null&#9;null&#10;contra&#9;null&#9;null&#10;usagemid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/usages/usage_middleware.dart&#10;userre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/user_repository.dart&#10;notre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/notification_repository.dart&#10;histor&#9;null&#9;null&#10;auth&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;notiflistcon&#9;null&#9;null&#10;notis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/notification_list/notification_list_screen.dart&#10;notifscre&#9;null&#9;null&#10;medisc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medire&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/medicine_repository.dart&#10;notifirep&#9;null&#9;null&#10;add_mediscre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_medicine/add_medicine_screen.dart&#10;addmemid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_middleware.dart&#10;addmecon&#9;null&#9;null&#10;addmesc&#9;null&#9;null&#10;add_medicin_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_medicine/add_medicine_state.dart&#10;mediscre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_screen.dart&#10;medmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/medicine_list/medicine_list_middleware.dart&#10;usere&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/user.dart&#10;registercon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/register/register_container.dart&#10;registcon&#9;null&#9;null&#10;authmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;profi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;registerscre&#9;null&#9;null&#10;regist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/register/register_screen_reducer.dart&#10;profsc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;main&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_screen.dart&#10;aut&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;appmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;token&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;app_re&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;autmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;redu&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;profico&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;profioc&#9;null&#9;null&#10;tokenr&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;splash&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/splashscreen/splash_screen.dart&#10;main_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_container.dart&#10;proficon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;profis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;appmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;app_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;app_s&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535326582135" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535328911677" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
   </component>
@@ -693,69 +695,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/redux/auth/auth_action.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/http-0.11.3+17/lib/http.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-178">
-          <caret line="91" column="17" lean-forward="false" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/main_screen/main_container.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="28" column="63" lean-forward="false" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/main_screen/main_screen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/redux/register/register_screen_reducer.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="15" column="28" lean-forward="true" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/profile/profile_screen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/register/register_screen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="252" column="32" lean-forward="true" selection-start-line="252" selection-start-column="32" selection-end-line="252" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/register/register_container.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="42" column="28" lean-forward="false" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/data/model/user.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="559">
@@ -945,13 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/redux/store.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="50" column="73" lean-forward="false" selection-start-line="50" selection-start-column="73" selection-end-line="50" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="693">
@@ -1068,13 +1000,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/add_edit_usage/add_edit_usage_screen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="18" column="6" lean-forward="false" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#20#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../flutter/.pub-cache/hosted/pub.dartlang.org/location-1.3.4/lib/location.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/store.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="58" column="36" lean-forward="false" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/app/app_middleware.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-216">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#63#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="25" column="59" lean-forward="true" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/service/localtion_service.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#20#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/redux/nearby_pharmacies/nearby_pharmacies_action.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="28" lean-forward="false" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/material/list_tile.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="274" column="19" lean-forward="false" selection-start-line="274" selection-start-column="19" selection-end-line="274" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../flutter/packages/flutter/lib/src/painting/edge_insets.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3202">
+          <caret line="24" column="15" lean-forward="false" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_container.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="83" column="4" lean-forward="false" selection-start-line="83" selection-start-column="4" selection-end-line="83" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1501">
+          <caret line="44" column="40" lean-forward="true" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>

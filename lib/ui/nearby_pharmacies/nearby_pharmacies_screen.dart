@@ -40,7 +40,7 @@ class NearbyPharmaciesScreenState extends State<NearbyPharmaciesScreen> with Sin
   }
 
   void _openMapApplication(Pharmacy pharmacy) async {
-    String googleUrl = createGoogleMapUrl(pharmacy.lat, pharmacy.lat, pharmacy.name);
+    String googleUrl = createGoogleMapUrl(pharmacy.lat, pharmacy.lng, pharmacy.name);
     String appleUrl = createAppleMapUrl(pharmacy.lat, pharmacy.lng, pharmacy.name);
     appleUrl = Uri.encodeFull(appleUrl);
 
@@ -53,18 +53,34 @@ class NearbyPharmaciesScreenState extends State<NearbyPharmaciesScreen> with Sin
     }
   }
 
+  Widget _buildMapOptions(Pharmacy pharmacy) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        SizedBox(height: 16.0),
+        Text(pharmacy.name, textAlign: TextAlign.center, style: Theme.of(context).textTheme.title),
+        SizedBox(height: 24.0),
+        ListTile(
+          leading: new Icon(Icons.navigation),
+          title: new Text('เส้นทาง'),
+          onTap: () => _openMapApplication(pharmacy),
+        ),
+      ],
+    );
+  }
+
   Marker _buildMarker(Pharmacy pharmacy) {
     return Marker(
       width: 45.0,
       height: 45.0,
       point: LatLng(pharmacy.lat, pharmacy.lng),
-      builder: (context) => new Container(
+      builder: (context) => Container(
             child: IconButton(
               icon: Icon(Icons.location_on),
               color: Colors.red,
               iconSize: 45.0,
               onPressed: () {
-                print('Marker tapped');
+                showModalBottomSheet(context: context, builder: (context) => _buildMapOptions(pharmacy));
               },
             ),
           ),

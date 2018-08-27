@@ -1,0 +1,18 @@
+import 'dart:async';
+
+import 'package:latlong/latlong.dart';
+import 'package:location/location.dart';
+
+class LocationService {
+  Location location = Location();
+
+  Future<LatLng> getCurrentLocation() async {
+    final currentLocation = await location.getLocation;
+    print(currentLocation);
+
+    return LatLng(
+      currentLocation["latitude"].toDouble(),
+      currentLocation["longitude"].toDouble(),
+    );
+  }
+}

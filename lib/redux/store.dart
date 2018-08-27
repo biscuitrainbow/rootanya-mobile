@@ -21,6 +21,7 @@ import 'package:medical_app/redux/medicine_notification/medicine_notification_mi
 import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_middleware.dart';
 import 'package:medical_app/redux/notification_list/notification_list_middleware.dart';
 import 'package:medical_app/redux/usages/usage_middleware.dart';
+import 'package:medical_app/service/localtion_service.dart';
 import 'package:medical_app/service/notification_service.dart';
 import 'package:redux/redux.dart';
 
@@ -49,12 +50,13 @@ Future<Store<AppState>> createStore() async {
   var notificationRepository = NotificationRepository();
   var contractRepository = ContractRepository();
   var notificationService = NotificationService(initLocalNotification());
+  var locationService = LocationService();
 
   return Store<AppState>(appReducer,
       initialState: AppState.initial(),
       middleware: []
         ..addAll(createAppMiddleware(userRepository, sharedPreferencesRepository))
-        ..addAll(createNearbyPharmaciesMiddleware(googleMapRepository))
+        ..addAll(createNearbyPharmaciesMiddleware(googleMapRepository, locationService))
         ..addAll(createMedicineMiddleware(medicineRepository))
         ..addAll(createNotificationListMiddleware(notificationRepository))
         ..addAll(createAddMedicineMiddleware(medicineRepository))

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:location/location.dart' as libLocation;
 import 'package:medical_app/data/model/pharmacy.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
@@ -12,19 +11,11 @@ class NearbyPharmaciesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new StoreConnector(
-      onInit: (Store<AppState> store) async {
-        var location = new libLocation.Location();
-        try {
-          var currentLocation = await location.getLocation;
-          store.dispatch(new FetchNearbyPharmacies(currentLocation["latitude"].toDouble(), currentLocation["longitude"].toDouble()));
-        } catch (error) {
-          print(error);
-        }
-      },
+      onInit: (Store<AppState> store) => store.dispatch(FetchNearbyPharmacies()),
       distinct: true,
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel vm) {
-        return new NearbyPharmaciesScreen(
+        return NearbyPharmaciesScreen(
           state: vm.state,
           pharmacies: vm.pharmacies,
         );
