@@ -8,6 +8,7 @@ import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/auth/auth_action.dart';
 import 'package:medical_app/redux/register/register_screen_state.dart';
 import 'package:medical_app/ui/register/register_screen.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class RegisterContainer extends StatelessWidget {
@@ -40,7 +41,7 @@ class ViewModel {
       onRegister: (User user, BuildContext context) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {
-          print('complete');
+          showToast('สมัครสมาชิกแล้ว');
           Navigator.of(context).pop();
         }).catchError((error) {
           if (error is UnProcessableEntity) {

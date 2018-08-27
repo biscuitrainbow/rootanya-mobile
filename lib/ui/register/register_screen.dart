@@ -21,39 +21,39 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-//  final TextEditingController emailController = new TextEditingController(text: '');
-//  final TextEditingController passwordController = new TextEditingController(text: '');
-//  final TextEditingController nameController = new TextEditingController(text: '');
-//  final TextEditingController ageController = new TextEditingController(text: '');
-//  final TextEditingController weightController = new TextEditingController(text: '');
-//  final TextEditingController hieghtController = new TextEditingController(text: '');
-//  final TextEditingController telController = new TextEditingController(text: '');
-//  final TextEditingController intoleranceController = new TextEditingController(text: '');
-//  final TextEditingController diseaseController = new TextEditingController(text: '');
-//  final TextEditingController medicineController = new TextEditingController(text: '');
+  final TextEditingController emailController = TextEditingController(text: '');
+  final TextEditingController passwordController = TextEditingController(text: '');
+  final TextEditingController nameController = TextEditingController(text: '');
+  final TextEditingController ageController = TextEditingController(text: '');
+  final TextEditingController weightController = TextEditingController(text: '');
+  final TextEditingController hieghtController = TextEditingController(text: '');
+  final TextEditingController telController = TextEditingController(text: '');
+  final TextEditingController intoleranceController = TextEditingController(text: '');
+  final TextEditingController diseaseController = TextEditingController(text: '');
+  final TextEditingController medicineController = TextEditingController(text: '');
 
-  final TextEditingController emailController = new TextEditingController(text: 'natthapon@mail.com');
-  final TextEditingController passwordController = new TextEditingController(text: '123456');
-  final TextEditingController nameController = new TextEditingController(text: 'Natthapon');
-  final TextEditingController ageController = new TextEditingController(text: '25');
-  final TextEditingController weightController = new TextEditingController(text: '55');
-  final TextEditingController hieghtController = new TextEditingController(text: '175');
-  final TextEditingController telController = new TextEditingController(text: '');
-  final TextEditingController intoleranceController = new TextEditingController(text: '');
-  final TextEditingController diseaseController = new TextEditingController(text: '');
-  final TextEditingController medicineController = new TextEditingController(text: '');
+//  final TextEditingController emailController =  TextEditingController(text: 'natthapon@mail.com');
+//  final TextEditingController passwordController =  TextEditingController(text: '123456');
+//  final TextEditingController nameController =  TextEditingController(text: 'Natthapon');
+//  final TextEditingController ageController =  TextEditingController(text: '25');
+//  final TextEditingController weightController =  TextEditingController(text: '55');
+//  final TextEditingController hieghtController =  TextEditingController(text: '175');
+//  final TextEditingController telController =  TextEditingController(text: '');
+//  final TextEditingController intoleranceController =  TextEditingController(text: '');
+//  final TextEditingController diseaseController =  TextEditingController(text: '');
+//  final TextEditingController medicineController =  TextEditingController(text: '');
 
-  final FocusNode emailFocusNode = new FocusNode();
-  final FocusNode passwordFocusNode = new FocusNode();
-  final FocusNode barcodeFocusNode = new FocusNode();
-  final FocusNode nameFocusNode = new FocusNode();
-  final FocusNode ageFocusNode = new FocusNode();
-  final FocusNode weightFocusNode = new FocusNode();
-  final FocusNode heightFocusNode = new FocusNode();
-  final FocusNode telFocusNode = new FocusNode();
-  final FocusNode intoleranceFocusNode = new FocusNode();
-  final FocusNode diseaseFocusNode = new FocusNode();
-  final FocusNode medicineFocusNode = new FocusNode();
+  final FocusNode emailFocusNode = FocusNode();
+  final FocusNode passwordFocusNode = FocusNode();
+  final FocusNode barcodeFocusNode = FocusNode();
+  final FocusNode nameFocusNode = FocusNode();
+  final FocusNode ageFocusNode = FocusNode();
+  final FocusNode weightFocusNode = FocusNode();
+  final FocusNode heightFocusNode = FocusNode();
+  final FocusNode telFocusNode = FocusNode();
+  final FocusNode intoleranceFocusNode = FocusNode();
+  final FocusNode diseaseFocusNode = FocusNode();
+  final FocusNode medicineFocusNode = FocusNode();
   String gender = 'ชาย';
 
   Widget _buildInitialContent(BuildContext scaffoldContext) {
@@ -61,32 +61,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Form(
         key: _formKey,
         autovalidate: true,
-        child: new Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new TextFormField(
+            TextFormField(
               controller: emailController,
               validator: (val) => val.isEmpty ? 'กรุณากรอกอีเมลล์' : null,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'อีเมลล์',
                 labelText: 'อีเมลล์',
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(passwordFocusNode),
             ),
-            new TextFormField(
+            TextFormField(
               controller: passwordController,
               validator: (val) => val.isEmpty ? 'กรุณากรอกรหัสผ่าน' : null,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'รหัสผ่าน',
                 labelText: 'รหัสผ่าน',
               ),
               obscureText: true,
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(nameFocusNode),
             ),
-            new TextFormField(
+            TextFormField(
               controller: nameController,
               validator: (val) => val.isEmpty ? 'กรุณากรอกชื่อยา' : null,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'ชื่อ - นามสกุล',
                 labelText: 'ชื่อ - นามสกุล',
               ),
@@ -100,64 +100,64 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Row(
               children: <Widget>[
                 Text('ชาย'),
-                new Radio<String>(value: 'ชาย', groupValue: gender, onChanged: _onGenderChanged),
+                Radio<String>(value: 'ชาย', groupValue: gender, onChanged: _onGenderChanged),
                 Text('หญิง'),
-                new Radio<String>(value: 'หญิง', groupValue: gender, onChanged: _onGenderChanged),
+                Radio<String>(value: 'หญิง', groupValue: gender, onChanged: _onGenderChanged),
               ],
             ),
-            new TextFormField(
+            TextFormField(
               keyboardType: TextInputType.number,
               controller: ageController,
               focusNode: ageFocusNode,
               validator: (val) => val.isEmpty ? 'กรุณากรอกอายุ' : null,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'อายุ',
                 labelText: 'อายุ',
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(weightFocusNode),
             ),
-            new TextFormField(
+            TextFormField(
               keyboardType: TextInputType.number,
               controller: weightController,
               focusNode: weightFocusNode,
               validator: (val) => val.isEmpty ? 'กรุณากรอกน้ำหนัก' : null,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'น้ำหนัก',
                 labelText: 'น้ำหนัก',
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(heightFocusNode),
             ),
-            new TextFormField(
+            TextFormField(
               keyboardType: TextInputType.number,
               controller: hieghtController,
               focusNode: heightFocusNode,
               validator: (val) => val.isEmpty ? 'กรุณากรอกส่วนสูง' : null,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'ส่วนสูง',
                 labelText: 'ส่วนสูง',
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(telFocusNode),
             ),
-            new TextFormField(
+            TextFormField(
               keyboardType: TextInputType.number,
               controller: telController,
               focusNode: telFocusNode,
               //validator: (val) => val.isEmpty ? 'กรุณากรอกอายุ' : null,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'เบอร์โทร',
                 labelText: 'เบอร์โทร',
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(intoleranceFocusNode),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 24.0),
+              padding: EdgeInsets.only(top: 24.0),
               child: Builder(
                 builder: (BuildContext scaffoldContext) {
-                  return new TextFormField(
+                  return TextFormField(
                     controller: intoleranceController,
                     focusNode: intoleranceFocusNode,
-                    decoration: const InputDecoration(
-                      border: const OutlineInputBorder(),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
                       hintText: 'ยาที่แพ้',
                       labelText: 'ยาที่แพ้',
                     ),
@@ -167,29 +167,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
             SizedBox(height: 24.0),
-            new TextFormField(
+            TextFormField(
               controller: diseaseController,
               focusNode: diseaseFocusNode,
-              decoration: const InputDecoration(
-                border: const OutlineInputBorder(),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
                 hintText: 'โรคประจำตัว',
                 labelText: 'โรคประจำตัว',
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(medicineFocusNode),
             ),
             SizedBox(height: 24.0),
-            new TextFormField(
+            TextFormField(
               controller: medicineController,
               focusNode: medicineFocusNode,
-              decoration: const InputDecoration(
-                border: const OutlineInputBorder(),
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
                 hintText: 'ยาที่ใช้ประจำ',
                 labelText: 'ยาที่ใช้ประจำ',
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(intoleranceFocusNode),
             ),
             Center(
-              child: new RippleButton(
+              child: RippleButton(
                 text: "ลงทะเบียน",
                 backgroundColor: Theme.of(context).accentColor,
                 textColor: Colors.black,

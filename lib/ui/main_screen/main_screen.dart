@@ -19,9 +19,6 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-//      body: widget.viewModel.user.name == 'logout' ? LoginContainer() : HomeScreen(),
-      body: widget.viewModel.token == null ? LoginContainer() : HomeScreen(),
-    );
+    return widget.viewModel.token == null ? LoginContainer() : HomeScreen();
   }
 }
