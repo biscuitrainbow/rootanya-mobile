@@ -128,7 +128,11 @@ class MedicineListScreenState extends State<MedicineListScreen> {
       widget.viewModel.isSearching
           ? IconButton(
               icon: Icon(Icons.close),
-              onPressed: () => widget.viewModel.onSearchClick(),
+              onPressed: () {
+                _queryController.text = '';
+
+                widget.viewModel.onSearchClick();
+              },
             )
           : Container(),
     ];

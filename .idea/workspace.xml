@@ -5,29 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77c04d7a-7505-43f6-ac30-5debba11dbef" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/lib/util/widget_utils.dart" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/lib/data/network/contact_repository.dart" afterPath="$PROJECT_DIR$/lib/data/network/contact_repository.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/add_contact/add_contact_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/add_contact/add_contact_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/medicine_notification/medicine_notification_action.dart" afterPath="$PROJECT_DIR$/lib/redux/medicine_notification/medicine_notification_action.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/medicine_notification/medicine_notification_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/medicine_notification/medicine_notification_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_action.dart" afterPath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_action.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_middleware.dart" afterPath="$PROJECT_DIR$/lib/redux/notification_list/notification_list_middleware.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_contact/add_contact_container.dart" afterPath="$PROJECT_DIR$/lib/ui/add_contact/add_contact_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_contact/add_contact_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/add_contact/add_contact_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_contact/edit_contact_container.dart" afterPath="$PROJECT_DIR$/lib/ui/add_contact/edit_contact_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_edit_usage/add_edit_usage_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/add_edit_usage/add_edit_usage_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_edit_usage/add_usage_container.dart" afterPath="$PROJECT_DIR$/lib/ui/add_edit_usage/add_usage_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/add_notification/medicine_notification_list_container.dart" afterPath="$PROJECT_DIR$/lib/ui/add_notification/medicine_notification_list_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/contact/contact_list_container.dart" afterPath="$PROJECT_DIR$/lib/ui/contact/contact_list_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_container.dart" afterPath="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_container.dart" />
       <change beforePath="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" afterPath="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/notification_list/notification_list_container.dart" afterPath="$PROJECT_DIR$/lib/ui/notification_list/notification_list_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/profile/profile_container.dart" afterPath="$PROJECT_DIR$/lib/ui/profile/profile_container.dart" />
-      <change beforePath="$PROJECT_DIR$/lib/ui/usages/usage_container.dart" afterPath="$PROJECT_DIR$/lib/ui/usages/usage_container.dart" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" afterPath="$PROJECT_DIR$/pubspec.lock" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" afterPath="$PROJECT_DIR$/pubspec.yaml" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -45,65 +24,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="edit_contact_container.dart" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/ui/add_contact/edit_contact_container.dart">
+      <file leaf-file-name="medicine_list_container.dart" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_container.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+            <state relative-caret-position="267">
+              <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contact_middleware.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/redux/contract/contact_middleware.dart">
+      <file leaf-file-name="medicine_list_screen.dart" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#66#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_contact_middleware.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/redux/add_contact/add_contact_middleware.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="49" column="38" lean-forward="true" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#66#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_contact_container.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/ui/add_contact/add_contact_container.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="43" column="22" lean-forward="false" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contact_repository.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/data/network/contact_repository.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="966">
-              <caret line="54" column="27" lean-forward="true" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_contact_screen.dart" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/ui/add_contact/add_contact_screen.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="769">
-              <caret line="138" column="25" lean-forward="true" selection-start-line="138" selection-start-column="25" selection-end-line="138" selection-end-column="25" />
+            <state relative-caret-position="-651">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -121,9 +56,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>item</find>
-      <find>add</find>
-      <find>show</find>
       <find>action</find>
       <find>user</find>
       <find>app</find>
@@ -151,6 +83,9 @@
       <find>print</find>
       <find>_showTimePicker</find>
       <find>new</find>
+      <find>close</find>
+      <find>focus</find>
+      <find>FocusNode</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -204,7 +139,6 @@
         <option value="$PROJECT_DIR$/lib/ui/login/login_container.dart" />
         <option value="$PROJECT_DIR$/lib/ui/home/home.dart" />
         <option value="$PROJECT_DIR$/pubspec.yaml" />
-        <option value="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" />
         <option value="$PROJECT_DIR$/lib/redux/medicine_notification/medicine_notification_action.dart" />
         <option value="$PROJECT_DIR$/lib/redux/medicine_notification/medicine_notification_middleware.dart" />
         <option value="$PROJECT_DIR$/lib/ui/add_notification/medicine_notification_list_container.dart" />
@@ -224,6 +158,7 @@
         <option value="$PROJECT_DIR$/lib/redux/add_contact/add_contact_middleware.dart" />
         <option value="$PROJECT_DIR$/lib/data/network/contact_repository.dart" />
         <option value="$PROJECT_DIR$/lib/ui/add_contact/edit_contact_container.dart" />
+        <option value="$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart" />
       </list>
     </option>
   </component>
@@ -305,9 +240,9 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="editcon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/edit_contact_container.dart&#10;add&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_container.dart&#10;contactmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_contact/add_contact_middleware.dart&#10;contmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/contract/contact_middleware.dart&#10;contre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/contact_repository.dart&#10;editco&#9;null&#9;null&#10;add_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_container.dart&#10;ฟกกำกระ&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_edit_usage/add_edit_usage_screen.dart&#10;ฟกกแนื&#9;null&#9;null&#10;ฟกกี&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_edit_usage/add_usage_container.dart&#10;contaccon&#9;null&#9;null&#10;con&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/contact_repository.dart&#10;profile&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;addusage&#9;null&#9;null&#10;medlist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;usage&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/usages/usage_screen.dart&#10;near&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart&#10;notiflistmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/notification_list/notification_list_middleware.dart&#10;notifi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/notification_list/notification_list_container.dart&#10;mid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;medicilis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;medilist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;home&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/home/home.dart&#10;loginco&#9;null&#9;null&#10;logins&#9;null&#9;null&#10;us&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/user.dart&#10;main&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_container.dart&#10;appre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;app&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;profico&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;m&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_screen.dart&#10;profilc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;token&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;authmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;profi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;profie&#9;null&#9;null&#10;user&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/user.dart&#10;profic&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;auth_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_reducer.dart&#10;app_re&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;proficon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;auth_redu&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_reducer.dart&#10;auth&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;procon&#9;null&#9;null&#10;token_r&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;tokere&#9;null&#9;null&#10;app_s&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;store&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;appmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart&#10;authm&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart" />
+    <property name="SearchEverywhereHistoryKey" value="medicine&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;editcon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/edit_contact_container.dart&#10;add&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_container.dart&#10;contactmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/add_contact/add_contact_middleware.dart&#10;contmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/contract/contact_middleware.dart&#10;contre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/contact_repository.dart&#10;editco&#9;null&#9;null&#10;add_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_contact/add_contact_container.dart&#10;ฟกกำกระ&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_edit_usage/add_edit_usage_screen.dart&#10;ฟกกแนื&#9;null&#9;null&#10;ฟกกี&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/add_edit_usage/add_usage_container.dart&#10;contaccon&#9;null&#9;null&#10;con&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/network/contact_repository.dart&#10;profile&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;addusage&#9;null&#9;null&#10;medlist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;usage&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/usages/usage_screen.dart&#10;near&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/nearby_pharmacies/nearby_pharmacies_screen.dart&#10;notiflistmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/notification_list/notification_list_middleware.dart&#10;notifi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/notification_list/notification_list_container.dart&#10;mid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;medicilis&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;medilist&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/medicine_list/medicine_list_container.dart&#10;home&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/home/home.dart&#10;loginco&#9;null&#9;null&#10;logins&#9;null&#9;null&#10;us&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/user.dart&#10;main&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_container.dart&#10;appre&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;app&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;profico&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;m&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/main_screen/main_screen.dart&#10;profilc&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;token&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;authmi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;profi&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_screen.dart&#10;profie&#9;null&#9;null&#10;user&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/data/model/user.dart&#10;profic&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;auth_&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_reducer.dart&#10;app_re&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state_reducer.dart&#10;proficon&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/ui/profile/profile_container.dart&#10;auth_redu&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_reducer.dart&#10;auth&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/auth/auth_middleware.dart&#10;procon&#9;null&#9;null&#10;token_r&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/token/token_reducers.dart&#10;tokere&#9;null&#9;null&#10;app_s&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_state.dart&#10;store&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/store.dart&#10;appmid&#9;FILE&#9;file://D:/Code/medical_app/medical_app/lib/redux/app/app_middleware.dart" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535378365078" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535379337133" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
   </component>
@@ -680,12 +615,12 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31926408" sideWeight="0.49307036" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31926408" sideWeight="0.49307036" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31709957" sideWeight="0.495116" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18603411" sideWeight="0.4942717" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Flutter Inspector" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20469083" sideWeight="0.48076922" order="7" side_tool="false" content_ui="tabs" />
@@ -942,16 +877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-808">
-          <caret line="249" column="9" lean-forward="false" selection-start-line="249" selection-start-column="9" selection-end-line="249" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#20#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/redux/medicine_notification/medicine_notification_action.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -1060,14 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_container.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="81" column="16" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/ui/notification_list/notification_list_container.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -1168,8 +1085,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/ui/add_contact/edit_contact_container.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+        <state relative-caret-position="349">
+          <caret line="61" column="59" lean-forward="true" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_container.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="31" column="27" lean-forward="true" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ui/medicine_list/medicine_list_screen.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-651">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
