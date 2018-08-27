@@ -12,67 +12,67 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('เมนูหลัก'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('เมนูหลัก'),
       ),
       body: new GridView.count(
         shrinkWrap: true,
         crossAxisCount: 2,
         childAspectRatio: 1.4,
         children: <Widget>[
-          new MenuItem(
+          MenuItem(
             title: 'ค้นหาข้อมูลยา',
             iconData: FontAwesomeIcons.pills,
             onPress: () => Navigator.push(
                   context,
-                  new MaterialPageRoute(
-                    builder: (BuildContext context) => new MedicineListContainer(mode: MedicineListMode.browsing),
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>  MedicineListContainer(mode: MedicineListMode.browsing),
                   ),
                 ),
           ),
-          new MenuItem(
+          MenuItem(
             title: 'เตือนการกินยา',
             iconData: Icons.notifications,
             onPress: () => Navigator.push(
                   context,
-                  new MaterialPageRoute(
+                  MaterialPageRoute(
                     builder: (BuildContext context) => new NotificationListContainer(),
                   ),
                 ),
           ),
-          new MenuItem(
+          MenuItem(
             title: 'ร้านขายยาใกล้เคียง',
             iconData: FontAwesomeIcons.mapMarkerAlt,
             onPress: () => Navigator.push(
                   context,
-                  new MaterialPageRoute(
-                    builder: (BuildContext context) => new NearbyPharmaciesContainer(),
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>  NearbyPharmaciesContainer(),
                   ),
                 ),
           ),
-          new MenuItem(
+          MenuItem(
             title: 'ขอความช่วยเหลือ',
             iconData: Icons.call,
             onPress: () => Navigator.push(
                   context,
-                  new MaterialPageRoute(
+                  MaterialPageRoute(
                     builder: (BuildContext context) => ContactContainer(),
                   ),
                 ),
           ),
-          new MenuItem(
+          MenuItem(
             title: 'บันทึกการใช้ยา',
             iconData: FontAwesomeIcons.book,
             enabled: true,
             onPress: () => Navigator.push(
                   context,
-                  new MaterialPageRoute(
+                  MaterialPageRoute(
                     builder: (BuildContext context) => UsageContainer(),
                   ),
                 ),
           ),
-          new MenuItem(
+          MenuItem(
             title: 'ข้อมูลส่วนตัว',
             iconData: Icons.person,
             onPress: () => Navigator.of(context).pushNamed('/profile'),

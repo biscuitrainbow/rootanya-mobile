@@ -89,8 +89,10 @@ Middleware<AppState> _logout(
     if (action is LogoutAction) {
       try {
         await sharedPrefRepository.deleteToken();
-        next(DeleteToken());
+        next(ClearToken());
         next(CancelAllNotification());
+        //  next(SuccessLogoutAction());
+        action.completer.complete(null);
       } catch (error) {
         print(error);
       }

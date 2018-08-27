@@ -43,7 +43,7 @@ class AppState {
   });
 
   factory AppState.initial() {
-    return new AppState(
+    return AppState(
       nearbyPharmacyState: NearbyPharmacyScreenState.initial(),
       medicineListState: MedicineListScreenState.initial(),
       notificationListState: NotificationListScreenState.initial(),
@@ -75,7 +75,7 @@ class AppState {
     User user,
     String token,
   }) {
-    return new AppState(
+    return AppState(
       nearbyPharmacyState: nearbyPharmacyState ?? this.nearbyPharmacyState,
       medicineListState: medicineListState ?? this.medicineListState,
       notificationListState: notificationListState ?? this.notificationListState,
@@ -94,8 +94,39 @@ class AppState {
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) || other is AppState && runtimeType == other.runtimeType && nearbyPharmacyState == other.nearbyPharmacyState && medicineListState == other.medicineListState && notificationListState == other.notificationListState && medicineNotificationState == other.medicineNotificationState && addMedicineState == other.addMedicineState && contactState == other.contactState && addContactState == other.addContactState && usageState == other.usageState && user == other.user;
+      identical(this, other) ||
+          other is AppState &&
+              runtimeType == other.runtimeType &&
+              nearbyPharmacyState == other.nearbyPharmacyState &&
+              medicineListState == other.medicineListState &&
+              notificationListState == other.notificationListState &&
+              medicineNotificationState == other.medicineNotificationState &&
+              addMedicineState == other.addMedicineState &&
+              contactState == other.contactState &&
+              addContactState == other.addContactState &&
+              registerScreenState == other.registerScreenState &&
+              profileScreenState == other.profileScreenState &&
+              usageState == other.usageState &&
+              loginState == other.loginState &&
+              user == other.user &&
+              token == other.token;
 
   @override
-  int get hashCode => nearbyPharmacyState.hashCode ^ medicineListState.hashCode ^ notificationListState.hashCode ^ medicineNotificationState.hashCode ^ addMedicineState.hashCode ^ contactState.hashCode ^ addContactState.hashCode ^ usageState.hashCode ^ user.hashCode;
+  int get hashCode =>
+      nearbyPharmacyState.hashCode ^
+      medicineListState.hashCode ^
+      notificationListState.hashCode ^
+      medicineNotificationState.hashCode ^
+      addMedicineState.hashCode ^
+      contactState.hashCode ^
+      addContactState.hashCode ^
+      registerScreenState.hashCode ^
+      profileScreenState.hashCode ^
+      usageState.hashCode ^
+      loginState.hashCode ^
+      user.hashCode ^
+      token.hashCode;
+
+
+
 }

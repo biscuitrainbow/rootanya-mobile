@@ -8,7 +8,6 @@ class LocationService {
 
   Future<LatLng> getCurrentLocation() async {
     final currentLocation = await location.getLocation;
-    print(currentLocation);
 
     return LatLng(
       currentLocation["latitude"].toDouble(),

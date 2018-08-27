@@ -10,10 +10,9 @@ import 'package:medical_app/util/string_utils.dart';
 class MedicineRepository {
   Future<List<Medicine>> fetchAllMedicines(String userId) async {
     final response = await http.get('${Http.api}/medicine/$userId');
-    print(response.body);
     final jsonResponse = json.decode(response.body);
 
-    var medicines = Medicine.fromJsonArray(jsonResponse);
+    final medicines = Medicine.fromJsonArray(jsonResponse);
     return medicines;
   }
 
@@ -52,7 +51,5 @@ class MedicineRepository {
         'forget': medicine.forget,
       },
     );
-
-    print(response.body);
   }
 }

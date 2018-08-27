@@ -65,6 +65,5 @@ class ContractRepository {
         HttpHeaders.authorizationHeader: createBearer(token),
       },
     );
-    print(response.body);
   }
 }

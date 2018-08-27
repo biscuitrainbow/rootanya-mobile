@@ -38,9 +38,7 @@ class ViewModel {
       loginState: store.state.loginState,
       onLogin: (String email, String password, BuildContext context) {
         Completer<Null> completer = Completer();
-        completer.future.then((_) {
-          Navigator.of(context).pushReplacementNamed('/home');
-        }).catchError((error) {
+        completer.future.catchError((error) {
           if (error is UnauthorizedException) {
             Scaffold.of(context).showSnackBar(SnackBar(content: Text(error.message)));
           }

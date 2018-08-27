@@ -79,7 +79,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   void _showAddHistory(BuildContext context, Medicine medicine) {
     Navigator.push(
       context,
-      new MaterialPageRoute(builder: (BuildContext context) => new AddUsageContainer(medicine: medicine)),
+      MaterialPageRoute(builder: (BuildContext context) => new AddUsageContainer(medicine: medicine)),
     );
   }
 
@@ -133,31 +133,41 @@ class MedicineListScreenState extends State<MedicineListScreen> {
     ];
   }
 
+  Widget _buildStopListeningFab() {
+    return FloatingActionButton(
+      onPressed: () {
+        widget.viewModel.hideListening();
+        widget.viewModel.onSearchClick();
+        _speech.cancel();
+      },
+      child: Icon(
+        Icons.mic_off,
+      ),
+    );
+  }
+
+  Widget _buildAddMedicineFab() {
+    return FloatingActionButton(
+      onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddMedicineContainer())),
+      child: Semantics(
+        label: 'เพิ่มข้อมูลยา',
+        child: Icon(
+          Icons.add,
+        ),
+      ),
+    );
+  }
+
   Widget _buildFloatingActionsButton() {
-    return widget.viewModel.isListening
-        ? new FloatingActionButton(
-            onPressed: () {
-              widget.viewModel.hideListening();
-              widget.viewModel.onSearchClick();
-//              _speech.cancel();
-            },
-            child: new Icon(
-              Icons.mic_off,
-            ),
-          )
-        : new FloatingActionButton(
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => AddMedicineContainer())),
-            child: Semantics(
-              label: 'เพิ่มข้อมูลยา',
-              child: Icon(
-                Icons.add,
-              ),
-            ),
-          );
+    if (widget.mode == MedicineListMode.browsing) {
+      return widget.viewModel.isListening ? _buildStopListeningFab() : _buildAddMedicineFab();
+    } else {
+      return widget.viewModel.isListening ? _buildStopListeningFab() : null;
+    }
   }
 
   Widget _buildSearchBox(BuildContext context) {
-    return new TextField(
+    return TextField(
       focusNode: _queryFocusNode,
       controller: _queryController,
       autofocus: true,

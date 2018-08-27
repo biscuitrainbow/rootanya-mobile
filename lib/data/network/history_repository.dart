@@ -57,8 +57,6 @@ class UsageRepository {
     }
 
   Future<Null> deleteUsage(String token, String usageId) async {
-    print(usageId);
-
     final response = await http.delete(
       '${Http.api}/usage/user/$usageId',
       headers: {

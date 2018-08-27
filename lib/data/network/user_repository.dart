@@ -75,9 +75,7 @@ class UserRepository {
         'disease': user.disease,
       },
     );
-
-    print(response.request.data);
-  }
+    }
 
   Future<User> register(User user) async {
     final response = await http.post('${Http.api}/user/register', headers: {

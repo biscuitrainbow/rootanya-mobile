@@ -13,35 +13,40 @@ class ProfileContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector(
-      converter: ViewModel.fromStore,
-      builder: (BuildContext context, ViewModel vm) {
+      ignoreChange: (AppState state) => false,
+      onDidChange: (ProfileScreenViewModel viewModel) {},
+      converter: ProfileScreenViewModel.fromStore,
+      builder: (BuildContext context, ProfileScreenViewModel viewModel) {
         return ProfileScreen(
-          user: vm.user,
-          state: vm.state,
-          onUpdate: vm.onUpdate,
-          onLogout: vm.onLogout,
+          user: viewModel.user,
+          state: viewModel.state,
+          onUpdate: viewModel.onUpdate,
+          onLogout: viewModel.onLogout,
         );
       },
     );
   }
 }
 
-class ViewModel {
+class ProfileScreenViewModel {
   final User user;
+  final String token;
   final ProfileScreenState state;
   final Function(User, BuildContext) onUpdate;
   final Function(BuildContext context) onLogout;
 
-  ViewModel({
+  ProfileScreenViewModel({
     this.user,
+    this.token,
     this.state,
     this.onUpdate,
     this.onLogout,
   });
 
-  static ViewModel fromStore(Store<AppState> store) {
-    return ViewModel(
+  static ProfileScreenViewModel fromStore(Store<AppState> store) {
+    return ProfileScreenViewModel(
         user: store.state.user,
+        token: store.state.token,
         state: store.state.profileScreenState,
         onUpdate: (User user, BuildContext context) {
           Completer<Null> completer = Completer();
@@ -52,8 +57,16 @@ class ViewModel {
           store.dispatch(UpdateUserAction(user, completer));
         },
         onLogout: (BuildContext context) {
-          store.dispatch(LogoutAction());
-//          Navigator.of(context).pop();
+          Completer<Null> completer = Completer();
+          completer.future.then((_) {
+            Navigator.of(context).pop();
+          });
+          store.dispatch(LogoutAction(completer));
         });
+  }
+
+  @override
+  String toString() {
+    return 'ProfileScreenViewModel{user: $user, token: $token, state: $state, onUpdate: $onUpdate, onLogout: $onLogout}';
   }
 }

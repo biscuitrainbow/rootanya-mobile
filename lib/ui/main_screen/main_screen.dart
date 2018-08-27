@@ -8,10 +8,9 @@ class MainScreen extends StatefulWidget {
 
   final MainScreenViewModel viewModel;
 
-  const MainScreen({
-    Key key,
+  MainScreen({
     this.viewModel,
-  }) : super(key: key);
+  });
 
   @override
   _MainScreenState createState() => _MainScreenState();
@@ -21,6 +20,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+//      body: widget.viewModel.user.name == 'logout' ? LoginContainer() : HomeScreen(),
       body: widget.viewModel.token == null ? LoginContainer() : HomeScreen(),
     );
   }

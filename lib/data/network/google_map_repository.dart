@@ -10,21 +10,19 @@ class GoogleMapRepository {
 
   Future<List<Pharmacy>> getNearByPharmacies(double latitude, double longitude) async {
     var placeResponse = await googleMapsPlaces.searchNearbyWithRankBy(
-      new Location(latitude, longitude),
+      Location(latitude, longitude),
       'distance',
       type: "pharmacy",
       language: 'th',
     );
 
     var pharmaciesPlace = placeResponse.results;
-    print(pharmaciesPlace[0].openingHours);
-
     var pharmacies = pharmaciesPlace
         .map(
-          (r) => new Pharmacy(
-                r.name,
-                r.geometry.location.lat,
-                r.geometry.location.lng,
+          (response) => new Pharmacy(
+                response.name,
+                response.geometry.location.lat,
+                response.geometry.location.lng,
                 false,
               ),
         )

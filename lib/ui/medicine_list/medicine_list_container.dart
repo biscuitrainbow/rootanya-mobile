@@ -13,7 +13,7 @@ import 'package:redux/redux.dart';
 class MedicineListContainer extends StatefulWidget {
   final MedicineListMode mode;
 
-  const MedicineListContainer({this.mode});
+  MedicineListContainer({this.mode});
 
   @override
   _MedicineListContainerState createState() => _MedicineListContainerState();
@@ -26,7 +26,7 @@ class _MedicineListContainerState extends State<MedicineListContainer> {
       onDispose: (Store store) => store.dispatch(ResetStateAction()),
       converter: MedicineListScreenViewModel.fromStore,
       builder: (BuildContext context, MedicineListScreenViewModel vm) {
-        return new MedicineListScreen(
+        return MedicineListScreen(
           mode: widget.mode,
           viewModel: vm,
         );
@@ -72,8 +72,8 @@ class MedicineListScreenViewModel {
       showListening: () => store.dispatch(new ActivateSpeechRecognizer()),
       hideListening: () => store.dispatch(new DeactivateSpeechRecognizer()),
       onSearchClick: () => store.dispatch(new ToggleSearching()),
-      onQueryChanged: (String query) => store.dispatch(new FetchMedicineByQuery(query)),
-      onAddNotification: (Time time, Medicine medicine) => store.dispatch(new AddMedicineNotification(time, medicine)),
+      onQueryChanged: (String query) => store.dispatch(FetchMedicineByQuery(query)),
+      onAddNotification: (Time time, Medicine medicine) => store.dispatch(AddMedicineNotification(time, medicine)),
     );
   }
 }

@@ -40,6 +40,12 @@ class RegisterAction {
   RegisterAction(this.user, this.completer);
 }
 
-class LogoutAction {}
+class LogoutAction {
+  final Completer<Null> completer;
+
+  LogoutAction(this.completer);
+}
 
 class SuccessLogoutAction {}
+
+class ClearUserAction {}

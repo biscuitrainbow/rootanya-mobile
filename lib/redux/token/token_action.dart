@@ -4,4 +4,4 @@ class SaveToken {
   SaveToken(this.token);
 }
 
-class DeleteToken {}
+class ClearToken {}

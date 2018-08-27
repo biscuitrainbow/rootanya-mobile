@@ -4,19 +4,17 @@ import 'package:redux/redux.dart';
 
 final authReducers = combineReducers<User>([
   new TypedReducer<User, SuccessLoginAction>(_successLogin),
-  new TypedReducer<User, SuccessLogoutAction>(_successLogout),
+  new TypedReducer<User, SuccessLogoutAction>(_changeUserName),
 ]);
 
-User _successLogin(
-  User state,
-  SuccessLoginAction action,
-) {
+User _successLogin(User state, SuccessLoginAction action) {
   return action.user;
 }
 
-User _successLogout(
-  User state,
-  SuccessLogoutAction action,
-) {
+User _successLogout(User state, SuccessLogoutAction action) {
   return null;
+}
+
+User _changeUserName(User state, SuccessLogoutAction action) {
+  return state.copyWith(name: 'Logout out');
 }

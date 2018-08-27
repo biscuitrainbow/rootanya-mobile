@@ -61,8 +61,8 @@ class NearbyPharmaciesScreenState extends State<NearbyPharmaciesScreen> with Sin
         Text(pharmacy.name, textAlign: TextAlign.center, style: Theme.of(context).textTheme.title),
         SizedBox(height: 24.0),
         ListTile(
-          leading: new Icon(Icons.navigation),
-          title: new Text('เส้นทาง'),
+          leading: Icon(Icons.navigation),
+          title: Text('เส้นทาง'),
           onTap: () => _openMapApplication(pharmacy),
         ),
       ],
@@ -90,14 +90,12 @@ class NearbyPharmaciesScreenState extends State<NearbyPharmaciesScreen> with Sin
   @override
   void initState() {
     tabController = TabController(length: 2, vsync: this);
-
     super.initState();
   }
 
   @override
   void dispose() {
     tabController.dispose();
-
     super.dispose();
   }
 
@@ -105,7 +103,7 @@ class NearbyPharmaciesScreenState extends State<NearbyPharmaciesScreen> with Sin
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: new Text("ร้านขายยา"),
+        title: Text("ร้านขายยา"),
         bottom: TabBar(
           controller: tabController,
           tabs: [

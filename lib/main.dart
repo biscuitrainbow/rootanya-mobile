@@ -13,12 +13,8 @@ import 'package:medical_app/ui/register/register_container.dart';
 import 'package:medical_app/ui/splashscreen/splash_screen.dart';
 import 'package:medical_app/ui/usages/usage_container.dart';
 import 'package:redux/redux.dart';
-//import 'package:map_view/map_view.dart';
 
 void main() async {
-  var apiKey = "AIzaSyAXJ48mFl-jDIRzRRsykbI0_TOJxrXIo8w";
-//  MapView.setApiKey(apiKey);
-
   var store = await createStore();
 
   runApp(new MyApp(store));
@@ -27,7 +23,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final Store<AppState> store;
 
-  const MyApp(this.store);
+  MyApp(this.store);
 
   @override
   Widget build(BuildContext context) {
