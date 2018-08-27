@@ -12,20 +12,19 @@ class MedicineNotificationListContainer extends StatelessWidget {
   final String medicineId;
   final bool isAddingNotification;
 
-  const MedicineNotificationListContainer({
-    Key key,
+  MedicineNotificationListContainer({
     this.medicineId,
     this.isAddingNotification,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return new StoreConnector(
-      onInit: (Store store) => store.dispatch(new FetchMedicineNotification(medicineId)),
+    return StoreConnector(
+      onInit: (Store store) => store.dispatch(FetchMedicineNotification(medicineId)),
       distinct: true,
       converter: ViewModel.fromStore,
       builder: (BuildContext context, ViewModel vm) {
-        return new MedicineNotificationListScreen(
+        return MedicineNotificationListScreen(
           isAddingNotification: isAddingNotification,
           loadingStatus: vm.loadingStatus,
           medicine: vm.medicine,
@@ -48,9 +47,9 @@ class ViewModel {
   });
 
   static ViewModel fromStore(Store<AppState> store) {
-    return new ViewModel(
+    return ViewModel(
       medicine: store.state.medicineNotificationState.medicine,
-      onAddNotification: (Time time, Medicine medicine) => store.dispatch(new AddMedicineNotification(time, medicine)),
+      onAddNotification: (Time time, Medicine medicine) => store.dispatch(AddMedicineNotification(time, medicine)),
       loadingStatus: store.state.medicineNotificationState.loadingStatus,
     );
   }

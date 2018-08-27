@@ -12,7 +12,7 @@ List<Middleware<AppState>> createAppMiddleware(
   SharedPreferencesRepository sharedPrefRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, InitAppAction>(
+    TypedMiddleware<AppState, InitAppAction>(
       _initApp(userRepository, sharedPrefRepository),
     ),
   ];
@@ -26,7 +26,6 @@ Middleware<AppState> _initApp(
     if (action is InitAppAction) {
       try {
         var token = await sharedPrefRepository.getToken();
-
 
         if (token != null) {
           next(SaveToken(token));

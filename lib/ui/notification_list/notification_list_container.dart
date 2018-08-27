@@ -4,7 +4,6 @@ import 'package:medical_app/data/loading_status.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/notification_list/notification_list_action.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:medical_app/ui/notification_list/notification_list_screen.dart';
 import 'package:redux/redux.dart';
 
@@ -15,7 +14,7 @@ class NotificationListContainer extends StatelessWidget {
       onInit: (Store store) => store.dispatch(new FetchNotifications()),
       converter: NotificationListScreenViewModel.fromStore,
       builder: (BuildContext context, NotificationListScreenViewModel vm) {
-        return new NotificationListScreen(
+        return NotificationListScreen(
           viewModel: vm,
         );
       },
@@ -26,7 +25,7 @@ class NotificationListContainer extends StatelessWidget {
 class NotificationListScreenViewModel {
   final List<Medicine> notifications;
   final LoadingStatus loadingStatus;
-  final Function(String) onDelete;
+  final Function(int) onDelete;
 
   NotificationListScreenViewModel({
     this.notifications,
@@ -38,7 +37,7 @@ class NotificationListScreenViewModel {
     return new NotificationListScreenViewModel(
       notifications: store.state.notificationListState.notifications,
       loadingStatus: store.state.notificationListState.loadingStatus,
-      onDelete: (String notificationId) {
+      onDelete: (int notificationId) {
         store.dispatch(DeleteNotification(notificationId));
       },
     );

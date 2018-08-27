@@ -58,7 +58,6 @@ Future<Store<AppState>> createStore() async {
         ..addAll(createAppMiddleware(userRepository, sharedPreferencesRepository))
         ..addAll(createNearbyPharmaciesMiddleware(googleMapRepository, locationService))
         ..addAll(createMedicineMiddleware(medicineRepository))
-        ..addAll(createNotificationListMiddleware(notificationRepository))
         ..addAll(createAddMedicineMiddleware(medicineRepository))
         ..addAll(createAddContactMiddleware(contractRepository))
         ..addAll(createContactsMiddleware(contractRepository))
@@ -66,6 +65,10 @@ Future<Store<AppState>> createStore() async {
         ..addAll(createAuthMiddleware(
           userRepository,
           sharedPreferencesRepository,
+        ))
+        ..addAll(createNotificationListMiddleware(
+          notificationRepository,
+          notificationService,
         ))
         ..addAll(createMedicineNotificationMiddleware(
           notificationRepository,

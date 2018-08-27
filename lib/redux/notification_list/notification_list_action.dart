@@ -8,14 +8,14 @@ class FetchNotificationsSuccess {
   FetchNotificationsSuccess(this.notifications);
 }
 
-class ShowNotificationLoadingAction {
+class ShowNotificationLoadingAction {}
 
-}
+class CancelAllNotification {}
 
+class SetNotifications {}
 
-class DeleteNotification{
-  final String notificationId;
+class DeleteNotification {
+  final int notificationId;
 
   DeleteNotification(this.notificationId);
 }
-

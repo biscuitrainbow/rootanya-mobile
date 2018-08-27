@@ -3,6 +3,7 @@ import 'package:medical_app/data/prefs/prefs_repository.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/auth/auth_action.dart';
 import 'package:medical_app/redux/login/login_action.dart';
+import 'package:medical_app/redux/notification_list/notification_list_action.dart';
 import 'package:medical_app/redux/profile/profile_screen_action.dart';
 import 'package:medical_app/redux/register/register_screen_action.dart';
 import 'package:medical_app/redux/token/token_action.dart';
@@ -67,6 +68,7 @@ Middleware<AppState> _login(
 
         next(SuccessLoginAction(user));
         next(SaveToken(user.token));
+        next(SetNotifications());
 
         action.completer.complete(null);
       } catch (error) {
@@ -88,7 +90,7 @@ Middleware<AppState> _logout(
       try {
         await sharedPrefRepository.deleteToken();
         next(DeleteToken());
-        // next(SuccessLogoutAction());
+        next(CancelAllNotification());
       } catch (error) {
         print(error);
       }

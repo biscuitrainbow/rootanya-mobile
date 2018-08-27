@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 class LoadingContent extends StatelessWidget {
   final String text;
 
-  const LoadingContent({
-    Key key,
+  LoadingContent({
     this.text = 'กำลังโหลด',
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return new Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -22,9 +21,7 @@ class LoadingContent extends StatelessWidget {
         ),
         Text(
           text,
-          style: new TextStyle(
-            color: Colors.grey,
-          ),
+          style: new TextStyle(color: Colors.grey),
         )
       ],
     );

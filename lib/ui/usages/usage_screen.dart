@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/redux/usages/usage_state.dart';
@@ -18,12 +19,11 @@ class UsageScreen extends StatefulWidget {
   final VoidCallback onRefresh;
   final Function(String, BuildContext) onDelete;
 
-  const UsageScreen({
-    Key key,
+  UsageScreen({
     this.usageState,
     this.onRefresh,
     this.onDelete,
-  }) : super(key: key);
+  });
 
   @override
   UsageScreenState createState() {
@@ -61,9 +61,7 @@ class UsageScreenState extends State<UsageScreen> {
         child: LoadingView(
           loadingStatus: widget.usageState.loadingStatus,
           initialContent: _buildInitialContent(),
-          loadingContent: _buildLoadingContent(),
-          successContent: _buildSuccessContent(),
-          errorContent: _buildSuccessContent(),
+          loadingContent: LoadingContent(text: 'กำลังโหลด'),
         ),
       ),
     );
@@ -131,20 +129,14 @@ class UsageScreenState extends State<UsageScreen> {
   }
 
   _buildInitialContent() {
-    return _buildSuccessContent();
-  }
+    final usages = widget.usageState.usages.reversed.toList();
 
-  _buildLoadingContent() {
-    return LoadingContent(text: 'กำลังโหลด');
-  }
-
-  _buildSuccessContent() {
-    var usages = widget.usageState.usages.reversed.toList();
-
-    if (usages.isEmpty)
+    if (usages.isEmpty) {
       return NoContent(
         title: 'คุณยังไม่มีบันทึกการใช้ยา',
+        icon: FontAwesomeIcons.book,
       );
+    }
 
     return SideHeaderListView(
       itemCount: usages.length,
@@ -158,15 +150,15 @@ class UsageScreenState extends State<UsageScreen> {
               SizedBox(
                 height: 16.0,
               ),
-              new Text(
+              Text(
                 new DateFormat('d').format(usage.usageDate),
                 style: new TextStyle(
                   fontSize: 24.0,
                   color: Theme.of(context).accentColor,
                 ),
               ),
-              new Text(
-                new DateFormat('MMM').format(usage.usageDate),
+              Text(
+                DateFormat('MMM').format(usage.usageDate),
                 style: new TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w300,
@@ -201,13 +193,11 @@ class UsageScreenState extends State<UsageScreen> {
         });
       },
       hasSameHeader: (int a, int b) {
-        var usageA = usages[a];
-        var usageB = usages[b];
+        final usageA = usages[a];
+        final usageB = usages[b];
 
         return '${usageA.usageDate.day} ${usageA.usageDate.month}' == '${usageB.usageDate.day} ${usageB.usageDate.month}';
       },
     );
   }
-
-  _buildErrorContent() {}
 }

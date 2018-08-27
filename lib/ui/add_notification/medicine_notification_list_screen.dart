@@ -11,13 +11,12 @@ class MedicineNotificationListScreen extends StatelessWidget {
   final LoadingStatus loadingStatus;
   final bool isAddingNotification;
 
-  const MedicineNotificationListScreen({
-    Key key,
+  MedicineNotificationListScreen({
     this.medicine,
     this.onAddNotification,
     this.loadingStatus,
     this.isAddingNotification,
-  }) : super(key: key);
+  });
 
   void _showTimePicker(BuildContext context) async {
     var pickedTime = await showTimePicker(
@@ -38,7 +37,7 @@ class MedicineNotificationListScreen extends StatelessWidget {
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          new Column(
+           Column(
             children: medicine.notifications.map((n) => _buildNotificationItem(n, context)).toList(),
           )
         ],

@@ -49,7 +49,7 @@ Middleware<AppState> _addMedicineNotification(
       try {
         final token = store.state.token;
 
-        int id = await notificationService.addNotification(
+        int id = await notificationService.createNotification(
           action.time,
           action.medicine,
         );

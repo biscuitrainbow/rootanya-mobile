@@ -44,7 +44,7 @@ class NotificationRepository {
     print(response.body);
   }
 
-  Future<Null> deleteNotification(String notificationId, String token) async {
+  Future<Null> deleteNotification(int notificationId, String token) async {
     final response = await http.delete(
       '${Http.api}/notification/user/$notificationId',
       headers: {

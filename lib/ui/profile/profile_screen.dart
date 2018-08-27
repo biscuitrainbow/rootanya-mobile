@@ -25,25 +25,25 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController barcodeController = new TextEditingController(text: '');
-  final TextEditingController nameController = new TextEditingController(text: '');
-  final TextEditingController ageController = new TextEditingController(text: '');
-  final TextEditingController weightController = new TextEditingController(text: '');
-  final TextEditingController heightController = new TextEditingController(text: '');
-  final TextEditingController telController = new TextEditingController(text: '');
-  final TextEditingController intoleranceController = new TextEditingController(text: '');
-  final TextEditingController diseaseController = new TextEditingController(text: '');
-  final TextEditingController medicineController = new TextEditingController(text: '');
+  final TextEditingController barcodeController = TextEditingController(text: '');
+  final TextEditingController nameController = TextEditingController(text: '');
+  final TextEditingController ageController = TextEditingController(text: '');
+  final TextEditingController weightController = TextEditingController(text: '');
+  final TextEditingController heightController = TextEditingController(text: '');
+  final TextEditingController telController = TextEditingController(text: '');
+  final TextEditingController intoleranceController = TextEditingController(text: '');
+  final TextEditingController diseaseController = TextEditingController(text: '');
+  final TextEditingController medicineController = TextEditingController(text: '');
 
-  final FocusNode barcodeFocusNode = new FocusNode();
-  final FocusNode nameFocusNode = new FocusNode();
-  final FocusNode ageFocusNode = new FocusNode();
-  final FocusNode weightFocusNode = new FocusNode();
-  final FocusNode heightFocusNode = new FocusNode();
-  final FocusNode telFocusNode = new FocusNode();
-  final FocusNode intoleranceFocusNode = new FocusNode();
-  final FocusNode diseaseFocusNode = new FocusNode();
-  final FocusNode medicineFocusNode = new FocusNode();
+  final FocusNode barcodeFocusNode = FocusNode();
+  final FocusNode nameFocusNode = FocusNode();
+  final FocusNode ageFocusNode = FocusNode();
+  final FocusNode weightFocusNode = FocusNode();
+  final FocusNode heightFocusNode = FocusNode();
+  final FocusNode telFocusNode = FocusNode();
+  final FocusNode intoleranceFocusNode = FocusNode();
+  final FocusNode diseaseFocusNode = FocusNode();
+  final FocusNode medicineFocusNode = FocusNode();
 
   String gender = 'ชาย';
 
@@ -55,7 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            new TextFormField(
+            TextFormField(
               controller: nameController,
               validator: (val) => val.isEmpty ? 'กรุณากรอกชื่อยา' : null,
               decoration: const InputDecoration(
@@ -72,12 +72,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Row(
               children: <Widget>[
                 Text('ชาย'),
-                new Radio<String>(value: 'ชาย', groupValue: gender, onChanged: _onGenderChanged),
+                Radio<String>(value: 'ชาย', groupValue: gender, onChanged: _onGenderChanged),
                 Text('หญิง'),
-                new Radio<String>(value: 'หญิง', groupValue: gender, onChanged: _onGenderChanged),
+                Radio<String>(value: 'หญิง', groupValue: gender, onChanged: _onGenderChanged),
               ],
             ),
-            new TextFormField(
+            TextFormField(
               controller: ageController,
               focusNode: ageFocusNode,
               validator: (val) {
@@ -90,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(weightFocusNode),
             ),
-            new TextFormField(
+            TextFormField(
               controller: weightController,
               focusNode: weightFocusNode,
               validator: (val) => val.isEmpty ? 'กรุณากรอกน้ำหนัก' : null,
@@ -100,7 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(heightFocusNode),
             ),
-            new TextFormField(
+            TextFormField(
               controller: heightController,
               focusNode: heightFocusNode,
               validator: (val) => val.isEmpty ? 'กรุณากรอกส่วนสูง' : null,
@@ -110,7 +110,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(telFocusNode),
             ),
-            new TextFormField(
+            TextFormField(
               controller: telController,
               focusNode: telFocusNode,
               decoration: const InputDecoration(
@@ -123,7 +123,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: const EdgeInsets.only(top: 24.0),
               child: Builder(
                 builder: (BuildContext scaffoldContext) {
-                  return new TextFormField(
+                  return TextFormField(
                     controller: intoleranceController,
                     focusNode: intoleranceFocusNode,
                     decoration: const InputDecoration(
@@ -138,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             SizedBox(height: 24.0),
-            new TextFormField(
+            TextFormField(
               controller: diseaseController,
               focusNode: diseaseFocusNode,
               decoration: const InputDecoration(
@@ -149,7 +149,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(medicineFocusNode),
             ),
             SizedBox(height: 24.0),
-            new TextFormField(
+            TextFormField(
               controller: medicineController,
               focusNode: medicineFocusNode,
               decoration: const InputDecoration(
@@ -160,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onFieldSubmitted: (_) => FocusScope.of(context).requestFocus(intoleranceFocusNode),
             ),
             Center(
-              child: new RippleButton(
+              child: RippleButton(
                 text: "ออกจากระบบ",
                 backgroundColor: Theme.of(context).primaryColorDark,
                 textColor: Theme.of(context).accentColor,
@@ -173,20 +173,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
-  }
-
-  Widget _buildSuccessContent() {
-    return _buildInitialContent();
-  }
-
-  Widget _buildLoadingContent() {
-    return LoadingContent(
-      text: 'กำลังบันทึก',
-    );
-  }
-
-  Widget _buildErrorContent() {
-    return _buildInitialContent();
   }
 
   void _onGenderChanged(String gender) {
@@ -214,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    var user = widget.user;
+    final user = widget.user;
 
     nameController.text = user.name;
     gender = user.gender;
@@ -228,6 +214,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
     intoleranceController.text = user.intolerance;
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    barcodeController.dispose();
+    nameController.dispose();
+    ageController.dispose();
+    weightController.dispose();
+    heightController.dispose();
+    telController.dispose();
+    intoleranceController.dispose();
+    diseaseController.dispose();
+    medicineController.dispose();
+
+    barcodeFocusNode.dispose();
+    nameFocusNode.dispose();
+    ageFocusNode.dispose();
+    weightFocusNode.dispose();
+    heightFocusNode.dispose();
+    telFocusNode.dispose();
+    intoleranceFocusNode.dispose();
+    diseaseFocusNode.dispose();
+    medicineFocusNode.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -248,10 +259,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         padding: EdgeInsets.all(16.0),
         child: LoadingView(
           loadingStatus: widget.state.loadingStatus,
-          loadingContent: _buildLoadingContent(),
+          loadingContent: LoadingContent(text: 'กำลังบันทึก'),
           initialContent: _buildInitialContent(),
-          successContent: _buildSuccessContent(),
-          errorContent: _buildErrorContent(),
         ),
       ),
     );

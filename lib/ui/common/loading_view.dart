@@ -8,14 +8,13 @@ class LoadingView extends StatelessWidget {
   final Widget errorContent;
   final Widget successContent;
 
-  const LoadingView({
-    Key key,
-    this.loadingStatus,
-    this.loadingContent,
+  LoadingView({
+    @required this.loadingStatus,
+    @required this.loadingContent,
+    @required this.initialContent,
     this.errorContent,
     this.successContent,
-    this.initialContent,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +28,10 @@ class LoadingView extends StatelessWidget {
         content = loadingContent;
         break;
       case LoadingStatus.success:
-        content = successContent;
+        content = successContent ?? initialContent;
         break;
       case LoadingStatus.error:
-        content = errorContent;
+        content = errorContent ?? initialContent;
         break;
     }
 

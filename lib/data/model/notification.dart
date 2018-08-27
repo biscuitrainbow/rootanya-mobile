@@ -2,7 +2,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 
 class Notification {
-  final String uuid;
+  final int uuid;
   final Time time;
 
   Notification(this.uuid, this.time);
@@ -13,8 +13,8 @@ class Notification {
       var datetime = format.parse(notification['at']);
       var time = new Time(datetime.hour, datetime.minute, datetime.second);
 
-      return new Notification(
-        notification['uuid'].toString(),
+      return Notification(
+        notification['uuid'],
         time,
       );
     }).toList();
@@ -26,6 +26,4 @@ class Notification {
   String toString() {
     return 'Notification{uuid: $uuid, time: ${time.hour}:${time.minute}';
   }
-
-
 }
