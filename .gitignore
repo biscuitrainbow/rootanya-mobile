@@ -8,3 +8,4 @@ build/
 
 .flutter-plugins
 Dart_Packages.xml
+.idea

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,9 @@ import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
 import 'package:speech_recognition/speech_recognition.dart';
+import 'package:permission/permission.dart';
+
+//import 'package:permission_handler/permission_handler.dart';
 
 //import 'package:speech_reg/speech_reg.dart';
 
@@ -51,6 +55,18 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 //    if (!await SimplePermissions.checkPermission(Permission.RecordAudio)) {
 //      SimplePermissions.requestPermission(Permission.RecordAudio);
 //    }
+
+//    PermissionStatus permission = await PermissionHandler.checkPermissionStatus(PermissionGroup.speech);
+//    if(permission != PermissionStatus.granted){
+//      Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler.requestPermissions([PermissionGroup.speech]);
+//    }
+
+    if(Platform.isAndroid){
+      final permissionStatus = await Permission.getPermissionStatus([PermissionName.RecordAudio]);
+      if(permissionStatus.first.permissionStatus != PermissionStatus.allow){
+        final permissionResult = await Permission.requestSinglePermission(PermissionName.RecordAudio);
+      }
+    }
 
     widget.viewModel.showListening();
     widget.viewModel.onSearchClick();
