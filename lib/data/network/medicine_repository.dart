@@ -8,8 +8,15 @@ import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/util/string_utils.dart';
 
 class MedicineRepository {
-  Future<List<Medicine>> fetchAllMedicines(String userId) async {
-    final response = await http.get('${Http.api}/medicine/$userId');
+  Future<List<Medicine>> fetchAllMedicines(String token) async {
+    final response = await http.get(
+      '${Http.api}/medicine/index',
+      headers: {
+        HttpHeaders.acceptHeader: acceptApplicationJson,
+        HttpHeaders.authorizationHeader: createBearer(token),
+      },
+    );
+
     final jsonResponse = json.decode(response.body);
 
     final medicines = Medicine.fromJsonArray(jsonResponse);

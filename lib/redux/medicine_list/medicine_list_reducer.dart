@@ -4,25 +4,28 @@ import 'package:medical_app/redux/medicine_list/medicine_list_state.dart';
 import 'package:redux/redux.dart';
 
 final medicineListReducer = combineReducers<MedicineListScreenState>([
-  new TypedReducer<MedicineListScreenState, FetchMedicineRequested>(
+  TypedReducer<MedicineListScreenState, FetchMedicineRequested>(
     _fetchMedicinesRequested,
   ),
-  new TypedReducer<MedicineListScreenState, FetchMedicineSuccess>(
+  TypedReducer<MedicineListScreenState, FetchMedicineSuccess>(
     _fetchMedicinesSuccess,
   ),
-  new TypedReducer<MedicineListScreenState, FetchMedicinesError>(
+  TypedReducer<MedicineListScreenState, FetchQueriedMedicineSuccess>(
+    _fetchQueriedMedicinesSuccess,
+  ),
+  TypedReducer<MedicineListScreenState, FetchMedicinesError>(
     _fetchMedicinesError,
   ),
-  new TypedReducer<MedicineListScreenState, ToggleSearching>(
+  TypedReducer<MedicineListScreenState, ToggleSearching>(
     _toggleSearching,
   ),
-  new TypedReducer<MedicineListScreenState, ActivateSpeechRecognizer>(
+  TypedReducer<MedicineListScreenState, ActivateSpeechRecognizer>(
     _activateSpeechRecognizer,
   ),
-  new TypedReducer<MedicineListScreenState, DeactivateSpeechRecognizer>(
+  TypedReducer<MedicineListScreenState, DeactivateSpeechRecognizer>(
     _deactivateSpeechRecognizer,
   ),
-  new TypedReducer<MedicineListScreenState, ResetStateAction>(
+  TypedReducer<MedicineListScreenState, ResetStateAction>(
     _resetState,
   ),
 ]);
@@ -41,6 +44,16 @@ MedicineListScreenState _fetchMedicinesSuccess(
   return state.copyWith(
     loadingStatus: LoadingStatus.success,
     medicines: action.medicines,
+  );
+}
+
+MedicineListScreenState _fetchQueriedMedicinesSuccess(
+  MedicineListScreenState state,
+  FetchQueriedMedicineSuccess action,
+) {
+  return state.copyWith(
+    loadingStatus: LoadingStatus.success,
+    queriedMedicines: action.medicines,
   );
 }
 

@@ -4,25 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/redux/usages/usage_state.dart';
 import 'package:medical_app/ui/add_edit_usage/edit_usage_container.dart';
 import 'package:medical_app/ui/common/confirm_dialog.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
+import 'package:medical_app/ui/common/need_login.dart';
 import 'package:medical_app/ui/common/no_content.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
+import 'package:medical_app/ui/usages/usage_container.dart';
 import 'package:side_header_list_view/side_header_list_view.dart';
 
 class UsageScreen extends StatefulWidget {
-  final UsageState usageState;
-  final VoidCallback onRefresh;
-  final Function(String, BuildContext) onDelete;
+  final UsageScreenViewModel viewModel;
 
   UsageScreen({
-    this.usageState,
-    this.onRefresh,
-    this.onDelete,
+    this.viewModel,
   });
 
   @override
@@ -47,22 +44,26 @@ class UsageScreenState extends State<UsageScreen> {
       appBar: AppBar(
         title: Text('บันทึกการใช้ยา'),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _showAddUsage(context),
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: widget.viewModel.isAuthenticated
+          ? FloatingActionButton(
+              onPressed: () => _showAddUsage(context),
+              child: Icon(Icons.add),
+            )
+          : null,
       body: RefreshIndicator(
         key: _refreshIndicatorKey,
         onRefresh: () {
           return Future(() {
-            widget.onRefresh();
+            widget.viewModel.onRefresh();
           });
         },
-        child: LoadingView(
-          loadingStatus: widget.usageState.loadingStatus,
-          initialContent: _buildInitialContent(),
-          loadingContent: LoadingContent(text: 'กำลังโหลด'),
-        ),
+        child: widget.viewModel.isAuthenticated
+            ? LoadingView(
+                loadingStatus: widget.viewModel.usageState.loadingStatus,
+                initialContent: _buildInitialContent(),
+                loadingContent: LoadingContent(text: 'กำลังโหลด'),
+              )
+            : NeedLoginScreen(),
       ),
     );
   }
@@ -90,7 +91,7 @@ class UsageScreenState extends State<UsageScreen> {
       onConfirm: () {
         Navigator.of(context).pop();
         Navigator.of(context).pop();
-        widget.onDelete(usage.usageId, scaffoldContext);
+        widget.viewModel.onDelete(usage.usageId, scaffoldContext);
       },
       onCancel: () {
         Navigator.of(context).pop();
@@ -129,7 +130,7 @@ class UsageScreenState extends State<UsageScreen> {
   }
 
   _buildInitialContent() {
-    final usages = widget.usageState.usages.reversed.toList();
+    final usages = widget.viewModel.usageState.usages.reversed.toList();
 
     if (usages.isEmpty) {
       return NoContent(

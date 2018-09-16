@@ -11,30 +11,43 @@ import 'package:medical_app/ui/main_screen/main_screen.dart';
 import 'package:medical_app/ui/profile/profile_container.dart';
 import 'package:medical_app/ui/register/register_container.dart';
 import 'package:medical_app/ui/splashscreen/splash_screen.dart';
+import 'package:medical_app/ui/tutorial/tutorial_screen.dart';
 import 'package:medical_app/ui/usages/usage_container.dart';
 import 'package:redux/redux.dart';
 
 void main() async {
   var store = await createStore();
 
-  runApp(new MyApp(store));
+  runApp(MyApp(store));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   final Store<AppState> store;
 
   MyApp(this.store);
 
   @override
-  Widget build(BuildContext context) {
-    store.dispatch(InitAppAction());
+  MyAppState createState() {
+    return new MyAppState();
+  }
+}
 
-    return new StoreProvider<AppState>(
-      store: store,
-      child: new MaterialApp(
-        debugShowCheckedModeBanner: true,
-        title: 'For Blind Find Med',
-        theme: new ThemeData(
+class MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    widget.store.dispatch(InitAppAction());
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StoreProvider<AppState>(
+      store: widget.store,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'รู้ทันยา',
+        theme: ThemeData(
           scaffoldBackgroundColor: Colors.black,
           brightness: Brightness.dark,
           fontFamily: 'Kanit',
@@ -44,6 +57,7 @@ class MyApp extends StatelessWidget {
           MainScreen.route: (context) => MainContainer(),
           LoginScreen.route: (context) => LoginContainer(),
           HomeScreen.route: (context) => HomeScreen(),
+          TutorialScreen.route: (context) => TutorialScreen(),
           '/usages': (context) => UsageContainer(),
           '/profile': (context) => ProfileContainer(),
           '/register': (context) => RegisterContainer(),

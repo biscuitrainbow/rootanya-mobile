@@ -19,10 +19,7 @@ class ProfileContainer extends StatelessWidget {
       converter: ProfileScreenViewModel.fromStore,
       builder: (BuildContext context, ProfileScreenViewModel viewModel) {
         return ProfileScreen(
-          user: viewModel.user,
-          state: viewModel.state,
-          onUpdate: viewModel.onUpdate,
-          onLogout: viewModel.onLogout,
+          viewModel: viewModel,
         );
       },
     );
@@ -31,6 +28,7 @@ class ProfileContainer extends StatelessWidget {
 
 class ProfileScreenViewModel {
   final User user;
+  final bool isAuthenticated;
   final String token;
   final ProfileScreenState state;
   final Function(User, BuildContext) onUpdate;
@@ -38,6 +36,7 @@ class ProfileScreenViewModel {
 
   ProfileScreenViewModel({
     this.user,
+    this.isAuthenticated,
     this.token,
     this.state,
     this.onUpdate,
@@ -47,6 +46,7 @@ class ProfileScreenViewModel {
   static ProfileScreenViewModel fromStore(Store<AppState> store) {
     return ProfileScreenViewModel(
         user: store.state.user,
+        isAuthenticated: store.state.token != null,
         token: store.state.token,
         state: store.state.profileScreenState,
         onUpdate: (User user, BuildContext context) {
@@ -60,6 +60,7 @@ class ProfileScreenViewModel {
         onLogout: (BuildContext context) {
           Completer<Null> completer = Completer();
           completer.future.then((_) {
+            showToast('ออกจากระบบแล้ว');
             Navigator.of(context).pop();
           });
           store.dispatch(LogoutAction(completer));

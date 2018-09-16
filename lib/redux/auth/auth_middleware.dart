@@ -1,8 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:medical_app/data/network/user_repository.dart';
 import 'package:medical_app/data/prefs/prefs_repository.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/auth/auth_action.dart';
 import 'package:medical_app/redux/login/login_action.dart';
+import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
 import 'package:medical_app/redux/notification_list/notification_list_action.dart';
 import 'package:medical_app/redux/profile/profile_screen_action.dart';
 import 'package:medical_app/redux/register/register_screen_action.dart';
@@ -14,19 +16,19 @@ List<Middleware<AppState>> createAuthMiddleware(
   SharedPreferencesRepository sharedPrefRepository,
 ) {
   return [
-    new TypedMiddleware<AppState, RegisterAction>(
+    TypedMiddleware<AppState, RegisterAction>(
       _register(userRepository, sharedPrefRepository),
     ),
-    new TypedMiddleware<AppState, LoginAction>(
+    TypedMiddleware<AppState, LoginAction>(
       _login(userRepository, sharedPrefRepository),
     ),
-    new TypedMiddleware<AppState, LogoutAction>(
+    TypedMiddleware<AppState, LogoutAction>(
       _logout(userRepository, sharedPrefRepository),
     ),
-    new TypedMiddleware<AppState, UpdateUserAction>(
+    TypedMiddleware<AppState, UpdateUserAction>(
       _updateUser(userRepository),
     ),
-    new TypedMiddleware<AppState, FetchUserAction>(
+    TypedMiddleware<AppState, FetchUserAction>(
       _fetchUser(userRepository),
     ),
   ];
@@ -69,6 +71,7 @@ Middleware<AppState> _login(
         next(SuccessLoginAction(user));
         next(SaveToken(user.token));
         next(SetNotifications());
+        next(FetchAllMedicine());
 
         action.completer.complete(null);
       } catch (error) {
@@ -116,7 +119,9 @@ Middleware<AppState> _updateUser(
         next(FetchUserAction());
         action.completer.complete(null);
       } catch (error) {
-        print(error);
+        if (error is DioError) {
+          print(error.response);
+        }
       }
 
       next(HideProfileLoading());

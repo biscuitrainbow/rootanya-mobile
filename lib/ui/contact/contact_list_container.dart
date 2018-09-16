@@ -30,17 +30,20 @@ class ContactListViewModel {
   final ContactScreenState contactsState;
   final VoidCallback onRefresh;
   final Function(Contact, BuildContext) onDelete;
+  final bool isAuthenticated;
 
   ContactListViewModel({
     this.onRefresh,
     this.contactsState,
     this.onDelete,
+    this.isAuthenticated,
   });
 
   static ContactListViewModel fromStore(Store<AppState> store) {
     return new ContactListViewModel(
         contactsState: store.state.contactState,
         onRefresh: () => store.dispatch(FetchContacts()),
+        isAuthenticated: store.state.token != null,
         onDelete: (Contact contact, BuildContext context) {
           Completer<Null> completer = Completer();
           completer.future.then((_) {

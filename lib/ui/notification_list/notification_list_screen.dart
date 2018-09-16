@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medical_app/data/model/medicine.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
+import 'package:medical_app/ui/common/need_login.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
 import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
 import 'package:medical_app/ui/notification_list/notification_list_container.dart';
@@ -17,8 +18,8 @@ class NotificationListScreen extends StatelessWidget {
 
   Widget _buildSuccessContent(BuildContext context) {
     return viewModel.notifications.isNotEmpty
-        ? new ListView(
-            padding: new EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+        ? ListView(
+            padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
             children: _buildNotificationGroupItem(context),
           )
         : _buildEmptyContent();
@@ -29,12 +30,12 @@ class NotificationListScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Icon(
+          Icon(
             Icons.alarm,
             size: 46.0,
           ),
           SizedBox(height: 16.0),
-          new Text("ยังไม่มีการแจ้งเตือน")
+          Text("ยังไม่มีการแจ้งเตือน")
         ],
       ),
     );
@@ -44,10 +45,10 @@ class NotificationListScreen extends StatelessWidget {
     return Center(
       child: Column(
         children: <Widget>[
-          new Icon(
+          Icon(
             Icons.alarm,
           ),
-          new Text("มีความผิดพลาดเกิดขึ้น ลองอีกครั้ง")
+          Text("มีความผิดพลาดเกิดขึ้น ลองอีกครั้ง")
         ],
       ),
     );
@@ -55,10 +56,10 @@ class NotificationListScreen extends StatelessWidget {
 
   void _showMedicineListPage(BuildContext context) {
     Navigator.of(context).push(
-          new MaterialPageRoute(
-            builder: (_) => MedicineListContainer(mode: MedicineListMode.addNotification),
-          ),
-        );
+      MaterialPageRoute(
+        builder: (_) => MedicineListContainer(mode: MedicineListMode.addNotification),
+      ),
+    );
   }
 
   String _toTwoDigitString(int value) {
@@ -70,16 +71,16 @@ class NotificationListScreen extends StatelessWidget {
         ?.map(
           (Medicine medicine) => Container(
                 margin: EdgeInsets.only(bottom: 12.0),
-                child: new Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    new Text(
+                    Text(
                       medicine.name,
-                      style: new TextStyle(
+                      style: TextStyle(
                         fontSize: 17.0,
                       ),
                     ),
-                    new Column(
+                    Column(
                       children: medicine.notifications
                           .map(
                             (n) => _buildNotificationItem(n, context),
@@ -96,12 +97,12 @@ class NotificationListScreen extends StatelessWidget {
   Padding _buildNotificationItem(dynamic notification, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
-      child: new Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          new Text(
+          Text(
             '${_toTwoDigitString(notification.time.hour)}:${_toTwoDigitString(notification.time.minute)}',
-            style: new TextStyle(
+            style: TextStyle(
               fontSize: 32.0,
               fontWeight: FontWeight.w300,
               color: Theme.of(context).accentColor,
@@ -121,20 +122,24 @@ class NotificationListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text('การแจ้งเตือน'),
+      appBar: AppBar(
+        title: Text('การแจ้งเตือน'),
       ),
-      body: LoadingView(
-        loadingStatus: viewModel.loadingStatus,
-        initialContent: _buildSuccessContent(context),
-        loadingContent: _buildLoadingContent(),
-        successContent: _buildSuccessContent(context),
-        errorContent: _buildErrorContent(),
-      ),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: () => _showMedicineListPage(context),
-        child: new Icon(Icons.alarm_add),
-      ),
+      body: viewModel.isAuthenticated
+          ? LoadingView(
+              loadingStatus: viewModel.loadingStatus,
+              initialContent: _buildSuccessContent(context),
+              loadingContent: _buildLoadingContent(),
+              successContent: _buildSuccessContent(context),
+              errorContent: _buildErrorContent(),
+            )
+          : NeedLoginScreen(),
+      floatingActionButton: viewModel.isAuthenticated
+          ? FloatingActionButton(
+              onPressed: () => _showMedicineListPage(context),
+              child: Icon(Icons.alarm_add),
+            )
+          : null,
     );
   }
 }

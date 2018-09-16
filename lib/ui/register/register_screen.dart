@@ -54,7 +54,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final FocusNode intoleranceFocusNode = FocusNode();
   final FocusNode diseaseFocusNode = FocusNode();
   final FocusNode medicineFocusNode = FocusNode();
-  String gender = 'ชาย';
+  String gender = 'ไม่ระบุ';
 
   Widget _buildInitialContent(BuildContext scaffoldContext) {
     return SingleChildScrollView(
@@ -103,13 +103,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Radio<String>(value: 'ชาย', groupValue: gender, onChanged: _onGenderChanged),
                 Text('หญิง'),
                 Radio<String>(value: 'หญิง', groupValue: gender, onChanged: _onGenderChanged),
+                Text('ไม่ระบุ'),
+                Radio<String>(value: 'ไม่ระบุ', groupValue: gender, onChanged: _onGenderChanged),
               ],
             ),
             TextFormField(
               keyboardType: TextInputType.number,
               controller: ageController,
               focusNode: ageFocusNode,
-              validator: (val) => val.isEmpty ? 'กรุณากรอกอายุ' : null,
+              // validator: (val) => val.isEmpty ? 'กรุณากรอกอายุ' : null,
               decoration: InputDecoration(
                 hintText: 'อายุ',
                 labelText: 'อายุ',
@@ -120,7 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               keyboardType: TextInputType.number,
               controller: weightController,
               focusNode: weightFocusNode,
-              validator: (val) => val.isEmpty ? 'กรุณากรอกน้ำหนัก' : null,
+              // validator: (val) => val.isEmpty ? 'กรุณากรอกน้ำหนัก' : null,
               decoration: InputDecoration(
                 hintText: 'น้ำหนัก',
                 labelText: 'น้ำหนัก',
@@ -131,7 +133,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               keyboardType: TextInputType.number,
               controller: hieghtController,
               focusNode: heightFocusNode,
-              validator: (val) => val.isEmpty ? 'กรุณากรอกส่วนสูง' : null,
+              // validator: (val) => val.isEmpty ? 'กรุณากรอกส่วนสูง' : null,
               decoration: InputDecoration(
                 hintText: 'ส่วนสูง',
                 labelText: 'ส่วนสูง',

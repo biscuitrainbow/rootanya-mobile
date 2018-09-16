@@ -29,17 +29,20 @@ class NotificationListScreenViewModel {
   final List<Medicine> notifications;
   final LoadingStatus loadingStatus;
   final Function(int) onDelete;
+  final bool isAuthenticated;
 
   NotificationListScreenViewModel({
     this.notifications,
     this.loadingStatus,
     this.onDelete,
+    this.isAuthenticated,
   });
 
   static NotificationListScreenViewModel fromStore(Store<AppState> store) {
     return new NotificationListScreenViewModel(
       notifications: store.state.notificationListState.notifications,
       loadingStatus: store.state.notificationListState.loadingStatus,
+      isAuthenticated: store.state.token != null,
       onDelete: (int notificationId) {
         Completer<Null> completer = Completer();
         completer.future.then((_) {

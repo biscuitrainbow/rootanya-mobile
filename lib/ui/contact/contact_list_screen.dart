@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:medical_app/data/model/contact.dart';
-import 'package:medical_app/redux/contract/contact_state.dart';
 import 'package:medical_app/ui/add_contact/add_contact_container.dart';
 import 'package:medical_app/ui/add_contact/edit_contact_container.dart';
 import 'package:medical_app/ui/add_edit_usage/add_edit_usage_screen.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
+import 'package:medical_app/ui/common/need_login.dart';
 import 'package:medical_app/ui/common/no_content.dart';
 import 'package:medical_app/ui/contact/contact_list_container.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -166,10 +166,12 @@ class ContactListScreenState extends State<ContactListScreen> {
       appBar: AppBar(
         title: Text('รายชื่อผู้ติดต่อ'),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _showAddContact(context),
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: widget.viewModel.isAuthenticated
+          ? FloatingActionButton(
+              onPressed: () => _showAddContact(context),
+              child: Icon(Icons.add),
+            )
+          : null,
       body: RefreshIndicator(
         key: _refreshIndicatorKey,
         onRefresh: () {
@@ -177,13 +179,15 @@ class ContactListScreenState extends State<ContactListScreen> {
             widget.viewModel.onRefresh();
           });
         },
-        child: LoadingView(
-          loadingStatus: widget.viewModel.contactsState.loadingStatus,
-          initialContent: _buildInitialContent(),
-          loadingContent: _buildLoadingContent(),
-          successContent: _buildSuccessContent(),
-          errorContent: _buildSuccessContent(),
-        ),
+        child: widget.viewModel.isAuthenticated
+            ? LoadingView(
+                loadingStatus: widget.viewModel.contactsState.loadingStatus,
+                initialContent: _buildInitialContent(),
+                loadingContent: _buildLoadingContent(),
+                successContent: _buildSuccessContent(),
+                errorContent: _buildSuccessContent(),
+              )
+            : NeedLoginScreen(),
       ),
     );
   }

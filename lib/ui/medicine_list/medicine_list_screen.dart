@@ -247,7 +247,7 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   }
 
   List<ListTile> _buildMedicineItem() {
-    return widget.viewModel.medicines
+    return widget.viewModel.queriedMedicines
         .map(
           (medicine) => ListTile(
                 title: Text(medicine.name),
@@ -291,7 +291,8 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   }
 
   Widget _buildSuccessContent() {
-    return widget.viewModel.medicines.isNotEmpty ? ListView(children: _buildMedicineItem()) : _buildEmptyContent();
+    print('in screen  ${widget.viewModel.queriedMedicines.length}');
+    return widget.viewModel.queriedMedicines.isNotEmpty ? ListView(children: _buildMedicineItem()) : _buildEmptyContent();
   }
 
   Widget _buildEmptyContent() {

@@ -52,8 +52,7 @@ class UserRepository {
   }
 
   Future<Null> update(User user, String token) async {
-    final dio = new Dio();
-
+    final dio = Dio();
     final response = await dio.put(
       '${Http.api}/user',
       options: new Options(
@@ -66,16 +65,18 @@ class UserRepository {
       data: {
         'name': user.name,
         'gender': user.gender,
-        'age': user.age.toString(),
-        'height': user.height.toString(),
-        'weight': user.weight.toString(),
-        'tel': user.tel,
-        'intolerance': user.intolerance,
-        'medicine': user.medicine,
-        'disease': user.disease,
+        'age': user.age.toString() ?? null,
+        'height': user.height.toString() ?? null,
+        'weight': user.weight.toString() ?? null,
+        'tel': user.tel ?? null,
+        'intolerance': user.intolerance ?? null,
+        'medicine': user.medicine ?? null,
+        'disease': user.disease ?? null,
       },
     );
-    }
+
+    print(response.data);
+  }
 
   Future<User> register(User user) async {
     final response = await http.post('${Http.api}/user/register', headers: {
@@ -93,6 +94,7 @@ class UserRepository {
       'medicine': user.medicine ?? null,
       'disease': user.disease ?? null,
     });
+    print(response.body);
 
     if (response.statusCode == 422) {
       throw UnProcessableEntity('คุณกรอกข้อมูลไม่ถูกต้อง');

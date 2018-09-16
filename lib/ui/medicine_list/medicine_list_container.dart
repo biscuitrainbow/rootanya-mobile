@@ -29,6 +29,8 @@ class _MedicineListContainerState extends State<MedicineListContainer> {
       onDispose: (Store store) => store.dispatch(ResetStateAction()),
       converter: MedicineListScreenViewModel.fromStore,
       builder: (BuildContext context, MedicineListScreenViewModel vm) {
+        print(vm.queriedMedicines.length);
+
         return MedicineListScreen(
           mode: widget.mode,
           viewModel: vm,
@@ -68,6 +70,7 @@ class MedicineListScreenViewModel {
 
   static MedicineListScreenViewModel fromStore(Store<AppState> store) {
     return MedicineListScreenViewModel(
+      queriedMedicines: store.state.medicineListState.queriedMedicines,
       medicines: store.state.medicineListState.medicines,
       isSearching: store.state.medicineListState.isSearching,
       isListening: store.state.medicineListState.isListening,

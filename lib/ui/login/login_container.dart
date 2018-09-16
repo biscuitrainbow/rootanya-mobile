@@ -6,7 +6,9 @@ import 'package:medical_app/exception/http_exception.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/auth/auth_action.dart';
 import 'package:medical_app/redux/login/login_state.dart';
+import 'package:medical_app/ui/home/home.dart';
 import 'package:medical_app/ui/login/login_screen.dart';
+import 'package:medical_app/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class LoginContainer extends StatelessWidget {
@@ -38,6 +40,10 @@ class ViewModel {
       loginState: store.state.loginState,
       onLogin: (String email, String password, BuildContext context) {
         Completer<Null> completer = Completer();
+        completer.future.then((_) {
+          showToast('เข้าสู่ระบบแล้ว');
+          Navigator.of(context).popUntil(ModalRoute.withName(HomeScreen.route));
+        });
         completer.future.catchError((error) {
           if (error is UnauthorizedException) {
             Scaffold.of(context).showSnackBar(SnackBar(content: Text(error.message)));

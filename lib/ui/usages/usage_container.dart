@@ -14,32 +14,33 @@ class UsageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector(
       onInit: (Store store) => store.dispatch(FetchUsagesAction()),
-      converter: ViewModel.fromStore,
-      builder: (BuildContext context, ViewModel viewModel) {
+      converter: UsageScreenViewModel.fromStore,
+      builder: (BuildContext context, UsageScreenViewModel viewModel) {
         return UsageScreen(
-          usageState: viewModel.usageState,
-          onRefresh: viewModel.onRefresh,
-          onDelete: viewModel.onDelete,
+          viewModel: viewModel,
         );
       },
     );
   }
 }
 
-class ViewModel {
+class UsageScreenViewModel {
   final UsageState usageState;
   final VoidCallback onRefresh;
+  final bool isAuthenticated;
   final Function(String usageId, BuildContext) onDelete;
 
-  ViewModel({
+  UsageScreenViewModel({
     this.onRefresh,
     this.usageState,
+    this.isAuthenticated,
     this.onDelete,
   });
 
-  static ViewModel fromStore(Store<AppState> store) {
-    return new ViewModel(
+  static UsageScreenViewModel fromStore(Store<AppState> store) {
+    return new UsageScreenViewModel(
       usageState: store.state.usageState,
+      isAuthenticated: store.state.token != null,
       onRefresh: () => store.dispatch(FetchUsagesAction()),
       onDelete: (String usageId, BuildContext context) {
         Completer<Null> completer = Completer();

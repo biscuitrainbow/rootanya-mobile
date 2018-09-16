@@ -66,9 +66,9 @@ class User {
       email: json['email'] ?? '',
       name: json['name'] ?? '',
       gender: json['gender'] ?? '',
-      age: json['age'] ?? null,
-      weight: json['weight'] ?? null,
-      height: json['height'] ?? null,
+      age: json['age'] != null && json['age'] != 0 ? json['age'] : null,
+      weight: json['weight'] != null && json['weight'] != 0 ? json['weight'] : null,
+      height: json['height'] != null && json['height'] != 0 ? json['height'] : null,
       tel: json['tel'] ?? '',
       intolerance: json['intolerance'] ?? '',
       medicine: json['medicine'],
@@ -77,47 +77,14 @@ class User {
     );
   }
 
-
   @override
   String toString() {
     return 'User{email: $email, password: $password, id: $id, name: $name, gender: $gender, age: $age, weight: $weight, height: $height, tel: $tel, intolerance: $intolerance, disease: $disease, medicine: $medicine, token: $token}';
   }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-          other is User &&
-              runtimeType == other.runtimeType &&
-              email == other.email &&
-              password == other.password &&
-              id == other.id &&
-              name == other.name &&
-              gender == other.gender &&
-              age == other.age &&
-              weight == other.weight &&
-              height == other.height &&
-              tel == other.tel &&
-              intolerance == other.intolerance &&
-              disease == other.disease &&
-              medicine == other.medicine &&
-              token == other.token;
+  bool operator ==(Object other) => identical(this, other) || other is User && runtimeType == other.runtimeType && email == other.email && password == other.password && id == other.id && name == other.name && gender == other.gender && age == other.age && weight == other.weight && height == other.height && tel == other.tel && intolerance == other.intolerance && disease == other.disease && medicine == other.medicine && token == other.token;
 
   @override
-  int get hashCode =>
-      email.hashCode ^
-      password.hashCode ^
-      id.hashCode ^
-      name.hashCode ^
-      gender.hashCode ^
-      age.hashCode ^
-      weight.hashCode ^
-      height.hashCode ^
-      tel.hashCode ^
-      intolerance.hashCode ^
-      disease.hashCode ^
-      medicine.hashCode ^
-      token.hashCode;
-
-
-
+  int get hashCode => email.hashCode ^ password.hashCode ^ id.hashCode ^ name.hashCode ^ gender.hashCode ^ age.hashCode ^ weight.hashCode ^ height.hashCode ^ tel.hashCode ^ intolerance.hashCode ^ disease.hashCode ^ medicine.hashCode ^ token.hashCode;
 }

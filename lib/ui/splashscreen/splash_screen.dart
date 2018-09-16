@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medical_app/ui/home/home.dart';
 import 'package:medical_app/ui/main_screen/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       ..forward()
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
-          Navigator.of(context).pushReplacementNamed(MainScreen.route);
+          Navigator.of(context).pushReplacementNamed(HomeScreen.route);
         }
       });
 

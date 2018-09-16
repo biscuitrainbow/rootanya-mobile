@@ -56,16 +56,16 @@ Future<Store<AppState>> createStore() async {
       initialState: AppState.initial(),
       middleware: []
         ..addAll(createAppMiddleware(userRepository, sharedPreferencesRepository))
-        ..addAll(createNearbyPharmaciesMiddleware(googleMapRepository, locationService))
-        ..addAll(createMedicineMiddleware(medicineRepository))
-        ..addAll(createAddMedicineMiddleware(medicineRepository))
-        ..addAll(createAddContactMiddleware(contractRepository))
-        ..addAll(createContactsMiddleware(contractRepository))
-        ..addAll(createUsageMiddleware(historyRepository))
         ..addAll(createAuthMiddleware(
           userRepository,
           sharedPreferencesRepository,
         ))
+        ..addAll(createNearbyPharmaciesMiddleware(googleMapRepository, locationService))
+        ..addAll(createAddMedicineMiddleware(medicineRepository))
+        ..addAll(createMedicineMiddleware(medicineRepository))
+        ..addAll(createAddContactMiddleware(contractRepository))
+        ..addAll(createContactsMiddleware(contractRepository))
+        ..addAll(createUsageMiddleware(historyRepository))
         ..addAll(createNotificationListMiddleware(
           notificationRepository,
           notificationService,

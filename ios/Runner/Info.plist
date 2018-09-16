@@ -30,17 +30,17 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera permission is required for barcode scanning.</string>
+	<string>ขอสิทธิ์การใช้งานกล้องเพื่อสแกนบาร์โค้ด</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Reason why app needs location</string>
+	<string>ขอสิทธิ์การเข้าถึงตำแหน่งของคุณเพื่อค้นหาร้านยาบริเวณใกล้เคียง</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Reason why app needs location</string>
+	<string>ขอสิทธิ์การเข้าถึงตำแหน่งของคุณเพื่อค้นหาร้านยาบริเวณใกล้เคียง</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Reason why app needs location</string>
+	<string>ขอสิทธิ์การเข้าถึงตำแหน่งของคุณเพื่อค้นหาร้านยาบริเวณใกล้เคียง</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>This application needs to access your microphone</string>
+	<string>ขอสิทธิ์การเข้าถึงไมโครโฟนเพื่อใช้งานการค้นหายาด้วยเสียง</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>This application needs the speech recognition permission</string>
+	<string>ขอสิทธิ์การเข้าถึง Speech Recognition เพื่อใช้งานการค้นหายาด้วยเสียง</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

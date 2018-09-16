@@ -6,12 +6,20 @@ class FetchMedicineByQuery {
   FetchMedicineByQuery(this.query);
 }
 
+class FetchAllMedicine {}
+
 class FetchMedicineRequested {}
 
 class FetchMedicineSuccess {
   final List<Medicine> medicines;
 
   FetchMedicineSuccess(this.medicines);
+}
+
+class FetchQueriedMedicineSuccess {
+  final List<Medicine> medicines;
+
+  FetchQueriedMedicineSuccess(this.medicines);
 }
 
 class FetchMedicinesError {}

@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:medical_app/data/model/user.dart';
-import 'package:medical_app/redux/profile/profile_screen_state.dart';
 import 'package:medical_app/ui/common/loading_content.dart';
 import 'package:medical_app/ui/common/loading_view.dart';
+import 'package:medical_app/ui/common/need_login.dart';
 import 'package:medical_app/ui/common/ripple_button.dart';
+import 'package:medical_app/ui/profile/profile_container.dart';
 
 class ProfileScreen extends StatefulWidget {
-  final User user;
-  final ProfileScreenState state;
-  final Function(User, BuildContext) onUpdate;
-  final Function(BuildContext context) onLogout;
+  final ProfileScreenViewModel viewModel;
 
   ProfileScreen({
-    this.user,
-    this.state,
-    this.onUpdate,
-    this.onLogout,
+    this.viewModel,
   });
 
   @override
@@ -45,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final FocusNode diseaseFocusNode = FocusNode();
   final FocusNode medicineFocusNode = FocusNode();
 
-  String gender = 'ชาย';
+  String gender = 'ไม่ระบุ';
 
   Widget _buildInitialContent() {
     return SingleChildScrollView(
@@ -75,14 +70,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Radio<String>(value: 'ชาย', groupValue: gender, onChanged: _onGenderChanged),
                 Text('หญิง'),
                 Radio<String>(value: 'หญิง', groupValue: gender, onChanged: _onGenderChanged),
+                Text('ไม่ระบุ'),
+                Radio<String>(value: 'ไม่ระบุ', groupValue: gender, onChanged: _onGenderChanged),
               ],
             ),
             TextFormField(
               controller: ageController,
               focusNode: ageFocusNode,
+              keyboardType: TextInputType.number,
               validator: (val) {
-                if (val.isEmpty) return 'กรุณากรอกชื่อยา';
-                if (num.parse(val) > 100) return 'กรุณากรอกอายุให้ถูกต้อง';
+                if (val.isNotEmpty) {
+                  if (num.parse(val) > 100) return 'กรุณากรอกอายุให้ถูกต้อง';
+                }
               },
               decoration: const InputDecoration(
                 hintText: 'อายุ',
@@ -93,7 +92,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             TextFormField(
               controller: weightController,
               focusNode: weightFocusNode,
-              validator: (val) => val.isEmpty ? 'กรุณากรอกน้ำหนัก' : null,
+              keyboardType: TextInputType.number,
+              //  validator: (val) => val.isEmpty ? 'กรุณากรอกน้ำหนัก' : null,
               decoration: const InputDecoration(
                 hintText: 'น้ำหนัก',
                 labelText: 'น้ำหนัก',
@@ -103,7 +103,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             TextFormField(
               controller: heightController,
               focusNode: heightFocusNode,
-              validator: (val) => val.isEmpty ? 'กรุณากรอกส่วนสูง' : null,
+              keyboardType: TextInputType.number,
+              //  validator: (val) => val.isEmpty ? 'กรุณากรอกส่วนสูง' : null,
               decoration: const InputDecoration(
                 hintText: 'ส่วนสูง',
                 labelText: 'ส่วนสูง',
@@ -113,6 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             TextFormField(
               controller: telController,
               focusNode: telFocusNode,
+              keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 hintText: 'เบอร์โทร',
                 labelText: 'เบอร์โทร',
@@ -183,35 +185,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _save(BuildContext scaffoldContext) {
     var user = User(
-      id: widget.user.id,
+      id: widget.viewModel.user.id,
       name: nameController.text,
       gender: this.gender,
-      age: int.parse(ageController.text),
-      weight: int.parse(weightController.text),
-      height: int.parse(heightController.text),
-      tel: telController.text,
-      intolerance: intoleranceController.text,
-      medicine: medicineController.text,
-      disease: diseaseController.text,
+      age: int.tryParse(ageController.text) ?? null,
+      weight: int.tryParse(weightController.text) ?? null,
+      height: int.tryParse(heightController.text) ?? null,
+      tel: telController.text ?? null,
+      intolerance: intoleranceController.text ?? null,
+      medicine: medicineController.text ?? null,
+      disease: diseaseController.text ?? null,
     );
 
-    widget.onUpdate(user, scaffoldContext);
+    widget.viewModel.onUpdate(user, scaffoldContext);
   }
 
   @override
   void initState() {
-    final user = widget.user;
+    final user = widget.viewModel.user;
 
-    nameController.text = user.name;
-    gender = user.gender;
-    ageController.text = user.age.toString();
-    weightController.text = user.weight.toString();
-    heightController.text = user.height.toString();
-    medicineController.text = user.medicine;
-    diseaseController.text = user.disease;
+    if (user != null) {
+      nameController.text = user.name;
+      gender = user.gender;
+      ageController.text = user.age != null ? user.age.toString() : '';
+      weightController.text = user.weight != null ? user.weight.toString() : '';
+      heightController.text = user.height != null ? user.height.toString() : '';
+      medicineController.text = user.medicine != null ? user.medicine : '';
+      diseaseController.text = user.disease != null ? user.disease : '';
 
-    telController.text = user.tel.toString();
-    intoleranceController.text = user.intolerance;
+      telController.text = user.tel.toString();
+      intoleranceController.text = user.intolerance;
+    }
 
     super.initState();
   }
@@ -247,26 +251,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         title: Text('ข้อมูลส่วนตัว'),
       ),
-      floatingActionButton: Builder(
-        builder: (BuildContext scaffoldContext) {
-          return FloatingActionButton(
-            onPressed: () => _save(scaffoldContext),
-            child: Icon(Icons.done),
-          );
-        },
-      ),
+      floatingActionButton: widget.viewModel.isAuthenticated
+          ? Builder(
+              builder: (BuildContext scaffoldContext) {
+                return FloatingActionButton(
+                  onPressed: () => _save(scaffoldContext),
+                  child: Icon(Icons.done),
+                );
+              },
+            )
+          : null,
       body: Container(
         padding: EdgeInsets.all(16.0),
-        child: LoadingView(
-          loadingStatus: widget.state.loadingStatus,
-          loadingContent: LoadingContent(text: 'กำลังบันทึก'),
-          initialContent: _buildInitialContent(),
-        ),
+        child: widget.viewModel.isAuthenticated
+            ? LoadingView(
+                loadingStatus: widget.viewModel.state.loadingStatus,
+                loadingContent: LoadingContent(text: 'กำลังบันทึก'),
+                initialContent: _buildInitialContent(),
+              )
+            : NeedLoginScreen(),
       ),
     );
   }
 
   _logout() {
-    this.widget.onLogout(context);
+    this.widget.viewModel.onLogout(context);
   }
 }

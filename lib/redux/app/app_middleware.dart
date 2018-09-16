@@ -4,6 +4,7 @@ import 'package:medical_app/redux/app/app_action.dart';
 import 'package:medical_app/redux/app/app_state.dart';
 import 'package:medical_app/redux/auth/auth_action.dart';
 import 'package:medical_app/redux/login/login_action.dart';
+import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
 import 'package:medical_app/redux/token/token_action.dart';
 import 'package:redux/redux.dart';
 
@@ -24,6 +25,8 @@ Middleware<AppState> _initApp(
 ) {
   return (Store store, action, NextDispatcher next) async {
     if (action is InitAppAction) {
+      print('initapp');
+
       try {
         var token = await sharedPrefRepository.getToken();
 
@@ -33,6 +36,8 @@ Middleware<AppState> _initApp(
           var user = await userRepository.fetchUser(token);
           next(SuccessLoginAction(user));
         }
+
+        store.dispatch(FetchAllMedicine());
       } catch (error) {
         print(error);
       }
