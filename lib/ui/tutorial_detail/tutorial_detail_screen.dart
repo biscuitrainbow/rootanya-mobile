@@ -25,6 +25,7 @@ class _TutorialDetailScreenState extends State<TutorialDetailScreen> {
           child: Text(
             widget.tutorial.content,
             textAlign: TextAlign.justify,
+            style: TextStyle(fontSize: 18.0),
           ),
         ),
       ),

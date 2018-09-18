@@ -27,18 +27,66 @@ class _TutorialScreenState extends State<TutorialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('วิธีใช้งาน')),
-      body: ListView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          final tutorial = tutorials[index];
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 3,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                  height: 60.0,
+                  width: double.infinity,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.wifi, color: Theme.of(context).accentColor),
+                      SizedBox(width: 32.0),
+                      Expanded(
+                        child: Text(
+                          'เพื่อประสบการณ์การใช้งานที่สมบูรณ์กรุณาเชื่อมต่ออินเตอร์เน็ตอยู่ตลอดขณะใช้งาน',
+                          style: TextStyle(color: Theme.of(context).accentColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                  height: 60.0,
+                  width: double.infinity,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.accessible, color: Theme.of(context).accentColor),
+                      SizedBox(width: 32.0),
+                      Expanded(
+                        child: Text(
+                          'แอปพลิเคชันนี้รองรับการทำงานกับ Disability mode ในโทรศัพท์ของผู้ใช้',
+                          style: TextStyle(color: Theme.of(context).accentColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Expanded(
+            flex: 8,
+            child: ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                final tutorial = tutorials[index];
 
-          return ListTile(
-            leading: Icon(tutorial.icon),
-            title: Text(tutorial.title),
-            trailing: Icon(Icons.keyboard_arrow_right),
-            onTap: () => _showTutorial(tutorial),
-          );
-        },
-        itemCount: tutorials.length,
+                return ListTile(
+                  leading: Icon(tutorial.icon),
+                  title: Text(tutorial.title),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                  onTap: () => _showTutorial(tutorial),
+                );
+              },
+              itemCount: tutorials.length,
+            ),
+          ),
+        ],
       ),
     );
   }
