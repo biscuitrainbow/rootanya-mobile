@@ -10,5 +10,5 @@ class Http {
 }
 
 class Environment {
-  static final String mapBoxAccessToken = 'pk.eyJ1IjoicmFqYXlvZ2FuIiwiYSI6ImNqNW1nOXhtMTNndXkyeG5xbDZiNzZmaGcifQ.S5sdpVrOr2pa5oRqvWDMGA';
+  static final String mapBoxAccessToken = 'pk.eyJ1IjoiYmlzY3VpdHJhaW5ib3ciLCJhIjoiY2prdHNxN3YyMDlobDN2cGJ0aGdmOHk3YyJ9.Bf6KFoZAsx6rGa7h5Cl_og';
 }
