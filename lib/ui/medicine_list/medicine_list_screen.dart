@@ -5,14 +5,14 @@ import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/ui/add_edit_usage/add_usage_container.dart';
-import 'package:medical_app/ui/add_medicine/add_medicine_container.dart';
-import 'package:medical_app/ui/common/loading_content.dart';
-import 'package:medical_app/ui/common/loading_view.dart';
-import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/ui/add_edit_usage/add_usage_container.dart';
+import 'package:rootanya/ui/add_medicine/add_medicine_container.dart';
+import 'package:rootanya/ui/common/loading_content.dart';
+import 'package:rootanya/ui/common/loading_view.dart';
+import 'package:rootanya/ui/medicine_detail/medicine_detail_screen.dart';
+import 'package:rootanya/ui/medicine_list/medicine_list_container.dart';
+import 'package:rootanya/ui/medicine_list/medicine_list_mode.dart';
 import 'package:permission/permission.dart';
 import 'package:speech_recognition/speech_recognition.dart';
 
@@ -62,9 +62,9 @@ class MedicineListScreenState extends State<MedicineListScreen> {
 //    }
 
     if (Platform.isAndroid) {
-      final permissionStatus = await Permission.getPermissionStatus([PermissionName.RecordAudio]);
+      final permissionStatus = await Permission.getPermissionsStatus([PermissionName.Microphone]);
       if (permissionStatus.first.permissionStatus != PermissionStatus.allow) {
-        final permissionResult = await Permission.requestSinglePermission(PermissionName.RecordAudio);
+        final permissionResult = await Permission.requestSinglePermission(PermissionName.Microphone);
       }
     }
 
@@ -291,7 +291,6 @@ class MedicineListScreenState extends State<MedicineListScreen> {
   }
 
   Widget _buildSuccessContent() {
-    print('in screen  ${widget.viewModel.queriedMedicines.length}');
     return widget.viewModel.queriedMedicines.isNotEmpty ? ListView(children: _buildMedicineItem()) : _buildEmptyContent();
   }
 

@@ -3,16 +3,16 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/ui/add_edit_usage/edit_usage_container.dart';
-import 'package:medical_app/ui/common/confirm_dialog.dart';
-import 'package:medical_app/ui/common/loading_content.dart';
-import 'package:medical_app/ui/common/loading_view.dart';
-import 'package:medical_app/ui/common/need_login.dart';
-import 'package:medical_app/ui/common/no_content.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
-import 'package:medical_app/ui/usages/usage_container.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/ui/add_edit_usage/edit_usage_container.dart';
+import 'package:rootanya/ui/common/confirm_dialog.dart';
+import 'package:rootanya/ui/common/loading_content.dart';
+import 'package:rootanya/ui/common/loading_view.dart';
+import 'package:rootanya/ui/common/need_login.dart';
+import 'package:rootanya/ui/common/no_content.dart';
+import 'package:rootanya/ui/medicine_list/medicine_list_container.dart';
+import 'package:rootanya/ui/medicine_list/medicine_list_mode.dart';
+import 'package:rootanya/ui/usages/usage_container.dart';
 import 'package:side_header_list_view/side_header_list_view.dart';
 
 class UsageScreen extends StatefulWidget {

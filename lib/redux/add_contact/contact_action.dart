@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:medical_app/data/model/contact.dart';
+import 'package:rootanya/data/model/contact.dart';
 
 // Add
 class AddContactAction {

@@ -1,5 +1,5 @@
-import 'package:medical_app/data/model/user.dart';
-import 'package:medical_app/redux/auth/auth_action.dart';
+import 'package:rootanya/data/model/user.dart';
+import 'package:rootanya/redux/auth/auth_action.dart';
 import 'package:redux/redux.dart';
 
 final authReducers = combineReducers<User>([

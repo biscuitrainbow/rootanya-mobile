@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/model/tutorial.dart';
-import 'package:medical_app/ui/tutorial_detail/tutorial_detail_screen.dart';
+import 'package:rootanya/data/model/tutorial.dart';
+import 'package:rootanya/ui/tutorial_detail/tutorial_detail_screen.dart';
 
 class TutorialScreen extends StatefulWidget {
   static final String route = '/tutorial';

@@ -6,7 +6,5 @@ void showToast(String message) {
     toastLength: Toast.LENGTH_LONG,
     gravity: ToastGravity.BOTTOM,
     timeInSecForIos: 5,
-    bgcolor: "#64ffda",
-    textcolor: '#000000',
   );
 }

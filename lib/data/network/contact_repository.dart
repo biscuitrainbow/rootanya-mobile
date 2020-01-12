@@ -4,14 +4,14 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-import 'package:medical_app/constants.dart';
-import 'package:medical_app/data/model/contact.dart';
-import 'package:medical_app/util/string_utils.dart';
+import 'package:rootanya/constants.dart';
+import 'package:rootanya/data/model/contact.dart';
+import 'package:rootanya/util/string_utils.dart';
 
 class ContractRepository {
   Future<List<Contact>> fetchContact(String token) async {
     final response = await http.get(
-      '${Http.api}/contact/user/',
+      '${Http.api}/contact/user',
       headers: {
         HttpHeaders.acceptHeader: acceptApplicationJson,
         HttpHeaders.authorizationHeader: createBearer(token),
@@ -26,7 +26,7 @@ class ContractRepository {
 
   Future<Null> addContact(Contact contact, String token) async {
     final response = await http.post(
-      '${Http.api}/contact/user/',
+      '${Http.api}/contact/user',
       body: {
         'name': contact.name,
         'tel': contact.tel,
@@ -44,7 +44,7 @@ class ContractRepository {
     final response = await dio.put(
       '${Http.api}/contact/user/${contact.id}',
       options: Options(
-        contentType: ContentType.parse("application/x-www-form-urlencoded"),
+        contentType: "application/x-www-form-urlencoded",
         headers: {
           HttpHeaders.acceptHeader: acceptApplicationJson,
           HttpHeaders.authorizationHeader: createBearer(token),

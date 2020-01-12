@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:medical_app/data/model/user.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/ui/main_screen/main_screen.dart';
+import 'package:rootanya/data/model/user.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/ui/main_screen/main_screen.dart';
 import 'package:redux/redux.dart';
 
 class MainContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector(
-      onWillChange: (viewModel) => print(viewModel),
       converter: MainScreenViewModel.fromStore,
       builder: (BuildContext context, MainScreenViewModel vm) {
         return MainScreen(

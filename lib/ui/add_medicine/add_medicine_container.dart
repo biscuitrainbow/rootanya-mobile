@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/redux/add_medicine/add_medicine_action.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/ui/add_medicine/add_medicine_screen.dart';
-import 'package:medical_app/ui/medicine_detail/medicine_detail_screen.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/redux/add_medicine/add_medicine_action.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/ui/add_medicine/add_medicine_screen.dart';
+import 'package:rootanya/ui/medicine_detail/medicine_detail_screen.dart';
+import 'package:rootanya/ui/medicine_list/medicine_list_container.dart';
 import 'package:redux/redux.dart';
 
 class AddMedicineContainer extends StatefulWidget {

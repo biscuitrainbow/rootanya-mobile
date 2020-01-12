@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/usages/usage_action.dart';
-import 'package:medical_app/redux/usages/usage_state.dart';
-import 'package:medical_app/ui/usages/usage_screen.dart';
-import 'package:medical_app/util/widget_utils.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/usages/usage_action.dart';
+import 'package:rootanya/redux/usages/usage_state.dart';
+import 'package:rootanya/ui/usages/usage_screen.dart';
+import 'package:rootanya/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class UsageContainer extends StatelessWidget {

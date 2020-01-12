@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:medical_app/data/model/user.dart';
+import 'package:rootanya/data/model/user.dart';
 
 class LoginAction {
   final String email;

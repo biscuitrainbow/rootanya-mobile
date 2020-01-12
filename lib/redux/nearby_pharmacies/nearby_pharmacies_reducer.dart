@@ -1,6 +1,6 @@
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
+import 'package:rootanya/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
 import 'package:redux/redux.dart';
 
 final nearbyPharmaciesReducer = combineReducers<NearbyPharmacyScreenState>([

@@ -1,7 +1,7 @@
-import 'package:medical_app/data/network/contact_repository.dart';
-import 'package:medical_app/redux/add_contact/contact_action.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/contract/contact_action.dart';
+import 'package:rootanya/data/network/contact_repository.dart';
+import 'package:rootanya/redux/add_contact/contact_action.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/contract/contact_action.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createAddContactMiddleware(

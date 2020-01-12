@@ -1,4 +1,4 @@
-import 'package:medical_app/constants.dart';
+import 'package:rootanya/constants.dart';
 
 String acceptApplicationJson = 'application/json';
 

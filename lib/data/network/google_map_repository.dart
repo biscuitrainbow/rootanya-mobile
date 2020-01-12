@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:google_maps_webservice/places.dart';
-import 'package:medical_app/data/model/pharmacy.dart';
+import 'package:rootanya/data/model/pharmacy.dart';
 
 class GoogleMapRepository {
   final GoogleMapsPlaces googleMapsPlaces;
@@ -13,8 +13,10 @@ class GoogleMapRepository {
       Location(latitude, longitude),
       'distance',
       type: "pharmacy",
-      language: 'th',
+      // language: 'th',
     );
+
+    print(placeResponse.errorMessage);
 
     var pharmaciesPlace = placeResponse.results;
     var pharmacies = pharmaciesPlace

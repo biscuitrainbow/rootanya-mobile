@@ -1,6 +1,6 @@
-import 'package:medical_app/data/network/history_repository.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/usages/usage_action.dart';
+import 'package:rootanya/data/network/history_repository.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/usages/usage_action.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createUsageMiddleware(

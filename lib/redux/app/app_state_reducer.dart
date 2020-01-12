@@ -1,17 +1,17 @@
-import 'package:medical_app/redux/add_contact/add_contact_reducer.dart';
-import 'package:medical_app/redux/add_medicine/add_medicine_reducer.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/auth/auth_reducer.dart';
-import 'package:medical_app/redux/contract/contact_reducer.dart';
-import 'package:medical_app/redux/login/login_reducer.dart';
-import 'package:medical_app/redux/medicine_list/medicine_list_reducer.dart';
-import 'package:medical_app/redux/medicine_notification/medicine_notification_reducer.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_reducer.dart';
-import 'package:medical_app/redux/notification_list/notification_list_reducer.dart';
-import 'package:medical_app/redux/profile/profile_screen_reducer.dart';
-import 'package:medical_app/redux/register/register_screen_reducer.dart';
-import 'package:medical_app/redux/token/token_reducers.dart';
-import 'package:medical_app/redux/usages/usage_reducer.dart';
+import 'package:rootanya/redux/add_contact/add_contact_reducer.dart';
+import 'package:rootanya/redux/add_medicine/add_medicine_reducer.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/auth/auth_reducer.dart';
+import 'package:rootanya/redux/contract/contact_reducer.dart';
+import 'package:rootanya/redux/login/login_reducer.dart';
+import 'package:rootanya/redux/medicine_list/medicine_list_reducer.dart';
+import 'package:rootanya/redux/medicine_notification/medicine_notification_reducer.dart';
+import 'package:rootanya/redux/nearby_pharmacies/nearby_pharmacies_reducer.dart';
+import 'package:rootanya/redux/notification_list/notification_list_reducer.dart';
+import 'package:rootanya/redux/profile/profile_screen_reducer.dart';
+import 'package:rootanya/redux/register/register_screen_reducer.dart';
+import 'package:rootanya/redux/token/token_reducers.dart';
+import 'package:rootanya/redux/usages/usage_reducer.dart';
 
 AppState appReducer(AppState state, action) {
   var appState = new AppState(

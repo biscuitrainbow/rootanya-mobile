@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/model/user.dart';
-import 'package:medical_app/ui/common/loading_content.dart';
-import 'package:medical_app/ui/common/loading_view.dart';
-import 'package:medical_app/ui/common/need_login.dart';
-import 'package:medical_app/ui/common/ripple_button.dart';
-import 'package:medical_app/ui/profile/profile_container.dart';
+import 'package:rootanya/data/model/user.dart';
+import 'package:rootanya/ui/common/loading_content.dart';
+import 'package:rootanya/ui/common/loading_view.dart';
+import 'package:rootanya/ui/common/need_login.dart';
+import 'package:rootanya/ui/common/ripple_button.dart';
+import 'package:rootanya/ui/profile/profile_container.dart';
 
 class ProfileScreen extends StatefulWidget {
   final ProfileScreenViewModel viewModel;

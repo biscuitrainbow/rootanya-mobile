@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'package:medical_app/data/model/notification.dart';
+import 'package:rootanya/data/model/notification.dart';
 
 class Medicine {
   final String usageId;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/ui/home/home.dart';
-import 'package:medical_app/ui/main_screen/main_screen.dart';
+import 'package:rootanya/ui/home/home.dart';
+import 'package:rootanya/ui/main_screen/main_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static final String route = '/';

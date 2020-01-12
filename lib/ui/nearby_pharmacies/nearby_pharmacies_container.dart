@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:medical_app/data/model/pharmacy.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
-import 'package:medical_app/ui/nearby_pharmacies/nearby_pharmacies_screen.dart';
+import 'package:rootanya/data/model/pharmacy.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
+import 'package:rootanya/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
+import 'package:rootanya/ui/nearby_pharmacies/nearby_pharmacies_screen.dart';
 import 'package:redux/redux.dart';
 
 class NearbyPharmaciesContainer extends StatelessWidget {

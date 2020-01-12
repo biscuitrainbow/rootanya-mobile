@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/notification_list/notification_list_action.dart';
-import 'package:medical_app/ui/notification_list/notification_list_screen.dart';
-import 'package:medical_app/util/widget_utils.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/notification_list/notification_list_action.dart';
+import 'package:rootanya/ui/notification_list/notification_list_screen.dart';
+import 'package:rootanya/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class NotificationListContainer extends StatelessWidget {

@@ -4,10 +4,10 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-import 'package:medical_app/constants.dart';
-import 'package:medical_app/data/model/user.dart';
-import 'package:medical_app/exception/http_exception.dart';
-import 'package:medical_app/util/string_utils.dart';
+import 'package:rootanya/constants.dart';
+import 'package:rootanya/data/model/user.dart';
+import 'package:rootanya/exception/http_exception.dart';
+import 'package:rootanya/util/string_utils.dart';
 
 class UserRepository {
   Future<User> login(String email, String password) async {
@@ -56,7 +56,7 @@ class UserRepository {
     final response = await dio.put(
       '${Http.api}/user',
       options: new Options(
-        contentType: ContentType.parse("application/x-www-form-urlencoded"),
+        contentType: "application/x-www-form-urlencoded",
         headers: {
           HttpHeaders.acceptHeader: acceptApplicationJson,
           HttpHeaders.authorizationHeader: createBearer(token),

@@ -4,9 +4,9 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-import 'package:medical_app/constants.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/util/string_utils.dart';
+import 'package:rootanya/constants.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/util/string_utils.dart';
 
 class UsageRepository {
   Future<List<Medicine>> fetchUsages(String token) async {
@@ -44,7 +44,7 @@ class UsageRepository {
     final response = await dio.put(
       '${Http.api}/usage/user/${usage.usageId}',
       options: new Options(
-        contentType: ContentType.parse("application/x-www-form-urlencoded"),
+        contentType: "application/x-www-form-urlencoded",
         headers: {
           HttpHeaders.acceptHeader: acceptApplicationJson,
           HttpHeaders.authorizationHeader: createBearer(token),

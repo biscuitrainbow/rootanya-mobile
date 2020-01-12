@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/ui/common/ripple_button.dart';
-import 'package:medical_app/ui/login/login_screen.dart';
+import 'package:rootanya/ui/common/ripple_button.dart';
+import 'package:rootanya/ui/login/login_screen.dart';
 
 class NeedLoginScreen extends StatelessWidget {
   void _showLoginScreen(BuildContext context) {

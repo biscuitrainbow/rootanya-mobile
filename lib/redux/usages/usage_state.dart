@@ -1,7 +1,7 @@
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/data/model/contact.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/data/model/usage.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/data/model/contact.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/data/model/usage.dart';
 
 class UsageState {
   final List<Medicine> usages;

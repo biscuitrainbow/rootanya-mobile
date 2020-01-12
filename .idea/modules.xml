@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/medical_app.iml" filepath="$PROJECT_DIR$/medical_app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/medical_app_android.iml" filepath="$PROJECT_DIR$/medical_app_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rootanya.iml" filepath="$PROJECT_DIR$/rootanya.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/rootanya_android.iml" filepath="$PROJECT_DIR$/android/rootanya_android.iml" />
     </modules>
   </component>
 </project>

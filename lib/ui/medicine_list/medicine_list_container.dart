@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
-import 'package:medical_app/redux/medicine_notification/medicine_notification_action.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_screen.dart';
-import 'package:medical_app/util/widget_utils.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/medicine_list/medicine_list_action.dart';
+import 'package:rootanya/redux/medicine_notification/medicine_notification_action.dart';
+import 'package:rootanya/ui/medicine_list/medicine_list_mode.dart';
+import 'package:rootanya/ui/medicine_list/medicine_list_screen.dart';
+import 'package:rootanya/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class MedicineListContainer extends StatefulWidget {

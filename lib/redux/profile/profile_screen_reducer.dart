@@ -1,6 +1,6 @@
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/redux/profile/profile_screen_action.dart';
-import 'package:medical_app/redux/profile/profile_screen_state.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/redux/profile/profile_screen_action.dart';
+import 'package:rootanya/redux/profile/profile_screen_state.dart';
 import 'package:redux/redux.dart';
 
 final profileReducers = combineReducers<ProfileScreenState>([

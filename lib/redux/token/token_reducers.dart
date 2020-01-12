@@ -1,4 +1,4 @@
-import 'package:medical_app/redux/token/token_action.dart';
+import 'package:rootanya/redux/token/token_action.dart';
 import 'package:redux/redux.dart';
 
 final tokenReducers = combineReducers<String>([

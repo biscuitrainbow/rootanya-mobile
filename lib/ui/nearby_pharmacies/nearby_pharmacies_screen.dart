@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-import 'package:medical_app/constants.dart';
-import 'package:medical_app/data/model/pharmacy.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
-import 'package:medical_app/ui/common/loading_content.dart';
-import 'package:medical_app/ui/common/loading_view.dart';
-import 'package:medical_app/util/string_utils.dart';
+import 'package:rootanya/constants.dart';
+import 'package:rootanya/data/model/pharmacy.dart';
+import 'package:rootanya/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
+import 'package:rootanya/ui/common/loading_content.dart';
+import 'package:rootanya/ui/common/loading_view.dart';
+import 'package:rootanya/util/string_utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NearbyPharmaciesScreen extends StatefulWidget {

@@ -1,15 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/model/contact.dart';
-import 'package:medical_app/ui/add_contact/add_contact_container.dart';
-import 'package:medical_app/ui/add_contact/edit_contact_container.dart';
-import 'package:medical_app/ui/add_edit_usage/add_edit_usage_screen.dart';
-import 'package:medical_app/ui/common/loading_content.dart';
-import 'package:medical_app/ui/common/loading_view.dart';
-import 'package:medical_app/ui/common/need_login.dart';
-import 'package:medical_app/ui/common/no_content.dart';
-import 'package:medical_app/ui/contact/contact_list_container.dart';
+import 'package:rootanya/data/model/contact.dart';
+import 'package:rootanya/ui/add_contact/add_contact_container.dart';
+import 'package:rootanya/ui/add_contact/edit_contact_container.dart';
+import 'package:rootanya/ui/add_edit_usage/add_edit_usage_screen.dart';
+import 'package:rootanya/ui/common/loading_content.dart';
+import 'package:rootanya/ui/common/loading_view.dart';
+import 'package:rootanya/ui/common/need_login.dart';
+import 'package:rootanya/ui/common/no_content.dart';
+import 'package:rootanya/ui/contact/contact_list_container.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactListScreen extends StatefulWidget {

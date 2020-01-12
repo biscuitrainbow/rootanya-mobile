@@ -1,6 +1,6 @@
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
-import 'package:medical_app/redux/medicine_list/medicine_list_state.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/redux/medicine_list/medicine_list_action.dart';
+import 'package:rootanya/redux/medicine_list/medicine_list_state.dart';
 import 'package:redux/redux.dart';
 
 final medicineListReducer = combineReducers<MedicineListScreenState>([

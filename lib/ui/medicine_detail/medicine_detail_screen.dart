@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/ui/add_edit_usage/add_usage_container.dart';
-import 'package:medical_app/ui/add_notification/medicine_notification_list_container.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/ui/add_edit_usage/add_usage_container.dart';
+import 'package:rootanya/ui/add_notification/medicine_notification_list_container.dart';
 
 class MedicineDetailScreen extends StatelessWidget {
   final Medicine medicine;

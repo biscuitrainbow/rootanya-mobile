@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/data/model/notification.dart' as AppNotification;
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/data/model/notification.dart' as AppNotification;
 
 class MedicineNotificationListScreen extends StatelessWidget {
   final Medicine medicine;

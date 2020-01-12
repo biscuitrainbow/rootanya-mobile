@@ -1,7 +1,7 @@
-import 'package:medical_app/data/network/google_map_repository.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
-import 'package:medical_app/service/localtion_service.dart';
+import 'package:rootanya/data/network/google_map_repository.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/nearby_pharmacies/nearby_pharmacies_action.dart';
+import 'package:rootanya/service/localtion_service.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createNearbyPharmaciesMiddleware(
@@ -27,7 +27,7 @@ Middleware<AppState> _fetchNearbyPharmacies(
 
         print(location);
         final pharmacies = await googleMapRepository.getNearByPharmacies(location.latitude, location.longitude);
-
+        print(pharmacies);
         next(FetchNearbyPharmaciesSuccess(pharmacies));
       } catch (error) {
         print(error);

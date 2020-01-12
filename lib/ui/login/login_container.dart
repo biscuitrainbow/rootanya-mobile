@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:medical_app/exception/http_exception.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/auth/auth_action.dart';
-import 'package:medical_app/redux/login/login_state.dart';
-import 'package:medical_app/ui/home/home.dart';
-import 'package:medical_app/ui/login/login_screen.dart';
-import 'package:medical_app/util/widget_utils.dart';
+import 'package:rootanya/exception/http_exception.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/auth/auth_action.dart';
+import 'package:rootanya/redux/login/login_state.dart';
+import 'package:rootanya/ui/home/home.dart';
+import 'package:rootanya/ui/login/login_screen.dart';
+import 'package:rootanya/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class LoginContainer extends StatelessWidget {

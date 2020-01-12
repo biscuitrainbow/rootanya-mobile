@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/redux/login/login_state.dart';
-import 'package:medical_app/ui/common/loading_content.dart';
-import 'package:medical_app/ui/common/loading_view.dart';
-import 'package:medical_app/ui/common/ripple_button.dart';
+import 'package:rootanya/redux/login/login_state.dart';
+import 'package:rootanya/ui/common/loading_content.dart';
+import 'package:rootanya/ui/common/loading_view.dart';
+import 'package:rootanya/ui/common/ripple_button.dart';
 
 class LoginScreen extends StatefulWidget {
   static final String route = '/login';

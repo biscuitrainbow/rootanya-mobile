@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:medical_app/data/model/contact.dart';
-import 'package:medical_app/redux/add_contact/add_contact_state.dart';
-import 'package:medical_app/redux/add_contact/contact_action.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/contract/contact_action.dart';
-import 'package:medical_app/ui/add_contact/add_contact_screen.dart';
-import 'package:medical_app/util/widget_utils.dart';
+import 'package:rootanya/data/model/contact.dart';
+import 'package:rootanya/redux/add_contact/add_contact_state.dart';
+import 'package:rootanya/redux/add_contact/contact_action.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/contract/contact_action.dart';
+import 'package:rootanya/ui/add_contact/add_contact_screen.dart';
+import 'package:rootanya/util/widget_utils.dart';
 import 'package:redux/redux.dart';
 
 class AddContactContainer extends StatelessWidget {

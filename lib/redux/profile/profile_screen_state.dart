@@ -1,4 +1,4 @@
-import 'package:medical_app/data/loading_status.dart';
+import 'package:rootanya/data/loading_status.dart';
 
 class ProfileScreenState {
   final LoadingStatus loadingStatus;

@@ -7,11 +7,11 @@ class LocationService {
   Location location = Location();
 
   Future<LatLng> getCurrentLocation() async {
-    final currentLocation = await location.getLocation;
+    final currentLocation = await location.getLocation();
 
     return LatLng(
-      currentLocation["latitude"].toDouble(),
-      currentLocation["longitude"].toDouble(),
+      currentLocation.latitude,
+      currentLocation.longitude,
     );
   }
 }

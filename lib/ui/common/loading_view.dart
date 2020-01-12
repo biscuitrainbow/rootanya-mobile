@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/loading_status.dart';
+import 'package:rootanya/data/loading_status.dart';
 
 class LoadingView extends StatelessWidget {
   final LoadingStatus loadingStatus;

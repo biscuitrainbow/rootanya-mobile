@@ -1,4 +1,4 @@
-import 'package:medical_app/data/model/pharmacy.dart';
+import 'package:rootanya/data/model/pharmacy.dart';
 
 class FetchNearbyPharmacies{
 }

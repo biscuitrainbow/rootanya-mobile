@@ -1,11 +1,11 @@
-import 'package:medical_app/data/network/user_repository.dart';
-import 'package:medical_app/data/prefs/prefs_repository.dart';
-import 'package:medical_app/redux/app/app_action.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/auth/auth_action.dart';
-import 'package:medical_app/redux/login/login_action.dart';
-import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
-import 'package:medical_app/redux/token/token_action.dart';
+import 'package:rootanya/data/network/user_repository.dart';
+import 'package:rootanya/data/prefs/prefs_repository.dart';
+import 'package:rootanya/redux/app/app_action.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/auth/auth_action.dart';
+import 'package:rootanya/redux/login/login_action.dart';
+import 'package:rootanya/redux/medicine_list/medicine_list_action.dart';
+import 'package:rootanya/redux/token/token_action.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createAppMiddleware(

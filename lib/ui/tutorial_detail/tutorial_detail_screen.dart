@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/model/tutorial.dart';
+import 'package:rootanya/data/model/tutorial.dart';
 
 class TutorialDetailScreen extends StatefulWidget {
   final Tutorial tutorial;

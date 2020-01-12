@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:medical_app/redux/app/app_action.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/store.dart';
-import 'package:medical_app/ui/home/home.dart';
-import 'package:medical_app/ui/login/login_container.dart';
-import 'package:medical_app/ui/login/login_screen.dart';
-import 'package:medical_app/ui/main_screen/main_container.dart';
-import 'package:medical_app/ui/main_screen/main_screen.dart';
-import 'package:medical_app/ui/profile/profile_container.dart';
-import 'package:medical_app/ui/register/register_container.dart';
-import 'package:medical_app/ui/splashscreen/splash_screen.dart';
-import 'package:medical_app/ui/tutorial/tutorial_screen.dart';
-import 'package:medical_app/ui/usages/usage_container.dart';
+import 'package:rootanya/redux/app/app_action.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/store.dart';
+import 'package:rootanya/ui/home/home.dart';
+import 'package:rootanya/ui/login/login_container.dart';
+import 'package:rootanya/ui/login/login_screen.dart';
+import 'package:rootanya/ui/main_screen/main_container.dart';
+import 'package:rootanya/ui/main_screen/main_screen.dart';
+import 'package:rootanya/ui/profile/profile_container.dart';
+import 'package:rootanya/ui/register/register_container.dart';
+import 'package:rootanya/ui/splashscreen/splash_screen.dart';
+import 'package:rootanya/ui/tutorial/tutorial_screen.dart';
+import 'package:rootanya/ui/usages/usage_container.dart';
 import 'package:redux/redux.dart';
 
 void main() async {

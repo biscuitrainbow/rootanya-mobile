@@ -1,7 +1,7 @@
-import 'package:medical_app/data/network/notification_repository.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/notification_list/notification_list_action.dart';
-import 'package:medical_app/service/notification_service.dart';
+import 'package:rootanya/data/network/notification_repository.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/notification_list/notification_list_action.dart';
+import 'package:rootanya/service/notification_service.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createNotificationListMiddleware(

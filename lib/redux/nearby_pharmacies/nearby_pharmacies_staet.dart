@@ -1,5 +1,5 @@
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/data/model/pharmacy.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/data/model/pharmacy.dart';
 
 class NearbyPharmacyScreenState {
   NearbyPharmacyScreenState({

@@ -1,7 +1,7 @@
-import 'package:medical_app/data/network/medicine_repository.dart';
-import 'package:medical_app/redux/add_medicine/add_medicine_action.dart';
-import 'package:medical_app/redux/app/app_state.dart';
-import 'package:medical_app/redux/medicine_list/medicine_list_action.dart';
+import 'package:rootanya/data/network/medicine_repository.dart';
+import 'package:rootanya/redux/add_medicine/add_medicine_action.dart';
+import 'package:rootanya/redux/app/app_state.dart';
+import 'package:rootanya/redux/medicine_list/medicine_list_action.dart';
 import 'package:redux/redux.dart';
 
 List<Middleware<AppState>> createAddMedicineMiddleware(

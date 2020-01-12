@@ -1,7 +1,7 @@
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/redux/auth/auth_action.dart';
-import 'package:medical_app/redux/login/login_action.dart';
-import 'package:medical_app/redux/login/login_state.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/redux/auth/auth_action.dart';
+import 'package:rootanya/redux/login/login_action.dart';
+import 'package:rootanya/redux/login/login_state.dart';
 import 'package:redux/redux.dart';
 
 final loginReducers = combineReducers<LoginState>([

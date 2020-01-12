@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/model/medicine.dart';
-import 'package:medical_app/ui/common/loading_content.dart';
-import 'package:medical_app/ui/common/loading_view.dart';
-import 'package:medical_app/ui/common/need_login.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_container.dart';
-import 'package:medical_app/ui/medicine_list/medicine_list_mode.dart';
-import 'package:medical_app/ui/notification_list/notification_list_container.dart';
+import 'package:rootanya/data/model/medicine.dart';
+import 'package:rootanya/ui/common/loading_content.dart';
+import 'package:rootanya/ui/common/loading_view.dart';
+import 'package:rootanya/ui/common/need_login.dart';
+import 'package:rootanya/ui/medicine_list/medicine_list_container.dart';
+import 'package:rootanya/ui/medicine_list/medicine_list_mode.dart';
+import 'package:rootanya/ui/notification_list/notification_list_container.dart';
 
 class NotificationListScreen extends StatelessWidget {
   final NotificationListScreenViewModel viewModel;

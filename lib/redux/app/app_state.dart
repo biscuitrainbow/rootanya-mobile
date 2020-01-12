@@ -1,15 +1,15 @@
-import 'package:medical_app/data/model/user.dart';
-import 'package:medical_app/redux/add_contact/add_contact_state.dart';
-import 'package:medical_app/redux/add_medicine/add_medicine_state.dart';
-import 'package:medical_app/redux/contract/contact_state.dart';
-import 'package:medical_app/redux/login/login_state.dart';
-import 'package:medical_app/redux/medicine_list/medicine_list_state.dart';
-import 'package:medical_app/redux/medicine_notification/medicine_notification_state.dart';
-import 'package:medical_app/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
-import 'package:medical_app/redux/notification_list/notification_list_state.dart';
-import 'package:medical_app/redux/profile/profile_screen_state.dart';
-import 'package:medical_app/redux/register/register_screen_state.dart';
-import 'package:medical_app/redux/usages/usage_state.dart';
+import 'package:rootanya/data/model/user.dart';
+import 'package:rootanya/redux/add_contact/add_contact_state.dart';
+import 'package:rootanya/redux/add_medicine/add_medicine_state.dart';
+import 'package:rootanya/redux/contract/contact_state.dart';
+import 'package:rootanya/redux/login/login_state.dart';
+import 'package:rootanya/redux/medicine_list/medicine_list_state.dart';
+import 'package:rootanya/redux/medicine_notification/medicine_notification_state.dart';
+import 'package:rootanya/redux/nearby_pharmacies/nearby_pharmacies_staet.dart';
+import 'package:rootanya/redux/notification_list/notification_list_state.dart';
+import 'package:rootanya/redux/profile/profile_screen_state.dart';
+import 'package:rootanya/redux/register/register_screen_state.dart';
+import 'package:rootanya/redux/usages/usage_state.dart';
 
 class AppState {
   final NearbyPharmacyScreenState nearbyPharmacyState;

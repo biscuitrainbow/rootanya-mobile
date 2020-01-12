@@ -1,7 +1,7 @@
-import 'package:medical_app/data/loading_status.dart';
-import 'package:medical_app/redux/contract/contact_action.dart';
-import 'package:medical_app/redux/usages/usage_action.dart';
-import 'package:medical_app/redux/usages/usage_state.dart';
+import 'package:rootanya/data/loading_status.dart';
+import 'package:rootanya/redux/contract/contact_action.dart';
+import 'package:rootanya/redux/usages/usage_action.dart';
+import 'package:rootanya/redux/usages/usage_state.dart';
 import 'package:redux/redux.dart';
 
 final usagesReducers = combineReducers<UsageState>([

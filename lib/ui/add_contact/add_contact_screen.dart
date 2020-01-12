@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:medical_app/data/model/contact.dart';
-import 'package:medical_app/redux/add_contact/add_contact_state.dart';
-import 'package:medical_app/ui/common/confirm_dialog.dart';
-import 'package:medical_app/ui/common/loading_content.dart';
-import 'package:medical_app/ui/common/loading_view.dart';
+import 'package:rootanya/data/model/contact.dart';
+import 'package:rootanya/redux/add_contact/add_contact_state.dart';
+import 'package:rootanya/ui/common/confirm_dialog.dart';
+import 'package:rootanya/ui/common/loading_content.dart';
+import 'package:rootanya/ui/common/loading_view.dart';
 
 class AddContactScreen extends StatefulWidget {
   final AddContactScreenState addContactState;
